@@ -2,5 +2,11 @@
 
 Unity Version: 2022.3.9f1 (LTS)
 
+### Version 0.1.1 (Latest)
+- Added Script, Sprite, and Prefab folders
+- Imported **temporary** player sprites
+- Created a basic scene with a player and a camera
+- Created and added a PlayerController script to the player
+
 ### Version 0.1.0
-- Example of a ReadMe Message
+- Initial Setup of Project
