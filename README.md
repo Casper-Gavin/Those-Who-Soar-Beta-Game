@@ -2,7 +2,11 @@
 
 Unity Version: 2022.3.9f1 (LTS)
 
-### Version 0.1.3 (Latest)
+### Version 0.1.4 (Latest)
+- Added Core and Components folders
+- Added a Character Ability controller
+
+### Version 0.1.3
 - Added a Time.FixedDeltaTime to the player movement
 - Added a variable to the player movement to control the speed
 

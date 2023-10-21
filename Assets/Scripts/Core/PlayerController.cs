@@ -24,7 +24,6 @@ public class PlayerController : MonoBehaviour {
 
     /* Player Controller Functions */
     private void MovePlayer() {
-        Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        rb.MovePosition(rb.position + movement * Time.fixedDeltaTime * speed);
+        //rb.MovePosition(rb.position + movement * Time.fixedDeltaTime * speed);
     }
 }
