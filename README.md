@@ -2,7 +2,12 @@
 
 Unity Version: 2022.3.9f1 (LTS)
 
-### Version 0.1.1 (Latest)
+### Version 0.1.2 (Latest)
+- Added a Character script
+- Added RigidBody2d and BoxCollider2D to player
+- Added basic movement function to player
+
+### Version 0.1.1
 - Added Script, Sprite, and Prefab folders
 - Imported **temporary** player sprites
 - Created a basic scene with a player and a camera
