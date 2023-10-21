@@ -8,6 +8,8 @@ public class CharacterMovement : CharacterAbilities {
 
     public float MoveSpeed { get; set; }
 
+    private readonly int isMovingParam = Animator.StringToHash("IsMoving");
+
     protected override void Start() {
         base.Start();
 
@@ -36,9 +38,9 @@ public class CharacterMovement : CharacterAbilities {
 
     private void UpdateAnimations() {
         if (horizantalInput > 0.1f || verticalInput > 0.1f || horizantalInput < -0.1f || verticalInput < -0.1f) {
-            animator.SetBool("IsMoving", true);
+            animator.SetBool(isMovingParam, true);
         } else {
-            animator.SetBool("IsMoving", false);
+            animator.SetBool(isMovingParam, false);
         }
     }
 }
