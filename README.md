@@ -2,7 +2,12 @@
 
 Unity Version: 2022.3.9f1 (LTS)
 
-### Version 0.1.4 (Latest)
+### Version 0.1.5 (Latest)
+- Added a CharacterMovement script
+- Refactored the PlayerController script to use the CharacterMovement script
+- Updated PlayerController and CharacterAbility scripts
+
+### Version 0.1.4
 - Added Core and Components folders
 - Added a Character Ability controller
 

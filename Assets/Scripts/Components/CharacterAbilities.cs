@@ -6,9 +6,11 @@ public class CharacterAbilities : MonoBehaviour {
     protected float horizantalInput;
     protected float verticalInput;
 
+    protected PlayerController controller;
+
     // Start is called before the first frame update
-    void Start() {
-        
+    protected virtual void Start() {
+        controller = GetComponent<PlayerController>();
     }
 
     protected virtual void Update() {
@@ -38,7 +40,7 @@ public class CharacterAbilities : MonoBehaviour {
     /// our character
     /// </summary>
     protected virtual void InternalUpdate() {
-        horizantalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
+        horizantalInput = Input.GetAxisRaw("Horizontal");
+        verticalInput = Input.GetAxisRaw("Vertical");
     }
 }

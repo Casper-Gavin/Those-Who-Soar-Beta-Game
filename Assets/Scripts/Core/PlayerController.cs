@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     private Rigidbody2D rb;
 
-    [SerializeField] private float speed = 5f;
+    public Vector2 CurrentMovement { get; set; }
 
     // Start is called before the first frame update
     void Start() {
@@ -22,8 +22,12 @@ public class PlayerController : MonoBehaviour {
         MovePlayer();
     }
 
-    /* Player Controller Functions */
     private void MovePlayer() {
-        //rb.MovePosition(rb.position + movement * Time.fixedDeltaTime * speed);
+        Vector2 currentMovement = rb.position + CurrentMovement * Time.fixedDeltaTime;
+        rb.MovePosition(currentMovement);
+    }
+
+    public void SetMovement(Vector2 newPosition) {
+        CurrentMovement = newPosition;
     }
 }
