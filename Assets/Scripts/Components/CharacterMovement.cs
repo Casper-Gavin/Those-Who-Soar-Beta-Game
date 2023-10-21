@@ -18,6 +18,8 @@ public class CharacterMovement : CharacterAbilities {
         base.HandleAbility();
 
         MoveCharacter();
+
+        UpdateAnimations();
     }
 
     private void MoveCharacter() {
@@ -30,5 +32,13 @@ public class CharacterMovement : CharacterAbilities {
 
     public void ResetSpeed () {
         MoveSpeed = walkSpeed;
+    }
+
+    private void UpdateAnimations() {
+        if (horizantalInput > 0.1f || verticalInput > 0.1f || horizantalInput < -0.1f || verticalInput < -0.1f) {
+            animator.SetBool("IsMoving", true);
+        } else {
+            animator.SetBool("IsMoving", false);
+        }
     }
 }

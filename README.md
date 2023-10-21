@@ -2,7 +2,10 @@
 
 Unity Version: 2022.3.9f1 (LTS)
 
-### Version 0.1.8 (Latest)
+### Version 0.1.9 (Latest)
+- Added functionality for animations to play when the player is moving and idling
+
+### Version 0.1.8
 - Added a CharacterFlip script
 - Implemented flipping the character sprite based on movement direction
 

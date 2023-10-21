@@ -159,7 +159,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -225,10 +225,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1503698328}
   - component: {fileID: 1503698327}
+  - component: {fileID: 1503698337}
   - component: {fileID: 1503698331}
   - component: {fileID: 1503698333}
   - component: {fileID: 1503698334}
   - component: {fileID: 1503698335}
+  - component: {fileID: 1503698336}
   - component: {fileID: 1503698332}
   - component: {fileID: 1503698330}
   - component: {fileID: 1503698329}
@@ -443,6 +445,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dashDistance: 5
   dashDuration: 0.3
+--- !u!114 &1503698336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503698326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 202a8fb1c65795c4ea2d6f256b35d693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flipMode: 0
+  flipThreshold: 0.1
+--- !u!95 &1503698337
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503698326}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 598e72f16c2bbe94fa5a323daf574863, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

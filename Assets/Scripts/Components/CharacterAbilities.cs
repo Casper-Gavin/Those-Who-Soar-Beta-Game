@@ -9,10 +9,13 @@ public class CharacterAbilities : MonoBehaviour {
     protected PlayerController controller;
     protected CharacterMovement movement;
 
+    protected Animator animator;
+
     // Start is called before the first frame update
     protected virtual void Start() {
         controller = GetComponent<PlayerController>();
         movement = GetComponent<CharacterMovement>();
+        animator = GetComponent<Animator>();
     }
 
     protected virtual void Update() {
