@@ -2,7 +2,11 @@
 
 Unity Version: 2022.3.9f1 (LTS)
 
-### Version 0.1.6 (Latest)
+### Version 0.1.7 (Latest)
+- Added a CharacterDash script
+- Implemented dashing
+
+### Version 0.1.6
 - Added a CharacterRun script
 - Implemented running
 

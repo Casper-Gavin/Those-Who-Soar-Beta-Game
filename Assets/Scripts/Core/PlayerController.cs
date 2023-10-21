@@ -7,9 +7,13 @@ public class PlayerController : MonoBehaviour {
 
     public Vector2 CurrentMovement { get; set; }
 
+    public bool NormalMovement { get; set; }
+
     // Start is called before the first frame update
     void Start() {
         rb = GetComponent<Rigidbody2D>();
+
+        NormalMovement = true;
     }
 
     // Update is called once per frame
@@ -19,12 +23,20 @@ public class PlayerController : MonoBehaviour {
 
     // FixedUpdate is called once per physics update (0.02s) (multiple times per frame)
     void FixedUpdate() {
-        MovePlayer();
+        if (NormalMovement) {
+            MovePlayer();
+        }
     }
+
+
 
     private void MovePlayer() {
         Vector2 currentMovement = rb.position + CurrentMovement * Time.fixedDeltaTime;
         rb.MovePosition(currentMovement);
+    }
+
+    public void MovePosition(Vector2 newPosition) {
+        rb.MovePosition(newPosition);
     }
 
     public void SetMovement(Vector2 newPosition) {
