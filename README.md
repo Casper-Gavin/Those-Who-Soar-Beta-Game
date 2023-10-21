@@ -2,7 +2,11 @@
 
 Unity Version: 2022.3.9f1 (LTS)
 
-### Version 0.1.7 (Latest)
+### Version 0.1.8 (Latest)
+- Added a CharacterFlip script
+- Implemented flipping the character sprite based on movement direction
+
+### Version 0.1.7 
 - Added a CharacterDash script
 - Implemented dashing
 
