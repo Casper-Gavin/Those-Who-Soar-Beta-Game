@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     private Rigidbody2D rb;
 
+    [SerializeField] private float speed = 5f;
+
     // Start is called before the first frame update
     void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -23,6 +25,6 @@ public class PlayerController : MonoBehaviour {
     /* Player Controller Functions */
     private void MovePlayer() {
         Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        rb.MovePosition(rb.position + movement);
+        rb.MovePosition(rb.position + movement * Time.fixedDeltaTime * speed);
     }
 }
