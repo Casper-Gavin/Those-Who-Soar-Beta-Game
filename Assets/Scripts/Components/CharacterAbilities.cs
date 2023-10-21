@@ -7,14 +7,17 @@ public class CharacterAbilities : MonoBehaviour {
     protected float verticalInput;
 
     protected PlayerController controller;
+    protected CharacterMovement movement;
 
     // Start is called before the first frame update
     protected virtual void Start() {
         controller = GetComponent<PlayerController>();
+        movement = GetComponent<CharacterMovement>();
     }
 
     protected virtual void Update() {
         HandleAbility();
+        HandleInput();
     }
 
     /// <summary>

@@ -2,10 +2,15 @@
 
 Unity Version: 2022.3.9f1 (LTS)
 
-### Version 0.1.5 (Latest)
+### Version 0.1.6 (Latest)
+- Added a CharacterRun script
+- Implemented running
+
+### Version 0.1.5
 - Added a CharacterMovement script
 - Refactored the PlayerController script to use the CharacterMovement script
 - Updated PlayerController and CharacterAbility scripts
+- Implemented walking
 
 ### Version 0.1.4
 - Added Core and Components folders

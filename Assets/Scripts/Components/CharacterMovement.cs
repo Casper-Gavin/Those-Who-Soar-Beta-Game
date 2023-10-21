@@ -6,12 +6,12 @@ using UnityEngine;
 public class CharacterMovement : CharacterAbilities {
     [SerializeField] private float walkSpeed = 5f;
 
-    public float WalkMoveSpeed { get; set; }
+    public float MoveSpeed { get; set; }
 
     protected override void Start() {
         base.Start();
 
-        WalkMoveSpeed = walkSpeed;
+        MoveSpeed = walkSpeed;
     }
 
     protected override void HandleAbility() {
@@ -23,8 +23,12 @@ public class CharacterMovement : CharacterAbilities {
     private void MoveCharacter() {
         Vector2 movement = new Vector2(horizantalInput, verticalInput);
         Vector2 movementNormalized = movement.normalized;
-        Vector2 movementSpeed = movementNormalized * WalkMoveSpeed;
+        Vector2 movementSpeed = movementNormalized * MoveSpeed;
 
         controller.SetMovement(movementSpeed);
+    }
+
+    public void ResetSpeed () {
+        MoveSpeed = walkSpeed;
     }
 }
