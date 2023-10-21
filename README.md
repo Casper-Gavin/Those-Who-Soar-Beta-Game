@@ -2,6 +2,9 @@
 
 Unity Version: 2022.3.9f1 (LTS)
 
+# Version History
+
+## Version 0.1
 ### Version 0.1.9 (Latest)
 - Added functionality for animations to play when the player is moving and idling
 - Added StringToHash for animation variable name
