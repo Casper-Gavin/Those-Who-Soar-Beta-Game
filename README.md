@@ -4,8 +4,51 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 
+## Version 0.2
+### Version 0.2.9 (Latest)
+ - Added player highlight
+ - Added shield and heart icons
+ - Added a player layer
+
+### Version 0.2.8
+ - Implemented shield bar and behavior 
+
+### Version 0.2.7
+ - Added health number to UI
+
+### Version 0.2.6
+ - Connected health bar image to player health
+ - Set health bar to update using a lerp for smoothness
+
+### Version 0.2.5
+ - Added singleton templated class
+ - Made UIManager a singleton
+
+### Version 0.2.4
+ - Added initial health bar UI
+ - Add UIManager script
+
+### Version 0.2.3
+ - Remove movement while dead
+ - Reset health to initial health on revive
+
+### Version 0.2.2
+ - Added revive functionality after death (press 'P')
+ - Added spawn position for revive
+ - Created a Manager folder and LevelManager script
+
+### Version 0.2.1
+ - Added functionality to take damage (press 'L')
+ - Added death, disabled collisions/texture on death
+
+### Version 0.2.0
+ - Added a Health folder and script
+ - Setup initial and max health
+
+
+
 ## Version 0.1
-### Version 0.1.9 (Latest)
+### Version 0.1.9
 - Added functionality for animations to play when the player is moving and idling
 - Added StringToHash for animation variable name
 
