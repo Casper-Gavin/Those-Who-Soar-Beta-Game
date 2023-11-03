@@ -4,6 +4,10 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 
+## Version 0.3
+### Version 0.3.0
+ - Added gun prefabs
+
 ## Version 0.2
 ### Version 0.2.9 (Latest)
  - Added player highlight
