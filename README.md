@@ -5,6 +5,8 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 0.3
+### Version 0.3.1
+ - Added basic CharacterWeapon class behavior with weapon object
 ### Version 0.3.0
  - Added gun prefabs
 
