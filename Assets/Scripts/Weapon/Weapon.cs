@@ -153,7 +153,7 @@ public class Weapon : MonoBehaviour
 
     private void RoatateWeapon()
     {
-        if (WeaponOwner.GetComponent<CharacterFlip>())
+        if (WeaponOwner.GetComponent<CharacterFlip>().FacingRight)
         {
             transform.localScale = new Vector3(1,1,1);
         }

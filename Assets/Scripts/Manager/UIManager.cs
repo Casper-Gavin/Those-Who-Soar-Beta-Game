@@ -54,6 +54,5 @@ public class UIManager : Singleton<UIManager>
         currentShieldTMP.text = playerCurrentShield.ToString() + "/" + playerMaxShield.ToString();
 
         currentAmmoTMP.text = playerCurrentAmmo + " / " + playerMaxAmmo;
-    
     }
 }
