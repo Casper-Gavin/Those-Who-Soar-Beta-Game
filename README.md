@@ -5,6 +5,9 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 0.3
+### Version 0.3.6
+ - Added a reticle aim feature
+
 ### Version 0.3.5
  - Added a recoil function
  - Added some left/right facing checks
