@@ -9,7 +9,7 @@ public class CharacterWeapon : CharacterAbilities
     [SerializeField] private Weapon weaponToUse;
     [SerializeField] private Transform weaponHolderPosition;
 
-    public Weapon CurrentWeapon { get; set;}
+    public Weapon CurrentWeapon { get; set; }
 
     protected override void Start()
     {
@@ -34,24 +34,29 @@ public class CharacterWeapon : CharacterAbilities
 
     public void Shoot()
     {
-        
+        if (CurrentWeapon == null)
+        {
+            return;
+        }
+
+        CurrentWeapon.TriggerShot();
     }
 
     public void Reload()
     {
+        if (CurrentWeapon == null)
+        {
+            return;
+        }
 
+        CurrentWeapon.Reload();
     }
 
     public void EquipWeapon(Weapon weapon, Transform weaponPosition)
     {
-        // creates weapon to be used by player
+        // creates reference to weapon to be used by player
         CurrentWeapon = Instantiate(weapon, weaponPosition.position, weaponPosition.rotation);
         CurrentWeapon.transform.parent = weaponPosition;
-    }
-    
-    // Update is called once per frame
-    void Update()
-    {
-        
+        CurrentWeapon.SetOwner(character);
     }
 }
