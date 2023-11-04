@@ -39,8 +39,20 @@ public class CharacterFlip : CharacterAbilities {
         }
     }
 
-    private void FlipToWeaponDirection () {
-        // Empty for now, will be implemented later
+    private void FlipToWeaponDirection ()
+    {
+        if (characterWeapon != null)
+        {
+            float weaponAngle = characterWeapon.WeaponAim.CurrentAimAngleAbsolute;
+            if (weaponAngle > 90 || weaponAngle < -90)
+            {
+                FaceDirection(-1);
+            }
+            else
+            {
+                FaceDirection(1);
+            }
+        }
     }
 
     private void FaceDirection (int newDirection) {

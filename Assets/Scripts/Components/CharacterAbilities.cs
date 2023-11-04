@@ -8,7 +8,7 @@ public class CharacterAbilities : MonoBehaviour {
 
     protected PlayerController controller;
     protected CharacterMovement movement;
-
+    protected CharacterWeapon characterWeapon;
     protected Animator animator;
     protected Character character;
 
@@ -16,6 +16,7 @@ public class CharacterAbilities : MonoBehaviour {
     protected virtual void Start() {
         controller = GetComponent<PlayerController>();
         character = GetComponent<Character>();
+        characterWeapon = GetComponent<CharacterWeapon>();
         movement = GetComponent<CharacterMovement>();
         animator = GetComponent<Animator>();
     }

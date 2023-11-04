@@ -5,6 +5,10 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 0.3
+### Version 0.3.7
+ - Made the weapon point in the reticle's direction
+ - Changed flip motion to be based off weapon angle
+ 
 ### Version 0.3.6
  - Added a reticle aim feature
 

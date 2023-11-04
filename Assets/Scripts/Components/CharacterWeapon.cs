@@ -11,6 +11,8 @@ public class CharacterWeapon : CharacterAbilities
 
     public Weapon CurrentWeapon { get; set; }
 
+    public WeaponAim WeaponAim { get; set; }
+
     protected override void Start()
     {
         base.Start();
@@ -73,5 +75,6 @@ public class CharacterWeapon : CharacterAbilities
         CurrentWeapon = Instantiate(weapon, weaponPosition.position, weaponPosition.rotation);
         CurrentWeapon.transform.parent = weaponPosition;
         CurrentWeapon.SetOwner(character);
+        WeaponAim = CurrentWeapon.GetComponent<WeaponAim>();
     }
 }

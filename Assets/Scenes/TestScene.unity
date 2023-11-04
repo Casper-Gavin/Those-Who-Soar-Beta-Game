@@ -1459,7 +1459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 202a8fb1c65795c4ea2d6f256b35d693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flipMode: 0
+  flipMode: 1
   flipThreshold: 0.1
 --- !u!95 &1503698337
 Animator:
