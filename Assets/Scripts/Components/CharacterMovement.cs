@@ -38,9 +38,9 @@ public class CharacterMovement : CharacterAbilities {
 
     private void UpdateAnimations() {
         if (horizantalInput > 0.1f || verticalInput > 0.1f || horizantalInput < -0.1f || verticalInput < -0.1f) {
-            animator.SetBool(isMovingParam, true);
+            character.CharacterAnimator.SetBool(isMovingParam, true);
         } else {
-            animator.SetBool(isMovingParam, false);
+            character.CharacterAnimator.SetBool(isMovingParam, false);
         }
     }
 }

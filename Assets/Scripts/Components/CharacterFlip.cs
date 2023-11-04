@@ -57,12 +57,15 @@ public class CharacterFlip : CharacterAbilities {
 
     private void FaceDirection (int newDirection) {
         // 1 = right, -1 = left
-        if (newDirection == 1) {
+        if (newDirection == 1)
+        {
             // Changes scale on tranform of object to flip it
-            transform.localScale = new Vector3(1, 1, 1);
+            character.CharacterSprite.transform.localScale = new Vector3(1, 1, 1);
             FacingRight = true;
-        } else if (newDirection == -1) {
-            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else if (newDirection == -1)
+        {
+            character.CharacterSprite.transform.localScale = new Vector3(-1, 1, 1);
             FacingRight = false;
         }
     }

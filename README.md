@@ -5,9 +5,11 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 0.3
+### Version 0.3.9
+ - fixed weapon rotation bug
 ### Version 0.3.8
  - Created Ammo UI
- 
+
 ### Version 0.3.7
  - Made the weapon point in the reticle's direction
  - Changed flip motion to be based off weapon angle

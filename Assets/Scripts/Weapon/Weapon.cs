@@ -48,7 +48,7 @@ public class Weapon : MonoBehaviour
     private void Update()
     {
         WeaponCanShoot();
-        Debug.Log(CurrentAmmo);
+        RoatateWeapon();
     }
 
     // TriggerShot calls StartShooting only because this is a generic weapon
@@ -148,6 +148,18 @@ public class Weapon : MonoBehaviour
             {
                 WeaponAmmo.RefillAmmo();
             }
+        }
+    }
+
+    private void RoatateWeapon()
+    {
+        if (WeaponOwner.GetComponent<CharacterFlip>())
+        {
+            transform.localScale = new Vector3(1,1,1);
+        }
+        else
+        {
+            transform.localScale = new Vector3(-1,1,1);
         }
     }
 }
