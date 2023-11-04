@@ -6,7 +6,7 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] private float timeBtwShoots = 0.5f;
+    [SerializeField] private float timeBtwShots = 0.5f;
     
     [Header("Weapon")]
     [SerializeField] private bool useMagazine = true;
@@ -30,16 +30,20 @@ public class Weapon : MonoBehaviour
 
     public int MagazineSize => magazineSize;
 
+    public bool CanShoot { get; set; }
+
+    private float nextShotTime;
+
     private void Awake()
     {
         WeaponAmmo = GetComponent<WeaponAmmo>();
         CurrentAmmo = magazineSize;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        
+        WeaponCanShoot();
+        Debug.Log(CurrentAmmo);
     }
 
     // TriggerShot calls StartShooting only because this is a generic weapon
@@ -50,8 +54,49 @@ public class Weapon : MonoBehaviour
 
     private void StartShooting()
     {
+        if (useMagazine)
+        {
+            if (WeaponAmmo != null)
+            {
+                if (WeaponAmmo.CanUseWeapon())
+                {
+                    RequestShot();
+                }
+                else
+                {
+                    if (autoReload)
+                    {
+                        Reload();
+                    }
+                }
+            }
+        }
+        else
+        {
+            RequestShot();
+        }
+    }
+
+    private void RequestShot()
+    {
+        if (!CanShoot)
+        {
+            return;
+        }
+
         Debug.Log("Shooting");
         WeaponAmmo.ConsumeAmmo();
+
+        CanShoot = false;
+    }
+
+    private void WeaponCanShoot()
+    {
+        if (Time.time > nextShotTime)
+        {
+            CanShoot = true;
+            nextShotTime = Time.time + timeBtwShots;
+        }
     }
 
     public void SetOwner(Character owner)
@@ -61,7 +106,12 @@ public class Weapon : MonoBehaviour
 
     public void Reload()
     {
-        Debug.Log("Reload");
-        WeaponAmmo.RefillAmmo();
+        if (WeaponAmmo != null)
+        {
+            if (useMagazine)
+            {
+                WeaponAmmo.RefillAmmo();
+            }
+        }
     }
 }

@@ -20,8 +20,8 @@ public class CharacterWeapon : CharacterAbilities
     // left mouse is shoot, R is reload, more to come
     protected override void HandleInput()
     {
-        // 0 is left mouse button
-        if (Input.GetMouseButtonDown(0))
+        // 0 is left mouse button - GetMouseButtonDown makes a non-auto weapon vs GetMouseButton which is auto
+        if (Input.GetMouseButton(0))
         {
             Shoot();
         }
