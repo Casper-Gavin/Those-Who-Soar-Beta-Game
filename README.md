@@ -5,6 +5,8 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 0.3
+### Version 0.3.3
+ - Added ammo to gun
 ### Version 0.3.2
  - Gave the player the current weapon
  - Added shoot and reload functions

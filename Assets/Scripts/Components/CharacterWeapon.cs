@@ -17,7 +17,7 @@ public class CharacterWeapon : CharacterAbilities
         EquipWeapon(weaponToUse, weaponHolderPosition);
     }
 
-    // left mouse is shoot, R is reload
+    // left mouse is shoot, R is reload, more to come
     protected override void HandleInput()
     {
         // 0 is left mouse button

@@ -16,6 +16,26 @@ public class Weapon : MonoBehaviour
 
     public Character WeaponOwner { get; set; }
 
+    public int CurrentAmmo { get; set; }
+
+    public WeaponAmmo WeaponAmmo { get; set; }
+
+    public bool UseMagazine => useMagazine;
+    /* above same as on newer version of C#:
+    public bool UseMagazine
+    {
+        get { return use Magazine;}
+    }
+    */
+
+    public int MagazineSize => magazineSize;
+
+    private void Awake()
+    {
+        WeaponAmmo = GetComponent<WeaponAmmo>();
+        CurrentAmmo = magazineSize;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +51,7 @@ public class Weapon : MonoBehaviour
     private void StartShooting()
     {
         Debug.Log("Shooting");
+        WeaponAmmo.ConsumeAmmo();
     }
 
     public void SetOwner(Character owner)
@@ -41,5 +62,6 @@ public class Weapon : MonoBehaviour
     public void Reload()
     {
         Debug.Log("Reload");
+        WeaponAmmo.RefillAmmo();
     }
 }
