@@ -47,6 +47,10 @@ public class CharacterWeapon : CharacterAbilities
         }
 
         CurrentWeapon.TriggerShot();
+        if (character.CharacterTypes == Character.CharacterType.Player)
+        {
+            UIManager.Instance.UpdateAmmo(CurrentWeapon.CurrentAmmo, CurrentWeapon.MagazineSize);
+        }
     }
 
     public void StopWeapon()
@@ -67,6 +71,10 @@ public class CharacterWeapon : CharacterAbilities
         }
 
         CurrentWeapon.Reload();
+        if (character.CharacterTypes == Character.CharacterType.Player)
+        {
+            UIManager.Instance.UpdateAmmo(CurrentWeapon.CurrentAmmo, CurrentWeapon.MagazineSize);
+        }
     }
 
     public void EquipWeapon(Weapon weapon, Transform weaponPosition)
@@ -76,5 +84,10 @@ public class CharacterWeapon : CharacterAbilities
         CurrentWeapon.transform.parent = weaponPosition;
         CurrentWeapon.SetOwner(character);
         WeaponAim = CurrentWeapon.GetComponent<WeaponAim>();
+
+        if (character.CharacterTypes == Character.CharacterType.Player)
+        {
+            UIManager.Instance.UpdateAmmo(CurrentWeapon.CurrentAmmo, CurrentWeapon.MagazineSize);
+        }
     }
 }

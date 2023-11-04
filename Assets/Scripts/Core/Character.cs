@@ -9,6 +9,9 @@ public class Character : MonoBehaviour {
     }
     // [SerializeField] allows private variables to be visible in the inspector
     [SerializeField] private CharacterType characterType;
+
+    // switched from the tutorial - CharacterType vs CharacterTypes with above
+    public CharacterType CharacterTypes => characterType;
     
 
     // Start is called before the first frame update
