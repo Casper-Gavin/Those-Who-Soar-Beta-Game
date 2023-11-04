@@ -34,7 +34,7 @@ public class WeaponAim : MonoBehaviour
         mousePosition = Input.mousePosition;
         mousePosition.z = 5f;
 
-        direction = mainCamera.ScreenToViewportPoint(mousePosition);
+        direction = mainCamera.ScreenToWorldPoint(mousePosition);
         direction.z = transform.position.z;
         reticlePosition = direction;
     }
