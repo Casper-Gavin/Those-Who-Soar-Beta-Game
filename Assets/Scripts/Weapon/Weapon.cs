@@ -13,6 +13,10 @@ public class Weapon : MonoBehaviour
     [SerializeField] private int magazineSize = 30;
     [SerializeField] private bool autoReload = true;
 
+    [Header("Recoil")]
+    [SerializeField] private bool useRecoil = true;
+    [SerializeField] private int recoilForce = 5;
+
 
     public Character WeaponOwner { get; set; }
 
@@ -33,6 +37,7 @@ public class Weapon : MonoBehaviour
     public bool CanShoot { get; set; }
 
     private float nextShotTime;
+    private PlayerController controller;
 
     private void Awake()
     {
@@ -50,6 +55,14 @@ public class Weapon : MonoBehaviour
     public void TriggerShot()
     {
         StartShooting();
+    }
+
+    public void StopWeapon()
+    {
+        if (useRecoil)
+        {
+            controller.ApplyRecoil(Vector2.one, 0f);
+        }
     }
 
     private void StartShooting()
@@ -77,6 +90,7 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    // checks cooldown time before shooting
     private void RequestShot()
     {
         if (!CanShoot)
@@ -84,10 +98,30 @@ public class Weapon : MonoBehaviour
             return;
         }
 
+        if (useRecoil)
+        {
+            Recoil();
+        }
+
         Debug.Log("Shooting");
         WeaponAmmo.ConsumeAmmo();
 
         CanShoot = false;
+    }
+
+    private void Recoil()
+    {
+        if (WeaponOwner != null)
+        {
+            if (WeaponOwner.GetComponent<CharacterFlip>().FacingRight)
+            {
+                controller.ApplyRecoil(Vector2.left, recoilForce);
+            }
+            else
+            {
+                controller.ApplyRecoil(Vector2.right, recoilForce);
+            }
+        }
     }
 
     private void WeaponCanShoot()
@@ -99,9 +133,11 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    // pass by reference
     public void SetOwner(Character owner)
     {
         WeaponOwner = owner;
+        controller = WeaponOwner.GetComponent<PlayerController>();
     }
 
     public void Reload()

@@ -46,10 +46,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0de6b645a922b94438ddc1c9f04774e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBtwShoots: 0.5
+  timeBtwShots: 0.5
   useMagazine: 1
   magazineSize: 30
   autoReload: 1
+  useRecoil: 1
+  recoilForce: 15
 --- !u!114 &2974324980653821011
 MonoBehaviour:
   m_ObjectHideFlags: 0

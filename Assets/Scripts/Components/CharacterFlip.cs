@@ -11,6 +11,14 @@ public class CharacterFlip : CharacterAbilities {
     [SerializeField] private FlipMode flipMode = FlipMode.MovementDirection;
     [SerializeField] private float flipThreshold = 0.1f;
 
+    // used for recoil for guns
+    public bool FacingRight { get; set; }
+
+    private void Awake()
+    {
+        FacingRight = true;
+    }
+
     protected override void HandleAbility() {
         base.HandleAbility();
 
@@ -40,8 +48,10 @@ public class CharacterFlip : CharacterAbilities {
         if (newDirection == 1) {
             // Changes scale on tranform of object to flip it
             transform.localScale = new Vector3(1, 1, 1);
+            FacingRight = true;
         } else if (newDirection == -1) {
             transform.localScale = new Vector3(-1, 1, 1);
+            FacingRight = false;
         }
     }
 }

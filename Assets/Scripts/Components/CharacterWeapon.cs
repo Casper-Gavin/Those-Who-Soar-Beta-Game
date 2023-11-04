@@ -26,6 +26,11 @@ public class CharacterWeapon : CharacterAbilities
             Shoot();
         }
 
+        if (Input.GetMouseButtonUp(0))
+        {
+            StopWeapon();
+        }
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             Reload();
@@ -40,6 +45,16 @@ public class CharacterWeapon : CharacterAbilities
         }
 
         CurrentWeapon.TriggerShot();
+    }
+
+    public void StopWeapon()
+    {
+        if (CurrentWeapon == null)
+        {
+            return;
+        }
+
+        CurrentWeapon.StopWeapon();
     }
 
     public void Reload()

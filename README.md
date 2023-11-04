@@ -5,10 +5,14 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 0.3
+### Version 0.3.5
+ - Added a recoil function
+ - Added some left/right facing checks
+
 ### Version 0.3.4
  - Added reloding ammo functionality
  - Added a needed cooldown between shots
- 
+
 ### Version 0.3.3
  - Added ammo to gun
 
@@ -23,7 +27,7 @@ Unity Version: 2022.3.9f1 (LTS)
  - Added gun prefabs
 
 ## Version 0.2
-### Version 0.2.9 (Latest)
+### Version 0.2.9
  - Added player highlight
  - Added shield and heart icons
  - Added a player layer
