@@ -7,11 +7,15 @@ public class SingleShotWeapon : Weapon {
 
     public Vector3 ProjectileSpawnPosition { get; set; }
 
+    public ObjectPooler Pooler { get; set; }
+
     private Vector3 projectileSpawnValue;
 
-    void Start() {
+    private void Start() {
         projectileSpawnValue = projectileSpawnPosition;
         projectileSpawnValue.y = -projectileSpawnPosition.y;
+
+        Pooler = GetComponent<ObjectPooler>();
     }
 
     protected override void Update() {
@@ -20,10 +24,24 @@ public class SingleShotWeapon : Weapon {
 
     protected override void RequestShot() {
         base.RequestShot();
+
+        if (CanShoot) {
+            EvaluateProjetileSpawnPosition();
+            SpawnProjectile(ProjectileSpawnPosition);
+        }
     }
 
     private void SpawnProjectile(Vector2 spawnPosition) {
-        
+        GameObject projectilePooled = Pooler.GetObjectFromPool();
+        projectilePooled.transform.position = spawnPosition;
+        projectilePooled.SetActive(true);
+
+        Projectile projectile = projectilePooled.GetComponent<Projectile>();
+
+        Vector2 newDirection = WeaponOwner.GetComponent<CharacterFlip>().FacingRight ? transform.right : transform.right * -1;
+        projectile.SetDireciton(newDirection, transform.rotation, WeaponOwner.GetComponent<CharacterFlip>().FacingRight);
+
+        CanShoot = false;
     }
 
     private void EvaluateProjetileSpawnPosition() {

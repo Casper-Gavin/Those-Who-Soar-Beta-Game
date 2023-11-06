@@ -17,7 +17,7 @@ public class Projectile : MonoBehaviour {
 
     private Vector2 movement;
 
-    void Start() {
+    void Awake () {
         Speed = speed;
         FacingRight = true;
 
@@ -29,7 +29,7 @@ public class Projectile : MonoBehaviour {
     }
 
     public void MoveProjectile() {
-        movement = Direction * Speed * Time.fixedDeltaTime;
+        movement = Direction * (Speed / 10f) * Time.fixedDeltaTime;
         rigidbody2D.MovePosition(rigidbody2D.position + movement);
 
         Speed += acceleration * Time.deltaTime;
@@ -43,7 +43,7 @@ public class Projectile : MonoBehaviour {
 
     public void SetDireciton(Vector2 newDirection, Quaternion newRotation, bool isFacingRight) {
         Direction = newDirection;
-        
+
         if (FacingRight != isFacingRight) {
             FlipProjectile();
         }

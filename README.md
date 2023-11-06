@@ -4,6 +4,9 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 0.4
+### Version 0.4.4
+- Added shooting functionality
+
 ### Version 0.4.3
 - Added a bullet prefab
 - Added Projectile script

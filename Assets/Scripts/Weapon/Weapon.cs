@@ -103,10 +103,7 @@ public class Weapon : MonoBehaviour
             Recoil();
         }
 
-        Debug.Log("Shooting");
         WeaponAmmo.ConsumeAmmo();
-
-        CanShoot = false;
     }
 
     private void Recoil()
