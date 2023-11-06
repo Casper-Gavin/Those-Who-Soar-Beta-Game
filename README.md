@@ -3,6 +3,10 @@
 Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
+## Version 0.5
+### Version 0.5.1
+- Added Camera Follow
+
 ## Version 0.4
 ### Version 0.4.7
 - Fixed incorrect projectile rotation
