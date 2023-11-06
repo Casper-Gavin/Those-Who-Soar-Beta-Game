@@ -50,4 +50,8 @@ public class Projectile : MonoBehaviour {
 
         transform.rotation = newRotation;
     }
+
+    public void ResetProjectile() {
+        spriteRenderer.flipX = false;
+    }
 }

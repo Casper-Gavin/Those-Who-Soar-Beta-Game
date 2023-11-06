@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53873c0336d11bb40a2851ad219313cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBtwShots: 0.5
+  timeBtwShots: 0.15
   useMagazine: 1
   magazineSize: 30
   autoReload: 1
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectPrefab: {fileID: 2136320820033127340, guid: 630f50e24cbaea54d818c6dd641efd3d, type: 3}
-  poolSize: 10
+  poolSize: 15
   poolCanExpand: 1
 --- !u!1 &3888321724954760950
 GameObject:
@@ -166,8 +166,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1283155413
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 989029629, guid: b279ec01a2a2e79449f2a79b9c0e5e0e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

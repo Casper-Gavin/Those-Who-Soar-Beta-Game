@@ -5,7 +5,17 @@ using UnityEngine;
 public class ReturnToPool : MonoBehaviour {
     [SerializeField] private float lifeTime = 2f;
 
+    private Projectile projectile;
+
+    private void Start () {
+        projectile = GetComponent<Projectile>();
+    }
+
     private void Return () {
+        if (projectile != null) {
+            projectile.ResetProjectile();
+        }
+
         gameObject.SetActive(false);
     }
 
