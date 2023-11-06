@@ -4,6 +4,10 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 0.4
+### Version 0.4.6
+- Added ReturnToPool script
+    - This script returns the bullet to the pool after a set amount of time
+
 ### Version 0.4.5
 - Added spread to the bullets
 

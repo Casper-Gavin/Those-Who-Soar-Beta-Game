@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 953578990875710876}
   - component: {fileID: 4960470047417238846}
   - component: {fileID: -8788695706661832918}
+  - component: {fileID: 7371390695014329295}
   m_Layer: 0
   m_Name: Bar_Projectile
   m_TagString: Untagged
@@ -173,3 +174,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 100
   acceleration: 0
+--- !u!114 &7371390695014329295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2136320820033127340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da4d202b9038f2a41adc93b27c9a4664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
