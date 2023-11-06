@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class SingleShotWeapon : Weapon {
     [SerializeField] private Vector3 projectileSpawnPosition;
+    [SerializeField] private Vector3 projectileSpread;
 
     public Vector3 ProjectileSpawnPosition { get; set; }
 
     public ObjectPooler Pooler { get; set; }
 
     private Vector3 projectileSpawnValue;
+    private Vector3 randomProjectileSpread;
 
-    private void Start() {
+    protected override void Awake() {
+        base.Awake();
+
         projectileSpawnValue = projectileSpawnPosition;
         projectileSpawnValue.y = -projectileSpawnPosition.y;
 
         Pooler = GetComponent<ObjectPooler>();
-    }
-
-    protected override void Update() {
-        base.Update();
     }
 
     protected override void RequestShot() {
@@ -38,7 +38,10 @@ public class SingleShotWeapon : Weapon {
 
         Projectile projectile = projectilePooled.GetComponent<Projectile>();
 
-        Vector2 newDirection = WeaponOwner.GetComponent<CharacterFlip>().FacingRight ? transform.right : transform.right * -1;
+        randomProjectileSpread.z = Random.Range(-projectileSpread.z, projectileSpread.z);
+        Quaternion spread = Quaternion.Euler(randomProjectileSpread);
+
+        Vector2 newDirection = WeaponOwner.GetComponent<CharacterFlip>().FacingRight ? spread * transform.right : spread * transform.right * -1;
         projectile.SetDireciton(newDirection, transform.rotation, WeaponOwner.GetComponent<CharacterFlip>().FacingRight);
 
         CanShoot = false;

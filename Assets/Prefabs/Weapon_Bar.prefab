@@ -55,6 +55,7 @@ MonoBehaviour:
   useRecoil: 1
   recoilForce: 5
   projectileSpawnPosition: {x: 1.55, y: 0.11, z: 0}
+  projectileSpread: {x: 0, y: 0, z: 5}
 --- !u!114 &2974324980653821011
 MonoBehaviour:
   m_ObjectHideFlags: 0

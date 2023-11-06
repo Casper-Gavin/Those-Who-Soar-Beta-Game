@@ -7,7 +7,7 @@ public class ObjectPooler : MonoBehaviour {
     [SerializeField] private int poolSize = 10;
     [SerializeField] private bool poolCanExpand = true;
 
-    private List<GameObject> poolObjects;
+    private List<GameObject> pooledObjects;
     private GameObject parentObject;
     
     private void Start() {
@@ -16,7 +16,7 @@ public class ObjectPooler : MonoBehaviour {
     }
 
     public void Refill() {
-        poolObjects = new List<GameObject>();
+        pooledObjects = new List<GameObject>();
 
         for (int i = 0; i < poolSize; i++) {
             AddObjectToPool();
@@ -24,9 +24,9 @@ public class ObjectPooler : MonoBehaviour {
     }
 
     public GameObject GetObjectFromPool() {
-        for (int i = 0; i < poolObjects.Count; i++) {
-            if (!poolObjects[i].activeInHierarchy) {
-                return poolObjects[i];
+        for (int i = 0; i < pooledObjects.Count; i++) {
+            if (!pooledObjects[i].activeInHierarchy) {
+                return pooledObjects[i];
             }
         }
 
@@ -42,7 +42,7 @@ public class ObjectPooler : MonoBehaviour {
         newObject.SetActive(false);
         newObject.transform.parent = parentObject.transform;
 
-        poolObjects.Add(newObject);
+        pooledObjects.Add(newObject);
 
         return newObject;
     }
