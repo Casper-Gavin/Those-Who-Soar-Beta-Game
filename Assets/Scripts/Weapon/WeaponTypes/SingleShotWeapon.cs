@@ -23,7 +23,7 @@ public class SingleShotWeapon : Weapon {
     }
 
     private void SpawnProjectile(Vector2 spawnPosition) {
-
+        
     }
 
     private void EvaluateProjetileSpawnPosition() {
