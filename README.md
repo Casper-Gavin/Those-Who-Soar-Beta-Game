@@ -4,6 +4,10 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 0.5
+### Version 0.5.3
+- Added CameraShake event
+    - Attach the CameraShake script to the projectiles being fired
+
 ### Version 0.5.2
 - Added Camera Shake (Press G button)
 
