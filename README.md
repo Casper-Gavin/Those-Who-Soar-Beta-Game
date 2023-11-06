@@ -4,6 +4,9 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 0.5
+### Version 0.5.2
+- Added Camera Shake (Press G button)
+
 ### Version 0.5.1
 - Added Camera Follow
 
