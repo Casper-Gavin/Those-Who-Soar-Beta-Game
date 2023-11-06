@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1354687409012893772}
-  - component: {fileID: -4744476842488894032}
+  - component: {fileID: 3266479947500570269}
   - component: {fileID: 2974324980653821011}
   - component: {fileID: 7058752396774444385}
   m_Layer: 0
@@ -35,7 +35,7 @@ Transform:
   - {fileID: 66557291958556632}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-4744476842488894032
+--- !u!114 &3266479947500570269
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1650591272571040746}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0de6b645a922b94438ddc1c9f04774e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 53873c0336d11bb40a2851ad219313cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   timeBtwShots: 0.5
@@ -52,7 +52,8 @@ MonoBehaviour:
   magazineSize: 30
   autoReload: 1
   useRecoil: 1
-  recoilForce: 15
+  recoilForce: 5
+  projectileSpawnPosition: {x: 1.55, y: 0.11, z: 0}
 --- !u!114 &2974324980653821011
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -45,7 +45,7 @@ public class Weapon : MonoBehaviour
         CurrentAmmo = magazineSize;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         WeaponCanShoot();
         RoatateWeapon();
@@ -91,7 +91,7 @@ public class Weapon : MonoBehaviour
     }
 
     // checks cooldown time before shooting
-    private void RequestShot()
+    protected virtual void RequestShot()
     {
         if (!CanShoot)
         {
@@ -124,7 +124,7 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    private void WeaponCanShoot()
+    protected virtual void WeaponCanShoot()
     {
         if (Time.time > nextShotTime)
         {
@@ -151,7 +151,7 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    private void RoatateWeapon()
+    protected virtual void RoatateWeapon()
     {
         if (WeaponOwner.GetComponent<CharacterFlip>().FacingRight)
         {

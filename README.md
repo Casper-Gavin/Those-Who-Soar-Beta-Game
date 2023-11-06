@@ -3,6 +3,10 @@
 Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
+## Version 0.4
+### Version 0.4.1
+- Added SingleShotWeapon script
+- Changed bar gun to use SingleShotWeapon script
 
 ## Version 0.3
 ### Version 0.3.9
