@@ -5,6 +5,11 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 0.6
+### Version 0.6.4
+- Created bigger dungeon room
+- Created hitboxes for walls
+- Moved reticle to top layer
+
 ### Version 0.6.3
 - Created tile rule and logic to place tiles correctly
 
