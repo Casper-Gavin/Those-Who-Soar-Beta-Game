@@ -5,6 +5,9 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 0.6
+### Version 0.6.3
+- Created tile rule and logic to place tiles correctly
+
 ### Version 0.6.2
 - Temporary initial dungeon room built
 
