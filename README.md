@@ -3,6 +3,11 @@
 Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
+
+## Version 0.6
+### Version 0.6.1
+- Added tile maps for floor/walls design
+
 ## Version 0.5
 ### Version 0.5.3
 - Added CameraShake event
@@ -115,8 +120,6 @@ Unity Version: 2022.3.9f1 (LTS)
 ### Version 0.2.0
  - Added a Health folder and script
  - Setup initial and max health
-
-
 
 ## Version 0.1
 ### Version 0.1.9

@@ -42,7 +42,7 @@ public class SingleShotWeapon : Weapon {
         Quaternion spread = Quaternion.Euler(randomProjectileSpread);
 
         Vector2 newDirection = WeaponOwner.GetComponent<CharacterFlip>().FacingRight ? spread * transform.right : spread * transform.right * -1;
-        projectile.SetDireciton(newDirection, transform.rotation, WeaponOwner.GetComponent<CharacterFlip>().FacingRight);
+        projectile.SetDirection(newDirection, transform.rotation, WeaponOwner.GetComponent<CharacterFlip>().FacingRight);
 
         CanShoot = false;
     }

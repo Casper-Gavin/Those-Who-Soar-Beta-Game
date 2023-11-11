@@ -41,7 +41,7 @@ public class Projectile : MonoBehaviour {
         }
     }
 
-    public void SetDireciton(Vector2 newDirection, Quaternion newRotation, bool isFacingRight) {
+    public void SetDirection(Vector2 newDirection, Quaternion newRotation, bool isFacingRight) {
         Direction = newDirection;
 
         if (FacingRight != isFacingRight) {
