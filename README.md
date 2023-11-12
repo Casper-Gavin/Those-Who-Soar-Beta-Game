@@ -5,6 +5,11 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 0.6
+### Version 0.6.5
+- Removed player rotation
+- Made bullets visible above floor
+- Add bullet collision with walls
+
 ### Version 0.6.4
 - Created bigger dungeon room
 - Created hitboxes for walls
