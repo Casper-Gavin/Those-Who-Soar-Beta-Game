@@ -5,6 +5,9 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 0.6
+### Version 0.6.8
+- Added gun recoil animation
+
 ### Version 0.6.7
 - Added collision particle effects for bullets
 

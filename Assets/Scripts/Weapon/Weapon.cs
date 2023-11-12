@@ -40,10 +40,13 @@ public class Weapon : MonoBehaviour
 
     private float nextShotTime;
     private PlayerController controller;
+    private Animator animator;
+    private readonly int weaponUseParamater = Animator.StringToHash("weaponUse");
 
     protected virtual void Awake()
     {
         WeaponAmmo = GetComponent<WeaponAmmo>();
+        animator = GetComponent<Animator>();
         CurrentAmmo = magazineSize;
     }
 
@@ -105,6 +108,7 @@ public class Weapon : MonoBehaviour
             Recoil();
         }
 
+        animator.SetTrigger(weaponUseParamater);
         WeaponAmmo.ConsumeAmmo();
         muzzlePS.Play();
     }
