@@ -5,6 +5,9 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 0.6
+### Version 0.6.6
+- Added muzzle particle effect to gun
+
 ### Version 0.6.5
 - Removed player rotation
 - Made bullets visible above floor

@@ -10,7 +10,7 @@ public class CharacterWeapon : CharacterAbilities
 
     [Header("Weapon Settings")]
     [SerializeField] private Weapon weaponToUse;
-    [SerializeField] private Transform weaponHolderPosition;
+[SerializeField] private Transform weaponHolderPosition;
 
     public Weapon CurrentWeapon { get; set; }
 
