@@ -14,18 +14,24 @@ public class Projectile : MonoBehaviour {
 
     private Rigidbody2D rigidbody2D;
     private SpriteRenderer spriteRenderer;
-
+    private Collider2D collider2D;
     private Vector2 movement;
+    private bool canMove;
 
     void Awake () {
         Speed = speed;
         FacingRight = true;
+        canMove = true;
 
         rigidbody2D = GetComponent<Rigidbody2D>();
+        collider2D = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
     void FixedUpdate() {
-        MoveProjectile();
+        if (canMove)
+        {
+            MoveProjectile();
+        }
     }
 
     public void MoveProjectile() {
@@ -53,5 +59,19 @@ public class Projectile : MonoBehaviour {
 
     public void ResetProjectile() {
         spriteRenderer.flipX = false;
+    }
+
+    public void DisableProjectile()
+    {
+        canMove = false;
+        spriteRenderer.enabled = false;
+        collider2D.enabled = false;
+    }
+
+    public void EnableProjectile()
+    {
+        canMove = true;
+        spriteRenderer.enabled = true;
+        collider2D.enabled = true;
     }
 }

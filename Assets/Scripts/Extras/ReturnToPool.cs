@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ReturnToPool : MonoBehaviour {
+    [Header("Settings")]
     [SerializeField] private LayerMask objectMask;
     [SerializeField] private float lifeTime = 2f;
+
+    [SerializeField] private ParticleSystem impactPS;
 
     private Projectile projectile;
 
@@ -29,7 +32,12 @@ public class ReturnToPool : MonoBehaviour {
     {
         if (CheckLayer(other.gameObject.layer, objectMask))
         {
-            Return();
+            if (projectile != null)
+            {
+                projectile.DisableProjectile();
+            }
+            impactPS.Play();
+            Invoke(nameof(Return), impactPS.main.duration);
         }
     }
 

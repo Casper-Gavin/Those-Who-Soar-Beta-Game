@@ -5,6 +5,9 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 0.6
+### Version 0.6.7
+- Added collision particle effects for bullets
+
 ### Version 0.6.6
 - Added muzzle particle effect to gun
 
