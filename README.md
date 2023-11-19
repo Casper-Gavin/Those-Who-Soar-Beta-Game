@@ -4,7 +4,11 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 
+## Version 0.7
+### Version 0.7.0.0
+- added chest prefab and Tilemap_Components - halfway through Tile Brush video
 ## Version 0.6
+
 ### Version 0.6.8
 - Added gun recoil animation
 
