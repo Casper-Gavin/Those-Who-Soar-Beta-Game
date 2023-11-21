@@ -22,6 +22,7 @@ public class Health : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     private bool shieldBroken;
+    private bool isPlayer;
 
     public float CurrentHealth { get; set; }
     public float CurrentShield { get; set; }
@@ -36,7 +37,11 @@ public class Health : MonoBehaviour
         CurrentHealth = initialHealth;
         CurrentShield = initialShield;
 
-        UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield);
+        if (character != null) {
+            isPlayer = character.CharacterTypes == Character.CharacterType.Player;
+        }
+
+        UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield, isPlayer);
     }
 
     private void Update()
@@ -58,7 +63,7 @@ public class Health : MonoBehaviour
         if (!shieldBroken && character != null)
         {
             CurrentShield -= damage;
-            UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield);
+            UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield, isPlayer);
             if (CurrentShield <= 0)
             {
                 shieldBroken = true;
@@ -67,7 +72,7 @@ public class Health : MonoBehaviour
         }
 
         CurrentHealth -= damage;
-        UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield);
+        UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield, isPlayer);
 
         if (CurrentHealth <= 0)
         {
@@ -105,7 +110,7 @@ public class Health : MonoBehaviour
         CurrentHealth = initialHealth;
         CurrentShield = initialShield;
         shieldBroken = false;
-        UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield);
+        UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield, isPlayer);
     }
 
     private void DestroyObject()

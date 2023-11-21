@@ -20,6 +20,7 @@ public class UIManager : Singleton<UIManager>
     private float playerMaxHealth;
     private float playerCurrentShield;
     private float playerMaxShield;
+    private bool isPlayer;
 
     private int playerCurrentAmmo;
     private int playerMaxAmmo;
@@ -29,12 +30,13 @@ public class UIManager : Singleton<UIManager>
         InternalUpdate();
     }
 
-    public void UpdateHealth(float currentHealth, float maxHealth, float currentShield, float maxShield)
+    public void UpdateHealth(float currentHealth, float maxHealth, float currentShield, float maxShield, bool isThisMyPlayer)
     {
         playerCurrentHealth = currentHealth;
         playerMaxHealth = maxHealth;
         playerCurrentShield = currentShield;
         playerMaxShield = maxShield;
+        isPlayer = isThisMyPlayer;
     }
 
     public void UpdateAmmo(int currentAmmo, int maxAmmo)
@@ -45,14 +47,17 @@ public class UIManager : Singleton<UIManager>
 
     private void InternalUpdate()
     {
-        // to make health bar update smoothly, we lerp
-        // visually it will look smooth, but each time it comes in here it just moves a little more
-        healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, playerCurrentHealth / playerMaxHealth, 10f * Time.deltaTime);
-        currentHealthTMP.text = playerCurrentHealth.ToString() + "/" + playerMaxHealth.ToString();
         
-        shieldBar.fillAmount = Mathf.Lerp(shieldBar.fillAmount, playerCurrentShield / playerMaxShield, 10f * Time.deltaTime);
-        currentShieldTMP.text = playerCurrentShield.ToString() + "/" + playerMaxShield.ToString();
+        if (isPlayer) {
+            // to make health bar update smoothly, we lerp
+            // visually it will look smooth, but each time it comes in here it just moves a little more
+            healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, playerCurrentHealth / playerMaxHealth, 10f * Time.deltaTime);
+            currentHealthTMP.text = playerCurrentHealth.ToString() + "/" + playerMaxHealth.ToString();
+        
+            shieldBar.fillAmount = Mathf.Lerp(shieldBar.fillAmount, playerCurrentShield / playerMaxShield, 10f * Time.deltaTime);
+            currentShieldTMP.text = playerCurrentShield.ToString() + "/" + playerMaxShield.ToString();
+        }
 
-        currentAmmoTMP.text = playerCurrentAmmo + " / " + playerMaxAmmo;
+            currentAmmoTMP.text = playerCurrentAmmo + " / " + playerMaxAmmo;
     }
 }
