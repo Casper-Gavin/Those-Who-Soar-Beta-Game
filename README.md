@@ -4,7 +4,16 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 
-## Version 0.7
+### Version 0.7.7
+- Added solid bodies to components to prevent walking through them
+
+## Version 0.7.6
+- Created a spike prefab that damages the player
+- Added a spike animation when rotating spikes
+
+### Version 0.7.4
+- Created a chest class with reward trigger functionality
+- Added a chest animation upon opening
 
 ### Version 0.7.3
 - Added the ability to distinguish between damageable and replaceable components

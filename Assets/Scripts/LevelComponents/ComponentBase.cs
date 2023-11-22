@@ -10,6 +10,7 @@ public class ComponentBase : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private int damage = 1;
     [SerializeField] private bool isDamageable;
+
     private Health health;
     private SpriteRenderer spriteRenderer;
     private Collider2D collider2D;
@@ -29,6 +30,7 @@ public class ComponentBase : MonoBehaviour
     }
 
     // checks if component is destroyed and if it needs to replace or get rid of component sprite
+    // only bullet needs to have Is Trigger on - only one object in a collision
     private void TakeDamage() {
         health.TakeDamage(damage);
 
