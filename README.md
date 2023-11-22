@@ -6,11 +6,14 @@ Unity Version: 2022.3.9f1 (LTS)
 
 ## Version 0.7
 
+### Version 0.7.3
+- Added the ability to distinguish between damageable and replaceable components
+
 ### Version 0.7.2
 - Added Box prefab
 
 ### Version 0.7.1
-- Created a ComponentBase class that connects the health logic with component prefabs.
+- Created a ComponentBase class that connects the health logic with component prefabs
 - Added Jar prefab
 
 ### Version 0.7.0.1

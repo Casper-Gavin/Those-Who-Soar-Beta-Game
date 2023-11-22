@@ -12,28 +12,39 @@ public class ComponentBase : MonoBehaviour
     [SerializeField] private bool isDamageable;
     private Health health;
     private SpriteRenderer spriteRenderer;
+    private Collider2D collider2D;
     
 
     private void Start() {
         health = GetComponent<Health>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        collider2D = GetComponent<Collider2D>();
     }
 
+    // using health for non-player object
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Bullet")) {
             TakeDamage();
         }
     }
 
+    // checks if component is destroyed and if it needs to replace or get rid of component sprite
     private void TakeDamage() {
         health.TakeDamage(damage);
 
         if (health.CurrentHealth > 0) {
-            spriteRenderer.sprite = damagedSprite;
+            if (isDamageable) {
+                spriteRenderer.sprite = damagedSprite;
+            }
         }
 
         if (health.CurrentHealth <= 0) {
-            Destroy(gameObject);
+            if (isDamageable) {
+                Destroy(gameObject);
+            } else {
+                spriteRenderer.sprite = damagedSprite;
+                collider2D.enabled = false;
+            }
         }
     }
 }

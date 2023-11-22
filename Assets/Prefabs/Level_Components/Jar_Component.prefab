@@ -189,6 +189,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff3c9f69ff0090a4bab92a7972e6909b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagedSprite: {fileID: 0}
+  damagedSprite: {fileID: -1176510024, guid: 90d9c0d78a2bba249b7dd60bb300696a, type: 3}
   damage: 1
   isDamageable: 0
