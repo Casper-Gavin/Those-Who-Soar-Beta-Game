@@ -11,7 +11,7 @@ public class WeaponAmmo : MonoBehaviour
     private void Awake()
     {
         weapon = GetComponent<Weapon>();
-        RefillAmmo();
+        LoadWeaponMagazineSize();
     }
 
     public void ConsumeAmmo()
@@ -37,8 +37,13 @@ public class WeaponAmmo : MonoBehaviour
     {
         if (weapon.UseMagazine)
         {
-            weapon.CurrentAmmo = LoadAmmo();
+            weapon.CurrentAmmo = weapon.MagazineSize;
         }
+    }
+
+    public void LoadWeaponMagazineSize() {
+        int savedAmmo = LoadAmmo();
+        weapon.CurrentAmmo = savedAmmo < weapon.MagazineSize ? LoadAmmo() : weapon.MagazineSize;
     }
 
     public void SaveAmmo() {

@@ -6,6 +6,9 @@ Unity Version: 2022.3.9f1 (LTS)
 
 ## Vesrion 9
 
+### Version 0.9.3.1
+- Fixed bug in reloading ammo
+
 ### Version 0.9.3.0
 - Updated each gun's ammo to be stored when switching between guns
 
