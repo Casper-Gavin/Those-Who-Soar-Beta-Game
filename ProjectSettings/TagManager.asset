@@ -46,6 +46,9 @@ TagManager:
   - name: Map
     uniqueID: 863686869
     locked: 0
+  - name: Collectable
+    uniqueID: 1198566881
+    locked: 0
   - name: LevelComponents
     uniqueID: 3087846791
     locked: 0

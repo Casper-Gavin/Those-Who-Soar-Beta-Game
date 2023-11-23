@@ -13,12 +13,14 @@ public class ComponentBase : MonoBehaviour
 
     private Health health;
     private SpriteRenderer spriteRenderer;
+    private JarReward jarReward;
     private Collider2D collider2D;
     
 
     private void Start() {
         health = GetComponent<Health>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        jarReward = GetComponent<JarReward>();
         collider2D = GetComponent<Collider2D>();
     }
 
@@ -42,10 +44,13 @@ public class ComponentBase : MonoBehaviour
 
         if (health.CurrentHealth <= 0) {
             if (isDamageable) {
+                // Box
                 Destroy(gameObject);
             } else {
+                // Jar
                 spriteRenderer.sprite = damagedSprite;
                 collider2D.enabled = false;
+                jarReward.GiveReward();
             }
         }
     }

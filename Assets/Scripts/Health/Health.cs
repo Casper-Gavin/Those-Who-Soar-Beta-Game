@@ -41,7 +41,7 @@ public class Health : MonoBehaviour
             isPlayer = character.CharacterTypes == Character.CharacterType.Player;
         }
 
-        UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield, isPlayer);
+        UpdateCharacterHealth();
     }
 
     private void Update()
@@ -63,7 +63,7 @@ public class Health : MonoBehaviour
         if (!shieldBroken && character != null)
         {
             CurrentShield -= damage;
-            UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield, isPlayer);
+            UpdateCharacterHealth();
             if (CurrentShield <= 0)
             {
                 shieldBroken = true;
@@ -72,7 +72,7 @@ public class Health : MonoBehaviour
         }
 
         CurrentHealth -= damage;
-        UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield, isPlayer);
+        UpdateCharacterHealth();
 
         if (CurrentHealth <= 0)
         {
@@ -110,11 +110,29 @@ public class Health : MonoBehaviour
         CurrentHealth = initialHealth;
         CurrentShield = initialShield;
         shieldBroken = false;
-        UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield, isPlayer);
+
+        UpdateCharacterHealth();
+        
+    }
+
+    public void GainHealth (int amount) {
+        CurrentHealth = Mathf.Min(CurrentHealth + amount, maxHealth);
+        UpdateCharacterHealth();
+    }
+
+    public void GainShield (int amount) {
+        CurrentShield = Mathf.Min(CurrentShield + amount, maxShield);
+        UpdateCharacterHealth();
     }
 
     private void DestroyObject()
     {
         gameObject.SetActive(false);
+    }
+
+    private void UpdateCharacterHealth() {
+        if (character != null) {
+            UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield, isPlayer);
+        }
     }
 }

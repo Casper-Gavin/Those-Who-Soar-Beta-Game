@@ -3,11 +3,32 @@
 Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
+### Version 0.8.5
+- Added a random chance for jars to spawn a collectable when destroyed
+
+### Version 0.8.4
+- Added a coin item prefab
+- Added a CCoin script to control coin collectables
+- Added a CoinManager script to keep track of coins
+- Added a Coin UI to display the number of coins collected
+
+### Version 0.8.3
+- Made a shield item prefab
+- Added a CShield script to control shield collectables
+- Added a BonusShield animation for picking up shields
+
+### Version 0.8.2
+- Made a health item prefab
+- Added a CHealth script to control health collectables
+- Added a BonusHealth animation for picking up health
+
+### Version 0.8.1
+- Added Collectables base script for future use
 
 ### Version 0.7.7
 - Added solid bodies to components to prevent walking through them
 
-## Version 0.7.6
+### Version 0.7.6
 - Created a spike prefab that damages the player
 - Added a spike animation when rotating spikes
 
