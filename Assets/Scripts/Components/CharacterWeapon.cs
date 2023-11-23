@@ -14,6 +14,8 @@ public class CharacterWeapon : CharacterAbilities
 
     public Weapon CurrentWeapon { get; set; }
 
+    public Weapon SecondaryWeapon { get; set; }
+
     public WeaponAim WeaponAim { get; set; }
 
     protected override void Start()
@@ -39,6 +41,16 @@ public class CharacterWeapon : CharacterAbilities
         if (Input.GetKeyDown(KeyCode.R))
         {
             Reload();
+        }
+        // Aplha1 is 1 on num pad - && stops equiping if there's no secondary weapon
+        if (Input.GetKeyDown(KeyCode.Alpha1) && SecondaryWeapon != null)
+        {
+            EquipWeapon(weaponToUse, weaponHolderPosition);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2) && SecondaryWeapon != null)
+        {
+            EquipWeapon(SecondaryWeapon, weaponHolderPosition);
         }
     }
 
@@ -84,6 +96,12 @@ public class CharacterWeapon : CharacterAbilities
 
     public void EquipWeapon(Weapon weapon, Transform weaponPosition)
     {
+        if (CurrentWeapon != null) {
+            // destroys the current reticle, projectile pool, and weapon
+            WeaponAim.DestroyReticle();
+            Destroy(GameObject.Find("Pool"));
+            Destroy(CurrentWeapon.gameObject);
+        }
         // creates reference to weapon to be used by player
         CurrentWeapon = Instantiate(weapon, weaponPosition.position, weaponPosition.rotation);
         CurrentWeapon.transform.parent = weaponPosition;

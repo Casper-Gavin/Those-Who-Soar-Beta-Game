@@ -3,6 +3,18 @@
 Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
+
+## Vesrion 9
+
+### Vesrion 0.9.1
+- Edited the Weapon_Special prefab
+- Created functionality to pick up a secondary weapon and switch using 1 and 2 between them
+
+### Version 0.9.0
+- Added a scriptable object Item Weapon- a new way to contain data
+
+## Version 8
+
 ### Version 0.8.5
 - Added a random chance for jars to spawn a collectable when destroyed
 
@@ -24,6 +36,8 @@ Unity Version: 2022.3.9f1 (LTS)
 
 ### Version 0.8.1
 - Added Collectables base script for future use
+
+## Version 7
 
 ### Version 0.7.7
 - Added solid bodies to components to prevent walking through them
