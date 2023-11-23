@@ -15,6 +15,7 @@ public class UIManager : Singleton<UIManager>
 
     [Header("Weapon")]
     [SerializeField] private TextMeshProUGUI currentAmmoTMP;
+    [SerializeField] private Image weaponImage;
 
     [Header("Text")]
     [SerializeField] private TextMeshProUGUI coinsTMP;
@@ -40,6 +41,11 @@ public class UIManager : Singleton<UIManager>
         playerCurrentShield = currentShield;
         playerMaxShield = maxShield;
         isPlayer = isThisMyPlayer;
+    }
+
+    public void UpdateWeaponSprite(Sprite weaponSprite) {
+        weaponImage.sprite = weaponSprite;
+        weaponImage.SetNativeSize();
     }
 
     public void UpdateAmmo(int currentAmmo, int maxAmmo)

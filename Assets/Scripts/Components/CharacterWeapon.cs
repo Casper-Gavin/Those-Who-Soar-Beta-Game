@@ -10,7 +10,7 @@ public class CharacterWeapon : CharacterAbilities
 
     [Header("Weapon Settings")]
     [SerializeField] private Weapon weaponToUse;
-[SerializeField] private Transform weaponHolderPosition;
+    [SerializeField] private Transform weaponHolderPosition;
 
     public Weapon CurrentWeapon { get; set; }
 
@@ -88,6 +88,7 @@ public class CharacterWeapon : CharacterAbilities
         }
 
         CurrentWeapon.Reload();
+        
         if (character.CharacterTypes == Character.CharacterType.Player)
         {
             UIManager.Instance.UpdateAmmo(CurrentWeapon.CurrentAmmo, CurrentWeapon.MagazineSize);
@@ -97,7 +98,8 @@ public class CharacterWeapon : CharacterAbilities
     public void EquipWeapon(Weapon weapon, Transform weaponPosition)
     {
         if (CurrentWeapon != null) {
-            // destroys the current reticle, projectile pool, and weapon
+            // destroys the current reticle, projectile pool, and weapon after saving the weapon ammo
+            CurrentWeapon.WeaponAmmo.SaveAmmo();
             WeaponAim.DestroyReticle();
             Destroy(GameObject.Find("Pool"));
             Destroy(CurrentWeapon.gameObject);
@@ -111,6 +113,7 @@ public class CharacterWeapon : CharacterAbilities
         if (character.CharacterTypes == Character.CharacterType.Player)
         {
             UIManager.Instance.UpdateAmmo(CurrentWeapon.CurrentAmmo, CurrentWeapon.MagazineSize);
+            UIManager.Instance.UpdateWeaponSprite(CurrentWeapon.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite);
         }
     }
 }

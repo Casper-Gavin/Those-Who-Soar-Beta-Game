@@ -5275,6 +5275,7 @@ MonoBehaviour:
   currentHealthTMP: {fileID: 200128665}
   currentShieldTMP: {fileID: 1989528730}
   currentAmmoTMP: {fileID: 2067419903}
+  weaponImage: {fileID: 548913052}
   coinsTMP: {fileID: 81725688}
 --- !u!4 &1889091533
 Transform:

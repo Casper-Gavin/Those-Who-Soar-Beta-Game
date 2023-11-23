@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    [Header("Name")]
+    [SerializeField] private string weaponName = "";
+
     [Header("Settings")]
     [SerializeField] private float timeBtwShots = 0.5f;
     
@@ -19,6 +22,8 @@ public class Weapon : MonoBehaviour
 
     [Header("Effects")]
     [SerializeField] private ParticleSystem muzzlePS;
+
+    public string WeaponName => weaponName;
 
     public Character WeaponOwner { get; set; }
 
@@ -47,7 +52,6 @@ public class Weapon : MonoBehaviour
     {
         WeaponAmmo = GetComponent<WeaponAmmo>();
         animator = GetComponent<Animator>();
-        CurrentAmmo = magazineSize;
     }
 
     protected virtual void Update()

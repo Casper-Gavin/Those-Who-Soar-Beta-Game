@@ -6,6 +6,12 @@ Unity Version: 2022.3.9f1 (LTS)
 
 ## Vesrion 9
 
+### Version 0.9.3.0
+- Updated each gun's ammo to be stored when switching between guns
+
+### Version 0.9.2
+- Changed the Weapon UI to update to the equipped weapon's image
+
 ### Vesrion 0.9.1
 - Edited the Weapon_Special prefab
 - Created functionality to pick up a secondary weapon and switch using 1 and 2 between them
