@@ -11,7 +11,7 @@ public class WeaponAmmo : MonoBehaviour
     private void Awake()
     {
         weapon = GetComponent<Weapon>();
-        LoadWeaponMagazineSize();
+        LoadWeaponAmmoSize();
     }
 
     public void ConsumeAmmo()
@@ -41,7 +41,8 @@ public class WeaponAmmo : MonoBehaviour
         }
     }
 
-    public void LoadWeaponMagazineSize() {
+    // loads currently equipped weapon ammo - different than refill ammo
+    public void LoadWeaponAmmoSize() {
         int savedAmmo = LoadAmmo();
         weapon.CurrentAmmo = savedAmmo < weapon.MagazineSize ? LoadAmmo() : weapon.MagazineSize;
     }
