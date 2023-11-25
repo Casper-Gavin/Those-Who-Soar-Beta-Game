@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: N
+  m_text: M
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -6109,7 +6109,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: M
+  m_text: N
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -8148,6 +8148,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popUpPanel: {fileID: 684238264}
   shopPanel: {fileID: 2036368423}
+  weaponItem: {fileID: 11400000, guid: ee5e4e5105f14af47bd6db191824933d, type: 2}
+  healthItem: {fileID: 11400000, guid: 84fe41917ab9f634e8e4a83cf16cfdfd, type: 2}
+  shieldItem: {fileID: 11400000, guid: 799bc097dacf94d40862ebfb8defe830, type: 2}
 --- !u!61 &1844658661
 BoxCollider2D:
   m_ObjectHideFlags: 0
