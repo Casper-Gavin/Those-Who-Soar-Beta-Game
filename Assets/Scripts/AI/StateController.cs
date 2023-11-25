@@ -2,17 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIStateController : MonoBehaviour
+public class StateController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("State")]
+    [SerializeField] private AIState currentState;
+    [SerializeField] private AIState remainState;
+    
+    private void Update()
     {
-        
+        currentState.EvaluateState(this);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void TransitionToState(AIState nextState)
     {
-        
+        if (nextState != remainState)
+        {
+            currentState = nextState;
+        }
     }
 }

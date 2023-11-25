@@ -1,18 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AITransition : MonoBehaviour
+[Serializable]
+public class AITransition
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public AIDecision Decision;
+    public AIState TrueState;
+    public AIState FalseState;
+    
 }

@@ -6,6 +6,9 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version 11
 
+### Version 0.11.1
+- Create and Test initial Finite State Machine
+
 ### Version 0.11.0
 - Create enemy game object and animations
 - Create enemy room
