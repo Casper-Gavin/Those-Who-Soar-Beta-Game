@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterAbilities : MonoBehaviour {
-    protected float horizantalInput;
+    protected float horizontalInput;
     protected float verticalInput;
 
     protected PlayerController controller;
@@ -48,8 +48,12 @@ public class CharacterAbilities : MonoBehaviour {
     /// Here, we get the main input needed for controlling
     /// our character
     /// </summary>
-    protected virtual void InternalUpdate() {
-        horizantalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
+    protected virtual void InternalUpdate()
+    {
+        if (character.CharacterTypes == Character.CharacterType.Player)
+        {
+            horizontalInput = Input.GetAxisRaw("Horizontal");
+            verticalInput = Input.GetAxisRaw("Vertical");
+        }
     }
 }

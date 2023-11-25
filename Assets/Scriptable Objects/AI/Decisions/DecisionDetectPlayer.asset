@@ -9,6 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 589fff8b1d9d77549a1670ce3cc48fdb, type: 3}
-  m_Name: DecisionTest
+  m_Script: {fileID: 11500000, guid: 18e49b0235212e7459a11581656099bd, type: 3}
+  m_Name: DecisionDetectPlayer
   m_EditorClassIdentifier: 
+  detectArea: 5
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 256

@@ -6,6 +6,11 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version 11
 
+### Version 0.11.2
+- Create follow state for enemies
+- Create idle state for enemies
+- Create transition between states
+
 ### Version 0.11.1
 - Create and Test initial Finite State Machine
 

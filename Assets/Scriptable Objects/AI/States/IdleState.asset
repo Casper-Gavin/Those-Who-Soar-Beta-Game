@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b6a61b676a554e44bccf9bc8129651d, type: 3}
-  m_Name: TestState
+  m_Name: IdleState
   m_EditorClassIdentifier: 
   Actions:
-  - {fileID: 11400000, guid: ce6fb8aab2361ed44b85bc80d068a6f4, type: 2}
+  - {fileID: 11400000, guid: 2473c160b371b934db0802a155dba2c6, type: 2}
   Transitions:
-  - Decision: {fileID: 11400000, guid: 0d82712a21c5a54408067f28f048ae04, type: 2}
-    TrueState: {fileID: 11400000, guid: ec48238e661a852409ef152ee4c82125, type: 2}
+  - Decision: {fileID: 11400000, guid: 2976d8033639b3e4dbc2ba7fb4e297ac, type: 2}
+    TrueState: {fileID: 11400000, guid: 9c80ab6630c427f488e24320f65646b9, type: 2}
     FalseState: {fileID: 11400000, guid: fb97a3b88e0a6f242a213774dd31d812, type: 2}
