@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 642a8f1218e87b8438f841077550099f, type: 3}
   m_Name: VendorItemShield
   m_EditorClassIdentifier: 
-  itemCollectable: {fileID: 639646786546376298, guid: 38ea5c504e00215429fbeb23abd60fd0, type: 3}
+  shieldItem: {fileID: 639646786546376298, guid: 38ea5c504e00215429fbeb23abd60fd0, type: 3}
+  healthItem: {fileID: 0}
   WeaponToSell: {fileID: 0}
   Cost: 50

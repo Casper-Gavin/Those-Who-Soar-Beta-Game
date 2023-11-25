@@ -6,6 +6,10 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version 10
 
+### Version 0.10.3
+- Added health and shield items to vendor
+- Fixed coin bug in which reloading the Unity game reset the amount of coins you had to before you bought something
+
 ### Version 0.10.2
 - Added the ability for the vendor to actually sell items (only gun is implemented right now)
 

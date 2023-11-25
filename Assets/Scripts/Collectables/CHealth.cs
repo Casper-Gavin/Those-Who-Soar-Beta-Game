@@ -7,16 +7,14 @@ public class CHealth : Collectables {
     [SerializeField] private ParticleSystem healthBonus;
 
     protected override void Pick() {
-        AddHealth();
+        AddHealth(character);
     }
 
     protected override void PlayEffects() {
         Instantiate(healthBonus, transform.position, Quaternion.identity);
     }
 
-    private void AddHealth() {
-        if (character != null) {
+    public void AddHealth(Character character) {
             character.GetComponent<Health>().GainHealth(healthToAdd);
-        }
     }
 }

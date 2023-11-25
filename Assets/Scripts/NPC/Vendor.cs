@@ -17,9 +17,6 @@ public class Vendor : MonoBehaviour
     private bool canOpenShop;
     private CharacterWeapon characterWeapon;
 
-    void Start() {
-        
-    }
 
     // open and close shop panel
     private void Update() {
@@ -28,7 +25,6 @@ public class Vendor : MonoBehaviour
                 shopPanel.SetActive(true);
                 popUpPanel.SetActive(false);
             }
-
         }
 
         if (shopPanel.activeInHierarchy) {
@@ -42,6 +38,20 @@ public class Vendor : MonoBehaviour
             if (CoinManager.Instance.Coins >= weaponItem.Cost) {
                 characterWeapon.SecondaryWeapon = weaponItem.WeaponToSell;
                 ProductBought(weaponItem.Cost);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.N)) {
+            if (CoinManager.Instance.Coins >= shieldItem.Cost) {
+                shieldItem.shieldItem.AddShield(characterWeapon.GetComponent<Character>());
+                ProductBought(shieldItem.Cost);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.B)) {
+            if (CoinManager.Instance.Coins >= healthItem.Cost) {
+                healthItem.healthItem.AddHealth(characterWeapon.GetComponent<Character>());
+                ProductBought(healthItem.Cost);
             }
         }
     }
@@ -68,6 +78,6 @@ public class Vendor : MonoBehaviour
 
     private void ProductBought(int amount) {
         shopPanel.SetActive(false);
-        CoinManager.Instance.Coins -= amount;
+        CoinManager.Instance.RemoveCoins(amount);
     }
 }
