@@ -4,6 +4,12 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 
+# Version 11
+
+### Version 0.11.0
+- Create enemy game object and animations
+- Create enemy room
+
 # Version 10
 
 ### Version 0.10.3
