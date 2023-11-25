@@ -4,6 +4,15 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 
+# Version 10
+
+### Version 0.10.1
+- Added logic that opens up shop panel dependent on player input and character vicinity to vendor
+
+### Version 0.10.0
+- Created a separate vendor room
+- Added an animation to a vendor sprite
+
 ## Vesrion 9
 
 ### Version 0.9.3.1
