@@ -10,10 +10,12 @@ public class StateController : MonoBehaviour
     
     public CharacterMovement CharacterMovement { get; set; }
     public Transform Target { get; set; }
+    public Path Path { get; set; }
 
     private void Awake()
     {
         CharacterMovement = GetComponent<CharacterMovement>();
+        Path = GetComponent<Path>();
     }
 
     private void Update()

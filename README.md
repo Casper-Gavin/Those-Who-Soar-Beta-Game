@@ -6,6 +6,11 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version 11
 
+### Version 0.11.3
+- Create patrol state for enemies
+- Create follow -> patrol state
+- Create path system for defining patrol areas for enemies
+
 ### Version 0.11.2
 - Create follow state for enemies
 - Create idle state for enemies
