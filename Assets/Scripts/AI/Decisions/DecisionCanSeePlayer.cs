@@ -11,6 +11,7 @@ public class DecisionCanSeePlayer : AIDecision
 
     public override bool Decide(StateController controller)
     {
+        EvaluateWeaponDirection(controller);
         return CanSeePlayer(controller);
     }
 
@@ -43,5 +44,20 @@ public class DecisionCanSeePlayer : AIDecision
 
         controller.Target = null;
         return false;
+    }
+
+    private void EvaluateWeaponDirection(StateController controller)
+    {
+        if (controller.Target == null)
+        {
+            if (controller.CharacterWeapon.CurrentWeapon.WeaponOwner.GetComponent<CharacterFlip>().FacingRight)
+            {
+                controller.CharacterWeapon.CurrentWeapon.WeaponAim.SetAim(Vector2.right);
+            }
+            else
+            {
+                controller.CharacterWeapon.CurrentWeapon.WeaponAim.SetAim(Vector2.left);
+            }
+        }
     }
 }

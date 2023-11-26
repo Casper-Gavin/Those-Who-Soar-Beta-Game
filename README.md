@@ -6,6 +6,9 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version 11
 
+### Version 0.11.8
+- Fix flickering gun bug
+
 ### Version 0.11.7
 - Create FOV for enemy
 - Bug with flickering gun direction exists*
