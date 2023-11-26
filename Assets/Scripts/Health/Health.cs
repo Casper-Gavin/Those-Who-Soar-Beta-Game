@@ -35,7 +35,7 @@ public class Health : MonoBehaviour
         controller = GetComponent<PlayerController>();
         collider2D = GetComponent<Collider2D>();
         enemyHealth = GetComponent<EnemyHealth>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         CurrentHealth = initialHealth;
         CurrentShield = initialShield;
 

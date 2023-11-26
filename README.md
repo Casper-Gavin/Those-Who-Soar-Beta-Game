@@ -6,6 +6,9 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version 11
 
+### Version 0.11.11
+- Fix death + revive, weapon and glow still remain (DO LATER)
+
 ### Version 0.11.10
 - Disable enemy projectiles from damaging each other or themselves
 - Make projectiles damage player
