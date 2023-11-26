@@ -27,30 +27,33 @@ public class CharacterWeapon : CharacterAbilities
     // left mouse is shoot, R is reload, more to come
     protected override void HandleInput()
     {
-        // 0 is left mouse button - GetMouseButtonDown makes a non-auto weapon vs GetMouseButton which is auto
-        if (Input.GetMouseButton(0))
+        if (character.CharacterTypes == Character.CharacterType.Player)
         {
-            Shoot();
-        }
+            // 0 is left mouse button - GetMouseButtonDown makes a non-auto weapon vs GetMouseButton which is auto
+            if (Input.GetMouseButton(0))
+            {
+                Shoot();
+            }
 
-        if (Input.GetMouseButtonUp(0))
-        {
-            StopWeapon();
-        }
+            if (Input.GetMouseButtonUp(0))
+            {
+                StopWeapon();
+            }
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Reload();
-        }
-        // Aplha1 is 1 on num pad - && stops equiping if there's no secondary weapon
-        if (Input.GetKeyDown(KeyCode.Alpha1) && SecondaryWeapon != null)
-        {
-            EquipWeapon(weaponToUse, weaponHolderPosition);
-        }
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Reload();
+            }
+            // Aplha1 is 1 on num pad - && stops equiping if there's no secondary weapon
+            if (Input.GetKeyDown(KeyCode.Alpha1) && SecondaryWeapon != null)
+            {
+                EquipWeapon(weaponToUse, weaponHolderPosition);
+            }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2) && SecondaryWeapon != null)
-        {
-            EquipWeapon(SecondaryWeapon, weaponHolderPosition);
+            if (Input.GetKeyDown(KeyCode.Alpha2) && SecondaryWeapon != null)
+            {
+                EquipWeapon(SecondaryWeapon, weaponHolderPosition);
+            }
         }
     }
 
@@ -61,7 +64,7 @@ public class CharacterWeapon : CharacterAbilities
             return;
         }
 
-        CurrentWeapon.TriggerShot();
+        CurrentWeapon.UseWeapon();
         if (character.CharacterTypes == Character.CharacterType.Player)
         {
             OnStartShooting?.Invoke();

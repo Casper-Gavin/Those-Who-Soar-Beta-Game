@@ -45,7 +45,7 @@ public class Weapon : MonoBehaviour
 
     private float nextShotTime;
     private PlayerController controller;
-    private Animator animator;
+    protected Animator animator;
     private readonly int weaponUseParamater = Animator.StringToHash("weaponUse");
 
     protected virtual void Awake()
@@ -60,8 +60,8 @@ public class Weapon : MonoBehaviour
         RoatateWeapon();
     }
 
-    // TriggerShot calls StartShooting only because this is a generic weapon
-    public void TriggerShot()
+    // UseWeapon calls StartShooting only because this is a generic weapon
+    public virtual void UseWeapon()
     {
         StartShooting();
     }
