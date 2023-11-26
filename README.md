@@ -6,6 +6,9 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version 11
 
+### Version 0.11.9
+- Add enemy health and UI
+
 ### Version 0.11.8
 - Fix flickering gun bug
 

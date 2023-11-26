@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30f752d9bceed434fb1fa67c25c5eef8, type: 3}
   m_Name: Item Weapon
   m_EditorClassIdentifier: 
-  WeaponToEquip: {fileID: 3266479947500570269, guid: 2f3d4c5413120c842b8d06a7e213d3f0, type: 3}
+  WeaponToEquip: {fileID: 3266479947500570269, guid: 940acaf07e34b104ba048899bfc556d1, type: 3}
   WeaponSprite: {fileID: 1981204540, guid: b279ec01a2a2e79449f2a79b9c0e5e0e, type: 3}

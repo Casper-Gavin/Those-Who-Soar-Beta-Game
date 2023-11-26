@@ -20,6 +20,7 @@ public class Health : MonoBehaviour
     private PlayerController controller;
     private Collider2D collider2D;
     private SpriteRenderer spriteRenderer;
+    private EnemyHealth enemyHealth;
 
     private bool shieldBroken;
     private bool isPlayer;
@@ -33,6 +34,7 @@ public class Health : MonoBehaviour
         character = GetComponent<Character>();
         controller = GetComponent<PlayerController>();
         collider2D = GetComponent<Collider2D>();
+        enemyHealth = GetComponent<EnemyHealth>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         CurrentHealth = initialHealth;
         CurrentShield = initialShield;
@@ -131,6 +133,11 @@ public class Health : MonoBehaviour
     }
 
     private void UpdateCharacterHealth() {
+        if (enemyHealth != null)
+        {
+            enemyHealth.UpdateEnemyHealth(CurrentHealth, maxHealth);
+        }
+
         if (character != null) {
             UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield, isPlayer);
         }
