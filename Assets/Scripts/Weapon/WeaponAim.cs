@@ -35,7 +35,14 @@ public class WeaponAim : MonoBehaviour
 
     private void Update()
     {
-        GetMousePosition();
+        if (weapon.WeaponOwner.CharacterTypes == Character.CharacterType.Player)
+        {
+            GetMousePosition();
+        }
+        else
+        {
+            EnemyAim();
+        }
         MoveReticle();
         RotateWeapon();
     }
@@ -63,7 +70,7 @@ public class WeaponAim : MonoBehaviour
         }
     }
 
-    private void RotateWeapon()
+    public void RotateWeapon()
     {
         if (currentAim != Vector3.zero && direction != Vector3.zero)
         {
@@ -90,6 +97,18 @@ public class WeaponAim : MonoBehaviour
             CurrentAimAngle = 0f;
             transform.rotation = initialRotation;
         }
+    }
+
+    private void EnemyAim()
+    {
+        currentAimAbsolute = currentAim;
+        currentAim = weapon.WeaponOwner.GetComponent<CharacterFlip>().FacingRight ? currentAim : -currentAim;
+        direction = currentAim - transform.position;
+    }
+
+    public void SetAim(Vector2 newAim)
+    {
+        currentAim = newAim;
     }
 
     // makes sure rotation is normal

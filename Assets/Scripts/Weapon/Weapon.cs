@@ -31,6 +31,8 @@ public class Weapon : MonoBehaviour
 
     public WeaponAmmo WeaponAmmo { get; set; }
 
+    public WeaponAim WeaponAim { get; set; }
+
     public bool UseMagazine => useMagazine;
     /* above same as on newer version of C#:
     public bool UseMagazine
@@ -52,6 +54,7 @@ public class Weapon : MonoBehaviour
     {
         WeaponAmmo = GetComponent<WeaponAmmo>();
         animator = GetComponent<Animator>();
+        WeaponAim = GetComponent<WeaponAim>();
     }
 
     protected virtual void Update()
