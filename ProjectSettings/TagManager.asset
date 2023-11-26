@@ -17,7 +17,7 @@ TagManager:
   - LevelComponents
   - Player
   - Enemy
-  - 
+  - EnemyProjectile
   - 
   - 
   - 

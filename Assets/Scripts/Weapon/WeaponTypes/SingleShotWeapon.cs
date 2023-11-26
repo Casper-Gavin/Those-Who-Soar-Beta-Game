@@ -38,6 +38,7 @@ public class SingleShotWeapon : Weapon {
 
         Projectile projectile = projectilePooled.GetComponent<Projectile>();
         projectile.EnableProjectile();
+        projectile.ProjectileOwner = WeaponOwner;
 
         randomProjectileSpread.z = Random.Range(-projectileSpread.z, projectileSpread.z);
         Quaternion spread = Quaternion.Euler(randomProjectileSpread);

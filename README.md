@@ -6,6 +6,10 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version 11
 
+### Version 0.11.10
+- Disable enemy projectiles from damaging each other or themselves
+- Make projectiles damage player
+
 ### Version 0.11.9
 - Add enemy health and UI
 
