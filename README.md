@@ -4,6 +4,15 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 
+# Version 12
+
+### Version 0.12.0
+- Refactored Health System
+- Created HealthBase abstract base class
+- Created EnemyHealth, PlayerHealth, and ComponentHealth implementations
+- Fix weapon and glow remaining on death for player
+- System should be open for extension and now more cohesive
+
 # Version 11
 
 ### Version 0.11.11

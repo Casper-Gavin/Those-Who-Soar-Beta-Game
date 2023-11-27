@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,7 +19,7 @@ public class Health : MonoBehaviour
     private Character character;
     private PlayerController controller;
     private Collider2D collider2D;
-    private SpriteRenderer spriteRenderer;
+    private SpriteRenderer[] spriteRenderers;
     private EnemyHealth enemyHealth;
 
     private bool shieldBroken;
@@ -35,7 +35,7 @@ public class Health : MonoBehaviour
         controller = GetComponent<PlayerController>();
         collider2D = GetComponent<Collider2D>();
         enemyHealth = GetComponent<EnemyHealth>();
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
         CurrentHealth = initialHealth;
         CurrentShield = initialShield;
 
@@ -89,7 +89,10 @@ public class Health : MonoBehaviour
             character.enabled = false;
             controller.enabled = false;
             collider2D.enabled = false;
-            spriteRenderer.enabled = false;
+            foreach (SpriteRenderer s in spriteRenderers)
+            {
+                s.enabled = false;
+            }
         }
 
         if (destroyObject)
@@ -105,7 +108,10 @@ public class Health : MonoBehaviour
             character.enabled = true;
             controller.enabled = true;
             collider2D.enabled = true;
-            spriteRenderer.enabled = true;
+            foreach (SpriteRenderer s in spriteRenderers)
+            {
+                s.enabled = true;
+            }
         }
 
         gameObject.SetActive(true);
@@ -142,4 +148,4 @@ public class Health : MonoBehaviour
             UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield, isPlayer);
         }
     }
-}
+}*/

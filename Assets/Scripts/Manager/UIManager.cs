@@ -34,13 +34,12 @@ public class UIManager : Singleton<UIManager>
         InternalUpdate();
     }
 
-    public void UpdateHealth(float currentHealth, float maxHealth, float currentShield, float maxShield, bool isThisMyPlayer)
+    public void UpdateHealth(float currentHealth, float maxHealth, float currentShield, float maxShield)
     {
         playerCurrentHealth = currentHealth;
         playerMaxHealth = maxHealth;
         playerCurrentShield = currentShield;
         playerMaxShield = maxShield;
-        isPlayer = isThisMyPlayer;
     }
 
     public void UpdateWeaponSprite(Sprite weaponSprite) {
@@ -56,19 +55,18 @@ public class UIManager : Singleton<UIManager>
 
     private void InternalUpdate()
     {
-        
-        if (isPlayer) {
-            // to make health bar update smoothly, we lerp
-            // visually it will look smooth, but each time it comes in here it just moves a little more
-            healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, playerCurrentHealth / playerMaxHealth, 10f * Time.deltaTime);
-            currentHealthTMP.text = playerCurrentHealth.ToString() + "/" + playerMaxHealth.ToString();
-        
-            shieldBar.fillAmount = Mathf.Lerp(shieldBar.fillAmount, playerCurrentShield / playerMaxShield, 10f * Time.deltaTime);
-            currentShieldTMP.text = playerCurrentShield.ToString() + "/" + playerMaxShield.ToString();
-        }
+        // PLAYER HEALTH
+        // to make health bar update smoothly, we lerp
+        // visually it will look smooth, but each time it comes in here it just moves a little more
+        healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, playerCurrentHealth / playerMaxHealth, 10f * Time.deltaTime);
+        currentHealthTMP.text = playerCurrentHealth.ToString() + "/" + playerMaxHealth.ToString();
+        shieldBar.fillAmount = Mathf.Lerp(shieldBar.fillAmount, playerCurrentShield / playerMaxShield, 10f * Time.deltaTime);
+        currentShieldTMP.text = playerCurrentShield.ToString() + "/" + playerMaxShield.ToString();
 
+        // PLAYER AMMO
         currentAmmoTMP.text = playerCurrentAmmo + " / " + playerMaxAmmo;
 
+        // PLAYER COINS
         coinsTMP.text = CoinManager.Instance.Coins.ToString();
     }
 }

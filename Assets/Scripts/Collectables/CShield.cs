@@ -16,6 +16,6 @@ public class CShield : Collectables {
 
     // takes in a character and public to allow for adding shield in other classes
     public void AddShield(Character characterHealth) {
-        characterHealth.GetComponent<Health>().GainShield(shieldToAdd);
+        characterHealth.GetComponent<PlayerHealth>().GainShield(shieldToAdd);
     }
 }

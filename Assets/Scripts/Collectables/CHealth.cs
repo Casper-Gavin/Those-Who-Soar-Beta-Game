@@ -15,6 +15,6 @@ public class CHealth : Collectables {
     }
 
     public void AddHealth(Character character) {
-            character.GetComponent<Health>().GainHealth(healthToAdd);
+        character.GetComponent<PlayerHealth>().GainHealth(healthToAdd);
     }
 }

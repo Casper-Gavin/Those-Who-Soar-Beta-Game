@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class PlayerDamage : MonoBehaviour
 {
     [SerializeField] private Character.CharacterType damageType = Character.CharacterType.Enemy;
     [SerializeField] private int damageToApply = 1;
 
-    private Health playerHealth;
+    private PlayerHealth playerHealth;
     private void Start()
     {
-        playerHealth = GetComponent<Health>();
+        playerHealth = GetComponent<PlayerHealth>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)

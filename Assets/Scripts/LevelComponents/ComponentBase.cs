@@ -11,14 +11,14 @@ public class ComponentBase : MonoBehaviour
     [SerializeField] private int damage = 1;
     [SerializeField] private bool isDamageable;
 
-    private Health health;
+    private ComponentHealth health;
     private SpriteRenderer spriteRenderer;
     private JarReward jarReward;
     private Collider2D collider2D;
     
 
     private void Start() {
-        health = GetComponent<Health>();
+        health = GetComponent<ComponentHealth>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         jarReward = GetComponent<JarReward>();
         collider2D = GetComponent<Collider2D>();
