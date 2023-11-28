@@ -6,6 +6,9 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version 12
 
+### Version 0.12.1
+- Fixed Component Prefabs bugs - new health script and rewards list
+
 ### Version 0.12.0
 - Refactored Health System
 - Created HealthBase abstract base class

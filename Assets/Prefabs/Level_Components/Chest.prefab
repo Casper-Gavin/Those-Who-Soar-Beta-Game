@@ -104,8 +104,8 @@ MonoBehaviour:
   xRandomPosition: 2
   yRandomPosition: 2
   rewards:
-  - {fileID: 8941799638601941058, guid: 491ecf555c75ab443bcc8f54221efdc5, type: 3}
-  - {fileID: 5062942057872243423, guid: daca40b1d94d6934a9d90d161b1ab521, type: 3}
+  - {fileID: 1247560303296136865, guid: 4b76b2d724dc1e240b8b7c28192268b1, type: 3}
+  - {fileID: 1669556508630364793, guid: eaa5e876a9112fa49ae1531018c24b3e, type: 3}
 --- !u!50 &-4698120256507705700
 Rigidbody2D:
   serializedVersion: 4
