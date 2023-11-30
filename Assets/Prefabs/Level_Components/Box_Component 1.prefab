@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1467429973761207892}
   - component: {fileID: 8140883641114050614}
-  - component: {fileID: 9147414868519771046}
   - component: {fileID: 1259910918400521993}
   - component: {fileID: -4448004755963020748}
   - component: {fileID: 1125399029695314492}
+  - component: {fileID: 18017270458521519}
   m_Layer: 7
   m_Name: Box_Component 1
   m_TagString: Untagged
@@ -88,23 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9147414868519771046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2207895842687926459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47dfd27a4dd11054ab62eacd03f50934, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialHealth: 3
-  maxHealth: 3
-  initialShield: 0
-  maxShield: 0
-  destroyObject: 0
 --- !u!61 &1259910918400521993
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -192,3 +175,18 @@ MonoBehaviour:
   damagedSprite: {fileID: 188850393, guid: 90d9c0d78a2bba249b7dd60bb300696a, type: 3}
   damage: 1
   isDamageable: 1
+--- !u!114 &18017270458521519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2207895842687926459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82b53b5e8bf0abe4b8481f858f7a7e09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialHealth: 3
+  maxHealth: 3
+  destroyObject: 0

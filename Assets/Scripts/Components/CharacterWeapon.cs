@@ -93,6 +93,7 @@ public class CharacterWeapon : CharacterAbilities
             // destroys the current reticle, projectile pool, and weapon after saving the weapon ammo
             CurrentWeapon.HolsterWeapon();
             WeaponAim.DestroyReticle(); // this is okay, could use the CurrentWeapon.WeaponAim reference
+            // next line may have a bugs
             Destroy(GameObject.Find("Pool"));
             Destroy(CurrentWeapon.gameObject);
         }
