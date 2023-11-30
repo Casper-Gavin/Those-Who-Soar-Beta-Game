@@ -15,6 +15,6 @@ public class MeleeAction : AIAction
         controller.CharacterMovement.SetHorizontal(0f);
         controller.CharacterMovement.SetVertical(0f);
 
-        controller.CharacterWeapon.CurrentWeapon.UseWeapon();
+        controller.CharacterWeapon.CurrentWeapon.Attack();
     }
 }

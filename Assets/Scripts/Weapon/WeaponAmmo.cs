@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class WeaponAmmo : MonoBehaviour
 {
-    private Weapon weapon;
+    private ProjectileWeapon weapon;
 
     private readonly string WEAPON_AMMO_SAVELOAD = "Weapon_";
 
     private void Awake()
     {
-        weapon = GetComponent<Weapon>();
+        weapon = GetComponent<ProjectileWeapon>();
         LoadWeaponAmmoSize();
     }
 

@@ -7,6 +7,6 @@ public class VendorItem : ScriptableObject
 {
     public CShield shieldItem;
     public CHealth healthItem;
-    public Weapon WeaponToSell;
+    public WeaponBase WeaponToSell;
     public int Cost;
 }

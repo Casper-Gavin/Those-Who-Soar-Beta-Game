@@ -1,56 +1,77 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeWeapon : Weapon
+// THIS CODE IS CURRENTLY UNDER THE ASSUMPTION 
+// THAT THE ATTACK COOLDOWN TIME IS THE SAME AS THE ANIMATION TIME
+// if this assumption does not work, add an extra delay variable and
+// use that to control the box collider toggling
+public class MeleeWeapon : WeaponBase
 {
-    [SerializeField] private float attackDelay = 0.5f;
-    private bool isAttacking;
     private BoxCollider2D boxCollider;
+    private bool currentlyAttacking = false;
 
-    private readonly int useMeleeWeapon = Animator.StringToHash("UseMeleeWeapon"); // TODO: this ok?
+    private Animator animator;
+    private readonly int useMeleeWeapon = Animator.StringToHash("UseMeleeWeapon");
 
-    private void Start()
+    protected override void Awake() // this was Start, see if Awake works
     {
         boxCollider = GetComponent<BoxCollider2D>();
+        animator = GetComponent<Animator>();
     }
 
-    protected override void Update()
+    public override void Attack()
     {
-        base.Update();
-        FlipMeleeWeapon();
+        RequestAttack();
+    }
+    
+    public override void StopAttack()
+    {
+        // do nothing
     }
 
-    public override void UseWeapon()
+    public override void Reload()
     {
-        StartCoroutine(Attack());
+        // do nothing
     }
 
-    private IEnumerator Attack()
+    public override void EquipWeapon()
     {
-        if (isAttacking)
+        // do nothing
+        // add equip animation maybe?
+    }
+
+    public override void HolsterWeapon()
+    {
+        // do nothing for now
+        // maybe trigger animation in the future
+    }
+
+    protected override void CheckWeaponCooldown()
+    {
+        if (Time.time > nextAttackTime)
         {
-            yield break;
+            boxCollider.enabled = false; // attack finished,
+            currentlyAttacking = false;
+            OffAttackCooldown = true;
+            nextAttackTime = Time.time + attackCooldown;
+        }
+    }
+
+    // TODO: test this, logic may be a little fuzzy
+    protected override void RequestAttack()
+    {
+        if (currentlyAttacking)
+        {
+            return;
         }
 
-        boxCollider.enabled = false;
-        isAttacking = true;
-        animator.SetTrigger(useMeleeWeapon);
-
-        yield return new WaitForSeconds(attackDelay);
-        boxCollider.enabled = true;
-        isAttacking = false;
-    }
-
-    private void FlipMeleeWeapon()
-    {
-        if (WeaponOwner.GetComponent<CharacterFlip>().FacingRight)
+        boxCollider.enabled = true; // disable once contact is made or cooldown expires
+        if (OffAttackCooldown)
         {
-            transform.localScale = new Vector3(1,1,1);
-        }
-        else
-        {
-            transform.localScale = new Vector3(-1,1,1);
+            currentlyAttacking = true;
+            animator.SetTrigger(useMeleeWeapon);
         }
     }
 }

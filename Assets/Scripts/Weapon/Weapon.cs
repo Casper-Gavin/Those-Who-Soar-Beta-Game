@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,12 +34,12 @@ public class Weapon : MonoBehaviour
     public WeaponAim WeaponAim { get; set; }
 
     public bool UseMagazine => useMagazine;
-    /* above same as on newer version of C#:
-    public bool UseMagazine
-    {
-        get { return use Magazine;}
-    }
-    */
+    // above same as on newer version of C#:
+    //public bool UseMagazine
+    //{
+    //    get { return use Magazine;}
+    //}
+    
 
     public int MagazineSize => magazineSize;
 
@@ -174,3 +174,4 @@ public class Weapon : MonoBehaviour
         }
     }
 }
+*/

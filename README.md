@@ -6,6 +6,13 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version 12
 
+### Version 0.12.2
+- Refactored Weapon System
+- Created WeaponBase abstract base class
+- Create ProjectileWeapon and MeleeWeapon implementations
+- Now much easier to interchange weapons for players and enemies
+- Sword needs to be tested further and made available to player
+
 ### Version 0.12.0
 - Refactored Health System
 - Created HealthBase abstract base class

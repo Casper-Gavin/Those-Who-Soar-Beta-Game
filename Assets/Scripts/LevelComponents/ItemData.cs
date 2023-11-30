@@ -7,6 +7,6 @@ using UnityEngine;
 // inherits from scriptable object -  don't create prefabs, create a script that stores data
 public class ItemData : ScriptableObject
 {
-    public Weapon WeaponToEquip;
+    public WeaponBase WeaponToEquip;
     public Sprite WeaponSprite;
 }

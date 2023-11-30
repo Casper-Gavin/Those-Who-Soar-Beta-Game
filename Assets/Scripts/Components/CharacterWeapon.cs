@@ -9,12 +9,12 @@ public class CharacterWeapon : CharacterAbilities
     public static Action OnStartShooting;
 
     [Header("Weapon Settings")]
-    [SerializeField] private Weapon weaponToUse;
+    [SerializeField] private WeaponBase weaponToUse;
     [SerializeField] private Transform weaponHolderPosition;
 
-    public Weapon CurrentWeapon { get; set; }
+    public WeaponBase CurrentWeapon { get; set; }
 
-    public Weapon SecondaryWeapon { get; set; }
+    public WeaponBase SecondaryWeapon { get; set; }
 
     public WeaponAim WeaponAim { get; set; }
 
@@ -32,12 +32,12 @@ public class CharacterWeapon : CharacterAbilities
             // 0 is left mouse button - GetMouseButtonDown makes a non-auto weapon vs GetMouseButton which is auto
             if (Input.GetMouseButton(0))
             {
-                Shoot();
+                Attack();
             }
 
             if (Input.GetMouseButtonUp(0))
             {
-                StopWeapon();
+                StopAttack();
             }
 
             if (Input.GetKeyDown(KeyCode.R))
@@ -57,30 +57,24 @@ public class CharacterWeapon : CharacterAbilities
         }
     }
 
-    public void Shoot()
+    public void Attack()
     {
         if (CurrentWeapon == null)
         {
             return;
         }
 
-        CurrentWeapon.UseWeapon();
-        if (character.CharacterTypes == Character.CharacterType.Player)
-        {
-            OnStartShooting?.Invoke();
-
-            UIManager.Instance.UpdateAmmo(CurrentWeapon.CurrentAmmo, CurrentWeapon.MagazineSize);
-        }
+        CurrentWeapon.Attack();
     }
 
-    public void StopWeapon()
+    public void StopAttack()
     {
         if (CurrentWeapon == null)
         {
             return;
         }
 
-        CurrentWeapon.StopWeapon();
+        CurrentWeapon.StopAttack();
     }
 
     public void Reload()
@@ -91,19 +85,14 @@ public class CharacterWeapon : CharacterAbilities
         }
 
         CurrentWeapon.Reload();
-        
-        if (character.CharacterTypes == Character.CharacterType.Player)
-        {
-            UIManager.Instance.UpdateAmmo(CurrentWeapon.CurrentAmmo, CurrentWeapon.MagazineSize);
-        }
     }
 
-    public void EquipWeapon(Weapon weapon, Transform weaponPosition)
+    public void EquipWeapon(WeaponBase weapon, Transform weaponPosition)
     {
         if (CurrentWeapon != null) {
             // destroys the current reticle, projectile pool, and weapon after saving the weapon ammo
-            CurrentWeapon.WeaponAmmo.SaveAmmo();
-            WeaponAim.DestroyReticle();
+            CurrentWeapon.HolsterWeapon();
+            WeaponAim.DestroyReticle(); // this is okay, could use the CurrentWeapon.WeaponAim reference
             Destroy(GameObject.Find("Pool"));
             Destroy(CurrentWeapon.gameObject);
         }
@@ -113,10 +102,6 @@ public class CharacterWeapon : CharacterAbilities
         CurrentWeapon.SetOwner(character);
         WeaponAim = CurrentWeapon.GetComponent<WeaponAim>();
 
-        if (character.CharacterTypes == Character.CharacterType.Player)
-        {
-            UIManager.Instance.UpdateAmmo(CurrentWeapon.CurrentAmmo, CurrentWeapon.MagazineSize);
-            UIManager.Instance.UpdateWeaponSprite(CurrentWeapon.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite);
-        }
+        CurrentWeapon.EquipWeapon();
     }
 }

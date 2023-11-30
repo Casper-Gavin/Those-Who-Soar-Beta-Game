@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7128057278305943651}
   - component: {fileID: 7167375328899813389}
   - component: {fileID: 2250954650049161096}
-  - component: {fileID: 6852058488505089459}
   - component: {fileID: 4842816323978543552}
+  - component: {fileID: -2219299530553652623}
   m_Layer: 0
   m_Name: EnemySword
   m_TagString: Untagged
@@ -102,27 +102,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2679596, y: 2.1561213}
   m_EdgeRadius: 0
---- !u!114 &6852058488505089459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 490675725403630387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 075304988dd5af64a89db8af388b0878, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponName: Sword
-  timeBtwShots: 0.5
-  useMagazine: 1
-  magazineSize: 30
-  autoReload: 1
-  useRecoil: 1
-  recoilForce: 5
-  muzzlePS: {fileID: 0}
-  attackDelay: 0.5
 --- !u!114 &4842816323978543552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,6 +115,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
+--- !u!114 &-2219299530553652623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490675725403630387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 075304988dd5af64a89db8af388b0878, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: Sword
+  attackCooldown: 1
 --- !u!1 &2860121596719681031
 GameObject:
   m_ObjectHideFlags: 0

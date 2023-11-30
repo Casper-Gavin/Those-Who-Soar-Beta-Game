@@ -11,7 +11,7 @@ public class WeaponAim : MonoBehaviour
 
     private Camera mainCamera;
     private GameObject reticle;
-    private Weapon weapon;
+    private WeaponBase weapon;
 
     // all Vector3's will be used to calculate aim with each other
 
@@ -26,7 +26,7 @@ public class WeaponAim : MonoBehaviour
     private void Start()
     {
         Cursor.visible = false;
-        weapon = GetComponent<Weapon>();
+        weapon = GetComponent<WeaponBase>();
         initialRotation = transform.rotation;
 
         mainCamera = Camera.main;

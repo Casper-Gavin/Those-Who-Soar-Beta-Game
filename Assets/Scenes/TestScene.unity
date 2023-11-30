@@ -11123,7 +11123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9f9550191585e14b8e087efb0cf71cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponToUse: {fileID: 3266479947500570269, guid: 2f3d4c5413120c842b8d06a7e213d3f0, type: 3}
+  weaponToUse: {fileID: 4393341093444801312, guid: 2f3d4c5413120c842b8d06a7e213d3f0, type: 3}
   weaponHolderPosition: {fileID: 1627264184}
 --- !u!114 &838321517
 MonoBehaviour:
@@ -12433,6 +12433,7 @@ GameObject:
   - component: {fileID: 1432307636}
   - component: {fileID: 1432307635}
   - component: {fileID: 1432307643}
+  - component: {fileID: 1432307644}
   m_Layer: 9
   m_Name: EnemyWithMelee
   m_TagString: Untagged
@@ -12611,8 +12612,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9f9550191585e14b8e087efb0cf71cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponToUse: {fileID: 6852058488505089459, guid: 34dde04989e0b60449971a2b96206194, type: 3}
+  weaponToUse: {fileID: -2219299530553652623, guid: 34dde04989e0b60449971a2b96206194, type: 3}
   weaponHolderPosition: {fileID: 1769396452}
+--- !u!114 &1432307644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432307634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4c19890a9c4f84d9484ee68d1648a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialHealth: 5
+  maxHealth: 5
+  destroyObject: 1
+  enemyHealthBarPrefab: {fileID: 1902742380146519168, guid: 406c2ac19145103419cbcb1b1676ec4f, type: 3}
+  offset: {x: 0, y: 1, z: 0}
+  damageTakenFromBullet: 1
 --- !u!1 &1436827427
 GameObject:
   m_ObjectHideFlags: 0
@@ -13271,7 +13290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9f9550191585e14b8e087efb0cf71cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponToUse: {fileID: 3266479947500570269, guid: ecc7eb7b99dd5184cb449f61eea2485f, type: 3}
+  weaponToUse: {fileID: 7165642953815872459, guid: ecc7eb7b99dd5184cb449f61eea2485f, type: 3}
   weaponHolderPosition: {fileID: 1220818734}
 --- !u!114 &1503698340
 MonoBehaviour:

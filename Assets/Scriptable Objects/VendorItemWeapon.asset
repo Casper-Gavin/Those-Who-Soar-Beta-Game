@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shieldItem: {fileID: 0}
   healthItem: {fileID: 0}
-  WeaponToSell: {fileID: 3266479947500570269, guid: ae76b756e95474641939fc96fb550e6f, type: 3}
+  WeaponToSell: {fileID: 1408989066873885936, guid: ae76b756e95474641939fc96fb550e6f, type: 3}
   Cost: 100
