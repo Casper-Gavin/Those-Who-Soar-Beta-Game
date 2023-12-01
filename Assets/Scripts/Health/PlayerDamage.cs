@@ -15,7 +15,7 @@ public class PlayerDamage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Bullet"))
+        if (other.CompareTag("EnemyBullet"))
         {
             if (other.GetComponent<Projectile>().ProjectileOwner.CharacterTypes == damageType)
             {

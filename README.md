@@ -6,6 +6,10 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version 12
 
+### Version 0.12.3
+- Fix enemy bullets colliding with other enemies
+- Created new EnemyBullet tag to distinguish player and enemy bullets
+
 ### Version 0.12.2
 - Refactored Weapon System
 - Created WeaponBase abstract base class
