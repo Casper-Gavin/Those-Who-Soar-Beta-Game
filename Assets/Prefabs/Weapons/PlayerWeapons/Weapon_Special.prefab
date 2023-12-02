@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7058752396774444385}
   - component: {fileID: 3425733555376981645}
   - component: {fileID: 1102644163925626313}
-  - component: {fileID: 3266479947500570269}
   - component: {fileID: 399873087364187798}
   m_Layer: 0
   m_Name: Weapon_Special
@@ -100,28 +99,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3266479947500570269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1650591272571040746}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53873c0336d11bb40a2851ad219313cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponName: Special
-  timeBtwShots: 0.15
-  useMagazine: 1
-  magazineSize: 30
-  autoReload: 1
-  useRecoil: 1
-  recoilForce: 5
-  muzzlePS: {fileID: 7970731874716205991}
-  projectileSpawnPosition: {x: 1.55, y: 0.11, z: 0}
-  projectileSpread: {x: 0, y: 0, z: 5}
 --- !u!114 &399873087364187798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,10 +269,5 @@ PrefabInstance:
 --- !u!4 &1509435199630287395 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2750349571408542190, guid: 883841be30f5d984e8e47af34eebbee1, type: 3}
-  m_PrefabInstance: {fileID: 3664139052075654093}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &7970731874716205991 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 6648466872139044970, guid: 883841be30f5d984e8e47af34eebbee1, type: 3}
   m_PrefabInstance: {fileID: 3664139052075654093}
   m_PrefabAsset: {fileID: 0}
