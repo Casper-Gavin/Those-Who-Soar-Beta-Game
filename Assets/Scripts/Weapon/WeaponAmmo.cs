@@ -25,7 +25,7 @@ public class WeaponAmmo : MonoBehaviour
     // checks for ammo
     public bool CanUseWeapon()
     {
-        if (weapon.CurrentAmmo > 0)
+        if (weapon.CurrentAmmo > 0 && UIManager.GameIsPaused == false)
         {
             return true;
         }
@@ -35,7 +35,7 @@ public class WeaponAmmo : MonoBehaviour
 
     public void RefillAmmo()
     {
-        if (weapon.UseMagazine)
+        if (weapon.UseMagazine && UIManager.GameIsPaused == false)
         {
             weapon.CurrentAmmo = weapon.MagazineSize;
         }

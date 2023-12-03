@@ -4,6 +4,14 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 
+## Version 13
+### Version 0.13.1
+- Added Main Menu
+- Added Pause Menu
+    - Press Escape to pause
+    - Pauses character rotation and gun rotation/shooting
+- Added Audio Manager
+
 # Version 12
 
 ### Version 0.12.3

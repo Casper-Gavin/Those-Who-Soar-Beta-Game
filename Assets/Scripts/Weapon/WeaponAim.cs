@@ -22,6 +22,7 @@ public class WeaponAim : MonoBehaviour
     private Vector3 currentAimAbsolute = Vector3.zero;
     private Quaternion initialRotation;
     private Quaternion lookRotation;
+    private Quaternion lastRotation;
 
     private void Start()
     {
@@ -72,7 +73,7 @@ public class WeaponAim : MonoBehaviour
 
     public void RotateWeapon()
     {
-        if (currentAim != Vector3.zero && direction != Vector3.zero)
+        if (currentAim != Vector3.zero && direction != Vector3.zero && UIManager.GameIsPaused == false)
         {
             // returns angle by passing in a direction
             CurrentAimAngle = Mathf.Atan2(currentAim.y, currentAim.x) * Mathf.Rad2Deg;
@@ -91,6 +92,13 @@ public class WeaponAim : MonoBehaviour
             // applying angle to weapon rotation
             lookRotation = Quaternion.Euler(CurrentAimAngle * Vector3.forward);
             transform.rotation = lookRotation;
+
+            // keep the last rotation
+            lastRotation = transform.rotation;
+        }
+        else if(UIManager.GameIsPaused == true)
+        {
+            transform.rotation = lastRotation;
         }
         else
         {

@@ -4,9 +4,14 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : Singleton<UIManager>
 {
+    [Header("Pause Menu")]
+    [SerializeField] private GameObject pauseMenuUI;
+    public static bool GameIsPaused = false;
+
     [Header("Settings")]
     [SerializeField] private Image healthBar;
     [SerializeField] private Image shieldBar;
@@ -31,6 +36,14 @@ public class UIManager : Singleton<UIManager>
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (GameIsPaused) {
+                Resume();
+            } else {
+                Pause();
+            }
+        }
+
         InternalUpdate();
     }
 
@@ -68,5 +81,27 @@ public class UIManager : Singleton<UIManager>
 
         // PLAYER COINS
         coinsTMP.text = CoinManager.Instance.Coins.ToString();
+    }
+
+    public void Resume() {
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+    }
+
+    public void Pause() {
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+    }
+
+    public void QuitGame() {
+        Debug.Log("Quit");
+        Application.Quit();
+    }
+
+    public void LoadMainMenu() {
+        Resume();
+        SceneManager.LoadScene(0);
     }
 }
