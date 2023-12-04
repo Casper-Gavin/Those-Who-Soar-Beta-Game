@@ -37,7 +37,7 @@ public class Collectables : MonoBehaviour {
             return false;
         }
 
-        return character.CharacterTypes == Character.CharacterType.Player;
+        return character.CharacterTypes == Character.CharacterTypeEnum.Player;
     }
 
     protected virtual void Pick(){

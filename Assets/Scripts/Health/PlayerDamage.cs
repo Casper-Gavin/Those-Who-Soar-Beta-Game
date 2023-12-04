@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerDamage : MonoBehaviour
 {
-    [SerializeField] private Character.CharacterType damageType = Character.CharacterType.Enemy;
+    [SerializeField] private Character.CharacterTypeEnum damageType = Character.CharacterTypeEnum.Enemy;
     [SerializeField] private int damageToApply = 1;
 
     private PlayerHealth playerHealth;

@@ -38,7 +38,7 @@ public class CharacterMovement : CharacterAbilities {
     }
 
     private void UpdateAnimations() {
-        if (character.CharacterTypes == Character.CharacterType.Player)
+        if (character.CharacterTypes == Character.CharacterTypeEnum.Player)
         {
             if (horizontalInput > 0.1f || verticalInput > 0.1f || horizontalInput < -0.1f || verticalInput < -0.1f) {
                 character.CharacterAnimator.SetBool(isMovingParam, true);

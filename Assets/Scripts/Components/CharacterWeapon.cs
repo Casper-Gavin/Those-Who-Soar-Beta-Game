@@ -27,18 +27,10 @@ public class CharacterWeapon : CharacterAbilities
         EquipWeapon(weaponToUse, weaponHolderPosition);
     }
 
-    /* gets rid of extra reticle but reticle and gun don't move correctly
-    protected override void Start() {
-        EquipWeapon(weaponToUse, weaponHolderPosition);
-        base.Start();
-    } */
-
-
-
     // left mouse is shoot, R is reload, more to come
     protected override void HandleInput()
     {
-        if (character.CharacterTypes == Character.CharacterType.Player)
+        if (character.CharacterTypes == Character.CharacterTypeEnum.Player)
         {
             // 0 is left mouse button - GetMouseButtonDown makes a non-auto weapon vs GetMouseButton which is auto
             if (Input.GetMouseButton(0))

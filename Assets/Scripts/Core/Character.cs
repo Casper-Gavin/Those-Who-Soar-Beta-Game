@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Character : MonoBehaviour {
-    public enum CharacterType {
+    public enum CharacterTypeEnum {
         Player,
         Enemy
     }
     // check Player Damage damageType
 
     // [SerializeField] allows private variables to be visible in the inspector
-    [SerializeField] private CharacterType characterType;
+    [SerializeField] private CharacterTypeEnum characterType;
     [SerializeField] private GameObject characterSprite;
     [SerializeField] private Animator characterAnimator;
 
     // switched from the tutorial - CharacterType vs CharacterTypes with above
-    public CharacterType CharacterTypes => characterType;
+    public CharacterTypeEnum CharacterTypes => characterType;
     public GameObject CharacterSprite => characterSprite;
     public Animator CharacterAnimator => characterAnimator;
 

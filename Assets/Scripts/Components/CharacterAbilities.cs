@@ -50,7 +50,7 @@ public class CharacterAbilities : MonoBehaviour {
     /// </summary>
     protected virtual void InternalUpdate()
     {
-        if (character.CharacterTypes == Character.CharacterType.Player)
+        if (character.CharacterTypes == Character.CharacterTypeEnum.Player)
         {
             horizontalInput = Input.GetAxisRaw("Horizontal");
             verticalInput = Input.GetAxisRaw("Vertical");

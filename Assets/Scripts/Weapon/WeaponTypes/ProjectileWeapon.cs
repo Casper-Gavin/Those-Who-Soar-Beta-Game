@@ -74,7 +74,7 @@ public class ProjectileWeapon : WeaponBase
             }
             animator.SetTrigger(shootAnimationParameter);
             WeaponAmmo.ConsumeAmmo();
-            if (WeaponOwner.CharacterTypes == Character.CharacterType.Player)
+            if (WeaponOwner.CharacterTypes == Character.CharacterTypeEnum.Player)
             {
                 UIManager.Instance.UpdateAmmo(CurrentAmmo, magazineSize);
             }
@@ -120,7 +120,7 @@ public class ProjectileWeapon : WeaponBase
     public override void EquipWeapon()
     {
         // use WeaponOwner
-        if (WeaponOwner.CharacterTypes == Character.CharacterType.Player)
+        if (WeaponOwner.CharacterTypes == Character.CharacterTypeEnum.Player)
         {
             UIManager.Instance.UpdateAmmo(CurrentAmmo, magazineSize);
             // this implies that we must have sprite as first child
@@ -152,7 +152,7 @@ public class ProjectileWeapon : WeaponBase
                 WeaponAmmo.RefillAmmo();
             }
 
-            if (WeaponOwner.CharacterTypes == Character.CharacterType.Player)
+            if (WeaponOwner.CharacterTypes == Character.CharacterTypeEnum.Player)
             {
                 UIManager.Instance.UpdateAmmo(CurrentAmmo, magazineSize);
             }

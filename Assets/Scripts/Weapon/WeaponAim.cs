@@ -34,14 +34,14 @@ public class WeaponAim : MonoBehaviour //Singleton<WeaponAim>
         mainCamera = Camera.main;
 
         reticle = Instantiate(reticlePrefab);
-        if (weapon.WeaponOwner.CharacterTypes != Character.CharacterType.Player) {
+        if (weapon.WeaponOwner.CharacterTypes != Character.CharacterTypeEnum.Player) {
             reticle.GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 
     private void Update()
     {
-        if (weapon.WeaponOwner.CharacterTypes == Character.CharacterType.Player)
+        if (weapon.WeaponOwner.CharacterTypes == Character.CharacterTypeEnum.Player)
         {
             GetMousePosition();
         }
