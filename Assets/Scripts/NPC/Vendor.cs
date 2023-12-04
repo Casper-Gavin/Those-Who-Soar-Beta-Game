@@ -37,6 +37,10 @@ public class Vendor : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.M)) {
             if (CoinManager.Instance.Coins >= weaponItem.Cost) {
                 characterWeapon.SecondaryWeapon = weaponItem.WeaponToSell;
+                if (characterWeapon.SecondaryEquipped) // re-equip
+                {
+                    characterWeapon.EquipWeapon(characterWeapon.SecondaryWeapon);
+                }
                 ProductBought(weaponItem.Cost);
             }
         }

@@ -106,6 +106,10 @@ public class PlayerHealth : HealthBase
     {
         CurrentShield = Mathf.Min(CurrentShield + amount, maxShield);
         UpdateHealth();
+        if (CurrentShield > 0 && shieldBroken)
+        {
+            shieldBroken = false;
+        }
     }
 
     protected override void UpdateHealth()

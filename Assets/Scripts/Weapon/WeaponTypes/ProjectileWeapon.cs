@@ -131,6 +131,7 @@ public class ProjectileWeapon : WeaponBase
     public override void HolsterWeapon()
     {
         WeaponAmmo.SaveAmmo();
+        Pooler.DestroyPool();
     }
 
     private void Recoil()

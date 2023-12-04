@@ -46,4 +46,9 @@ public class ObjectPooler : MonoBehaviour {
 
         return newObject;
     }
+
+    public void DestroyPool()
+    {
+        Destroy(parentObject);
+    }
 }

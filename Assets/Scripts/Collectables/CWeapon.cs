@@ -13,7 +13,12 @@ public class CWeapon : Collectables
     // adds a secondary weapon - jumps through some hoops
     private void EquipWeapon() {
         if (character != null) {
-            character.GetComponent<CharacterWeapon>().SecondaryWeapon = itemWeaponData.WeaponToEquip;
+            CharacterWeapon characterWeapon = character.GetComponent<CharacterWeapon>();
+            characterWeapon.SecondaryWeapon = itemWeaponData.WeaponToEquip;
+            if (characterWeapon.SecondaryEquipped) // re-equip
+            {
+                characterWeapon.EquipWeapon(characterWeapon.SecondaryWeapon);
+            }
         }
     }
 }

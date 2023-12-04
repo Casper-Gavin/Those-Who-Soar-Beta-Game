@@ -16,6 +16,9 @@ public class CharacterWeapon : CharacterAbilities
 
     public WeaponBase SecondaryWeapon { get; set; }
 
+    private bool secondaryEquipped = false;
+    public bool SecondaryEquipped => secondaryEquipped;
+
     public WeaponAim WeaponAim { get; set; }
 
     protected override void Start()
@@ -47,12 +50,14 @@ public class CharacterWeapon : CharacterAbilities
             // Aplha1 is 1 on num pad - && stops equiping if there's no secondary weapon
             if (Input.GetKeyDown(KeyCode.Alpha1) && SecondaryWeapon != null)
             {
+                secondaryEquipped = false;
                 EquipWeapon(weaponToUse, weaponHolderPosition);
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha2) && SecondaryWeapon != null)
             {
                 EquipWeapon(SecondaryWeapon, weaponHolderPosition);
+                secondaryEquipped = true;
             }
         }
     }
@@ -87,14 +92,18 @@ public class CharacterWeapon : CharacterAbilities
         CurrentWeapon.Reload();
     }
 
+    public void EquipWeapon(WeaponBase weapon)
+    {
+        // use weapon holder position by default (it's private)
+        EquipWeapon(weapon, weaponHolderPosition);
+    }
+
     public void EquipWeapon(WeaponBase weapon, Transform weaponPosition)
     {
         if (CurrentWeapon != null) {
             // destroys the current reticle, projectile pool, and weapon after saving the weapon ammo
             CurrentWeapon.HolsterWeapon();
-            WeaponAim.DestroyReticle(); // this is okay, could use the CurrentWeapon.WeaponAim reference
-            // next line may have a bugs
-            Destroy(GameObject.Find("Pool"));
+            WeaponAim.DestroyReticle(); // this is okay, could use the CurrentWeapon.WeaponAim reference            
             Destroy(CurrentWeapon.gameObject);
         }
         // creates reference to weapon to be used by player

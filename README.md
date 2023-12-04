@@ -5,6 +5,14 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 13
+
+### Version 0.13.2
+- Fix animator hash warning spam
+- Remove unused old files
+- Fix bug where shield potions only updated health visually, not actually
+- Fix bug where new secondary weapon did not replace old secondary weapon
+- Fix bug where wrong object pooler was deleted (no enemy bullets)
+
 ### Version 0.13.1
 - Added Main Menu
 - Added Pause Menu
