@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponAim : MonoBehaviour
+public class WeaponAim : MonoBehaviour //Singleton<WeaponAim>
 {
     [SerializeField] private GameObject reticlePrefab;
 
@@ -24,6 +24,7 @@ public class WeaponAim : MonoBehaviour
     private Quaternion lookRotation;
     private Quaternion lastRotation;
 
+
     private void Start()
     {
         Cursor.visible = false;
@@ -31,7 +32,11 @@ public class WeaponAim : MonoBehaviour
         initialRotation = transform.rotation;
 
         mainCamera = Camera.main;
+
         reticle = Instantiate(reticlePrefab);
+        if (weapon.WeaponOwner.CharacterTypes != Character.CharacterType.Player) {
+            reticle.GetComponent<SpriteRenderer>().enabled = false;
+        }
     }
 
     private void Update()
@@ -122,11 +127,12 @@ public class WeaponAim : MonoBehaviour
     // makes sure rotation is normal
     private void MoveReticle()
     {
-        reticle.transform.rotation = Quaternion.identity;
-        reticle.transform.position = reticlePosition;
+        reticle.transform.SetPositionAndRotation(reticlePosition, Quaternion.identity); // optimized
+        // reticle.transform.rotation = Quaternion.identity;
+        // reticle.transform.position = reticlePosition;
     }
 
     public void DestroyReticle() {
-        Destroy(reticle.gameObject);
+        Destroy(reticle); // used to be Destroy(reticle.gameObject)
     }
 }

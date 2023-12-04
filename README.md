@@ -6,6 +6,10 @@ Unity Version: 2022.3.9f1 (LTS)
 
 ## Version 13
 
+### Version 0.13.3
+- Got rid of extra reticle attached to the projectile enemy
+- refactored some of the reticle code
+
 ### Version 0.13.2
 - Fix animator hash warning spam
 - Remove unused old files

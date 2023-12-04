@@ -27,6 +27,14 @@ public class CharacterWeapon : CharacterAbilities
         EquipWeapon(weaponToUse, weaponHolderPosition);
     }
 
+    /* gets rid of extra reticle but reticle and gun don't move correctly
+    protected override void Start() {
+        EquipWeapon(weaponToUse, weaponHolderPosition);
+        base.Start();
+    } */
+
+
+
     // left mouse is shoot, R is reload, more to come
     protected override void HandleInput()
     {
@@ -103,7 +111,7 @@ public class CharacterWeapon : CharacterAbilities
         if (CurrentWeapon != null) {
             // destroys the current reticle, projectile pool, and weapon after saving the weapon ammo
             CurrentWeapon.HolsterWeapon();
-            WeaponAim.DestroyReticle(); // this is okay, could use the CurrentWeapon.WeaponAim reference            
+            CurrentWeapon.WeaponAim.DestroyReticle(); // could do just WeaponAim.DestoryReticle() without the CurrentWeapon maybe
             Destroy(CurrentWeapon.gameObject);
         }
         // creates reference to weapon to be used by player

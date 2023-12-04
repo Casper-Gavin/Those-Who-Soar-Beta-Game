@@ -7,6 +7,8 @@ public class Character : MonoBehaviour {
         Player,
         Enemy
     }
+    // check Player Damage damageType
+
     // [SerializeField] allows private variables to be visible in the inspector
     [SerializeField] private CharacterType characterType;
     [SerializeField] private GameObject characterSprite;
