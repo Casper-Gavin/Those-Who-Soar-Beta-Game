@@ -24,6 +24,7 @@ public class WanderAction : AIAction
     {
         if (Time.time > wanderCheckTime)
         {
+            //Debug.Log("picking new position: " + wanderDirection.x + " " + wanderDirection.y);
             // pick random position and move to it
             wanderDirection.x = Random.Range(-wanderArea, wanderArea);
             wanderDirection.y = Random.Range(-wanderArea, wanderArea);
@@ -47,10 +48,7 @@ public class WanderAction : AIAction
 
         if (hit)
         {
-            wanderDirection.x = Random.Range(-wanderArea, wanderArea);
-            wanderDirection.y = Random.Range(-wanderArea, wanderArea);       
-
-            wanderCheckTime = Time.time;
+            wanderCheckTime = Time.time - 1; // force new wander call
         }
     }
 
