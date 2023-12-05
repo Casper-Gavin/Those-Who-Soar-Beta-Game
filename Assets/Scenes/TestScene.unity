@@ -13697,7 +13697,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &1503698331
 MonoBehaviour:
@@ -13766,6 +13766,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dashDistance: 5
   dashDuration: 0.3
+  dashCooldownTimer: 0.75
 --- !u!114 &1503698336
 MonoBehaviour:
   m_ObjectHideFlags: 0
