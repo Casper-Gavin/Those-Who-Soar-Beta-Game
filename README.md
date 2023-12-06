@@ -5,6 +5,9 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 13
+### Version 0.13.6
+- Added an option to change the volume of the music in the pause menu
+
 ### Version 0.13.5
 - Added a dash cooldown timer
 
