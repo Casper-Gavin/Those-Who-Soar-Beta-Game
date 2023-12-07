@@ -9,6 +9,9 @@ Since none of us had prior experience in Unity, we followed this Udemy Course to
 # Version History
 
 ## Version 13
+### Version 0.13.6
+- Added an option to change the volume of the music in the pause menu
+
 ### Version 0.13.5
 - Added a dash cooldown timer
 

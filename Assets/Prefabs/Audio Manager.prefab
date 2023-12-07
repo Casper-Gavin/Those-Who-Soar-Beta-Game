@@ -49,5 +49,13 @@ MonoBehaviour:
     name: MainMenu
     volume: 0.2
     pitch: 1
-    loop: 0
+    loop: 1
     source: {fileID: 0}
+    tag: MenuMusic
+  - clip: {fileID: 8300000, guid: 9c05e9d5658edbe41afc77c4bc8704db, type: 3}
+    name: Gameplay
+    volume: 0.2
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+    tag: GameMusic

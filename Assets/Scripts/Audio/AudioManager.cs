@@ -1,6 +1,7 @@
 using UnityEngine.Audio;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour {
     public Sound[] sounds;
@@ -27,8 +28,23 @@ public class AudioManager : MonoBehaviour {
     }
 
     private void Start() {
-        // Later we will add (here or maybe in update) a check to see if the current scene is the main menu, and if so, play the main menu music.
-        Play("MainMenu");
+        if (SceneManager.GetActiveScene().name == "MainMenu") {
+            Play("MainMenu");
+        } else {
+            Play("Gameplay");
+        }
+    }
+
+    private void Update() {
+        if (SceneManager.GetActiveScene().name == "MainMenu" && GetCurrentlyPlayingTag() != "MenuMusic") {
+            Stop("Gameplay");
+
+            Play("MainMenu");
+        } else if (SceneManager.GetActiveScene().name != "MainMenu" && GetCurrentlyPlayingTag() != "GameMusic") {
+            Stop("MainMenu");
+
+            Play("Gameplay");
+        }
     }
 
     public void Play(string name) {
@@ -48,6 +64,12 @@ public class AudioManager : MonoBehaviour {
         s.source.Play();
     }
 
+    public void Stop(string name) {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+
+        s.source.Stop();
+    }
+
     public void SetVolume(string name, float volume) {
         Sound s = Array.Find(sounds, sound => sound.name == name);
 
@@ -64,6 +86,16 @@ public class AudioManager : MonoBehaviour {
         foreach (Sound s in sounds) {
             if (s.source.isPlaying) {
                 return s.name;
+            }
+        }
+
+        return null;
+    }
+
+    public string GetCurrentlyPlayingTag() {
+        foreach (Sound s in sounds) {
+            if (s.source.isPlaying) {
+                return s.tag;
             }
         }
 
