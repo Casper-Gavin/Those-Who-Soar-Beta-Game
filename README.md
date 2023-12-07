@@ -6,6 +6,10 @@ Unity Version: 2022.3.9f1 (LTS)
 "Learn to create a 2D Action Roguelike Game in Unity 2022", a Udemy Course by Gianny Dantas.
 Since none of us had prior experience in Unity, we followed this Udemy Course to help us get a grip on the fundamental components of game design, and Unity in general. This course served as a foundation for our project, currently and hereafter we are building off of it.
 
+https://creators.aiva.ai/
+AIVA is an AI music composer that we used to generate the music for our game (at least for now). We used a base composition (song) and then modified it to fit our game using
+AIVA's modification tools.
+
 # Version History
 
 ## Version 13
