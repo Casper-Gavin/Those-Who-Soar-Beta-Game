@@ -12,6 +12,13 @@ AIVA's modification tools.
 
 # Version History
 
+## Version 14
+### Version 0.14.0
+- Create initial spawner prefab for more efficient stage building, particularly involving spawning enemies
+- Spawned objects should not overlap
+- Spawned objects should remain within the bounds defined in the spawner prefab
+- If a spawned object collides 10 times during placement, the spawned object will not be spawned (not enough room inferred)
+
 ## Version 13
 ### Version 0.13.6
 - Added an option to change the volume of the music in the pause menu
