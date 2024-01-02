@@ -13,6 +13,7 @@ public class UIManager : Singleton<UIManager>
     public static bool GameIsPaused = false;
 
     [Header("Settings")]
+    [SerializeField] private Image damageIndicator;
     [SerializeField] private Image healthBar;
     [SerializeField] private Image shieldBar;
     [SerializeField] private TextMeshProUGUI currentHealthTMP;
@@ -34,6 +35,13 @@ public class UIManager : Singleton<UIManager>
     private int playerCurrentAmmo;
     private int playerMaxAmmo;
 
+    private void Start()
+    {
+        Color c = damageIndicator.color;
+        c.a = 0;
+        damageIndicator.color = c;
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) {
@@ -45,6 +53,14 @@ public class UIManager : Singleton<UIManager>
         }
 
         InternalUpdate();
+    }
+
+    public void FlashDamageEffect()
+    {
+        damageIndicator.enabled = true;
+        Color c = damageIndicator.color;
+        c.a = 1;
+        damageIndicator.color = c;
     }
 
     public void UpdateHealth(float currentHealth, float maxHealth, float currentShield, float maxShield)
@@ -75,6 +91,18 @@ public class UIManager : Singleton<UIManager>
         currentHealthTMP.text = playerCurrentHealth.ToString() + "/" + playerMaxHealth.ToString();
         shieldBar.fillAmount = Mathf.Lerp(shieldBar.fillAmount, playerCurrentShield / playerMaxShield, 10f * Time.deltaTime);
         currentShieldTMP.text = playerCurrentShield.ToString() + "/" + playerMaxShield.ToString();
+
+        // DAMAGE INDICATOR
+        if (damageIndicator.enabled)
+        {
+            Color c = damageIndicator.color;
+            c.a = Mathf.Lerp(c.a, 0, 5f * Time.deltaTime);
+            damageIndicator.color = c;
+            if (c.a == 0)
+            {
+                damageIndicator.enabled = false;
+            }
+        }
 
         // PLAYER AMMO
         currentAmmoTMP.text = playerCurrentAmmo + " / " + playerMaxAmmo;

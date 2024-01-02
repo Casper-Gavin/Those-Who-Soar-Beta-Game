@@ -13,6 +13,10 @@ AIVA's modification tools.
 # Version History
 
 ## Version 14
+
+### Version 0.14.1
+- Add primitive damage indicator
+
 ### Version 0.14.0
 - Create initial spawner prefab for more efficient stage building, particularly involving spawning enemies
 - Spawned objects should not overlap

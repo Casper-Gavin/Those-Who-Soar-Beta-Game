@@ -33,6 +33,7 @@ public class PlayerHealth : HealthBase
             return;
         }
 
+        UIManager.Instance.FlashDamageEffect();
         if (!shieldBroken)
         {
             CurrentShield -= damage;
