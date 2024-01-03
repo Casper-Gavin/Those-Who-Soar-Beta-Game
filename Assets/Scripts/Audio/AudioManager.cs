@@ -3,12 +3,14 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class AudioManager : MonoBehaviour {
+public class AudioManager : Singleton<AudioManager> {
     public Sound[] sounds;
 
     public static AudioManager instance;
 
-    public void Awake() {
+    protected override void Awake() {
+        base.Awake();
+
         if (instance == null) {
             instance = this;
         } else {

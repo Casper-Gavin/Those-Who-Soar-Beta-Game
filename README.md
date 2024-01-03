@@ -13,6 +13,8 @@ AIVA's modification tools.
 # Version History
 
 ## Version 14
+### Version 0.14.2
+- Change AudioManager to use a singleton
 
 ### Version 0.14.1
 - Add primitive damage indicator
