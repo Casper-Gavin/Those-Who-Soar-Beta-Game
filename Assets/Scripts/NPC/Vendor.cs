@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Vendor : MonoBehaviour
 {
@@ -14,9 +15,11 @@ public class Vendor : MonoBehaviour
     [SerializeField] private VendorItem healthItem;
     [SerializeField] private VendorItem shieldItem;
 
-    private bool canOpenShop;
+    public bool canOpenShop;
     private CharacterWeapon characterWeapon;
 
+    public UnityEvent OnPlayerEnterShopZone;
+    public UnityEvent OnPlayerExitShopZone;
 
     // open and close shop panel
     private void Update() {
@@ -65,7 +68,9 @@ public class Vendor : MonoBehaviour
         if (other.CompareTag("Player")) {
             characterWeapon = other.GetComponent<CharacterWeapon>();
             canOpenShop = true;
-            popUpPanel.SetActive(true);
+            popUpPanel.SetActive(true); 
+
+            OnPlayerEnterShopZone.Invoke();
         }
 
     }
@@ -76,6 +81,8 @@ public class Vendor : MonoBehaviour
             canOpenShop = false;
             popUpPanel.SetActive(false);
             shopPanel.SetActive(false);
+
+            OnPlayerExitShopZone.Invoke();
         }
 
     }

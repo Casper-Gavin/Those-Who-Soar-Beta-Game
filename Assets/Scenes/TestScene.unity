@@ -2105,8 +2105,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 1503698328}
-  offset: {x: 0, y: 0}
+  playerOffset: {x: 0, y: 0}
+  vendorOffset: {x: 0, y: 0}
   cameraMode: 0
+  cameraFollow: 0
+  dampingFactor: 0.75
+  vendor: {fileID: 1844658660}
+  smoothSpeed: 5
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14289,7 +14294,7 @@ GameObject:
   - component: {fileID: 1844658659}
   - component: {fileID: 1844658661}
   - component: {fileID: 1844658660}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Vendor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14401,6 +14406,13 @@ MonoBehaviour:
   weaponItem: {fileID: 11400000, guid: ee5e4e5105f14af47bd6db191824933d, type: 2}
   healthItem: {fileID: 11400000, guid: 84fe41917ab9f634e8e4a83cf16cfdfd, type: 2}
   shieldItem: {fileID: 11400000, guid: 799bc097dacf94d40862ebfb8defe830, type: 2}
+  canOpenShop: 0
+  OnPlayerEnterShopZone:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPlayerExitShopZone:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &1844658661
 BoxCollider2D:
   m_ObjectHideFlags: 0

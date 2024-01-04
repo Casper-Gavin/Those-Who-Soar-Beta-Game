@@ -13,6 +13,13 @@ AIVA's modification tools.
 # Version History
 
 ## Version 14
+### Version 0.14.3
+- Add camera smoothing
+    - Can adjust the damping value (lower is smoother, higher is more responsive)
+- First version of player to vendor camera transition
+    - Need to add a slide to where the vendor is
+    - Might want to zoom the camera out a bit
+
 ### Version 0.14.2
 - Change AudioManager to use a singleton
 

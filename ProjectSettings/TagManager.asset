@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Test
   - Bullet
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Vendor
   - Water
   - UI
   - Map
