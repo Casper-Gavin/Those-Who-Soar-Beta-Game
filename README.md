@@ -13,6 +13,13 @@ AIVA's modification tools.
 # Version History
 
 ## Version 14
+### Version 0.14.4
+- Updated camera smoothing
+    - Camera now follows player less smoothly
+    - Camera now follows the player more closely when dashing
+- Camera now shares the distance between it a specified target to make it easier to see (vendor for now, will prolly add boss when it is added)
+- Added a camera zoom out when the player is near a target (vendor for now, will prolly add boss when it is added)
+
 ### Version 0.14.3
 - Add camera smoothing
     - Can adjust the damping value (lower is smoother, higher is more responsive)
