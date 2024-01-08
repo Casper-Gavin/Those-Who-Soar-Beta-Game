@@ -52,4 +52,8 @@ public class CharacterDash : CharacterAbilities {
         isDashing = false;
         controller.NormalMovement = true;
     }
+
+    public bool GetIsDashing() {
+        return isDashing;
+    }
 }
