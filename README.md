@@ -13,6 +13,10 @@ AIVA's modification tools.
 # Version History
 
 ## Version 14
+### Version 0.14.4
+- Add basic sword support for player
+- Add support for separate weapon images for the UI equipped weapon visualization.
+
 ### Version 0.14.3
 - Add camera smoothing
     - Can adjust the damping value (lower is smoother, higher is more responsive)

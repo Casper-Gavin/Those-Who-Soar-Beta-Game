@@ -19,6 +19,7 @@ public class MeleeWeapon : WeaponBase
     {
         boxCollider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
+        base.Awake();
     }
 
     public override void Attack()
@@ -38,8 +39,20 @@ public class MeleeWeapon : WeaponBase
 
     public override void EquipWeapon()
     {
-        // do nothing
         // add equip animation maybe?
+        // use WeaponOwner
+        if (WeaponOwner.CharacterTypes == Character.CharacterTypeEnum.Player)
+        {
+            UIManager.Instance.HideAmmo();
+            if (weaponUISprite != null)
+            {
+                UIManager.Instance.UpdateWeaponSprite(weaponUISprite);
+            }
+            else
+            {
+                UIManager.Instance.UpdateWeaponSprite(gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite);
+            }
+        }
     }
 
     public override void HolsterWeapon()
@@ -73,5 +86,23 @@ public class MeleeWeapon : WeaponBase
             currentlyAttacking = true;
             animator.SetTrigger(useMeleeWeapon);
         }
+    }
+
+    protected override void FlipWeapon()
+    {
+        /*if (WeaponOwner.CharacterTypes == Character.CharacterTypeEnum.Player)
+        {*/
+            bool right = WeaponOwner.GetComponent<CharacterFlip>().FacingRight;
+            Vector3 newScale = transform.localScale;
+            if (right)
+            {
+                newScale.x = Mathf.Abs(newScale.x);
+            }
+            else
+            {
+                newScale.x = -Mathf.Abs(newScale.x);
+            }
+            transform.localScale = newScale;
+        //}
     }
 }

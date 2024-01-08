@@ -76,8 +76,14 @@ public class UIManager : Singleton<UIManager>
         weaponImage.SetNativeSize();
     }
 
+    public void HideAmmo()
+    {
+        currentAmmoTMP.enabled = false;
+    }
+
     public void UpdateAmmo(int currentAmmo, int maxAmmo)
     {
+        currentAmmoTMP.enabled = true;
         playerCurrentAmmo = currentAmmo;
         playerMaxAmmo = maxAmmo;
     }

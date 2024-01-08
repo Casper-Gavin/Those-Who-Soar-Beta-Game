@@ -123,8 +123,14 @@ public class ProjectileWeapon : WeaponBase
         if (WeaponOwner.CharacterTypes == Character.CharacterTypeEnum.Player)
         {
             UIManager.Instance.UpdateAmmo(CurrentAmmo, magazineSize);
-            // this implies that we must have sprite as first child
-            UIManager.Instance.UpdateWeaponSprite(gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite);
+            if (weaponUISprite != null)
+            {
+                UIManager.Instance.UpdateWeaponSprite(weaponUISprite);
+            }
+            else
+            {
+                UIManager.Instance.UpdateWeaponSprite(gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite);
+            }
         }
     }
 

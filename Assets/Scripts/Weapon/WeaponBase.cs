@@ -10,6 +10,7 @@ public abstract class WeaponBase : MonoBehaviour
 
     [Header("Settings")]
     [SerializeField] protected float attackCooldown = 0.5f;
+    [SerializeField] protected Sprite weaponUISprite; 
 
     public string WeaponName => weaponName;
 
