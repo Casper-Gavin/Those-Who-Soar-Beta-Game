@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2250954650049161096}
   - component: {fileID: 4842816323978543552}
   - component: {fileID: -2219299530553652623}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EnemySword
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -129,6 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Sword
   attackCooldown: 1
+  weaponUISprite: {fileID: 0}
 --- !u!1 &2860121596719681031
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,14 @@ public class MeleeAttack : MonoBehaviour
         // but wait, we don't want it to be able
         // to damage other enemies? Maybe a layer thing, like for bullets
         // check!!!!
-        other.GetComponent<PlayerHealth>()?.TakeDamage(damage);
+        //other.GetComponent<PlayerHealth>()?.TakeDamage(damage);
+        if (gameObject.layer == 9 /* enemy */)
+        {
+            other.GetComponent<PlayerHealth>()?.TakeDamage(damage);
+        }
+        else
+        {
+            other.GetComponent<HealthBase>()?.TakeDamage(damage);
+        }
     }
 }

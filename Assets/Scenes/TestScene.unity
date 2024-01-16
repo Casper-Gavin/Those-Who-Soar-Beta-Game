@@ -13495,7 +13495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9f9550191585e14b8e087efb0cf71cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponToUse: {fileID: 7165642953815872459, guid: ecc7eb7b99dd5184cb449f61eea2485f, type: 3}
+  weaponToUse: {fileID: -2219299530553652623, guid: 5f5e2b2167605904fb4dba8522b81f4f, type: 3}
   weaponHolderPosition: {fileID: 1220818734}
 --- !u!114 &1503698340
 MonoBehaviour:
@@ -14408,6 +14408,7 @@ MonoBehaviour:
   weaponItem: {fileID: 11400000, guid: ee5e4e5105f14af47bd6db191824933d, type: 2}
   healthItem: {fileID: 11400000, guid: 84fe41917ab9f634e8e4a83cf16cfdfd, type: 2}
   shieldItem: {fileID: 11400000, guid: 799bc097dacf94d40862ebfb8defe830, type: 2}
+  playerCollider: {fileID: 1503698329}
   canOpenShop: 0
   OnPlayerEnterShopZone:
     m_PersistentCalls:

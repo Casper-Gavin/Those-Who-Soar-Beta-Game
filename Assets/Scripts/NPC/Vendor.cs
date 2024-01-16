@@ -32,7 +32,6 @@ public class Vendor : MonoBehaviour
 
         if (shopPanel.activeInHierarchy) {
             BuyItems();
-
         }
     }
 
@@ -69,7 +68,6 @@ public class Vendor : MonoBehaviour
             characterWeapon = other.GetComponent<CharacterWeapon>();
             canOpenShop = true;
             popUpPanel.SetActive(true); 
-
             OnPlayerEnterShopZone.Invoke();
         }
 
@@ -81,7 +79,6 @@ public class Vendor : MonoBehaviour
             canOpenShop = false;
             popUpPanel.SetActive(false);
             shopPanel.SetActive(false);
-
             OnPlayerExitShopZone.Invoke();
         }
 

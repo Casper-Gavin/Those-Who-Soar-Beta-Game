@@ -146,7 +146,7 @@ public class Camera2D : MonoBehaviour {
         }
     }
 
-    private void OnTriggerEnter2D (Collider2D other) {
+    /*private void OnTriggerEnter2D (Collider2D other) {
         if (other.CompareTag("Vendor")) {
             vendorTransform = other.GetComponent<Transform>();
             if (cameraFollow == CameraFollow.FollowPlayer) {
@@ -162,7 +162,7 @@ public class Camera2D : MonoBehaviour {
                 vendorTransform = null;
             }
         }
-    }
+    }*/
 
     private void FollowTarget(Transform target, Vector2 offset) {
         Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, originalZoom, Time.deltaTime * smoothSpeed);
@@ -198,8 +198,9 @@ public class Camera2D : MonoBehaviour {
     private void TransitionToVendor() {
         if (cameraFollow == CameraFollow.FollowPlayer) {
             isTransitionComplete = false;
-            cameraFollow = CameraFollow.TransitionToVendor;
-            StartCoroutine(TransitionDelay());
+            cameraFollow = CameraFollow.FollowVendor;
+            //cameraFollow = CameraFollow.TransitionToVendor;
+            //StartCoroutine(TransitionDelay());
         }
     }
 

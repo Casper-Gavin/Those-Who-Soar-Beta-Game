@@ -13,6 +13,10 @@ AIVA's modification tools.
 # Version History
 
 ## Version 14
+### Version 0.14.6
+- Fix camera stuck on vendor mode
+- Make sword damage enemies, default weapon
+
 ### Version 0.14.5
 - Add basic sword support for player
 - Add support for separate weapon images for the UI equipped weapon visualization.
