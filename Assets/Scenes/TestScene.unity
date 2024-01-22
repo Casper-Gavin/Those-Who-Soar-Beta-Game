@@ -1426,7 +1426,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4280868325
-  m_fontColor: {r: 0.8962264, g: 0.86558115, b: 0.15726238, a: 1}
+  m_fontColor: {r: 0.8980392, g: 0.18039216, b: 0.15686274, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2812,7 +2812,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4280868325
-  m_fontColor: {r: 0.8962264, g: 0.86558115, b: 0.15726238, a: 1}
+  m_fontColor: {r: 0.8980392, g: 0.18039216, b: 0.15686275, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -14408,7 +14408,6 @@ MonoBehaviour:
   weaponItem: {fileID: 11400000, guid: ee5e4e5105f14af47bd6db191824933d, type: 2}
   healthItem: {fileID: 11400000, guid: 84fe41917ab9f634e8e4a83cf16cfdfd, type: 2}
   shieldItem: {fileID: 11400000, guid: 799bc097dacf94d40862ebfb8defe830, type: 2}
-  playerCollider: {fileID: 1503698329}
   canOpenShop: 0
   OnPlayerEnterShopZone:
     m_PersistentCalls:
@@ -20197,7 +20196,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4280868325
-  m_fontColor: {r: 0.8962264, g: 0.86558115, b: 0.15726238, a: 1}
+  m_fontColor: {r: 0.8980392, g: 0.17960459, b: 0.15686274, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

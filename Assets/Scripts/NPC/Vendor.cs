@@ -29,6 +29,7 @@ public class Vendor : MonoBehaviour
     private void Update() {
         if (canOpenShop) {
             if(Input.GetKeyDown(KeyCode.J)) {
+                CanBeBought();
                 shopPanel.SetActive(true);
                 popUpPanel.SetActive(false);
             }
@@ -98,5 +99,9 @@ public class Vendor : MonoBehaviour
     private void ProductBought(int amount) {
         shopPanel.SetActive(false);
         CoinManager.Instance.RemoveCoins(amount);
+    }
+
+    public void CanBeBought() {
+        // change item text from red to yellow if item can be bought
     }
 }

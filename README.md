@@ -17,6 +17,7 @@ AIVA's modification tools.
 ### Version 0.14.7
 - Stopped player from being able to buy health/shield when at full health/shield from vendor
 - Added IsFullHealth function for use
+- Changed default item cost text to red
 
 ### Version 0.14.6
 - Fix camera stuck on vendor mode
