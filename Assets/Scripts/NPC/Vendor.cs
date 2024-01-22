@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -15,11 +16,14 @@ public class Vendor : MonoBehaviour
     [SerializeField] private VendorItem healthItem;
     [SerializeField] private VendorItem shieldItem;
 
+
     public bool canOpenShop;
     private CharacterWeapon characterWeapon;
 
     public UnityEvent OnPlayerEnterShopZone;
     public UnityEvent OnPlayerExitShopZone;
+
+    protected Character character;
 
     // open and close shop panel
     private void Update() {
@@ -35,6 +39,7 @@ public class Vendor : MonoBehaviour
         }
     }
 
+    // buy secondary gun (for now)
     private void BuyItems() {
         if (Input.GetKeyDown(KeyCode.M)) {
             if (CoinManager.Instance.Coins >= weaponItem.Cost) {
@@ -47,17 +52,23 @@ public class Vendor : MonoBehaviour
             }
         }
 
+        // buy shield - checks for coin amount and then checks if the player has max shield (buying shield has no point)
         if (Input.GetKeyDown(KeyCode.N)) {
             if (CoinManager.Instance.Coins >= shieldItem.Cost) {
-                shieldItem.shieldItem.AddShield(characterWeapon.GetComponent<Character>());
-                ProductBought(shieldItem.Cost);
+                if (characterWeapon.GetComponent<Character>().GetComponent<PlayerHealth>().CurrentShield != 5f) {
+                    shieldItem.shieldItem.AddShield(characterWeapon.GetComponent<Character>());
+                    ProductBought(shieldItem.Cost);
+                }
             }
         }
 
+        //buy health
         if (Input.GetKeyDown(KeyCode.B)) {
             if (CoinManager.Instance.Coins >= healthItem.Cost) {
-                healthItem.healthItem.AddHealth(characterWeapon.GetComponent<Character>());
-                ProductBought(healthItem.Cost);
+                if (characterWeapon.GetComponent<Character>().GetComponent<PlayerHealth>().CurrentHealth != 10f) {
+                    healthItem.healthItem.AddHealth(characterWeapon.GetComponent<Character>());
+                    ProductBought(healthItem.Cost);
+                }
             }
         }
     }
