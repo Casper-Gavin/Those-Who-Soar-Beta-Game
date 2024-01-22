@@ -4,7 +4,7 @@ public class PlayerHealth : HealthBase
 {
     [Header("Shield")]
     [SerializeField] private float initialShield = 5f;
-    [SerializeField] private float maxShield = 5f;
+    [SerializeField] protected float maxShield = 5f;
     
     private Character character;
     private PlayerController controller;
@@ -12,6 +12,7 @@ public class PlayerHealth : HealthBase
     private SpriteRenderer[] spriteRenderers;
     private bool shieldBroken;
     public float CurrentShield { get; set; }
+
 
     // Awake is called before start
     protected override void Awake()
@@ -116,5 +117,21 @@ public class PlayerHealth : HealthBase
     protected override void UpdateHealth()
     {
         UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield);
+    }
+
+    public bool IsFullHealth(string healthType ) {
+        if (healthType.Equals("health")) {
+            if (maxHealth == CurrentHealth) {
+                  return true;
+            }
+        }
+
+        if (healthType.Equals("shield")) {
+            if (maxShield == CurrentShield) {
+                  return true;
+            }
+        }
+
+        return false;
     }
 }

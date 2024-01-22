@@ -1426,7 +1426,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4280868325
-  m_fontColor: {r: 0.8962264, g: 0.86558115, b: 0.15726238, a: 1}
+  m_fontColor: {r: 0.8980392, g: 0.18039216, b: 0.15686274, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2812,7 +2812,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4280868325
-  m_fontColor: {r: 0.8962264, g: 0.86558115, b: 0.15726238, a: 1}
+  m_fontColor: {r: 0.8980392, g: 0.18039216, b: 0.15686275, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -13495,7 +13495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9f9550191585e14b8e087efb0cf71cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponToUse: {fileID: 7165642953815872459, guid: ecc7eb7b99dd5184cb449f61eea2485f, type: 3}
+  weaponToUse: {fileID: -2219299530553652623, guid: 5f5e2b2167605904fb4dba8522b81f4f, type: 3}
   weaponHolderPosition: {fileID: 1220818734}
 --- !u!114 &1503698340
 MonoBehaviour:
@@ -20196,7 +20196,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4280868325
-  m_fontColor: {r: 0.8962264, g: 0.86558115, b: 0.15726238, a: 1}
+  m_fontColor: {r: 0.8980392, g: 0.17960459, b: 0.15686274, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

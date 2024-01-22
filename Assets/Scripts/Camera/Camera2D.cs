@@ -185,7 +185,7 @@ public class Camera2D : MonoBehaviour {
         }
     }
 
-    private void OnTriggerEnter2D (Collider2D other) {
+    /*private void OnTriggerEnter2D (Collider2D other) {
         if (other.CompareTag("Vendor")) {
             vendorTransform = other.GetComponent<Transform>();
             if (cameraFollow == CameraFollow.FollowPlayer) {
@@ -202,24 +202,6 @@ public class Camera2D : MonoBehaviour {
                 TransitionToPlayer();
                 vendorTransform = null;
             }
-        }
-
-        isStillInZone = false;
-    }
-
-    private void CheckIfTransitionComplete() {
-        if (cameraFollow == CameraFollow.TransitionToVendor && isTransitionComplete) {
-            // Transition complete, switch to FollowVendor mode
-            cameraFollow = CameraFollow.FollowVendor;
-            isTransitionComplete = false;
-        }
-    }
-
-    private void CheckIfPlayerIsCollidingWithTarget(Collider2D other) {
-        if (other.CompareTag("Vendor")) {
-            playerIsCollidingWithTarget = true;
-        } else if (other == null) {
-            playerIsCollidingWithTarget = false;
         }
     }
 
@@ -257,8 +239,9 @@ public class Camera2D : MonoBehaviour {
     private void TransitionToVendor() {
         if (cameraFollow == CameraFollow.FollowPlayer) {
             isTransitionComplete = false;
-            cameraFollow = CameraFollow.TransitionToVendor;
-            StartCoroutine(TransitionDelay());
+            cameraFollow = CameraFollow.FollowVendor;
+            //cameraFollow = CameraFollow.TransitionToVendor;
+            //StartCoroutine(TransitionDelay());
         }
     }
 
