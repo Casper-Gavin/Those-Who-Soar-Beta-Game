@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
 using UnityEngine;
 
 public class Camera2D : MonoBehaviour {
@@ -42,8 +41,6 @@ public class Camera2D : MonoBehaviour {
     private float originalZoom;
     private Vector3 currentVelocity;
     private bool isTransitionComplete = false;
-    private bool playerIsCollidingWithTarget = false;
-    private bool isStillInZone = false;
     private Transform vendorTransform;
 
     [Header("Movement")]
@@ -94,18 +91,6 @@ public class Camera2D : MonoBehaviour {
             if (characterDash.GetIsDashing()) {
                 StartCoroutine(ChangeDampingFactor(dashDampingFactor));
             }
-
-            /*
-            CheckIfPlayerIsCollidingWithTarget(targetTransform.GetComponent<Collider2D>());
-
-            // Check if the player is still in the zone and handle transitions accordingly
-            if (!isStillInZone && cameraFollow == CameraFollow.FollowVendor && !playerIsCollidingWithTarget) {
-                TransitionToPlayer();
-            } else if (isStillInZone && cameraFollow == CameraFollow.TransitionToVendor) {
-                // Additional check to ensure a smooth transition back to FollowVendor mode
-                CheckIfTransitionComplete();
-            }
-            */
         }
     }
 
@@ -132,18 +117,6 @@ public class Camera2D : MonoBehaviour {
             if (characterDash.GetIsDashing()) {
                 StartCoroutine(ChangeDampingFactor(dashDampingFactor));
             }
-
-            /*
-            CheckIfPlayerIsCollidingWithTarget(targetTransform.GetComponent<Collider2D>());
-
-            // Check if the player is still in the zone and handle transitions accordingly
-            if (!isStillInZone && cameraFollow == CameraFollow.FollowVendor && !playerIsCollidingWithTarget) {
-                TransitionToPlayer();
-            } else if (isStillInZone && cameraFollow == CameraFollow.TransitionToVendor) {
-                // Additional check to ensure a smooth transition back to FollowVendor mode
-                CheckIfTransitionComplete();
-            }
-            */
         }
     }
 
@@ -170,18 +143,6 @@ public class Camera2D : MonoBehaviour {
             if (characterDash.GetIsDashing()) {
                 StartCoroutine(ChangeDampingFactor(dashDampingFactor));
             }
-            
-            /*
-            CheckIfPlayerIsCollidingWithTarget(targetTransform.GetComponent<Collider2D>());
-
-            // Check if the player is still in the zone and handle transitions accordingly
-            if (!isStillInZone && cameraFollow == CameraFollow.FollowVendor && !playerIsCollidingWithTarget) {
-                TransitionToPlayer();
-            } else if (isStillInZone && cameraFollow == CameraFollow.TransitionToVendor) {
-                // Additional check to ensure a smooth transition back to FollowVendor mode
-                CheckIfTransitionComplete();
-            }
-            */
         }
     }
 
@@ -191,8 +152,6 @@ public class Camera2D : MonoBehaviour {
             if (cameraFollow == CameraFollow.FollowPlayer) {
                 TransitionToVendor();
             }
-
-            isStillInZone = true;
         }
     }
 
@@ -203,7 +162,7 @@ public class Camera2D : MonoBehaviour {
                 vendorTransform = null;
             }
         }
-    }
+    }*/
 
     private void FollowTarget(Transform target, Vector2 offset) {
         Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, originalZoom, Time.deltaTime * smoothSpeed);
@@ -220,7 +179,7 @@ public class Camera2D : MonoBehaviour {
     }
 
     private void TransitionCamera(Transform target, Vector2 offset) {
-        if (vendorTransform != null && !isTransitionComplete && isStillInZone) {
+        if (vendorTransform != null && !isTransitionComplete) {
             Vector3 desiredPosition = new Vector3(target.position.x + offset.x, target.position.y + offset.y, transform.position.z);
             Vector3 dampenedPosition = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime * dampingFactor);
             Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, originalZoom * vendorZoomOut, Time.deltaTime * smoothSpeed);
@@ -260,11 +219,5 @@ public class Camera2D : MonoBehaviour {
         dampingFactor = differentDampingFactor;
         yield return new WaitForSeconds(0.65f);
         dampingFactor = originalDampingFactor;
-    }
-
-    private void CheckIfStillInZone() {
-        if (!isStillInZone && cameraFollow == CameraFollow.FollowVendor) {
-            TransitionToPlayer();
-        }
     }
 }
