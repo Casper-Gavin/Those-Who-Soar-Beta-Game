@@ -14,6 +14,9 @@ AIVA's modification tools.
 
 ## Version 14
 
+### Version 0.14.8
+- Player Sword now effects components (jars, boxes)
+
 ### Version 0.14.7
 - Stopped player from being able to buy health/shield when at full health/shield from vendor
 - Added IsFullHealth function for use
