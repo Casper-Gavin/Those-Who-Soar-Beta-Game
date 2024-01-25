@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Tilemaps;
 
 public class Vendor : MonoBehaviour
 {
@@ -29,7 +31,7 @@ public class Vendor : MonoBehaviour
     private void Update() {
         if (canOpenShop) {
             if(Input.GetKeyDown(KeyCode.J)) {
-                CanBeBought();
+                CanBuyProduct();
                 shopPanel.SetActive(true);
                 popUpPanel.SetActive(false);
             }
@@ -101,7 +103,46 @@ public class Vendor : MonoBehaviour
         CoinManager.Instance.RemoveCoins(amount);
     }
 
-    public void CanBeBought() {
-        // change item text from red to yellow if item can be bought
+    // change color of cost text - red (can't buy) or yellow (can buy)
+    public void CanBuyProduct() {
+        if (CoinManager.Instance.Coins >= shieldItem.Cost) {
+            // yellow
+            GameObject Tmp = shopPanel.transform.GetChild(0).GetChild(1).GetChild(0).gameObject;
+            ChangeProductColor(Tmp, 'y');
+        } else {
+            // red
+            GameObject Tmp = shopPanel.transform.GetChild(0).GetChild(1).GetChild(0).gameObject;
+            ChangeProductColor(Tmp, 'r');
+        }
+
+        if (CoinManager.Instance.Coins >= healthItem.Cost) {
+            // yellow
+            GameObject Tmp = shopPanel.transform.GetChild(0).GetChild(0).GetChild(0).gameObject;
+            ChangeProductColor(Tmp, 'y');
+        } else {
+            // red
+            GameObject Tmp = shopPanel.transform.GetChild(0).GetChild(0).GetChild(0).gameObject;
+            ChangeProductColor(Tmp, 'r');        }
+
+        if (CoinManager.Instance.Coins >= weaponItem.Cost) {
+            // yellow
+            GameObject Tmp = shopPanel.transform.GetChild(0).GetChild(2).GetChild(0).gameObject;
+            ChangeProductColor(Tmp, 'y');
+        } else {
+            // red
+            GameObject Tmp = shopPanel.transform.GetChild(0).GetChild(2).GetChild(0).gameObject;
+            ChangeProductColor(Tmp, 'r');
+        }
     }
-}
+
+    public void ChangeProductColor(GameObject tmp, char color) {
+        switch (color) {
+            case 'y':
+              tmp.GetComponent<TextMeshProUGUI>().color = new Color32(227, 229, 40, 255);
+              break;
+            case 'r':
+                tmp.GetComponent<TextMeshProUGUI>().color = new Color32(229, 46, 40, 255);
+                break;
+        } 
+    }
+ }
