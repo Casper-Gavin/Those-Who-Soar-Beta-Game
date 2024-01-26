@@ -2,5 +2,5 @@ remote_theme: pages-themes/slate@v0.2.0
 plugins:
 - jekyll-remote-theme # add this line to the plugins list if you already have one
 
-title: UNR CSE CS 425/426 Senior Project
-# description: [A short description of your site's purpose]
+title: CS 426 Senior Project in Computer Science, Spring 2024, at UNR, CSE Department
+description: This is a game project that Carter Webb, Andrew Kalb, and Gavin Casper have worked on for our senior project. Our CS 426 project, "Those Who Soar," is a top-down roguelike game featuring a 2D art style, designed to showcase our skills as beginner Unity programmers. We aim to enhance the game's appeal by adding various features like multiple difficulty levels, custom assets, new weapons, and the actual level design. This document outlines the game's development, including objectives, technical specifications, and progress. The project's significance, team responsibilities, ethical considerations, risk management strategies, and the ability to adhere to accessibility standards are also addressed, ensuring a clear and structured approach to achieving our goals for this project.
