@@ -12,10 +12,6 @@ public class ProjectileWeapon : WeaponBase
     [SerializeField] private int magazineSize = 30;
     [SerializeField] private bool reloadAutomatically = true;
 
-    [Header("Recoil")]
-    [SerializeField] private bool recoilEnabled = true;
-    [SerializeField] private int recoilForce = 5; // what are the units for this?
-
     [Header("Effects")]
     [SerializeField] private ParticleSystem muzzlePS;
 
@@ -68,10 +64,6 @@ public class ProjectileWeapon : WeaponBase
     {
         if (OffAttackCooldown)
         {
-            if (recoilEnabled)
-            {
-                Recoil();
-            }
             animator.SetTrigger(shootAnimationParameter);
             WeaponAmmo.ConsumeAmmo();
             if (WeaponOwner.CharacterTypes == Character.CharacterTypeEnum.Player)
@@ -111,10 +103,7 @@ public class ProjectileWeapon : WeaponBase
 
     public override void StopAttack()
     {
-        if (recoilEnabled)
-        {
-            controller.ApplyRecoil(Vector2.one, 0f); // halt recoil
-        }
+
     }
 
     public override void EquipWeapon()
@@ -138,15 +127,6 @@ public class ProjectileWeapon : WeaponBase
     {
         WeaponAmmo.SaveAmmo();
         Pooler.DestroyPool();
-    }
-
-    private void Recoil()
-    {
-        if (WeaponOwner != null)
-        {
-            bool right = WeaponOwner.GetComponent<CharacterFlip>().FacingRight;
-            controller.ApplyRecoil(right ? Vector2.left : Vector2.right, recoilForce);
-        }
     }
 
     public override void Reload()

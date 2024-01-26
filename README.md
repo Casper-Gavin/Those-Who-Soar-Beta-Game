@@ -14,6 +14,9 @@ AIVA's modification tools.
 
 ## Version 14
 
+### Version 0.14.9.5
+- Got rid of all recoil
+
 ### Version 0.14.9
 - Added color change to vendor cost text - yellow for can buy, red for can't buy
 
