@@ -3,67 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Version History</title>
+    <title>Project Version History</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
         }
         .container {
             width: 80%;
-            margin: auto;
-            overflow: hidden;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
         }
-        .version-section {
-            background: #f4f4f4;
-            padding: 15px;
-            border: #ccc 1px solid;
-            margin-bottom: 15px;
+        h1 {
+            color: #333;
         }
-        .version-section:hover {
-            background: #e9e9e9;
+        h2 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
         }
-        h2, h3 {
-            margin-bottom: 10px;
+        .version {
+            margin-bottom: 20px;
         }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            margin-bottom: 5px;
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Game Version History</h1>
+    <div class="navbar">
+        <h1>Project Name - Version History</h1>
+    </div>
 
+    <div class="container">
         <!-- Version 14 -->
-        <div class="version-section">
+        <div class="version">
             <h2>Version 14</h2>
-            <h3>Version 0.14.9.5</h3>
-            <ul>
-                <li>Got rid of all recoil</li>
-            </ul>
-            <!-- More Version 0.14.x details -->
-            <!-- ... -->
+            <p>Version 0.14.9.5: Got rid of all recoil</p>
+            <p>Version 0.14.9: Added color change to vendor cost text - yellow for can buy, red for can't buy</p>
+            <!-- Add other subversions here -->
         </div>
 
         <!-- Version 13 -->
-        <div class="version-section">
+        <div class="version">
             <h2>Version 13</h2>
-            <h3>Version 0.13.6</h3>
-            <ul>
-                <li>Added an option to change the volume of the music in the pause menu</li>
-            </ul>
-            <!-- More Version 0.13.x details -->
-            <!-- ... -->
+            <p>Version 0.13.6: Added an option to change the volume of the music in the pause menu</p>
+            <!-- Add other subversions here -->
         </div>
 
-        <!-- More versions -->
-        <!-- ... -->
+        <!-- Add other versions here -->
 
+    </div>
+
+    <div class="footer">
+        <p>© 2024 Project Name. All rights reserved.</p>
     </div>
 </body>
 </html>
