@@ -28,7 +28,6 @@ public class ComponentBase : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Bullet") || other.CompareTag("PlayerSword"))
         {
-            Debug.Log("Entered");
             TakeDamage();
         }
     }
@@ -36,7 +35,6 @@ public class ComponentBase : MonoBehaviour
     // checks if component is destroyed and if it needs to replace or get rid of component sprite
     // only bullet needs to have Is Trigger on - only one object in a collision
     private void TakeDamage() {
-        Debug.Log("taking damage" + damage);
         health.TakeDamage(damage);
 
         if (health.CurrentHealth > 0) {

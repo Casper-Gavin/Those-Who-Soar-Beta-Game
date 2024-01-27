@@ -50,7 +50,6 @@ public abstract class WeaponBase : MonoBehaviour
         if (Time.time > nextAttackTime)
         {
             OffAttackCooldown = true;
-            nextAttackTime = Time.time + attackCooldown;
         }
     }
 

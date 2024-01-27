@@ -29,7 +29,8 @@ public class MeleeWeapon : WeaponBase
     
     public override void StopAttack()
     {
-        // do nothing
+        //Debug.Log("Attack stopped");
+        boxCollider.enabled = false;
     }
 
     public override void Reload()
@@ -68,7 +69,6 @@ public class MeleeWeapon : WeaponBase
             boxCollider.enabled = false; // attack finished,
             currentlyAttacking = false;
             OffAttackCooldown = true;
-            nextAttackTime = Time.time + attackCooldown;
         }
     }
 
@@ -85,6 +85,7 @@ public class MeleeWeapon : WeaponBase
         {
             currentlyAttacking = true;
             animator.SetTrigger(useMeleeWeapon);
+            nextAttackTime = Time.time + attackCooldown;
         }
     }
 

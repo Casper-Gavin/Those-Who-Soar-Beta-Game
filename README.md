@@ -14,6 +14,13 @@ AIVA's modification tools.
 
 ## Version 14
 
+### Version 0.14.10
+- Fix sword bug for damaging an enemy multiple times with the same stroke
+- Fix double shooting/attacking (not setting cooldown at right spot)
+- Don't play attack animation on weapon equip (for sword, left it for guns)
+    - ParticleSystem's are ticked to Play on Awake, can't untick without losing the effect completely
+    - Attack animation was set to true by default in the unity animator
+
 ### Version 0.14.9.5
 - Got rid of all recoil
 

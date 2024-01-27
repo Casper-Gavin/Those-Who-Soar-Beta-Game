@@ -73,6 +73,7 @@ public class ProjectileWeapon : WeaponBase
             muzzlePS.Play();
             SpawnProjectile(DetermineProjectileSpawnPosition());
             OffAttackCooldown = false;
+            nextAttackTime = Time.time + attackCooldown;
         }
     }
 
