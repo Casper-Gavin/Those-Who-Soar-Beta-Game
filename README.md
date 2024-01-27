@@ -13,6 +13,13 @@ AIVA's modification tools.
 # Version History
 
 ## Version 14
+### Version 0.14.12
+- UI Update
+    - Changed Health Bar and Background
+    - Changed Shield Bar and Background
+    - Changed Coin placement
+    - Changed In-Game UI Background
+    - Changed Weapon Background
 
 ### Version 0.14.11
 - Add bomber enemy initial implementation
