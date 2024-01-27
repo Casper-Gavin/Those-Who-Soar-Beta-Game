@@ -8,6 +8,8 @@ TagManager:
   - Bullet
   - EnemyBullet
   - Vendor
+  - PlayerSword
+  - Bomber
   layers:
   - Default
   - TransparentFX

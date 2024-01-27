@@ -298,6 +298,13 @@ MonoBehaviour:
   enemyHealthBarPrefab: {fileID: 1902742380146519168, guid: 406c2ac19145103419cbcb1b1676ec4f, type: 3}
   offset: {x: 0, y: 1, z: 0}
   damageTakenFromBullet: 1
+  flashColor: {r: 1, g: 1, b: 1, a: 1}
+  flashDuration: 0.5
+  numberOfFlashes: 4
+  explosionRadius: 5
+  explosionDamage: 5
+  explosionEffectPrefab: {fileID: 0}
+  IsDead: 0
 --- !u!1 &3194604968942460483
 GameObject:
   m_ObjectHideFlags: 0
