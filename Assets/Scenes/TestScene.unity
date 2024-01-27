@@ -21892,6 +21892,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyWithMeleeAndBomber
       objectReference: {fileID: 0}
+    - target: {fileID: 4759027120616304255, guid: 4b36a959636dfe146850f12fb638c0b9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8864872726872276244, guid: 4b36a959636dfe146850f12fb638c0b9, type: 3}
       propertyPath: characterSprite
       value: 

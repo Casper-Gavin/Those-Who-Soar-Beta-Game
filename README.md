@@ -14,6 +14,9 @@ AIVA's modification tools.
 
 ## Version 14
 
+### Version 0.14.11
+- Add bomber enemy initial implementation
+
 ### Version 0.14.10
 - Fix sword bug for damaging an enemy multiple times with the same stroke
 - Fix double shooting/attacking (not setting cooldown at right spot)
