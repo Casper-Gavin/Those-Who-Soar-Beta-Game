@@ -1,4 +1,4 @@
-# CS425SeniorProject
+# CS 425/426 Senior Project
 
 Unity Version: 2022.3.9f1 (LTS)
 
