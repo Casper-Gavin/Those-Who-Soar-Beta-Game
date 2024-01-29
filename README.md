@@ -13,6 +13,10 @@ AIVA's modification tools.
 # Version History
 
 ## Version 14
+### Version 0.14.14.1
+- Decrease number of melee enemies spawned
+- Remove debug logs around bomber
+
 ### Version 0.14.14
 - Fix ammo text (was too large, on two lines)
 - Increase sword attack rate for player

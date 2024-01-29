@@ -21841,7 +21841,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5467002295590356507, guid: c93457e15697ce24db47f328eba688bb, type: 3}
       propertyPath: prefabsToSpawn.Array.data[0].quantity
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5467002295590356507, guid: c93457e15697ce24db47f328eba688bb, type: 3}
       propertyPath: prefabsToSpawn.Array.data[1].quantity

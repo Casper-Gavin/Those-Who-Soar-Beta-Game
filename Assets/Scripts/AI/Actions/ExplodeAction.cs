@@ -39,18 +39,15 @@ public class ExplodeAction : AIAction
     {
         if (controller.Target == null)
         {
-            Debug.Log("null target");
             return;
         }
 
         if (CanFlash())
         {
-            Debug.Log("flashing");
             Flash(controller);
         }
         else /* some logic here */
         {
-            Debug.Log("original color = " + originalColor.ToString() + " flash color = " + flashColor.ToString());
             flashTimeAccumulator += Time.deltaTime;
             if (flashTimeAccumulator < (flashDuration / 2))
             {
@@ -65,8 +62,6 @@ public class ExplodeAction : AIAction
 
     private bool CanFlash() 
     {
-        Debug.Log("current flash count " + currentFlashCount);
-        Debug.Log("number of flashes " + numberOfFlashes);
         if (currentFlashCount < numberOfFlashes && flashTimeAccumulator >= flashDuration)
         {
             return true;
@@ -76,7 +71,6 @@ public class ExplodeAction : AIAction
 
     private void Flash(StateController controller)
     {
-        Debug.Log("flash ");
         currentFlashCount++;
         flashTimeAccumulator = 0f;
         if (currentFlashCount == numberOfFlashes)
