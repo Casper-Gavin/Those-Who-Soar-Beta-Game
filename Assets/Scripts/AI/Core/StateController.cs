@@ -30,6 +30,7 @@ public class StateController : MonoBehaviour
         Collider2D = GetComponent<Collider2D>();
 
         Player = GameObject.FindWithTag("Player").transform;
+        currentState.InitActions(this);
     }
 
     private void Update()
@@ -42,6 +43,7 @@ public class StateController : MonoBehaviour
         if (nextState != remainState)
         {
             currentState = nextState;
+            currentState.InitActions(this);
         }
     }
 

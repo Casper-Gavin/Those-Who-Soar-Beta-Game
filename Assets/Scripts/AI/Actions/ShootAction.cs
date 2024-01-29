@@ -5,6 +5,11 @@ public class ShootAction : AIAction
 {
     private Vector2 aimDirection;
 
+    public override void Init(StateController controller)
+    {
+        // do nothing
+    }
+
     public override void Act(StateController controller)
     {
         DetermineAim(controller);

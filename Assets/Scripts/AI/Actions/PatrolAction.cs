@@ -7,6 +7,11 @@ public class PatrolAction : AIAction
 {
     private Vector2 newDirection;
 
+    public override void Init(StateController controller)
+    {
+        // do nothing
+    }
+
     public override void Act(StateController controller)
     {
         Patrol(controller);

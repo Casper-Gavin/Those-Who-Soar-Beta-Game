@@ -206,11 +206,11 @@ GameObject:
   - component: {fileID: 1225683903622905605}
   - component: {fileID: 8917905590709058579}
   - component: {fileID: 4585017240799912773}
-  - component: {fileID: 935786242296771569}
   - component: {fileID: 4277196619551115957}
   - component: {fileID: 1853044800803855028}
+  - component: {fileID: 6060058122507051321}
   m_Layer: 9
-  m_Name: EnemyWithMeleeAndBomber
+  m_Name: EnemyBomber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed4c49cf32db0db47b21d0a0ecd79938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: {fileID: 11400000, guid: 28e4a9d1b635daa4ea2ad1ae8bc0298c, type: 2}
+  currentState: {fileID: 11400000, guid: 3ee25e5549e46dc429ebef60c2d08b94, type: 2}
   remainState: {fileID: 11400000, guid: fb97a3b88e0a6f242a213774dd31d812, type: 2}
   fieldOfView: {fileID: 0}
 --- !u!114 &8864872726872276244
@@ -334,8 +334,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterType: 1
-  characterSprite: {fileID: 0}
-  characterAnimator: {fileID: 0}
+  characterSprite: {fileID: 3838414496108621582}
+  characterAnimator: {fileID: 3446049827218442019}
 --- !u!114 &1225683903622905605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,31 +375,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flipMode: 0
   flipThreshold: 0.1
---- !u!114 &935786242296771569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4759027120616304255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93c57f1e89681444ebe86ac0664107d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialHealth: 6
-  maxHealth: 6
-  destroyObject: 1
-  enemyHealthBarPrefab: {fileID: 1902742380146519168, guid: 406c2ac19145103419cbcb1b1676ec4f, type: 3}
-  offset: {x: 0, y: 1, z: 0}
-  damageTakenFromBullet: 1
-  flashColor: {r: 1, g: 1, b: 1, a: 1}
-  flashDuration: 0.5
-  numberOfFlashes: 4
-  explosionRadius: 5
-  explosionDamage: 5
-  explosionEffectPrefab: {fileID: 0}
-  IsDead: 0
 --- !u!114 &4277196619551115957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,6 +410,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6060058122507051321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4759027120616304255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4c19890a9c4f84d9484ee68d1648a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialHealth: 6
+  maxHealth: 6
+  destroyObject: 0
+  enemyHealthBarPrefab: {fileID: 1902742380146519168, guid: 406c2ac19145103419cbcb1b1676ec4f, type: 3}
+  offset: {x: 0, y: 1, z: 0}
+  damageTakenFromBullet: 1
 --- !u!1 &7770707990892436187
 GameObject:
   m_ObjectHideFlags: 0

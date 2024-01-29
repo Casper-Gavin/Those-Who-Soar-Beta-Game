@@ -13,6 +13,10 @@ AIVA's modification tools.
 # Version History
 
 ## Version 14
+### Version 0.14.13
+- Add bomber enemy functionality
+    - Missing explosion particle system asset
+
 ### Version 0.14.12.1
 - More UI Updates
     - Added background to pause menu and options menus

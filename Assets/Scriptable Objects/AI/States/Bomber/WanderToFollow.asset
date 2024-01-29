@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b6a61b676a554e44bccf9bc8129651d, type: 3}
-  m_Name: ExplodeOnDeathState
+  m_Name: WanderToFollow
   m_EditorClassIdentifier: 
   Actions:
-  - {fileID: 11400000, guid: 10ac832edcd12ed459a00b08f56e5824, type: 2}
+  - {fileID: 11400000, guid: 0da0fac4717409b4e84c6d18b64e5789, type: 2}
   Transitions:
   - Decision: {fileID: 11400000, guid: 2976d8033639b3e4dbc2ba7fb4e297ac, type: 2}
-    TrueState: {fileID: 11400000, guid: fb97a3b88e0a6f242a213774dd31d812, type: 2}
-    FalseState: {fileID: 11400000, guid: a2ba9cd6ee3434c459bd6d0163e550a1, type: 2}
+    TrueState: {fileID: 11400000, guid: c63fceb01945a5048a43128b8f8fe932, type: 2}
+    FalseState: {fileID: 11400000, guid: fb97a3b88e0a6f242a213774dd31d812, type: 2}

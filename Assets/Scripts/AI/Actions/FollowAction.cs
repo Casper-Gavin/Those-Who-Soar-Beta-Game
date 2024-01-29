@@ -7,6 +7,11 @@ public class FollowAction : AIAction
 {
     public float minDistanceToFollow = 1f;
 
+    public override void Init(StateController controller)
+    {
+        // do nothing
+    }
+
     public override void Act(StateController controller)
     {
         FollowTarget(controller);

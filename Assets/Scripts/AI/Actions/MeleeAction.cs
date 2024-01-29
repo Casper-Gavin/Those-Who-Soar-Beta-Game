@@ -5,6 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "AI/Actions/Melee", fileName = "MeleeAction")]
 public class MeleeAction : AIAction
 {
+    public override void Init(StateController controller)
+    {
+        // do nothing
+    }
+
     public override void Act(StateController controller)
     {
         Attack(controller);

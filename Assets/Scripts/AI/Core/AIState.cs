@@ -8,6 +8,14 @@ public class AIState : ScriptableObject
     public AIAction[] Actions;
     public AITransition[] Transitions;
 
+    public void InitActions(StateController controller)
+    {
+        foreach (AIAction action in Actions)
+        {
+            action.Init(controller);
+        }
+    }
+
     public void EvaluateState(StateController controller)
     {
         DoActions(controller);

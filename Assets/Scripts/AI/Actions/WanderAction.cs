@@ -15,6 +15,11 @@ public class WanderAction : AIAction
     private Vector2 wanderDirection;
     private float wanderCheckTime;
 
+    public override void Init(StateController controller)
+    {
+        // do nothing
+    }
+
     public override void Act(StateController controller)
     {
         EvaluateObstacles(controller);
