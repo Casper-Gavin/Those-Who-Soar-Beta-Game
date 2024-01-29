@@ -85,6 +85,8 @@ public class MeleeWeapon : WeaponBase
         {
             currentlyAttacking = true;
             animator.SetTrigger(useMeleeWeapon);
+            // set animation length to be the same as attack speed??
+
             nextAttackTime = Time.time + attackCooldown;
         }
     }

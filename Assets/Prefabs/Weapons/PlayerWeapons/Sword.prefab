@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Sword
-  attackCooldown: 1
+  attackCooldown: 0.4
   weaponUISprite: {fileID: 21300000, guid: 3b44ebb8b67644d4dbfe24884f0a20b4, type: 3}
 --- !u!114 &5951269479665813096
 MonoBehaviour:

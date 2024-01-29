@@ -13,6 +13,10 @@ AIVA's modification tools.
 # Version History
 
 ## Version 14
+### Version 0.14.14
+- Fix ammo text (was too large, on two lines)
+- Increase sword attack rate for player
+
 ### Version 0.14.13
 - Add bomber enemy functionality
     - Missing explosion particle system asset
