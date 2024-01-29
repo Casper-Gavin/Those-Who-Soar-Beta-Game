@@ -17,6 +17,8 @@ public class MeleeAttack : MonoBehaviour
         if (gameObject.layer == 9 /* enemy hit player*/)
         {
             other.GetComponent<PlayerHealth>()?.TakeDamage(damage);
+            // cancel sword collider so no multiple damages on one swing
+            gameObject.GetComponent<MeleeWeapon>().StopAttack();
         }
         // level component damage is even more custom, handled in componentBase
         // TODO: may want to redo componentbase so that we can remove the if statement here

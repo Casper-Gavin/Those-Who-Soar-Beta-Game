@@ -13,6 +13,9 @@ AIVA's modification tools.
 # Version History
 
 ## Version 14
+### Version 0.14.14.2
+- Fixed a bug where melee enemies would hit the player more than once on a single swing
+
 ### Version 0.14.14.1
 - Decrease number of melee enemies spawned
 - Remove debug logs around bomber
