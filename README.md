@@ -13,6 +13,10 @@ AIVA's modification tools.
 # Version History
 
 ## Version 14
+
+### Versoin 0.14.15
+- Added the Tutorial Scene
+
 ### Version 0.14.14.2
 - Fixed a bug where melee enemies would hit the player more than once on a single swing
 
