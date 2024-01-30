@@ -10,7 +10,7 @@ public class ProjectileWeapon : WeaponBase
     [Header("Weapon")]
     [SerializeField] private bool useMagazine = true;
     [SerializeField] private int magazineSize = 30;
-    [SerializeField] private bool reloadAutomatically = true;
+    [SerializeField] private bool reloadAutomatically = false;
 
     [Header("Effects")]
     [SerializeField] private ParticleSystem muzzlePS;

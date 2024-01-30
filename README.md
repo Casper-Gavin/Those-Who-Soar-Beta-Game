@@ -14,6 +14,9 @@ AIVA's modification tools.
 
 ## Version 14
 
+### Versopm 0.14.16
+ - Changed all current gun weapons to not have automatic reload
+
 ### Versoin 0.14.15
 - Added the Tutorial Scene
 

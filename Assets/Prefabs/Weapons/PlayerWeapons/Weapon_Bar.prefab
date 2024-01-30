@@ -113,13 +113,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Bar
   attackCooldown: 0.15
+  weaponUISprite: {fileID: 0}
   projectileSpawnPosition: {x: 1.55, y: 0.11, z: 0}
   projectileSpread: {x: 0, y: 0, z: 5}
   useMagazine: 1
   magazineSize: 30
-  reloadAutomatically: 1
-  recoilEnabled: 1
-  recoilForce: 5
+  reloadAutomatically: 0
   muzzlePS: {fileID: 6648466872139044970, guid: 883841be30f5d984e8e47af34eebbee1, type: 3}
 --- !u!1 &3888321724954760950
 GameObject:
