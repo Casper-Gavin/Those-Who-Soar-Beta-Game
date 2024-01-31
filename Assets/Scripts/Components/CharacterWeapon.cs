@@ -98,6 +98,18 @@ public class CharacterWeapon : CharacterAbilities
         EquipWeapon(weapon, weaponHolderPosition);
     }
 
+    public void Disable()
+    {
+        CurrentWeapon.enabled = false;
+        WeaponAim.enabled = false;
+    }
+
+    public void Enable()
+    {
+        CurrentWeapon.enabled = true;
+        WeaponAim.enabled = true;
+    }
+
     public void EquipWeapon(WeaponBase weapon, Transform weaponPosition)
     {
         if (CurrentWeapon != null) {

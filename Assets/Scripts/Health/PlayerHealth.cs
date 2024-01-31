@@ -10,6 +10,9 @@ public class PlayerHealth : HealthBase
     private PlayerController controller;
     private Collider2D collider2D;
     private SpriteRenderer[] spriteRenderers;
+    private CharacterWeapon characterWeapon;
+    private CharacterFlip characterFlip;
+    private CharacterDash characterDash;
     private bool shieldBroken;
     public float CurrentShield { get; set; }
 
@@ -21,6 +24,9 @@ public class PlayerHealth : HealthBase
         controller = GetComponent<PlayerController>();
         collider2D = GetComponent<Collider2D>();
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>(); // allow for any expansion of hierarchy
+        characterWeapon = GetComponent<CharacterWeapon>();
+        characterFlip = GetComponent<CharacterFlip>();
+        characterDash = GetComponent<CharacterDash>();
         CurrentHealth = initialHealth;
         CurrentShield = initialShield;
 
@@ -53,17 +59,31 @@ public class PlayerHealth : HealthBase
 
         if (CurrentHealth <= 0)
         {
-            Die();
+            TriggerDeath();
         }
+    }
+
+    protected void TriggerDeath()
+    {
+        character.enabled = false;
+        controller.enabled = false;
+        collider2D.enabled = false;
+        characterWeapon.Disable();
+        characterWeapon.enabled = false;
+        characterFlip.enabled = false;
+        characterDash.enabled = false;
+        character.CharacterAnimator.SetTrigger("PlayerDeath");
+    }
+
+    public void Kill()
+    {
+        Die();
     }
 
     protected override void Die()
     {
         if (character != null)
         {
-            character.enabled = false;
-            controller.enabled = false;
-            collider2D.enabled = false;
             foreach (SpriteRenderer s in spriteRenderers)
             {
                 s.enabled = false;
@@ -83,6 +103,10 @@ public class PlayerHealth : HealthBase
             character.enabled = true;
             controller.enabled = true;
             collider2D.enabled = true;
+            characterWeapon.enabled = true;
+            characterWeapon.Enable();
+            characterFlip.enabled = true;
+            characterDash.enabled = true;
             foreach (SpriteRenderer s in spriteRenderers)
             {
                 s.enabled = true;

@@ -14,6 +14,10 @@ AIVA's modification tools.
 
 ## Version 15
 
+### Version 0.15.1
+- Add initial death animation
+- Need to remove crosshair and weapon?
+
 ### Version 0.15.0
 - minor tutorial wall fix
 
