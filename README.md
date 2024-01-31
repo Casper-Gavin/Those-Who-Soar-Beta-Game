@@ -12,6 +12,11 @@ AIVA's modification tools.
 
 # Version History
 
+## Version 15
+
+### Version 0.15.0
+- minor tutorial wall fix
+
 ## Version 14
 
 ### Versopm 0.14.16
