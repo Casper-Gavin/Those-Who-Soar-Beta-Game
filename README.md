@@ -1,5 +1,20 @@
 # CS 425/426 Senior Project
 
+### Team #1: Carter Webb, Andrew Kalb, and Gavin Casper
+### Instructors: Dave Feil-Seifer, Devrin Lee, and Sara Davis with the Department of CSE
+### External Advisor: Eelke Folmer with the Department of CSE
+### CS 426 Senior Project in Computer Science, Spring 2024, at UNR, CSE Department
+### Project Description
+Those Who Soar is an innovative top-down roguelike game, combining the immersive elements of adventure and strategy within our 2D art style. Our game is developed for our Capstone Project for CS 426 at UNR. This game represents a well-balanced blend of technical skill, creative design, and engaging gameplay.
+
+Those Who Soar is set in a world where players navigate through levels, each presenting unique challenges and opportunities, say, a new enemy or a new weapon. The game's core mechanics revolve around player movement, and smart combat. Players can choose from a selection of weapons, each with distinct characteristics, to combat enemies. This variety ensures that each playthrough offers a new and challenging experience.
+
+Some key features of our game include an intuitive UI, robust tile and level-building tools, and breakable objects that add depth to the game environment. The inclusion of a vendor system also allows players to upgrade their abilities and equipment, providing a sense of progression and personalization. The game's health and damage system are finely tuned to offer a balanced level of difficulty, keeping players engaged but not overwhelmed.
+
+Significant post-concept additions have enhanced the game's appeal. These include the development of a complex enemy AI, the creation of main and pause menus for a seamless user experience, and an audio manager to enrich the game's auditory environment. Planned future enhancements include the addition of diverse levels, an expanded arsenal of weapons, varied enemy types, at least one formidable boss, immersive sound effects, and lore to deepen the narrative experience.
+
+Those Who Soar is not just a game for us, it's a testament to the team's learning journey in Unity game development. It embodies our commitment to creating an engaging, entertaining, and challenging experience for players as newcomers to game programming. As we continue to refine and expand our project, we aim to push the boundaries of what can be achieved by a team of emerging game developers.
+
 Unity Version: 2022.3.9f1 (LTS)
 
 # Resources
