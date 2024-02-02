@@ -19,23 +19,23 @@ Those Who Soar is not just a game for us, it's a testament to the team's learnin
 ## Project Related Resources
 S. Rogers, Level up : the guide to great video game design, 2nd ed. Chichester: Wiley, 2014.
 
-https://forum.unity.com/
+[https://forum.unity.com/](https://forum.unity.com/)
 
-https://www.udemy.com/
+[https://www.udemy.com/](https://www.udemy.com/)
 
-https://assetstore.unity.com/
+[https://assetstore.unity.com/](https://assetstore.unity.com/)
 
-Unity, “Unity Documentation,” docs.unity.com. https://docs.unity.com/ The Unity Documentation website is extremely useful to our group, particularly because the team does not have a lot of experience interacting with Unity. It also has a link to an asset store, where we may consider purchasing professional looking assets at a later time.
+Unity, “Unity Documentation,” docs.unity.com. [https://docs.unity.com/](https://docs.unity.com/) The Unity Documentation website is extremely useful to our group, particularly because the team does not have a lot of experience interacting with Unity. It also has a link to an asset store, where we may consider purchasing professional looking assets at a later time.
 
-A. Hussain, H. Shakeel, F. Hussain, N. Uddin, and T. Latif Ghouri, “(PDF) Unity Game Development Engine: A Technical Survey,” ResearchGate, Jul. 2020. https://www.researchgate.net/publication/348917348_Unity_Game_Development_Engine_A_Technical_Survey (accessed Nov. 01, 2023). Unity is one of the most popular game engines used for video game development globally. For that reason, Team 1 has selected Unity to use for development, and chosen this article to act as a reference in case we have questions about the abilities and limitations of Unity as we develop.
+A. Hussain, H. Shakeel, F. Hussain, N. Uddin, and T. Latif Ghouri, “(PDF) Unity Game Development Engine: A Technical Survey,” ResearchGate, Jul. 2020. [https://www.researchgate.net/publication/348917348_Unity_Game_Development_Engine_A_Technical_Survey](https://www.researchgate.net/publication/348917348_Unity_Game_Development_Engine_A_Technical_Survey) (accessed Nov. 01, 2023). Unity is one of the most popular game engines used for video game development globally. For that reason, Team 1 has selected Unity to use for development, and chosen this article to act as a reference in case we have questions about the abilities and limitations of Unity as we develop.
 
-S. Aleem, L. F. Capretz, and F. Ahmed, “Game development software engineering process life cycle: a systematic review,” Journal of Software Engineering Research and Development, vol. 4, no. 1, Nov. 2016, doi: https://doi.org/10.1186/s40411-016-0032-7. This scholarly article contains information about game development, including tips on how to plan, prototype, and move along in the development process. As we move through this project, it will be helpful to apply practices and test practices that are clearly defined in this article.
+S. Aleem, L. F. Capretz, and F. Ahmed, “Game development software engineering process life cycle: a systematic review,” Journal of Software Engineering Research and Development, vol. 4, no. 1, Nov. 2016, doi: [https://doi.org/10.1186/s40411-016-0032-7](https://doi.org/10.1186/s40411-016-0032-7.) This scholarly article contains information about game development, including tips on how to plan, prototype, and move along in the development process. As we move through this project, it will be helpful to apply practices and test practices that are clearly defined in this article.
 
 ## More Resources
 "Learn to create a 2D Action Roguelike Game in Unity 2022", a Udemy Course by Gianny Dantas.
 Since none of us had prior experience in Unity, we followed this Udemy Course to help us get a grip on the fundamental components of game design, and Unity in general. This course served as a foundation for our project, currently and hereafter we are building off of it.
 
-https://creators.aiva.ai/
+[https://creators.aiva.ai/](https://creators.aiva.ai/)
 AIVA is an AI music composer that we used to generate the music for our game (at least for now). We used a base composition (song) and then modified it to fit our game using
 AIVA's modification tools.
 
