@@ -6,14 +6,30 @@ using UnityEngine;
 public class CharacterMovement : CharacterAbilities {
     [SerializeField] private float walkSpeed = 5f;
 
+    private SkillMenu skillMenu;
+    private bool isSkilMenuMoveUnlockedOnce;
+
     public float MoveSpeed { get; set; }
 
     private readonly int isMovingParam = Animator.StringToHash("IsMoving");
+
+    private void Awake() {
+        skillMenu = FindObjectOfType<SkillMenu>();
+    }
 
     protected override void Start() {
         base.Start();
 
         MoveSpeed = walkSpeed;
+    }
+
+    protected override void Update() {
+        base.Update();
+
+        if (!isSkilMenuMoveUnlockedOnce && skillMenu.skillLevels[3] > 0) {
+            isSkilMenuMoveUnlockedOnce = true;
+            walkSpeed = 7.5f;
+        }
     }
 
     protected override void HandleAbility() {

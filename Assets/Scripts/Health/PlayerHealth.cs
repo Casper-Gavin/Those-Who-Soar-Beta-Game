@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerHealth : HealthBase
@@ -5,10 +6,19 @@ public class PlayerHealth : HealthBase
     [Header("Shield")]
     [SerializeField] private float initialShield = 5f;
     [SerializeField] protected float maxShield = 5f;
+
+    [Header("Health")]
+    [SerializeField] private float initialHealthPlayer = 10f;
+    [SerializeField] protected float maxHealthPlayer = 10f;
+
+    //private CharacterSkills characterSkills;
+    private SkillMenu skillMenu;
+    private int lastCheckHealth = 0;
+    private int lastCheckShield = 0;
     
     private Character character;
     private PlayerController controller;
-    private Collider2D collider2D;
+    private Collider2D collide2D;
     private SpriteRenderer[] spriteRenderers;
     private CharacterWeapon characterWeapon;
     private CharacterFlip characterFlip;
@@ -22,15 +32,18 @@ public class PlayerHealth : HealthBase
     {
         character = GetComponent<Character>(); // this should be a player
         controller = GetComponent<PlayerController>();
-        collider2D = GetComponent<Collider2D>();
+        collide2D = GetComponent<Collider2D>();
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>(); // allow for any expansion of hierarchy
         characterWeapon = GetComponent<CharacterWeapon>();
         characterFlip = GetComponent<CharacterFlip>();
         characterDash = GetComponent<CharacterDash>();
-        CurrentHealth = initialHealth;
+        CurrentHealth = initialHealthPlayer;
         CurrentShield = initialShield;
 
         UpdateHealth();
+
+        //characterSkills = GetComponent<CharacterSkills>();
+        skillMenu = SkillMenu.skillMenu;
     }
 
     public override void TakeDamage(int damage)
@@ -67,7 +80,7 @@ public class PlayerHealth : HealthBase
     {
         character.enabled = false;
         controller.enabled = false;
-        collider2D.enabled = false;
+        collide2D.enabled = false;
         characterWeapon.Disable();
         characterWeapon.enabled = false;
         characterFlip.enabled = false;
@@ -84,6 +97,9 @@ public class PlayerHealth : HealthBase
     {
         if (character != null)
         {
+            character.enabled = false;
+            controller.enabled = false;
+            collide2D.enabled = false;
             foreach (SpriteRenderer s in spriteRenderers)
             {
                 s.enabled = false;
@@ -102,7 +118,7 @@ public class PlayerHealth : HealthBase
         {
             character.enabled = true;
             controller.enabled = true;
-            collider2D.enabled = true;
+            collide2D.enabled = true;
             characterWeapon.enabled = true;
             characterWeapon.Enable();
             characterFlip.enabled = true;
@@ -124,13 +140,26 @@ public class PlayerHealth : HealthBase
 
     public override void GainHealth(int amount)
     {
-        CurrentHealth = Mathf.Min(CurrentHealth + amount, maxHealth);
+        CurrentHealth = Mathf.Min(CurrentHealth + amount, maxHealthPlayer);
+        UIManager.Instance.FlashHealthEffect();
         UpdateHealth();
+    }
+
+    public void GainMaxHealth(int amount)
+    {
+        if (skillMenu.skillLevels[1] > lastCheckHealth) {
+            maxHealthPlayer *= amount;
+            CurrentHealth = maxHealthPlayer;
+            UpdateHealth();
+            UIManager.Instance.FlashHealthEffect(); // Might want to disable this b/c it might just flash even though the health UI isnt visible
+            lastCheckHealth ++;
+        }
     }
 
     public void GainShield(int amount)
     {
         CurrentShield = Mathf.Min(CurrentShield + amount, maxShield);
+        UIManager.Instance.FlashShieldEffect();
         UpdateHealth();
         if (CurrentShield > 0 && shieldBroken)
         {
@@ -138,21 +167,32 @@ public class PlayerHealth : HealthBase
         }
     }
 
+    public void GainMaxShield(int amount)
+    {
+        if (skillMenu.skillLevels[2] > lastCheckShield) {
+            maxShield *= amount;
+            CurrentShield = maxShield;
+            UpdateHealth();
+            UIManager.Instance.FlashShieldEffect();
+            lastCheckShield ++;
+        }
+    }
+
     protected override void UpdateHealth()
     {
-        UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield);
+        UIManager.Instance.UpdateHealth(CurrentHealth, maxHealthPlayer, CurrentShield, maxShield);
     }
 
     public bool IsFullHealth(string healthType ) {
         if (healthType.Equals("health")) {
-            if (maxHealth == CurrentHealth) {
-                  return true;
+            if (maxHealthPlayer == CurrentHealth) {
+                return true;
             }
         }
 
         if (healthType.Equals("shield")) {
             if (maxShield == CurrentShield) {
-                  return true;
+                return true;
             }
         }
 

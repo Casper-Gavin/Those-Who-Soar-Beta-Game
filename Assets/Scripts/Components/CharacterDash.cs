@@ -13,6 +13,22 @@ public class CharacterDash : CharacterAbilities {
     private Vector2 dashDestination;
     private Vector2 newPlayerPosition;
 
+    private SkillMenu skillMenu;
+    private bool isSkilMenuDashUnlockedOnce;
+
+    private void Awake() {
+        skillMenu = FindObjectOfType<SkillMenu>();
+    }
+
+    protected override void Update() {
+        base.Update();
+
+        if (!isSkilMenuDashUnlockedOnce && skillMenu.skillLevels[4] > 0) {
+            isSkilMenuDashUnlockedOnce = true;
+            dashDistance = 6f;
+        }
+    }
+
     protected override void HandleInput() {
         if (Input.GetKeyDown(KeyCode.Space) && !isDashing && dashCooldownTimer <= 0f) {
             Dash();

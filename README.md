@@ -44,6 +44,22 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 15
+### Version 0.15.2
+- Added Character Skills (for skill tree)
+    - Character can get more damage
+    - Character can get more health
+        - I want to implement different sprites for how much health you have
+    - Character can get more shield
+        - I want to implement different sprites for how much shield you have
+    - Character can now move faster
+    - Character can now dash further
+- Added initial implementation of skill tree
+    - Still need to add a button to pull it up
+    - Still need to add a section for it on the pause menu
+    - Still need to implement lvl and skill point system to be able to get skill points (SP)
+- Updated UI
+- Updated Canvas to scale with screen size
+    - Updated UI to scale with screen size
 
 ### Version 0.15.1
 - Add initial death animation

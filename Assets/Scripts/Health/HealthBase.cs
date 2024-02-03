@@ -12,10 +12,15 @@ public abstract class HealthBase : MonoBehaviour
     [Header("Settings")]
     [SerializeField] protected bool destroyObject;
 
+    [Header("Skill Tree")]
+    public int skillTreeDmg = 0;
+    public float skillTreeHealthMulti = 0;
+    public float skillTreeShieldMulti = 0;
     public float CurrentHealth { get; set; }
 
     protected virtual void Awake()
     {
+
         CurrentHealth = initialHealth;
 
         UpdateHealth();

@@ -14,6 +14,8 @@ public class UIManager : Singleton<UIManager>
 
     [Header("Settings")]
     [SerializeField] private Image damageIndicator;
+    [SerializeField] private Image healthIndicator;
+    [SerializeField] private Image shieldIndicator;
     [SerializeField] private Image healthBar;
     [SerializeField] private Image shieldBar;
     [SerializeField] private TextMeshProUGUI currentHealthTMP;
@@ -63,6 +65,22 @@ public class UIManager : Singleton<UIManager>
         damageIndicator.color = c;
     }
 
+    public void FlashHealthEffect()
+    {
+        healthIndicator.enabled = true;
+        Color c = healthIndicator.color;
+        c.a = 1;
+        healthIndicator.color = c;
+    }
+
+    public void FlashShieldEffect()
+    {
+        shieldIndicator.enabled = true;
+        Color c = shieldIndicator.color;
+        c.a = 1;
+        shieldIndicator.color = c;
+    }
+
     public void UpdateHealth(float currentHealth, float maxHealth, float currentShield, float maxShield)
     {
         playerCurrentHealth = currentHealth;
@@ -109,6 +127,46 @@ public class UIManager : Singleton<UIManager>
                 damageIndicator.enabled = false;
             }
         }
+
+        // HEALTH INDICATOR
+        if (healthIndicator.enabled)
+        {
+            Color c = healthIndicator.color;
+            c.a = Mathf.Lerp(c.a, 0, 5f * Time.deltaTime);
+            healthIndicator.color = c;
+            if (c.a == 0)
+            {
+                healthIndicator.enabled = false;
+            }
+        }
+
+        // SHIELD INDICATOR
+        if (shieldIndicator.enabled)
+        {
+            Color c = shieldIndicator.color;
+            c.a = Mathf.Lerp(c.a, 0, 5f * Time.deltaTime);
+            shieldIndicator.color = c;
+            if (c.a == 0)
+            {
+                shieldIndicator.enabled = false;
+            }
+        }
+
+        // SHIELD REGEN INDICATOR
+        // should be the same as shield indicator, but it will change the alpha value from 0.3 to 1 steadily until shield is full
+        // then it will disappear
+
+        if (shieldIndicator.enabled)
+        {
+            Color c = shieldIndicator.color;
+            c.a = Mathf.Lerp(c.a, 0, 5f * Time.deltaTime);
+            shieldIndicator.color = c;
+            if (c.a == 0)
+            {
+                shieldIndicator.enabled = false;
+            }
+        }
+
 
         // PLAYER AMMO
         currentAmmoTMP.text = playerCurrentAmmo + " / " + playerMaxAmmo;
