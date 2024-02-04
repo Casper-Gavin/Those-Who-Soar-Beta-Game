@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static SkillMenu;
@@ -19,7 +20,7 @@ public class CharacterSkills : MonoBehaviour {
     }
 
     public void Buy() {
-        if (skillMenu.skillPoints < 1 || skillMenu.skillLevels[id] >= skillMenu.skillCaps[id] /* || skillMenu.skillLevels[id] > skillMenu.skillCosts[id]*/) return;
+        if (skillMenu.skillPoints < skillMenu.skillCosts[id] || skillMenu.skillLevels[id] >= skillMenu.skillCaps[id]) return;
         skillMenu.skillPoints -= skillMenu.skillCosts[id];
         skillMenu.skillLevels[id] ++;
 
