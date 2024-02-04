@@ -23,6 +23,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private Image damageIndicator;
     [SerializeField] private Image healthIndicator;
     [SerializeField] private Image shieldIndicator;
+    [SerializeField] private Image coinIndicator;
     [SerializeField] private Image healthBar;
     [SerializeField] private Image shieldBar;
     [SerializeField] private TextMeshProUGUI currentHealthTMP;
@@ -49,6 +50,18 @@ public class UIManager : Singleton<UIManager>
         Color c = damageIndicator.color;
         c.a = 0;
         damageIndicator.color = c;
+
+        c = healthIndicator.color;
+        c.a = 0;
+        healthIndicator.color = c;
+
+        c = shieldIndicator.color;
+        c.a = 0;
+        shieldIndicator.color = c;
+
+        c = coinIndicator.color;
+        c.a = 0;
+        coinIndicator.color = c;
     }
 
     private void Update()
@@ -98,6 +111,14 @@ public class UIManager : Singleton<UIManager>
         Color c = shieldIndicator.color;
         c.a = 1;
         shieldIndicator.color = c;
+    }
+
+    public void FlashCoinEffect()
+    {
+        coinIndicator.enabled = true;
+        Color c = coinIndicator.color;
+        c.a = 1;
+        coinIndicator.color = c;
     }
 
     public void UpdateHealth(float currentHealth, float maxHealth, float currentShield, float maxShield)
@@ -168,6 +189,18 @@ public class UIManager : Singleton<UIManager>
             if (c.a == 0)
             {
                 shieldIndicator.enabled = false;
+            }
+        }
+
+        // COIN INDICATOR
+        if (coinIndicator.enabled)
+        {
+            Color c = coinIndicator.color;
+            c.a = Mathf.Lerp(c.a, 0, 5f * Time.deltaTime);
+            coinIndicator.color = c;
+            if (c.a == 0)
+            {
+                coinIndicator.enabled = false;
             }
         }
 

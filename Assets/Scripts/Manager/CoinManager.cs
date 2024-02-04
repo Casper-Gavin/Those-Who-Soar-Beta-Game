@@ -18,6 +18,7 @@ public class CoinManager : Singleton<CoinManager> {
     public void AddCoins(int amount) {
         Coins += amount;
         PlayerPrefs.SetInt(COINS_KEY, Coins);
+        UIManager.Instance.FlashCoinEffect();
     }
 
     public void RemoveCoins(int amount) {
