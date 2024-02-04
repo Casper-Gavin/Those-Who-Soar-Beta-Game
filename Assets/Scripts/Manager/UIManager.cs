@@ -5,12 +5,19 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class UIManager : Singleton<UIManager>
 {
+    public InputMaster controls;
+
     [Header("Pause Menu")]
     [SerializeField] private GameObject pauseMenuUI;
     public static bool GameIsPaused = false;
+
+    [Header("Skill Tree")]
+    [SerializeField] private GameObject skillTreeUI;
+    public static bool SkillTreeIsOpen = false;
 
     [Header("Settings")]
     [SerializeField] private Image damageIndicator;
@@ -47,10 +54,22 @@ public class UIManager : Singleton<UIManager>
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) {
-            if (GameIsPaused) {
-                Resume();
-            } else {
-                Pause();
+            if (!SkillTreeIsOpen) {
+                if (GameIsPaused) {
+                    Resume();
+                } else {
+                    Pause();
+                }
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.T)) {
+            if (!GameIsPaused) {
+                if (SkillTreeIsOpen) {
+                    SkillMenuClose();
+                } else {
+                    SkillMenuOpen();
+                }
             }
         }
 
@@ -185,6 +204,18 @@ public class UIManager : Singleton<UIManager>
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+    }
+
+    public void SkillMenuOpen() {
+        skillTreeUI.SetActive(true);
+        Time.timeScale = 0f;
+        SkillTreeIsOpen = true;
+    }
+
+    public void SkillMenuClose() {
+        skillTreeUI.SetActive(false);
+        Time.timeScale = 1f;
+        SkillTreeIsOpen = false;
     }
 
     public void QuitGame() {

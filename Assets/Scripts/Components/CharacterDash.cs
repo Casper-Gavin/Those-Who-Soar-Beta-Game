@@ -23,7 +23,7 @@ public class CharacterDash : CharacterAbilities {
     protected override void Update() {
         base.Update();
 
-        if (!isSkilMenuDashUnlockedOnce && skillMenu.skillLevels[4] > 0) {
+        if (!isSkilMenuDashUnlockedOnce && skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseDash] > 0) {
             isSkilMenuDashUnlockedOnce = true;
             dashDistance = 6f;
         }

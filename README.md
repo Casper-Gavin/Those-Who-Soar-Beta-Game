@@ -44,6 +44,10 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 15
+### Version 0.15.3
+- Added Skill Tree openability through "T" button and through the pause menu
+- Added Tutorial scene accessibility through the main menu
+
 ### Version 0.15.2
 - Added Character Skills (for skill tree)
     - Character can get more damage

@@ -43,7 +43,7 @@ public class EnemyHealth : HealthBase
             return;
         }
 
-        CurrentHealth -= (damage + skillMenu.skillLevels[0]);
+        CurrentHealth -= (damage + skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseDamage]);
         CurrentHealth = Mathf.Max(CurrentHealth, 0); // prevent negative numbers
         UpdateHealth();
 

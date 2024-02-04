@@ -26,7 +26,7 @@ public class CharacterMovement : CharacterAbilities {
     protected override void Update() {
         base.Update();
 
-        if (!isSkilMenuMoveUnlockedOnce && skillMenu.skillLevels[3] > 0) {
+        if (!isSkilMenuMoveUnlockedOnce && skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseSpeed] > 0) {
             isSkilMenuMoveUnlockedOnce = true;
             walkSpeed = 7.5f;
         }

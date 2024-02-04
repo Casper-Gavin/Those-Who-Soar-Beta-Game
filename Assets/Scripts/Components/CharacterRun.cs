@@ -15,7 +15,7 @@ public class CharacterRun : CharacterAbilities {
     protected override void Update() {
         base.Update();
 
-        if (!isSkilMenuRunUnlockedOnce && skillMenu.skillLevels[3] > 0) {
+        if (!isSkilMenuRunUnlockedOnce && skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseSpeed] > 0) {
             isSkilMenuRunUnlockedOnce = true;
             runSpeed = 11f;
         }

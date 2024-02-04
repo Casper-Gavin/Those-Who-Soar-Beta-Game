@@ -6,12 +6,21 @@ using UnityEngine;
 public class SkillMenu : MonoBehaviour {
     public static SkillMenu skillMenu;
 
-    private void Awake() => skillMenu = this;
+    private void Awake() => skillMenu = this; // Singleton
 
     public int[] skillLevels;
     public int[] skillCosts;
     public int[] skillCaps;
     public string[] skillNames;
+
+    // Enum for each skill
+    public enum SkillEnum {
+        IncreaseDamage , // 0
+        IncreaseHealth, // 1
+        IncreaseShield, // 2
+        IncreaseSpeed, // 3
+        IncreaseDash // 4
+    }
 
     public List<CharacterSkills> skillList;
     public List<GameObject> connectorList;

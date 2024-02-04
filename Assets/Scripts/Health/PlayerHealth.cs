@@ -147,7 +147,7 @@ public class PlayerHealth : HealthBase
 
     public void GainMaxHealth(int amount)
     {
-        if (skillMenu.skillLevels[1] > lastCheckHealth) {
+        if (skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseHealth] > lastCheckHealth) {
             maxHealthPlayer *= amount;
             CurrentHealth = maxHealthPlayer;
             UpdateHealth();
@@ -169,7 +169,7 @@ public class PlayerHealth : HealthBase
 
     public void GainMaxShield(int amount)
     {
-        if (skillMenu.skillLevels[2] > lastCheckShield) {
+        if (skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseShield] > lastCheckShield) {
             maxShield *= amount;
             CurrentShield = maxShield;
             UpdateHealth();
