@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class PlayerHealth : HealthBase
 {
+    [Header("Field of View")]
+    [SerializeField] private FieldOfView fieldOfView;
+
     [Header("Shield")]
     [SerializeField] private float initialShield = 5f;
     [SerializeField] protected float maxShield = 5f;
@@ -44,6 +47,13 @@ public class PlayerHealth : HealthBase
 
         //characterSkills = GetComponent<CharacterSkills>();
         skillMenu = SkillMenu.skillMenu;
+    }
+
+    protected override void Update () {
+        base.Update();
+
+        // fieldOfView.SetAimDirection(aimDir);
+        fieldOfView.SetOrigin(transform.position);
     }
 
     public override void TakeDamage(int damage)

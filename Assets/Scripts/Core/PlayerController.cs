@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-
     // myRigidBody2D in tutorial = rb
     private Rigidbody2D rb;
 

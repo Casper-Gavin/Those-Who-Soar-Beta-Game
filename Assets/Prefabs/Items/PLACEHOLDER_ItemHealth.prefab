@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8199436603321210718}
   - component: {fileID: 3534726677367339444}
   - component: {fileID: 9002251271915183599}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: PLACEHOLDER_ItemHealth
   m_TagString: LevelComponents
   m_Icon: {fileID: 0}

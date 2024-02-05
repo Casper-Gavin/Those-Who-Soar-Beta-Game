@@ -44,6 +44,10 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 15
+### Version 0.15.4
+- Added Field Of View affect
+- BUG INTRODUCED - Bomber will not explode after red flashing and stops moving
+
 ### Version 0.15.3
 - Added Skill Tree openability through "T" button and through the pause menu
 - Added Tutorial scene accessibility through the main menu

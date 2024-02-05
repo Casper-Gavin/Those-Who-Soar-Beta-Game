@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1178464200498598115}
   - component: {fileID: 6551306476945203488}
   - component: {fileID: 639646786546376298}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: PLACEHOLDER_ItemShield
   m_TagString: LevelComponents
   m_Icon: {fileID: 0}
