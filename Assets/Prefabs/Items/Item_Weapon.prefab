@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 425857378214535553}
   m_Layer: 0
   m_Name: Item_Weapon
-  m_TagString: Untagged
+  m_TagString: LevelComponents
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1198566881
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 1981204540, guid: b279ec01a2a2e79449f2a79b9c0e5e0e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -171,4 +171,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9a2370d4629db34381d2856043ad2f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canDestroyItem: 1
   itemWeaponData: {fileID: 11400000, guid: 6fc1765d1d2ba384d93a55d75f51faf6, type: 2}

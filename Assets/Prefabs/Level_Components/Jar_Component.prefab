@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2989938059964292191}
   m_Layer: 7
   m_Name: Jar_Component
-  m_TagString: Untagged
+  m_TagString: LevelComponents
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -210,3 +210,6 @@ MonoBehaviour:
   initialHealth: 1
   maxHealth: 1
   destroyObject: 0
+  skillTreeDmg: 0
+  skillTreeHealthMulti: 0
+  skillTreeShieldMulti: 0

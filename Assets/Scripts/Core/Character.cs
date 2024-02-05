@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Character : MonoBehaviour {
+    [SerializeField] private FieldOfView fieldOfView;
+
     public enum CharacterTypeEnum {
         Player,
         Enemy
@@ -26,7 +28,8 @@ public class Character : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        
+        // fieldOfView.SetAimDirection(aimDir);
+        fieldOfView.SetOrigin(transform.position);
     }
 
     // FixedUpdate is called once per physics update (0.02s)

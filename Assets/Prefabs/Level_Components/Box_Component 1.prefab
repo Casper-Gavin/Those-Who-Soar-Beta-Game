@@ -190,3 +190,6 @@ MonoBehaviour:
   initialHealth: 3
   maxHealth: 3
   destroyObject: 0
+  skillTreeDmg: 0
+  skillTreeHealthMulti: 0
+  skillTreeShieldMulti: 0
