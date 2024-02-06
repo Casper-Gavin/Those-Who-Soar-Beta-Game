@@ -10,6 +10,7 @@ public class ComponentBase : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private int damage = 1;
     [SerializeField] private bool isDamageable;
+    [SerializeField] private float boxShiftAmount = 0.1f;
 
     private ComponentHealth health;
     private SpriteRenderer spriteRenderer;
@@ -28,18 +29,19 @@ public class ComponentBase : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Bullet") || other.CompareTag("PlayerSword"))
         {
-            TakeDamage();
+            TakeDamage(other.transform.position.x > transform.position.x);
         }
     }
 
     // checks if component is destroyed and if it needs to replace or get rid of component sprite
     // only bullet needs to have Is Trigger on - only one object in a collision
-    private void TakeDamage() {
+    private void TakeDamage(bool left) {
         health.TakeDamage(damage);
 
         if (health.CurrentHealth > 0) {
             if (isDamageable) {
                 spriteRenderer.sprite = damagedSprite;
+                StartCoroutine(ShakeBox(left));
             }
         }
 
@@ -56,12 +58,19 @@ public class ComponentBase : MonoBehaviour
         }
     }
 
-    private IEnumerator ShakeBox()
+    private IEnumerator ShakeBox(bool left)
     {
+        float shiftAmount = left ? boxShiftAmount : -boxShiftAmount;
         // shift left
+        transform.position = new Vector3(transform.position.x - shiftAmount, transform.position.y, transform.position.z);
+        yield return new WaitForSeconds(0.1f);
+        // return to normal position
+        transform.position = new Vector3(transform.position.x + shiftAmount, transform.position.y, transform.position.z);
         yield return new WaitForSeconds(0.1f);
         // shift right
+        transform.position = new Vector3(transform.position.x + shiftAmount, transform.position.y, transform.position.z);
         yield return new WaitForSeconds(0.1f);
-        // go back to normal spot
+        // return to normal position
+        transform.position = new Vector3(transform.position.x - shiftAmount, transform.position.y, transform.position.z);
     }
 }
