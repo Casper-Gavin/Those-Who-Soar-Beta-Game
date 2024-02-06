@@ -55,4 +55,13 @@ public class ComponentBase : MonoBehaviour
             }
         }
     }
+
+    private IEnumerator ShakeBox()
+    {
+        // shift left
+        yield return new WaitForSeconds(0.1f);
+        // shift right
+        yield return new WaitForSeconds(0.1f);
+        // go back to normal spot
+    }
 }

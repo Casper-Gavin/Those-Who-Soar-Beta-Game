@@ -424,7 +424,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialHealth: 6
   maxHealth: 6
-  destroyObject: 0
+  destroyObject: 1
+  skillTreeDmg: 0
+  skillTreeHealthMulti: 0
+  skillTreeShieldMulti: 0
   enemyHealthBarPrefab: {fileID: 1902742380146519168, guid: 406c2ac19145103419cbcb1b1676ec4f, type: 3}
   offset: {x: 0, y: 1, z: 0}
   damageTakenFromBullet: 1

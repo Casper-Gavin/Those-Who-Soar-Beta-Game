@@ -44,6 +44,9 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 15
+### Version 0.15.5
+- Fix bomber bug temp : need to set skillMenu (null reference exception)
+
 ### Version 0.15.4
 - Added Field Of View affect
 - BUG INTRODUCED - Bomber will not explode after red flashing and stops moving
