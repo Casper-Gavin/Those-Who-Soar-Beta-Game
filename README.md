@@ -45,6 +45,9 @@ Unity Version: 2022.3.9f1 (LTS)
 
 ## Version 15
 
+### Version 0.15.8
+- started on boss enemy
+
 ### Version 0.15.7
 - fixed FOV bug where enemies still show up
 
