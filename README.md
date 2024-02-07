@@ -44,6 +44,9 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 15
+### Version 0.15.7
+- Add explosion effect to bomber
+
 ### Version 0.15.6
 - Add box shake when hit
 

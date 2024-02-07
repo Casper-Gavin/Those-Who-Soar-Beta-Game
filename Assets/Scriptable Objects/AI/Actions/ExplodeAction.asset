@@ -17,5 +17,6 @@ MonoBehaviour:
   numberOfFlashes: 4
   explosionRadius: 5
   explosionDamage: 5
-  explosionEffectPrefab: {fileID: 0}
+  numExplosionParticleSystems: 10
+  explosionEffectPS: {fileID: 6648466872139044970, guid: c0b5ca549c4011c419f0558723433242, type: 3}
   spriteRenderer: {fileID: 0}

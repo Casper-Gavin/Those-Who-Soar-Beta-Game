@@ -13,7 +13,7 @@ public class PlayerDeath : MonoBehaviour
 
     private IEnumerator DelayBeforeKill()
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.1f); // doesn't work
         playerHealth?.Kill();
     }
 }
