@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8714097124474943833}
   - component: {fileID: 5151732252678443128}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FieldOfView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,6 +295,9 @@ MonoBehaviour:
   initialHealth: 5
   maxHealth: 5
   destroyObject: 1
+  skillTreeDmg: 0
+  skillTreeHealthMulti: 0
+  skillTreeShieldMulti: 0
   enemyHealthBarPrefab: {fileID: 1902742380146519168, guid: 406c2ac19145103419cbcb1b1676ec4f, type: 3}
   offset: {x: 0, y: 1, z: 0}
   damageTakenFromBullet: 1
@@ -309,7 +312,7 @@ GameObject:
   - component: {fileID: 685507582100939822}
   - component: {fileID: 1225293039955159202}
   - component: {fileID: 4185131966861379553}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -415,7 +418,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6893218045593724548}
   - component: {fileID: 3757076489236173100}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Highlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,7 +501,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1179655186299169223}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HolderPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
