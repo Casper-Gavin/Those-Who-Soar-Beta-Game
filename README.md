@@ -45,6 +45,10 @@ Unity Version: 2022.3.9f1 (LTS)
 
 ## Version 15
 
+### Version 0.15.11
+- added boss's spiral shot pattern
+- addes boss's random shot pattern
+
 ### Version 0.15.10
 - added base functionality for boss's circle shot
 
