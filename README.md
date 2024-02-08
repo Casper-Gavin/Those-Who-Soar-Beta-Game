@@ -45,6 +45,9 @@ Unity Version: 2022.3.9f1 (LTS)
 
 ## Version 15
 
+### Version 0.15.10
+- added base functionality for boss's circle shot
+
 ### Version 0.15.9
 - created BossProjectile script
 
