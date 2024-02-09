@@ -36,6 +36,9 @@ public class UIManager : Singleton<UIManager>
     [Header("Text")]
     [SerializeField] private TextMeshProUGUI coinsTMP;
 
+    [Header("Boss")]
+    [SerializeField] private Image bossHealth;
+
     private float playerCurrentHealth;
     private float playerMaxHealth;
     private float playerCurrentShield;
@@ -44,6 +47,9 @@ public class UIManager : Singleton<UIManager>
 
     private int playerCurrentAmmo;
     private int playerMaxAmmo;
+
+    private float bossCurrentHealth;
+    private float bossMaxHealth;
 
     private void Start()
     {
@@ -127,6 +133,11 @@ public class UIManager : Singleton<UIManager>
         playerMaxHealth = maxHealth;
         playerCurrentShield = currentShield;
         playerMaxShield = maxShield;
+    }
+
+    public void UpdateBossHealth (float currentHealth, float maxHealth) {
+        bossCurrentHealth = currentHealth;
+        bossMaxHealth = maxHealth;
     }
 
     public void UpdateWeaponSprite(Sprite weaponSprite) {
@@ -225,6 +236,9 @@ public class UIManager : Singleton<UIManager>
 
         // PLAYER COINS
         coinsTMP.text = CoinManager.Instance.Coins.ToString();
+
+        // boss health update
+        bossHealth.fillAmount = Mathf.Lerp(bossHealth.fillAmount, bossCurrentHealth / bossMaxHealth, 10f * Time.deltaTime);
     }
 
     public void Resume() {

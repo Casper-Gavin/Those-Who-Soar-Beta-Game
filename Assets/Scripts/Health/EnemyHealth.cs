@@ -15,10 +15,14 @@ public class EnemyHealth : HealthBase
 
     protected override void Awake() // this used to be Start(), it is apparently very weird to use Start() with MonoBehavior inheritance
     {
-        // Instantiate is used to create game objects (prefabs) on the fly
-        gameObjectHealthBar = Instantiate(enemyHealthBarPrefab, transform.position + offset, Quaternion.identity);
-        gameObjectHealthBar.transform.parent = transform;
-        healthBarImage = gameObjectHealthBar.transform.GetChild(0).transform.GetChild(0).GetComponent<Image>();
+        // if enemy is boss then this won't be used
+        if (enemyHealthBarPrefab != null) {
+            // Instantiate is used to create game objects (prefabs) on the fly
+            gameObjectHealthBar = Instantiate(enemyHealthBarPrefab, transform.position + offset, Quaternion.identity);
+            gameObjectHealthBar.transform.parent = transform;
+            healthBarImage = gameObjectHealthBar.transform.GetChild(0).transform.GetChild(0).GetComponent<Image>();
+        }
+
         CurrentHealth = initialHealth;
 
         skillMenu = SkillMenu.skillMenu;
@@ -59,7 +63,9 @@ public class EnemyHealth : HealthBase
 
     protected override void UpdateHealth()
     {
-        healthBarImage.fillAmount = Mathf.Lerp(healthBarImage.fillAmount, CurrentHealth / maxHealth, 10f * Time.deltaTime);
+        if (healthBarImage != null) {
+            healthBarImage.fillAmount = Mathf.Lerp(healthBarImage.fillAmount, CurrentHealth / maxHealth, 10f * Time.deltaTime);
+        }
     }
 
     protected override void Die()
