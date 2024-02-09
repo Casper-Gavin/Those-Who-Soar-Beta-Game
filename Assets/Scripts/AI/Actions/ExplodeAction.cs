@@ -10,7 +10,8 @@ public class ExplodeAction : AIAction
     public int numberOfFlashes = 4; // You must change this in unity for change to take effect
     public float explosionRadius = 5f; // You must change this in unity for change to take effect
     public float explosionDamage = 5f; // You must change this in unity for change to take effect
-    public GameObject explosionEffectPrefab;
+    public int numExplosionParticleSystems = 20;
+    public ParticleSystem explosionEffectPS;
 
     public SpriteRenderer spriteRenderer;
     private Color originalColor;
@@ -82,9 +83,14 @@ public class ExplodeAction : AIAction
     private void Explode(StateController controller)
     {
         // Instantiate the explosion effect
-        if (explosionEffectPrefab)
+        if (explosionEffectPS && numExplosionParticleSystems != 0)
         {
-            Instantiate(explosionEffectPrefab, controller.transform.position, Quaternion.identity);
+            Vector3 position = new Vector3(0.0f, 0.0f, 0.0f);
+            for (int i = 0; i < numExplosionParticleSystems; i++)
+            {
+                position = Random.insideUnitCircle * explosionRadius;
+                Instantiate(explosionEffectPS, controller.transform.position + position, Quaternion.identity);
+            }
         }
 
         // See if player is one of the colliders within the explosion radius
