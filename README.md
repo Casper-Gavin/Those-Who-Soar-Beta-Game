@@ -45,8 +45,12 @@ Unity Version: 2022.3.9f1 (LTS)
 
 ## Version 15
 
+### Version 0.15.14
+- added BossEvent
+- needs camera work
+
 ### Version 0.15.13
-- in middle of 2nd to last video for boss
+- boss health bar added to UI (currently permanent)
 - boss can now take damage/die
 
 ### Version 0.15.12

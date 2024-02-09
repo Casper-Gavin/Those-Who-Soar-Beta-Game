@@ -11,6 +11,7 @@ TagManager:
   - PlayerSword
   - Bomber
   - LevelComponents
+  - Boss
   layers:
   - Default
   - TransparentFX

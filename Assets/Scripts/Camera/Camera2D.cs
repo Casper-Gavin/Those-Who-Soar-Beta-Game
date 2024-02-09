@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Camera2D : MonoBehaviour {
+public class Camera2D : Singleton<Camera2D> {
     private enum CameraMode {
         Update,
         FixedUpdate,
@@ -12,8 +12,10 @@ public class Camera2D : MonoBehaviour {
     private enum CameraFollow {
         FollowPlayer,
         FollowVendor,
-        TransitionToVendor
+        TransitionToVendor,
     }
+
+    // public Transform Target {get; set;}
 
     [Header("Target")]
     [SerializeField] private Transform targetTransform;
@@ -42,6 +44,7 @@ public class Camera2D : MonoBehaviour {
     private Vector3 currentVelocity;
     private bool isTransitionComplete = false;
     private Transform vendorTransform;
+
 
     [Header("Movement")]
     [SerializeField] private float dashDampingFactor = 2f; // Camera follows player closer when dashing
@@ -72,7 +75,7 @@ public class Camera2D : MonoBehaviour {
         if (cameraMode == CameraMode.Update) {
             switch (cameraFollow) {
                 case CameraFollow.FollowPlayer:
-                    FollowTarget(targetTransform, playerOffset);
+                    FollowTarget(targetTransform, playerOffset); // was targetTransform - switch back if doesn't work
                     break;
                 case CameraFollow.FollowVendor:
                     if (vendorTransform != null) {

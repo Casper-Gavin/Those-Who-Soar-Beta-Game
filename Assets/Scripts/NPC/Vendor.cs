@@ -85,7 +85,6 @@ public class Vendor : MonoBehaviour
             popUpPanel.SetActive(true); 
             OnPlayerEnterShopZone.Invoke();
         }
-
     }
 
     private void OnTriggerExit2D(Collider2D other) {

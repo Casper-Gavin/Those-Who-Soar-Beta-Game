@@ -25,14 +25,9 @@ public class ReturnToPool : MonoBehaviour {
         gameObject.SetActive(false);
     }
 
-    private bool CheckLayer(int layer, LayerMask objectMask)
-    {
-        return ((1 << layer) & objectMask) != 0;
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (CheckLayer(other.gameObject.layer, objectMask))
+        if (MyLibrary.CheckLayer(other.gameObject.layer, objectMask))
         {
             if (projectile != null)
             {

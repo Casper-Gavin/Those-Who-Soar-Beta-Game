@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using System;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -38,6 +39,9 @@ public class UIManager : Singleton<UIManager>
 
     [Header("Boss")]
     [SerializeField] private Image bossHealthImage;
+    [SerializeField] private GameObject bossHealthBarPanel;
+    [SerializeField] private GameObject bossIntroPanel;
+
 
     private float playerCurrentHealth;
     private float playerMaxHealth;
@@ -133,19 +137,6 @@ public class UIManager : Singleton<UIManager>
         playerMaxHealth = maxHealth;
         playerCurrentShield = currentShield;
         playerMaxShield = maxShield;
-    }
-
-    // toggle boss health bar visibility
-    public void ShowBossHealth(bool show)
-    {
-        if (show)
-        {
-            // enable all images
-        }
-        else
-        {
-            // disabled all images
-        }
     }
 
     public void UpdateBossHealth (float currentHealth, float maxHealth) {
@@ -286,5 +277,30 @@ public class UIManager : Singleton<UIManager>
     public void LoadMainMenu() {
         Resume();
         SceneManager.LoadScene(0);
+    }
+
+    private void BossFight() {
+        bossIntroPanel.SetActive(true);
+
+        // move camera onto boss
+        // Camera2D.Instance.Target = LevelManager.Instance.Boss;
+    }
+
+    // subscribe to event
+    private void OnEnable() {
+        GameEvent.OnEventFired += OnEventResponse;
+    }
+
+    // unsubscribe to event
+    private void OnDisable() {
+        GameEvent.OnEventFired -= OnEventResponse;
+    }
+
+    private void OnEventResponse(GameEvent.EventType obj) {
+        switch (obj) {
+            case GameEvent.EventType.BossFight:
+                BossFight();
+                break;
+        }
     }
 }
