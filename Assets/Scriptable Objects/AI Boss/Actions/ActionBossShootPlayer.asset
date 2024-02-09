@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b6a61b676a554e44bccf9bc8129651d, type: 3}
-  m_Name: StateTest
+  m_Script: {fileID: 11500000, guid: 87258c92c5b6a3b4f97afe6b6845e853, type: 3}
+  m_Name: ActionBossShootPlayer
   m_EditorClassIdentifier: 
-  Actions: []
-  Transitions: []
+  shotDelay: 3

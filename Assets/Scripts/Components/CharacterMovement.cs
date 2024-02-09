@@ -57,9 +57,13 @@ public class CharacterMovement : CharacterAbilities {
         if (character.CharacterTypes == Character.CharacterTypeEnum.Player)
         {
             if (horizontalInput > 0.1f || verticalInput > 0.1f || horizontalInput < -0.1f || verticalInput < -0.1f) {
-                character.CharacterAnimator.SetBool(isMovingParam, true);
+                if (character.CharacterAnimator != null) {
+                    character.CharacterAnimator.SetBool(isMovingParam, true);
+                }
             } else {
-                character.CharacterAnimator.SetBool(isMovingParam, false);
+                if (character.CharacterAnimator != null) {
+                    character.CharacterAnimator.SetBool(isMovingParam, false);
+                }
             }
         }
     }

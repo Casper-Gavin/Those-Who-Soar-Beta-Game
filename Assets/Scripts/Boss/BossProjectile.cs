@@ -10,8 +10,16 @@ public class BossProjectile : MonoBehaviour
     private float angle;
     private float acceleration;
 
+    private SpriteRenderer spriteRenderer;
+    private Collider2D collider2D;
+    private bool canMove;
+
     private void Awake() {
+        canMove = true;
         thisTransform = transform;
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        collider2D = GetComponent<Collider2D>();
     }
 
     private void Update() {
@@ -29,21 +37,36 @@ public class BossProjectile : MonoBehaviour
     }
 
     private void MoveProjectile() {
-        Vector3 projectileAngle = thisTransform.rotation.eulerAngles;
-        Quaternion newRotation = thisTransform.rotation;
+        if (canMove) {
+            Vector3 projectileAngle = thisTransform.rotation.eulerAngles;
+            Quaternion newRotation = thisTransform.rotation;
 
-        // set rotation of projectile
-        float angleToAdd = acceleration * Time.deltaTime;
-        // * change in z
-        newRotation = Quaternion.Euler(projectileAngle.x, projectileAngle.y, projectileAngle.z + angleToAdd);
+            // set rotation of projectile
+            float angleToAdd = acceleration * Time.deltaTime;
+            // * change in z
+            newRotation = Quaternion.Euler(projectileAngle.x, projectileAngle.y, projectileAngle.z + angleToAdd);
 
-        // use acceleration
-        speed += acceleration * Time.deltaTime;
+            // use acceleration
+            speed += acceleration * Time.deltaTime;
 
-        // move
-        Vector3 newPosition = thisTransform.position + thisTransform.up * (speed * Time.deltaTime);
+            // move
+            Vector3 newPosition = thisTransform.position + thisTransform.up * (speed * Time.deltaTime);
 
-        //final movement
-        thisTransform.SetPositionAndRotation(newPosition, newRotation);
+            //final movement
+            thisTransform.SetPositionAndRotation(newPosition, newRotation);
+        }
+        
+    }
+
+    public void DisableBossProjectile() {
+        canMove = false;
+        spriteRenderer.enabled = false;
+        collider2D.enabled = false;
+    }
+
+    public void EnableBossProjectile() {
+        canMove = true;
+        spriteRenderer.enabled = true;
+        collider2D.enabled = true;
     }
 }

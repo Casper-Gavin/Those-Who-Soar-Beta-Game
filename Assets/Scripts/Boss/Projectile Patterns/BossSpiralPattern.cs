@@ -12,11 +12,6 @@ public class BossSpiralPattern : BossBaseShot
     private float nextShotTime;
 
 
-    protected override void Start() {
-        base.Start();
-        EnableShooting();
-    }
-
     private void Update() {
         nextShotTime = 0f;
         Shoot();
@@ -57,5 +52,11 @@ public class BossSpiralPattern : BossBaseShot
                 Update();
             }
         }
+    }
+
+    // shoot again with the shot index reset
+    public void EnableProjectile() {
+        isShooting = true;
+        shotIndex = 0;
     }
 }

@@ -25,6 +25,7 @@ public class BossBaseShot : MonoBehaviour
 
         bossProjectile.transform.position = newPosition;
         bossProjectilePooled.SetActive(true);
+        bossProjectile.EnableBossProjectile();
 
         return bossProjectile;
     }

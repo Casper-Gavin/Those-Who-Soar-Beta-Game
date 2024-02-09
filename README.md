@@ -45,6 +45,12 @@ Unity Version: 2022.3.9f1 (LTS)
 
 ## Version 15
 
+### Version 0.15.12
+- added collision between player and projectiles
+- added boss phase functionality based on player health
+- added boss wandering state and detect player decision
+- got rid of and adjusted various functions in AI files
+
 ### Version 0.15.11
 - added boss's spiral shot pattern
 - addes boss's random shot pattern

@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class BossCirclePattern : BossBaseShot
 {
-    protected override void Start() {
-        base.Start();
-        EnableShooting();
-    }
-
     private void Update() {
         Shoot();
     }
@@ -32,5 +27,10 @@ public class BossCirclePattern : BossBaseShot
         }
 
         DisableShooting();
+    }
+
+    // shoot again method - used as start of shooting pattern
+    public void EnableProjectile() {
+        isShooting = true;
     }
 }

@@ -17,7 +17,15 @@ public class StateController : MonoBehaviour
     public Path Path { get; set; }
     public Light2D FieldOfView => fieldOfView;
     public Transform Player { get; set; }
+
+    public PlayerHealth PlayerHealth {get; set;}
+
     public Collider2D Collider2D { get; set; }
+
+    public BossCirclePattern BossCirclePattern {get; set;}
+    public BossRandomPattern BossRandomPattern {get; set;}
+    public BossSpiralPattern BossSpiralPattern {get; set;}
+
     public CharacterWeapon CharacterWeapon { get; set; }
     public CharacterFlip CharacterFlip { get; set; }
 
@@ -30,7 +38,13 @@ public class StateController : MonoBehaviour
         Collider2D = GetComponent<Collider2D>();
 
         Player = GameObject.FindWithTag("Player").transform;
+        PlayerHealth = Player.GetComponent<PlayerHealth>();
         currentState.InitActions(this);
+
+        BossCirclePattern = GetComponent<BossCirclePattern>();
+        BossRandomPattern = GetComponent<BossRandomPattern>();
+        BossSpiralPattern = GetComponent<BossSpiralPattern>();
+
     }
 
     private void Update()
@@ -47,12 +61,13 @@ public class StateController : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        if (Player != null) // get rid of error, there is some time before the controller awakes where this throws errors
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(transform.position, Player.position);
-        }
-    }
+    // don't need - left in comments just in case
+    // private void OnDrawGizmos()
+    // {
+    //     if (Player != null) // get rid of error, there is some time before the controller awakes where this throws errors
+    //     {
+    //         Gizmos.color = Color.red;
+    //         Gizmos.DrawLine(transform.position, Player.position);
+    //     }
+    // }
 }

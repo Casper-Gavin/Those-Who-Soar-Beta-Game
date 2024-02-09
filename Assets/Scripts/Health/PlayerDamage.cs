@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerDamage : MonoBehaviour
 {
-    [SerializeField] private Character.CharacterTypeEnum damageType = Character.CharacterTypeEnum.Enemy;
     [SerializeField] private int damageToApply = 1;
 
     private PlayerHealth playerHealth;
@@ -19,10 +18,7 @@ public class PlayerDamage : MonoBehaviour
     {
         if (other.CompareTag("EnemyBullet"))
         {
-            if (other.GetComponent<Projectile>().ProjectileOwner.CharacterTypes == damageType)
-            {
                 playerHealth.TakeDamage(damageToApply);
-            }
         } /*
         else if (other.CompareTag("Bomber") && enemyHealth.IsDead == true)
         {

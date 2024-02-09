@@ -10,9 +10,11 @@ public class ReturnToPool : MonoBehaviour {
     [SerializeField] private ParticleSystem impactPS;
 
     private Projectile projectile;
+    private BossProjectile bossProjectile;
 
     private void Start () {
         projectile = GetComponent<Projectile>();
+        bossProjectile = GetComponent<BossProjectile>();
     }
 
     private void Return () {
@@ -36,13 +38,21 @@ public class ReturnToPool : MonoBehaviour {
             {
                 projectile.DisableProjectile();
             }
+
+            if (bossProjectile != null) {
+                bossProjectile.DisableBossProjectile();
+            }
+
             impactPS.Play();
             Invoke(nameof(Return), impactPS.main.duration);
         }
     }
 
+    // only uses the lifetime if it isn't 0 (or less)
     private void OnEnable() {
-        Invoke(nameof(Return), lifeTime);
+        if (lifeTime > 0) {
+            Invoke(nameof(Return), lifeTime);
+        }
     }
 
     private void OnDisable() {
