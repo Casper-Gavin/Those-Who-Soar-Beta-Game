@@ -11,7 +11,7 @@ public class EnemyHealth : HealthBase
     protected Image healthBarImage;
     protected GameObject gameObjectHealthBar;
 
-    private SkillMenu skillMenu;
+    protected SkillMenu skillMenu;
 
     protected override void Awake() // this used to be Start(), it is apparently very weird to use Start() with MonoBehavior inheritance
     {

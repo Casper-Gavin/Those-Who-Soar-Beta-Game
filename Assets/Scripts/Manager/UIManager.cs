@@ -37,7 +37,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private TextMeshProUGUI coinsTMP;
 
     [Header("Boss")]
-    [SerializeField] private Image bossHealth;
+    [SerializeField] private Image bossHealthImage;
 
     private float playerCurrentHealth;
     private float playerMaxHealth;
@@ -133,6 +133,19 @@ public class UIManager : Singleton<UIManager>
         playerMaxHealth = maxHealth;
         playerCurrentShield = currentShield;
         playerMaxShield = maxShield;
+    }
+
+    // toggle boss health bar visibility
+    public void ShowBossHealth(bool show)
+    {
+        if (show)
+        {
+            // enable all images
+        }
+        else
+        {
+            // disabled all images
+        }
     }
 
     public void UpdateBossHealth (float currentHealth, float maxHealth) {
@@ -238,7 +251,7 @@ public class UIManager : Singleton<UIManager>
         coinsTMP.text = CoinManager.Instance.Coins.ToString();
 
         // boss health update
-        bossHealth.fillAmount = Mathf.Lerp(bossHealth.fillAmount, bossCurrentHealth / bossMaxHealth, 10f * Time.deltaTime);
+        bossHealthImage.fillAmount = Mathf.Lerp(bossHealthImage.fillAmount, bossCurrentHealth / bossMaxHealth, 10f * Time.deltaTime);
     }
 
     public void Resume() {

@@ -29,8 +29,6 @@ public class PlayerHealth : HealthBase
     private bool shieldBroken;
     public float CurrentShield { get; set; }
 
-    private BossBaseShot bossBaseShot;
-
 
     // Awake is called before start
     protected override void Awake()
@@ -38,9 +36,6 @@ public class PlayerHealth : HealthBase
         character = GetComponent<Character>(); // this should be a player
         controller = GetComponent<PlayerController>();
         collide2D = GetComponent<Collider2D>();
-
-        bossBaseShot = GetComponent<BossBaseShot>();
-
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>(); // allow for any expansion of hierarchy
         characterWeapon = GetComponent<CharacterWeapon>();
         characterFlip = GetComponent<CharacterFlip>();
@@ -195,16 +190,7 @@ public class PlayerHealth : HealthBase
 
     protected override void UpdateHealth()
     {
-        // boss health
-        if (bossBaseShot != null) {
-            UIManager.Instance.UpdateBossHealth(CurrentHealth, maxHealth);
-        }
-
-        // player health
-        if (character != null && bossBaseShot == null) {
-            UIManager.Instance.UpdateHealth(CurrentHealth, maxHealthPlayer, CurrentShield, maxShield);
-        }
-        
+        UIManager.Instance.UpdateHealth(CurrentHealth, maxHealthPlayer, CurrentShield, maxShield);
     }
 
     public bool IsFullHealth(string healthType ) {
