@@ -6,6 +6,27 @@ public class MeleeAttack : MonoBehaviour
 {
 
     [SerializeField] private int damage;
+    [SerializeField] public int damageToEnemy;
+
+    private SkillMenu skillMenu;
+    private int prevDamage;
+
+    private void Awake()
+    {
+        damageToEnemy = 2;
+
+        skillMenu = SkillMenu.skillMenu;
+        prevDamage = 0;
+    }
+
+    private void LateUpdate()
+    {
+        if (prevDamage < skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseDamage])
+        {
+            damageToEnemy = damage + skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseDamage];
+            prevDamage = skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseDamage];
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -30,7 +51,7 @@ public class MeleeAttack : MonoBehaviour
         }
         else if (other.gameObject.layer == 9 /* player hit enemy */)
         {
-            other.GetComponent<HealthBase>()?.TakeDamage(damage);
+            other.GetComponent<HealthBase>()?.TakeDamage(damageToEnemy);
             // cancel sword collider (can't double attack enemies)
 
             gameObject.GetComponent<MeleeWeapon>().StopAttack();

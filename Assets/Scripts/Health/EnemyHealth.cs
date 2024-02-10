@@ -13,7 +13,7 @@ public class EnemyHealth : HealthBase
     protected Image healthBarImage;
     protected GameObject gameObjectHealthBar;
 
-    protected SkillMenu skillMenu;
+    //protected SkillMenu skillMenu;
 
     protected override void Awake() // this used to be Start(), it is apparently very weird to use Start() with MonoBehavior inheritance
     {
@@ -27,7 +27,7 @@ public class EnemyHealth : HealthBase
 
         CurrentHealth = initialHealth;
 
-        skillMenu = SkillMenu.skillMenu;
+        //skillMenu = SkillMenu.skillMenu;
     }
 
     protected override void Update()
@@ -49,14 +49,15 @@ public class EnemyHealth : HealthBase
             return;
         }
 
-        CurrentHealth -= damage;
+        MeleeAttack meleeAttack = GameObject.Find("Player").GetComponentInChildren<MeleeAttack>();
+        CurrentHealth -= meleeAttack.damageToEnemy;
         
-        // if (skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage] > 0)
-        // {
-        //     CurrentHealth -= skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage];
-        // }
+        //if (skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage] > 0)
+        //{
+        //    CurrentHealth -= skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage];
+        //}
         
-        CurrentHealth = Mathf.Max(CurrentHealth, 0); // prevent negative numbers
+        //CurrentHealth = Mathf.Max(CurrentHealth, 0); // prevent negative numbers
         UpdateHealth();
 
         if (CurrentHealth <= 0) {

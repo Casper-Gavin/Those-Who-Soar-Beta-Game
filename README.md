@@ -44,6 +44,8 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 16
+### Version 0.16.6
+- Fixed Skill Tree damage issue
 
 ### Version 0.16.6
 - finished boss
