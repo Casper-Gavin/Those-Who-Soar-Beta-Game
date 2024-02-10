@@ -25,6 +25,7 @@ public class Vendor : MonoBehaviour
 
     public UnityEvent OnPlayerEnterShopZone;
     public UnityEvent OnPlayerExitShopZone;
+    public string vendorTag;
 
     protected Character character;
 
@@ -82,6 +83,7 @@ public class Vendor : MonoBehaviour
         if (other.CompareTag("Player")) {
             characterWeapon = other.GetComponent<CharacterWeapon>();
             canOpenShop = true;
+            vendorTag = "Vendor";
             popUpPanel.SetActive(true); 
             OnPlayerEnterShopZone.Invoke();
         }
@@ -91,6 +93,7 @@ public class Vendor : MonoBehaviour
         if (other.CompareTag("Player")) {
             characterWeapon = null;
             canOpenShop = false;
+            vendorTag = null;
             popUpPanel.SetActive(false);
             shopPanel.SetActive(false);
             OnPlayerExitShopZone.Invoke();
