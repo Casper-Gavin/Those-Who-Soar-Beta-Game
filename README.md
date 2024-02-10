@@ -44,6 +44,9 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 16
+### Version 0.16.2
+- Cleanup particle systems after bomber explodes
+
 ### Version 0.16.1
 - Fixed Character Skills and SkillTree persistency  issue
 
