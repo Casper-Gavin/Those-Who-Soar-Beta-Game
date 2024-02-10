@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static SkillMenu;
 
 public class EnemyHealth : HealthBase
 {
@@ -48,15 +49,16 @@ public class EnemyHealth : HealthBase
         }
 
         CurrentHealth -= damage;
-        if (skillMenu)
+        
+        if (skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage] > 0)
         {
-            CurrentHealth -= skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseDamage];
+            CurrentHealth -= skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage];
         }
+        
         CurrentHealth = Mathf.Max(CurrentHealth, 0); // prevent negative numbers
         UpdateHealth();
 
-        if (CurrentHealth == 0)
-        {
+        if (CurrentHealth <= 0) {
             Die();
         }
     }

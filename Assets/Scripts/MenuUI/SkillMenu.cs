@@ -8,7 +8,7 @@ public class SkillMenu : MonoBehaviour {
 
     private void Awake() => skillMenu = this; // Singleton
 
-    public int[] skillLevels;
+    public int[] skillLevels = new int[5];
     public int[] skillCosts;
     public int[] skillCaps;
     public string[] skillNames;
@@ -32,7 +32,7 @@ public class SkillMenu : MonoBehaviour {
     private void Start() {
         skillPoints = 20; // For testing only
 
-        skillLevels = new int[5];
+        //staticskillLevels = new int[5];
         skillCaps = new[] { 5, 3, 3, 1, 1 };
         skillCosts = new[] { 1, 2, 2, 3, 3 };
 

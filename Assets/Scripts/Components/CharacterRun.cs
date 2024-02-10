@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static SkillMenu;
 
 public class CharacterRun : CharacterAbilities {
     [SerializeField] private float runSpeed = 10f;

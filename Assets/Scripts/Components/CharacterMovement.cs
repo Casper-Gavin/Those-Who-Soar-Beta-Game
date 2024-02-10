@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static SkillMenu;
 
 public class CharacterMovement : CharacterAbilities {
     [SerializeField] private float walkSpeed = 5f;
@@ -25,6 +26,8 @@ public class CharacterMovement : CharacterAbilities {
 
     protected override void Update() {
         base.Update();
+
+        //skillMenu = FindObjectOfType<SkillMenu>();
 
         if (!isSkilMenuMoveUnlockedOnce && skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseSpeed] > 0) {
             isSkilMenuMoveUnlockedOnce = true;

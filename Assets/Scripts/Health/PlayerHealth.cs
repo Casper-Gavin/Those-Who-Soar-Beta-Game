@@ -16,8 +16,8 @@ public class PlayerHealth : HealthBase
 
     //private CharacterSkills characterSkills;
     private SkillMenu skillMenu;
-    private int lastCheckHealth = 0;
-    private int lastCheckShield = 0;
+    private int lastCheckHealth;
+    private int lastCheckShield;
     
     private Character character;
     private PlayerController controller;
@@ -47,6 +47,9 @@ public class PlayerHealth : HealthBase
 
         //characterSkills = GetComponent<CharacterSkills>();
         skillMenu = SkillMenu.skillMenu;
+
+        lastCheckHealth = 0;
+        lastCheckShield = 0;
     }
 
     protected override void Update () {
@@ -54,6 +57,14 @@ public class PlayerHealth : HealthBase
 
         // fieldOfView.SetAimDirection(aimDir);
         fieldOfView.SetOrigin(transform.position);
+
+        if (skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseHealth] > lastCheckHealth) {
+            GainMaxHealth(1);
+        }
+
+        if (skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseShield] > lastCheckShield) {
+            GainMaxShield(2);
+        }
     }
 
     public override void TakeDamage(int damage)
