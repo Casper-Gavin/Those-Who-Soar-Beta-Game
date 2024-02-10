@@ -9,10 +9,15 @@ public class PlayerHealth : HealthBase
     [Header("Shield")]
     [SerializeField] private float initialShield = 5f;
     [SerializeField] protected float maxShield = 5f;
+    [SerializeField] protected float delayAfterDmgToBeginShieldRegen = 1.0f; // seconds
+    [SerializeField] protected float shieldRegenRate = 0.25f; // shield / second
 
     [Header("Health")]
     [SerializeField] private float initialHealthPlayer = 10f;
     [SerializeField] protected float maxHealthPlayer = 10f;
+    
+    private float timeToStartRegen = 0.0f;
+    private bool needRegen = false;
 
     //private CharacterSkills characterSkills;
     private SkillMenu skillMenu;
@@ -52,7 +57,8 @@ public class PlayerHealth : HealthBase
         lastCheckShield = 0;
     }
 
-    protected override void Update () {
+    protected override void Update ()
+    {
         base.Update();
 
         // fieldOfView.SetAimDirection(aimDir);
@@ -64,6 +70,18 @@ public class PlayerHealth : HealthBase
 
         if (skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseShield] > lastCheckShield) {
             GainMaxShield(2);
+        }
+
+        if (needRegen && Time.time > timeToStartRegen)
+        {
+            CurrentShield += shieldRegenRate * Time.deltaTime;
+            shieldBroken = false;
+            if (CurrentShield >= maxShield)
+            {
+                needRegen = false;
+                CurrentShield = maxShield;
+            }
+            UpdateHealth();
         }
     }
 
@@ -84,6 +102,8 @@ public class PlayerHealth : HealthBase
             {
                 shieldBroken = true;
             }
+            needRegen = true;
+            timeToStartRegen = delayAfterDmgToBeginShieldRegen + Time.time;
             return;
         }
 
@@ -94,6 +114,11 @@ public class PlayerHealth : HealthBase
         if (CurrentHealth <= 0)
         {
             TriggerDeath();
+        }
+        else
+        {
+            needRegen = true;
+            timeToStartRegen = delayAfterDmgToBeginShieldRegen + Time.time;
         }
     }
 
