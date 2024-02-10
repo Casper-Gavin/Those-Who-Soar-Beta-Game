@@ -9,6 +9,7 @@ public class EnemyHealth : HealthBase
     [SerializeField] protected GameObject enemyHealthBarPrefab;
     [SerializeField] protected Vector3 offset = new Vector3(0f, 1f, 0f);
     [SerializeField] protected int damageTakenFromBullet = 1;
+
     protected Image healthBarImage;
     protected GameObject gameObjectHealthBar;
 
@@ -50,10 +51,10 @@ public class EnemyHealth : HealthBase
 
         CurrentHealth -= damage;
         
-        if (skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage] > 0)
-        {
-            CurrentHealth -= skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage];
-        }
+        // if (skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage] > 0)
+        // {
+        //     CurrentHealth -= skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage];
+        // }
         
         CurrentHealth = Mathf.Max(CurrentHealth, 0); // prevent negative numbers
         UpdateHealth();
@@ -65,9 +66,9 @@ public class EnemyHealth : HealthBase
 
     protected override void UpdateHealth()
     {
-        if (healthBarImage != null) {
-            healthBarImage.fillAmount = Mathf.Lerp(healthBarImage.fillAmount, CurrentHealth / maxHealth, 10f * Time.deltaTime);
-        }
+            if (healthBarImage != null) {
+                healthBarImage.fillAmount = Mathf.Lerp(healthBarImage.fillAmount, CurrentHealth / maxHealth, 10f * Time.deltaTime);
+            }
     }
 
     protected override void Die()

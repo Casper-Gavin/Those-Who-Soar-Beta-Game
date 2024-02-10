@@ -24009,6 +24009,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1189059181}
+  - component: {fileID: 1189059182}
   m_Layer: 5
   m_Name: BossIntro
   m_TagString: Untagged
@@ -24036,6 +24037,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &1189059182
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189059180}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!4 &1219977501 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 335910330206322372, guid: 4b76b2d724dc1e240b8b7c28192268b1, type: 3}
@@ -27157,6 +27170,7 @@ GameObject:
   - component: {fileID: 1759901991}
   - component: {fileID: 1759901993}
   - component: {fileID: 1759901992}
+  - component: {fileID: 1759901994}
   m_Layer: 5
   m_Name: HealthContainer
   m_TagString: Untagged
@@ -27223,6 +27237,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1759901990}
   m_CullTransparentMesh: 1
+--- !u!225 &1759901994
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759901990}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1761661168
 GameObject:
   m_ObjectHideFlags: 0

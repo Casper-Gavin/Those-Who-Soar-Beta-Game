@@ -281,16 +281,29 @@ public class UIManager : Singleton<UIManager>
 
     private void BossFight() {
         bossIntroPanel.SetActive(true);
-        bossHealthBarPanel.SetActive(true);
+        StartCoroutine(MyLibrary.FadeCanvasGroup(bossIntroPanel.GetComponent<CanvasGroup>(), 1f, 1f, () => {
+            bossHealthBarPanel.SetActive(true);
+            StartCoroutine(MyLibrary.FadeCanvasGroup(bossHealthBarPanel.GetComponent<CanvasGroup>(), 1f, 1f));
+        }));
     }
 
     private void BossFightStart() {
-        bossIntroPanel.SetActive(false);
+        StartCoroutine(MyLibrary.FadeCanvasGroup(bossIntroPanel.GetComponent<CanvasGroup>(), 0.5f, 0f, () => {
+            bossIntroPanel.SetActive(false);
+        }));
+    }
+
+    public void OnBossDead() {
+        StartCoroutine(MyLibrary.FadeCanvasGroup(bossHealthBarPanel.GetComponent<CanvasGroup>(), 1f, 0f, () => {
+            bossHealthBarPanel.SetActive(false);
+        }));
     }
 
     // subscribe to event
     private void OnEnable() {
         GameEvent.OnEventFired += OnEventResponse;
+        BossHealth.OnBossDead += OnBossDead;
+
     }
 
     // unsubscribe to event

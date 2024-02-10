@@ -45,20 +45,24 @@ Unity Version: 2022.3.9f1 (LTS)
 
 ## Version 16
 
+### Version 0.16.6
+- finished boss
+- addded fade ability to canvas groups
+
 ### Version 0.16.5
 - added more boss intro functionality
 
 ### Version 0.16.4
-- Added boss camera
+- added boss camera
 
 ### Version 0.16.3
-- Add shield regen to player
+- add shield regen to player
 
 ### Version 0.16.2
-- Cleanup particle systems after bomber explodes
+- cleanup particle systems after bomber explodes
 
 ### Version 0.16.1
-- Fixed Character Skills and SkillTree persistency  issue
+- fixed Character Skills and SkillTree persistency  issue
 
 ## Version 15
 ### Version 0.15.14

@@ -27,15 +27,4 @@ public class GameEvent : MonoBehaviour
             }
         }
     }
-
-    private void OnTriggerExit2D(Collider2D other) {
-        if (MyLibrary.CheckLayer(other.gameObject.layer, eventLayer)) {
-            if (!eventFired) {
-                // if it's not null the event gets invoked
-                OnEventFired?.Invoke(eventType);
-                eventFired = true;
-            }
-        }
-    }
-
 }
