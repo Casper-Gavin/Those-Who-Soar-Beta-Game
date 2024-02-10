@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class BossHealth : EnemyHealth
 {
+
+
+
     // Awake is called before start
     protected override void Awake()
     {
@@ -17,6 +20,7 @@ public class BossHealth : EnemyHealth
     {
         UIManager.Instance.UpdateBossHealth(CurrentHealth, maxHealth);
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Bullet"))
@@ -25,10 +29,10 @@ public class BossHealth : EnemyHealth
         }
     }
 
-    protected override void Die()
-    {
-        //ShowBossHealth(false);
-        base.Die();
-    }
+    // protected override void Die()
+    // {
+    //     //ShowBossHealth(false);
+    //     base.Die();
+    // }
 
 }

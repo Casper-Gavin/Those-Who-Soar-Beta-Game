@@ -44,6 +44,10 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 16
+
+### Version 0.16.5
+- added more boss intro functionality
+
 ### Version 0.16.4
 - Added boss camera
 

@@ -281,9 +281,11 @@ public class UIManager : Singleton<UIManager>
 
     private void BossFight() {
         bossIntroPanel.SetActive(true);
+        bossHealthBarPanel.SetActive(true);
+    }
 
-        // move camera onto boss
-        // Camera2D.Instance.Target = LevelManager.Instance.Boss;
+    private void BossFightStart() {
+        bossIntroPanel.SetActive(false);
     }
 
     // subscribe to event
@@ -298,8 +300,11 @@ public class UIManager : Singleton<UIManager>
 
     private void OnEventResponse(GameEvent.EventType obj) {
         switch (obj) {
-            case GameEvent.EventType.BossFight:
+            case GameEvent.EventType.BossFightIntro:
                 BossFight();
+                break;
+            case GameEvent.EventType.BossFightStart:
+                BossFightStart();
                 break;
         }
     }

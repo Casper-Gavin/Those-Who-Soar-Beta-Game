@@ -8,7 +8,8 @@ public class GameEvent : MonoBehaviour
     public static Action<EventType> OnEventFired;
 
     public enum EventType { // only BossFight is used - can put other events in (make sure to change in UIManager too)
-        BossFight,
+        BossFightIntro,
+        BossFightStart
     }
 
     [SerializeField] private EventType eventType;
@@ -27,7 +28,14 @@ public class GameEvent : MonoBehaviour
         }
     }
 
-    private void UrMom() {
-
+    private void OnTriggerExit2D(Collider2D other) {
+        if (MyLibrary.CheckLayer(other.gameObject.layer, eventLayer)) {
+            if (!eventFired) {
+                // if it's not null the event gets invoked
+                OnEventFired?.Invoke(eventType);
+                eventFired = true;
+            }
+        }
     }
+
 }

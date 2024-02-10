@@ -11,6 +11,7 @@ public class BossDetect : MonoBehaviour {
     public bool isInBossZone;
     public string bossTag;
 
+
     private void Awake() {
         canLeaveBossZone = true;
         isInBossZone = false;
