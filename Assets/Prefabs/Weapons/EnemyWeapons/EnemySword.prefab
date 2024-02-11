@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
+  damageToEnemy: 0
 --- !u!114 &-2219299530553652623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,7 +141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6938039047737928252}
   - component: {fileID: 45568417470551134}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}

@@ -44,6 +44,9 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 16
+### Version 0.16.7
+- Fixed Enemy UI and Weapons being visible over shader
+
 ### Version 0.16.6
 - Fixed Skill Tree damage issue
 

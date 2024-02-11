@@ -23,6 +23,8 @@ public class EnemyHealth : HealthBase
             gameObjectHealthBar = Instantiate(enemyHealthBarPrefab, transform.position + offset, Quaternion.identity);
             gameObjectHealthBar.transform.parent = transform;
             healthBarImage = gameObjectHealthBar.transform.GetChild(0).transform.GetChild(0).GetComponent<Image>();
+            
+            gameObjectHealthBar.layer = LayerMask.NameToLayer("Enemy UI");
         }
 
         CurrentHealth = initialHealth;

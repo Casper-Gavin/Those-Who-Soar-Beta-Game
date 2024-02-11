@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3425733555376981645}
   - component: {fileID: 1102644163925626313}
   - component: {fileID: 687012267882570051}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EnemyBar
   m_TagString: Untagged
   m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
@@ -113,13 +113,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Bar
   attackCooldown: 0.15
+  weaponUISprite: {fileID: 0}
   projectileSpawnPosition: {x: 1.55, y: 0.11, z: 0}
   projectileSpread: {x: 0, y: 0, z: 5}
   useMagazine: 1
   magazineSize: 30
   reloadAutomatically: 1
-  recoilEnabled: 1
-  recoilForce: 5
   muzzlePS: {fileID: 6648466872139044970, guid: 883841be30f5d984e8e47af34eebbee1, type: 3}
 --- !u!1 &3888321724954760950
 GameObject:
@@ -131,7 +130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 66557291958556632}
   - component: {fileID: 2726355378973207791}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,6 +215,10 @@ PrefabInstance:
     - target: {fileID: 978759263892787247, guid: 883841be30f5d984e8e47af34eebbee1, type: 3}
       propertyPath: m_Name
       value: Muzzle - PS
+      objectReference: {fileID: 0}
+    - target: {fileID: 978759263892787247, guid: 883841be30f5d984e8e47af34eebbee1, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2750349571408542190, guid: 883841be30f5d984e8e47af34eebbee1, type: 3}
       propertyPath: m_LocalPosition.x
