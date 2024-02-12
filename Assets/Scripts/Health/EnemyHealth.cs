@@ -77,5 +77,8 @@ public class EnemyHealth : HealthBase
     protected override void Die()
     {
         DestroyObject();
+
+        int randomRoll = Random.Range(10, 50);
+        SkillPointManager.Instance.AddSkillPoints(randomRoll);
     }
 }

@@ -27,15 +27,17 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private Image coinIndicator;
     [SerializeField] private Image healthBar;
     [SerializeField] private Image shieldBar;
-    [SerializeField] private TextMeshProUGUI currentHealthTMP;
-    [SerializeField] private TextMeshProUGUI currentShieldTMP;
+    [SerializeField] private Image skillPointBar;
 
     [Header("Weapon")]
     [SerializeField] private TextMeshProUGUI currentAmmoTMP;
     [SerializeField] private Image weaponImage;
 
     [Header("Text")]
+    [SerializeField] private TextMeshProUGUI currentHealthTMP;
+    [SerializeField] private TextMeshProUGUI currentShieldTMP;
     [SerializeField] private TextMeshProUGUI coinsTMP;
+    [SerializeField] private TextMeshProUGUI skillPointsTotalTMP;
 
     [Header("Boss")]
     [SerializeField] private Image bossHealthImage;
@@ -47,6 +49,10 @@ public class UIManager : Singleton<UIManager>
     private float playerMaxHealth;
     private float playerCurrentShield;
     private float playerMaxShield;
+    private float playerCurrentSkillPoints;
+    private float playerMaxSkillPoints;
+    private int playerTotalSkillPoints;
+    private int playerSPCounter;
     private bool isPlayer;
 
     private int playerCurrentAmmo;
@@ -72,6 +78,11 @@ public class UIManager : Singleton<UIManager>
         c = coinIndicator.color;
         c.a = 0;
         coinIndicator.color = c;
+
+        playerMaxSkillPoints = 100f; // SkillPoints to get 1 skill point
+        //playerTotalSkillPoints = SkillPointManager.Instance.SkillPointsTotal;
+        playerSPCounter = -1;
+        //SkillPointManager.Instance.ResetSkillPoints(); // For testing only
     }
 
     private void Update()
@@ -171,6 +182,9 @@ public class UIManager : Singleton<UIManager>
         shieldBar.fillAmount = Mathf.Lerp(shieldBar.fillAmount, playerCurrentShield / playerMaxShield, 10f * Time.deltaTime);
         currentShieldTMP.text = playerCurrentShield.ToString() + "/" + playerMaxShield.ToString();
 
+        skillPointBar.fillAmount = Mathf.Lerp(skillPointBar.fillAmount, SkillPointManager.Instance.SkillPoints / playerMaxSkillPoints, 10f * Time.deltaTime);
+        playerCurrentSkillPoints = SkillPointManager.Instance.SkillPoints;
+
         // DAMAGE INDICATOR
         if (damageIndicator.enabled)
         {
@@ -241,8 +255,26 @@ public class UIManager : Singleton<UIManager>
         // PLAYER COINS
         coinsTMP.text = CoinManager.Instance.Coins.ToString();
 
+        // PLAYER SKILL POINTS
+        if (playerCurrentSkillPoints >= playerMaxSkillPoints && playerCurrentSkillPoints != 0 && playerSPCounter <= playerTotalSkillPoints) {
+            playerTotalSkillPoints ++;
+            playerCurrentSkillPoints = 0;
+
+            skillPointBar.fillAmount = Mathf.Lerp(skillPointBar.fillAmount, SkillPointManager.Instance.SkillPoints / playerMaxSkillPoints, 10f * Time.deltaTime);
+            SkillPointManager.Instance.SkillPoints = 0;
+        }
+
+        skillPointsTotalTMP.text = playerTotalSkillPoints.ToString();
+        SkillMenu.skillMenu.skillPoints = playerTotalSkillPoints;
+        SkillPointManager.Instance.SkillPointsTotal = playerTotalSkillPoints;
+        SkillPointManager.Instance.SaveSkillPoints();
+
         // boss health update
         bossHealthImage.fillAmount = Mathf.Lerp(bossHealthImage.fillAmount, bossCurrentHealth / bossMaxHealth, 10f * Time.deltaTime);
+    }
+
+    private void OnApplicationQuit() {
+        SkillPointManager.Instance.SaveSkillPoints();
     }
 
     public void Resume() {
