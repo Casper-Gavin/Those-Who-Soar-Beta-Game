@@ -44,6 +44,12 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 16
+### Version 0.16.9
+- Downscale health potion image
+- Fix bug where shield regenerated during death animation
+- Fix bug where bomber did not die
+- Fix bug where coin, ammo, sp text was invisible (local bug?)
+
 ### Version 0.16.8
 - Added experience to gain skill points
 

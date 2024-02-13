@@ -124,6 +124,7 @@ public class PlayerHealth : HealthBase
 
     protected void TriggerDeath()
     {
+        needRegen = false;
         character.enabled = false;
         controller.enabled = false;
         collide2D.enabled = false;
