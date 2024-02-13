@@ -40,9 +40,9 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private TextMeshProUGUI skillPointsTotalTMP;
 
     [Header("Boss")]
-    [SerializeField] private Image bossHealthImage;
-    [SerializeField] private GameObject bossHealthBarPanel;
-    [SerializeField] private GameObject bossIntroPanel;
+    [SerializeField] private Image bossHealthImage; // BossHealth
+    [SerializeField] private GameObject bossHealthBarPanel; // HealthContainer
+    [SerializeField] private GameObject bossIntroPanel; // BossIntro
 
 
     private float playerCurrentHealth;
