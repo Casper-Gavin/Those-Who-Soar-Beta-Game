@@ -44,6 +44,9 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 16
+### Version 0.16.10
+- Make weapon image bigger
+
 ### Version 0.16.9
 - Downscale health potion image
 - Fix bug where shield regenerated during death animation

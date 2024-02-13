@@ -157,7 +157,7 @@ public class UIManager : Singleton<UIManager>
 
     public void UpdateWeaponSprite(Sprite weaponSprite) {
         weaponImage.sprite = weaponSprite;
-        weaponImage.SetNativeSize();
+        //weaponImage.SetNativeSize();
     }
 
     public void HideAmmo()
