@@ -37810,7 +37810,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5467002295590356507, guid: c93457e15697ce24db47f328eba688bb, type: 3}
       propertyPath: prefabsToSpawn.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5467002295590356507, guid: c93457e15697ce24db47f328eba688bb, type: 3}
       propertyPath: prefabsToSpawn.Array.data[0].quantity
@@ -37859,7 +37859,7 @@ PrefabInstance:
     - target: {fileID: 5467002295590356507, guid: c93457e15697ce24db47f328eba688bb, type: 3}
       propertyPath: prefabsToSpawn.Array.data[3].gameObject
       value: 
-      objectReference: {fileID: 6969685931287889471, guid: 42182cbae43534d4abdb36d52f3ca8b4, type: 3}
+      objectReference: {fileID: 4759027120616304255, guid: 4b36a959636dfe146850f12fb638c0b9, type: 3}
     - target: {fileID: 5467002295590356507, guid: c93457e15697ce24db47f328eba688bb, type: 3}
       propertyPath: prefabsToSpawn.Array.data[4].gameObject
       value: 
