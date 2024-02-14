@@ -24,7 +24,10 @@ public class CharacterWeapon : CharacterAbilities
     protected override void Start()
     {
         base.Start();
-        EquipWeapon(weaponToUse, weaponHolderPosition);
+        if (weaponToUse)
+        {
+            EquipWeapon(weaponToUse, weaponHolderPosition);
+        }
     }
 
     // left mouse is shoot, R is reload, more to come

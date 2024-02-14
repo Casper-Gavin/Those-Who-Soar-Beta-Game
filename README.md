@@ -44,6 +44,8 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 16
+### Version 0.16.12
+- Fix bomber assert
 
 ### Version 0.16.11
 - Gave boss less projectiles but increased their speed
