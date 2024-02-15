@@ -44,6 +44,9 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 16
+### Version 0.16.13
+- Fix invisible player projectiles
+
 ### Version 0.16.12
 - Fix bomber assert
 
