@@ -24,6 +24,8 @@ public class CharacterSkills : MonoBehaviour {
         skillMenu.skillPoints -= skillMenu.skillCosts[id];
         skillMenu.skillLevels[id] ++;
 
+        SkillPointManager.Instance.RemoveSkillPointsTotal(skillMenu.skillCosts[id]);
+
         skillMenu.UpdateAllSkillUI();
     }
 }

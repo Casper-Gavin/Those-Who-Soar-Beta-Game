@@ -30,7 +30,7 @@ public class SkillMenu : MonoBehaviour {
     public int skillPoints;
 
     private void Start() {
-        skillPoints = 0; // 20 is For testing only
+        skillPoints = SkillPointManager.Instance.SkillPointsTotal;
 
         //staticskillLevels = new int[5];
         skillCaps = new[] { 5, 3, 3, 1, 1 };

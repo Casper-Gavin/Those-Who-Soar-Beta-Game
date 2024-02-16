@@ -51,8 +51,8 @@ public class UIManager : Singleton<UIManager>
     private float playerCurrentShield;
     private float playerMaxShield;
     private float playerCurrentSkillPoints;
+    private int playerCurrentSkillPointsTotal;
     private float playerMaxSkillPoints;
-    private int playerTotalSkillPoints;
     private int playerSPCounter;
     private bool isPlayer;
 
@@ -189,6 +189,21 @@ public class UIManager : Singleton<UIManager>
 
         skillPointBar.fillAmount = Mathf.Lerp(skillPointBar.fillAmount, SkillPointManager.Instance.SkillPoints / playerMaxSkillPoints, 10f * Time.deltaTime);
         playerCurrentSkillPoints = SkillPointManager.Instance.SkillPoints;
+        playerCurrentSkillPointsTotal = SkillPointManager.Instance.SkillPointsTotal;
+
+        // PLAYER SKILL POINTS
+        if (playerCurrentSkillPoints >= playerMaxSkillPoints && playerCurrentSkillPoints != 0 && playerSPCounter <= playerCurrentSkillPointsTotal) {
+            playerCurrentSkillPointsTotal ++;
+            playerCurrentSkillPoints = 0;
+
+            skillPointBar.fillAmount = Mathf.Lerp(skillPointBar.fillAmount, SkillPointManager.Instance.SkillPoints / playerMaxSkillPoints, 10f * Time.deltaTime);
+            SkillPointManager.Instance.SkillPoints = 0;
+        }
+
+        skillPointsTotalTMP.text = playerCurrentSkillPointsTotal.ToString();
+        skillMenu.skillPoints = playerCurrentSkillPointsTotal;
+        SkillPointManager.Instance.SkillPointsTotal = playerCurrentSkillPointsTotal;
+        SkillPointManager.Instance.SaveSkillPoints();
 
         // DAMAGE INDICATOR
         if (damageIndicator.enabled)
@@ -259,20 +274,6 @@ public class UIManager : Singleton<UIManager>
 
         // PLAYER COINS
         coinsTMP.text = CoinManager.Instance.Coins.ToString();
-
-        // PLAYER SKILL POINTS
-        if (playerCurrentSkillPoints >= playerMaxSkillPoints && playerCurrentSkillPoints != 0 && playerSPCounter <= playerTotalSkillPoints) {
-            playerTotalSkillPoints ++;
-            playerCurrentSkillPoints = 0;
-
-            skillPointBar.fillAmount = Mathf.Lerp(skillPointBar.fillAmount, SkillPointManager.Instance.SkillPoints / playerMaxSkillPoints, 10f * Time.deltaTime);
-            SkillPointManager.Instance.SkillPoints = 0;
-        }
-
-        skillPointsTotalTMP.text = playerTotalSkillPoints.ToString();
-        skillMenu.skillPoints = playerTotalSkillPoints;
-        SkillPointManager.Instance.SkillPointsTotal = playerTotalSkillPoints;
-        SkillPointManager.Instance.SaveSkillPoints();
 
         // boss health update
         bossHealthImage.fillAmount = Mathf.Lerp(bossHealthImage.fillAmount, bossCurrentHealth / bossMaxHealth, 10f * Time.deltaTime);

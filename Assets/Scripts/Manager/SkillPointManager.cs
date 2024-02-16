@@ -11,14 +11,20 @@ public class SkillPointManager : Singleton<SkillPointManager> {
 
     private void Start() {
         LoadSkillPoints();
+        LoadSkillPointsTotal();
     }
 
     private void OnApplicationQuit() {
         SaveSkillPoints();
+        SaveSkillPointsTotal();
     }
 
     private void LoadSkillPoints() {
         SkillPoints = PlayerPrefs.GetInt(SKILLPOINTS_KEY);
+    }
+
+    private void LoadSkillPointsTotal() {
+        SkillPointsTotal = PlayerPrefs.GetInt(SKILLPOINTSTOTAL_KEY);
     }
 
     public void AddSkillPoints(int amount) {
@@ -29,6 +35,9 @@ public class SkillPointManager : Singleton<SkillPointManager> {
 
     public void SaveSkillPoints() {
         PlayerPrefs.SetInt(SKILLPOINTS_KEY, SkillPoints);
+    }
+
+    public void SaveSkillPointsTotal() {
         PlayerPrefs.SetInt(SKILLPOINTSTOTAL_KEY, SkillPointsTotal);
     }
 
@@ -37,8 +46,18 @@ public class SkillPointManager : Singleton<SkillPointManager> {
         PlayerPrefs.SetInt(SKILLPOINTS_KEY, SkillPoints);
     }
 
+    public void RemoveSkillPointsTotal(int amount) {
+        SkillPointsTotal -= amount;
+        PlayerPrefs.SetInt(SKILLPOINTSTOTAL_KEY, SkillPointsTotal);
+    }
+
     public void ResetSkillPoints() {
         SkillPoints = 0;
         PlayerPrefs.SetInt(SKILLPOINTS_KEY, SkillPoints);
+    }
+
+    public void ResetSkillPointsTotal() {
+        SkillPointsTotal = 0;
+        PlayerPrefs.SetInt(SKILLPOINTSTOTAL_KEY, SkillPointsTotal);
     }
 }
