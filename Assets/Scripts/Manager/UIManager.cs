@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using System;
+using static SkillMenu;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -61,6 +62,8 @@ public class UIManager : Singleton<UIManager>
     private float bossCurrentHealth;
     private float bossMaxHealth;
 
+    private SkillMenu skillMenu;
+
     private void Start()
     {
         Color c = damageIndicator.color;
@@ -83,6 +86,8 @@ public class UIManager : Singleton<UIManager>
         //playerTotalSkillPoints = SkillPointManager.Instance.SkillPointsTotal;
         playerSPCounter = -1;
         //SkillPointManager.Instance.ResetSkillPoints(); // For testing only
+
+        skillMenu = SkillMenu.skillMenu;
     }
 
     private void Update()
@@ -265,7 +270,7 @@ public class UIManager : Singleton<UIManager>
         }
 
         skillPointsTotalTMP.text = playerTotalSkillPoints.ToString();
-        SkillMenu.skillMenu.skillPoints = playerTotalSkillPoints;
+        skillMenu.skillPoints = playerTotalSkillPoints;
         SkillPointManager.Instance.SkillPointsTotal = playerTotalSkillPoints;
         SkillPointManager.Instance.SaveSkillPoints();
 
