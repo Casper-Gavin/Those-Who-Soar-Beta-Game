@@ -44,6 +44,12 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 16
+### Version 0.17.1
+- Added Crit logic
+- Moved skill tree damage code
+- Crit does not work just like skill tree
+    - Something is wrong with the TakeDamage function or how we are applying the damage with the weapons. It never takes the damageToEnemy variable, only the damage varaible
+
 ### Version 0.16.14
 - Add weapon bounce
 

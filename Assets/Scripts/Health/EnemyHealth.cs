@@ -52,14 +52,7 @@ public class EnemyHealth : HealthBase
         }
 
         CurrentHealth -= damage;
-        //MeleeAttack meleeAttack = GameObject.Find("Player").GetComponentInChildren<MeleeAttack>();
-        //CurrentHealth -= meleeAttack.damageToEnemy;
-        
-        //if (skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage] > 0)
-        //{
-        //    CurrentHealth -= skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage];
-        //}
-        
+
         CurrentHealth = Mathf.Max(CurrentHealth, 0); // prevent negative numbers
         UpdateHealth();
 

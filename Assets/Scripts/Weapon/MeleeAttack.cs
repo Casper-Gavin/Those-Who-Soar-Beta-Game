@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static SkillMenu;
 
 public class MeleeAttack : MonoBehaviour
 {
 
     [SerializeField] private int damage;
     [SerializeField] public int damageToEnemy;
+
+    [Range(0f, 1f)]
+    [SerializeField] public float critChance;
 
     private SkillMenu skillMenu;
     private int prevDamage;
@@ -17,6 +21,8 @@ public class MeleeAttack : MonoBehaviour
 
         skillMenu = SkillMenu.skillMenu;
         prevDamage = 0;
+
+        critChance = 0.05f;
     }
 
     private void LateUpdate()
@@ -51,7 +57,28 @@ public class MeleeAttack : MonoBehaviour
         }
         else if (other.gameObject.layer == 9 /* player hit enemy */)
         {
-            other.GetComponent<HealthBase>()?.TakeDamage(damageToEnemy);
+            if (Random.value % 100 < critChance * 100)
+            {
+                damageToEnemy += damageToEnemy/3;
+
+                if (skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage] > 0)
+                {
+                    damageToEnemy += skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage];
+                }
+
+                EnemyHealth eH = other.GetComponent<EnemyHealth>();
+                eH.TakeDamage(damageToEnemy);
+                
+                damageToEnemy -= damageToEnemy/3;
+            } else {
+                if (skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage] > 0)
+                {
+                    damageToEnemy += skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage];
+                }
+
+                EnemyHealth eH = other.GetComponent<EnemyHealth>();
+                eH.TakeDamage(damageToEnemy);
+            }
             // cancel sword collider (can't double attack enemies)
 
             gameObject.GetComponent<MeleeWeapon>().StopAttack();
