@@ -172,4 +172,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canDestroyItem: 1
+  canBounce: 1
+  timeBetweenBounces: 2
+  bounceDuration: 0.5
+  bounceDistance: 0.1
   itemWeaponData: {fileID: 11400000, guid: 6fc1765d1d2ba384d93a55d75f51faf6, type: 2}
