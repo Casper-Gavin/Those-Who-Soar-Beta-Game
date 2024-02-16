@@ -56,6 +56,15 @@ public class SkillMenu : MonoBehaviour {
         UpdateAllSkillUI();
     }
 
+    private void Update() {
+        GameObject selfObject = GameObject.Find("SkillTreeMenu");
+        if (Input.GetKeyDown(KeyCode.Escape) && selfObject) {
+            UIManager uIManager = FindObjectOfType<UIManager>();
+            uIManager.SkillMenuClose();
+            uIManager.Resume();
+        }
+    }
+
     public void UpdateAllSkillUI() {
         foreach (var skill in skillList) {
             skill.UpdateUI();

@@ -45,6 +45,7 @@ Unity Version: 2022.3.9f1 (LTS)
 
 ## Version 16
 ### Version 0.17.1
+- Pushed Options and SkillTree menu fixes for when you exited out of them
 - Added Crit logic
 - Moved skill tree damage code
 - Crit does not work just like skill tree

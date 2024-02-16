@@ -19,6 +19,18 @@ public class OptionsMenu : MonoBehaviour {
         gameObject.GetComponentInChildren<UnityEngine.UI.Slider>().value = audioManager.GetVolume(currentlyPlaying);
     }
 
+    private void Update() {
+        //isFullscreen = Screen.fullScreen;
+        //fullScreenButton.GetComponentInChildren<Text>().text = isFullscreen ? "Fullscreen" : "Windowed";
+    
+        GameObject selfObject = GameObject.Find("OptionsMenu");
+        if (Input.GetKeyDown(KeyCode.Escape) && selfObject) {
+            gameObject.SetActive(false);
+
+            GameObject.Find("PauseMenu").SetActive(true);
+        }
+    }
+
     public void SetVolume(float volume) {
         //Debug.Log(volume);
 
