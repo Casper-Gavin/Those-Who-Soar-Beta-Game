@@ -43,7 +43,12 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 
-## Version 16
+## Version 17
+### Version 0.17.3
+- Fixed damage not transferring bug
+- Fixed Crit Chance, Skill Damage bug
+- New death sprite
+
 ### Version 0.17.2
 - Updated sprites for
     - Player

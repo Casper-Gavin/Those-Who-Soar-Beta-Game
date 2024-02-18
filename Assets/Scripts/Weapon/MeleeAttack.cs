@@ -22,7 +22,7 @@ public class MeleeAttack : MonoBehaviour
         skillMenu = SkillMenu.skillMenu;
         prevDamage = 0;
 
-        critChance = 0.5f;
+        critChance = 5f;
     }
 
     private void LateUpdate()
@@ -49,9 +49,9 @@ public class MeleeAttack : MonoBehaviour
         }
         else if (other.gameObject.layer == 9 /* player hit enemy */)
         {
-            if (Random.value < critChance)
+            if (Random.Range(0, 100) < critChance)
             {
-                damageToEnemy += damageToEnemy/3;
+                damageToEnemy += damageToEnemy/2;
 
                 if (skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage] > 0)
                 {
