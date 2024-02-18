@@ -116,6 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 2
   damageToEnemy: 0
+  critChance: 0
 --- !u!114 &-2219299530553652623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,7 +210,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.21, y: 0.59}
+  m_Size: {x: 1.3333334, y: 1.3333334}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

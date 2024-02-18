@@ -44,6 +44,13 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 16
+### Version 0.17.2
+- Updated sprites for
+    - Player
+    - Main Enemy
+    - Sword
+- Shifted WeaponHolder Position
+
 ### Version 0.17.1
 - Pushed Skill Points saving bug 
 - Pushed Options and SkillTree menu fixes for when you exited out of them
