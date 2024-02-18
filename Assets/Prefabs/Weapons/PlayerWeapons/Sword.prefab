@@ -116,8 +116,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
-  damageToEnemy: 0
-  critChance: 0
+  damageToEnemy: 2
+  critChance: 0.5
 --- !u!114 &-2219299530553652623
 MonoBehaviour:
   m_ObjectHideFlags: 0

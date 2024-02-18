@@ -50,7 +50,7 @@ public class EnemyHealth : HealthBase
         {
             return;
         }
-
+        //Debug.Log("hit for " + damage);
         CurrentHealth -= damage;
 
         CurrentHealth = Mathf.Max(CurrentHealth, 0); // prevent negative numbers

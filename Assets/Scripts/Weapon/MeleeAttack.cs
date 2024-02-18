@@ -22,7 +22,7 @@ public class MeleeAttack : MonoBehaviour
         skillMenu = SkillMenu.skillMenu;
         prevDamage = 0;
 
-        critChance = 0.05f;
+        critChance = 0.5f;
     }
 
     private void LateUpdate()
@@ -47,17 +47,9 @@ public class MeleeAttack : MonoBehaviour
             // cancel sword collider so no multiple damages on one swing
             gameObject.GetComponent<MeleeWeapon>().StopAttack();
         }
-        // level component damage is even more custom, handled in componentBase
-        // TODO: may want to redo componentbase so that we can remove the if statement here
-        // and move componentbase TakeDamage to ComponentHealth, but will need a lot of references
-        // that we might not want inside of ComponentHealth
-        else if (other.gameObject.layer != 7 /* player hit level component */)
-        {
-            other.GetComponent<HealthBase>()?.TakeDamage(damage);
-        }
         else if (other.gameObject.layer == 9 /* player hit enemy */)
         {
-            if (Random.value % 100 < critChance * 100)
+            if (Random.value < critChance)
             {
                 damageToEnemy += damageToEnemy/3;
 
@@ -65,7 +57,8 @@ public class MeleeAttack : MonoBehaviour
                 {
                     damageToEnemy += skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage];
                 }
-
+                
+                //Debug.Log("CRIT for " + damageToEnemy);
                 EnemyHealth eH = other.GetComponent<EnemyHealth>();
                 eH.TakeDamage(damageToEnemy);
                 
@@ -82,6 +75,14 @@ public class MeleeAttack : MonoBehaviour
             // cancel sword collider (can't double attack enemies)
 
             gameObject.GetComponent<MeleeWeapon>().StopAttack();
+        }
+        // level component damage is even more custom, handled in componentBase
+        // TODO: may want to redo componentbase so that we can remove the if statement here
+        // and move componentbase TakeDamage to ComponentHealth, but will need a lot of references
+        // that we might not want inside of ComponentHealth
+        else if (other.gameObject.layer != 7 /* player hit level component */)
+        {
+            other.GetComponent<HealthBase>()?.TakeDamage(damage);
         }
     }
 }
