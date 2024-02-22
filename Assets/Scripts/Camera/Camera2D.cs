@@ -213,6 +213,12 @@ public class Camera2D : Singleton<Camera2D> {
         }
     }*/
 
+    public void SnapToTarget(Transform target)
+    {
+        Vector3 newPosition = new Vector3(target.position.x, target.position.y, transform.position.z);
+        transform.position = newPosition;
+    }
+
     private void FollowTarget(Transform target, Vector2 offset) {
         Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, originalZoom, Time.deltaTime * smoothSpeed);
         Vector3 desiredPosition = new Vector3(target.position.x + offset.x, target.position.y + offset.y, transform.position.z);

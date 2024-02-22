@@ -44,6 +44,10 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 1.0
+### Version 1.0.1
+- Fix bug where revive ('p') during death animation would not revive player
+- Add camera snap on player revive ('p')
+
 ### Version 1.0.0
 - Built project (first release on github)
 - Fix cursor visibility in menus

@@ -33,6 +33,7 @@ public class PlayerHealth : HealthBase
     private CharacterDash characterDash;
     private bool shieldBroken;
     public float CurrentShield { get; set; }
+    public bool isDead = false;
 
 
     // Awake is called before start
@@ -47,7 +48,7 @@ public class PlayerHealth : HealthBase
         characterDash = GetComponent<CharacterDash>();
         CurrentHealth = initialHealthPlayer;
         CurrentShield = initialShield;
-
+        isDead = false;
         UpdateHealth();
 
         //characterSkills = GetComponent<CharacterSkills>();
@@ -144,6 +145,7 @@ public class PlayerHealth : HealthBase
     {
         if (character != null)
         {
+            isDead = true;
             character.enabled = false;
             controller.enabled = false;
             collide2D.enabled = false;
@@ -163,6 +165,7 @@ public class PlayerHealth : HealthBase
     {
         if (character != null)
         {
+            isDead = false;
             character.enabled = true;
             controller.enabled = true;
             collide2D.enabled = true;
@@ -174,6 +177,7 @@ public class PlayerHealth : HealthBase
             {
                 s.enabled = true;
             }
+            Camera2D.Instance.SnapToTarget(transform);
         }
 
         gameObject.SetActive(true);

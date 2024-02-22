@@ -22,10 +22,10 @@ public class LevelManager : Singleton<LevelManager>
 
     private void ReviveCharacter()
     {
-        if (playableCharacter.GetComponent<PlayerHealth>().CurrentHealth <= 0)
+        if (playableCharacter.GetComponent<PlayerHealth>().isDead)
         {
-            playableCharacter.GetComponent<PlayerHealth>().Revive();
             playableCharacter.transform.position = spawnPosition.position;
+            playableCharacter.GetComponent<PlayerHealth>().Revive();
         }
     }
 }
