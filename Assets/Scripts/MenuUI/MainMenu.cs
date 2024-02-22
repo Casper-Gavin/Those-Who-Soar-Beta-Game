@@ -3,7 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour {
+public class MainMenu : MonoBehaviour
+{
+    private bool cursorVisibilityToRestore;
+    public void OnEnable()
+    {
+        cursorVisibilityToRestore = Cursor.visible;
+        Cursor.visible = true;
+    }
+
+    public void OnDisable()
+    {
+        Cursor.visible = cursorVisibilityToRestore;
+    }
+
     public void PlayGame() {
         SceneManager.LoadScene("TestScene");
     }

@@ -7,9 +7,20 @@ public class OptionsMenu : MonoBehaviour {
     private AudioManager audioManager;
 
     public Button fullScreenButton;
-    private bool isFullscreen;
 
     private string currentlyPlaying;
+
+    private bool cursorVisibilityToRestore;
+    public void OnEnable()
+    {
+        cursorVisibilityToRestore = Cursor.visible;
+        Cursor.visible = true;
+    }
+
+    public void OnDisable()
+    {
+        Cursor.visible = cursorVisibilityToRestore;
+    }
 
     private void Start() {
         audioManager = FindObjectOfType<AudioManager>();
@@ -19,15 +30,13 @@ public class OptionsMenu : MonoBehaviour {
         gameObject.GetComponentInChildren<UnityEngine.UI.Slider>().value = audioManager.GetVolume(currentlyPlaying);
     }
 
-    private void Update() {
-        //isFullscreen = Screen.fullScreen;
-        //fullScreenButton.GetComponentInChildren<Text>().text = isFullscreen ? "Fullscreen" : "Windowed";
-    
+    private void Update() {    
         GameObject selfObject = GameObject.Find("OptionsMenu");
         if (Input.GetKeyDown(KeyCode.Escape) && selfObject) {
             gameObject.SetActive(false);
 
             GameObject.Find("PauseMenu").SetActive(true);
+            Cursor.visible = true;
         }
     }
 
@@ -38,7 +47,7 @@ public class OptionsMenu : MonoBehaviour {
         audioManager.SetVolume(currentlyPlaying, volume);
     }
 
-    public void SetFullscreen(bool isFullscreen) {
-        Screen.fullScreen = isFullscreen;
+    public void ToggleFullscreen() {
+        Screen.fullScreen = !Screen.fullScreen;
     }
 }

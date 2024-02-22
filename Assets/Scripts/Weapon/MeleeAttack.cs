@@ -58,10 +58,7 @@ public class MeleeAttack : MonoBehaviour
                     damageToEnemy += skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage];
                 }
                 
-                //Debug.Log("CRIT for " + damageToEnemy);
-                EnemyHealth eH = other.GetComponent<EnemyHealth>();
-                eH.TakeDamage(damageToEnemy);
-                
+                other.GetComponent<HealthBase>().TakeDamage(damageToEnemy);
                 damageToEnemy -= damageToEnemy/3;
             } else {
                 if (skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage] > 0)
@@ -69,9 +66,9 @@ public class MeleeAttack : MonoBehaviour
                     damageToEnemy += skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage];
                 }
 
-                EnemyHealth eH = other.GetComponent<EnemyHealth>();
-                eH.TakeDamage(damageToEnemy);
+                other.GetComponent<HealthBase>().TakeDamage(damageToEnemy);
             }
+
             // cancel sword collider (can't double attack enemies)
 
             gameObject.GetComponent<MeleeWeapon>().StopAttack();

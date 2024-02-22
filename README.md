@@ -43,7 +43,13 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 
-## Version 17
+## Version 1.0
+### Version 1.0.0
+- Built project (first release on github)
+- Fix cursor visibility in menus
+- Fix fullscreen game button
+
+## Version 0.17
 ### Version 0.17.3
 - Fixed damage not transferring bug
 - Fixed Crit Chance, Skill Damage bug
@@ -64,6 +70,7 @@ Unity Version: 2022.3.9f1 (LTS)
 - Crit does not work just like skill tree
     - Something is wrong with the TakeDamage function or how we are applying the damage with the weapons. It never takes the damageToEnemy variable, only the damage varaible
 
+## Version 0.16
 ### Version 0.16.14
 - Add weapon bounce
 
@@ -114,7 +121,7 @@ Unity Version: 2022.3.9f1 (LTS)
 ### Version 0.16.1
 - fixed Character Skills and SkillTree persistency  issue
 
-## Version 15
+## Version 0.15
 ### Version 0.15.14
 - added BossEvent
 - needs camera work
@@ -184,8 +191,7 @@ Unity Version: 2022.3.9f1 (LTS)
 ### Version 0.15.0
 - minor tutorial wall fix
 
-## Version 14
-
+## Version 0.14
 ### Version 0.14.16
  - Changed all current gun weapons to not have automatic reload
 
@@ -277,7 +283,7 @@ Unity Version: 2022.3.9f1 (LTS)
 - Spawned objects should remain within the bounds defined in the spawner prefab
 - If a spawned object collides 10 times during placement, the spawned object will not be spawned (not enough room inferred)
 
-## Version 13
+## Version 0.13
 ### Version 0.13.6
 - Added an option to change the volume of the music in the pause menu
 
@@ -305,8 +311,7 @@ Unity Version: 2022.3.9f1 (LTS)
     - Pauses character rotation and gun rotation/shooting
 - Added Audio Manager
 
-# Version 12
-
+# Version 0.12
 ### Version 0.12.3
 - Fix enemy bullets colliding with other enemies
 - Created new EnemyBullet tag to distinguish player and enemy bullets
@@ -328,8 +333,7 @@ Unity Version: 2022.3.9f1 (LTS)
 - Fix weapon and glow remaining on death for player
 - System should be open for extension and now more cohesive
 
-# Version 11
-
+# Version 0.11
 ### Version 0.11.11
 - Fix death + revive, weapon and glow still remain (DO LATER)
 
@@ -376,8 +380,7 @@ Unity Version: 2022.3.9f1 (LTS)
 - Create enemy game object and animations
 - Create enemy room
 
-# Version 10
-
+# Version 0.10
 ### Version 0.10.3
 - Added health and shield items to vendor
 - Fixed coin bug in which reloading the Unity game reset the amount of coins you had to before you bought something
@@ -392,8 +395,7 @@ Unity Version: 2022.3.9f1 (LTS)
 - Created a separate vendor room
 - Added an animation to a vendor sprite
 
-## Vesrion 9
-
+## Vesrion 0.9
 ### Version 0.9.3.1
 - Fixed bug in reloading ammo
 
@@ -410,8 +412,7 @@ Unity Version: 2022.3.9f1 (LTS)
 ### Version 0.9.0
 - Added a scriptable object Item Weapon- a new way to contain data
 
-## Version 8
-
+## Version 0.8
 ### Version 0.8.5
 - Added a random chance for jars to spawn a collectable when destroyed
 
@@ -434,8 +435,7 @@ Unity Version: 2022.3.9f1 (LTS)
 ### Version 0.8.1
 - Added Collectables base script for future use
 
-## Version 7
-
+## Version 0.7
 ### Version 0.7.7
 - Added solid bodies to components to prevent walking through them
 
@@ -464,7 +464,6 @@ Unity Version: 2022.3.9f1 (LTS)
 - Added chest prefab and Tilemap_Components - halfway through Tile Brush video
 
 ## Version 0.6
-
 ### Version 0.6.8
 - Added gun recoil animation
 
