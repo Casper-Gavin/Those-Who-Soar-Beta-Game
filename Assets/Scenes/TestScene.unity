@@ -26185,6 +26185,7 @@ MonoBehaviour:
   shieldRegenRate: 0.25
   initialHealthPlayer: 10
   maxHealthPlayer: 10
+  isDead: 0
 --- !u!114 &1503698342
 MonoBehaviour:
   m_ObjectHideFlags: 0
