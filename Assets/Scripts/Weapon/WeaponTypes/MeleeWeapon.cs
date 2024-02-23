@@ -97,14 +97,18 @@ public class MeleeWeapon : WeaponBase
         {*/
             bool right = WeaponOwner.GetComponent<CharacterFlip>().FacingRight;
             Vector3 newScale = transform.localScale;
+            //Vector3 newPosition = transform.position;
             if (right)
             {
                 newScale.x = Mathf.Abs(newScale.x);
+                //newPosition.x = WeaponOwner.transform.position.x + Mathf.Abs(WeaponOwner.transform.position.x - newPosition.x);
             }
             else
             {
                 newScale.x = -Mathf.Abs(newScale.x);
+                //newPosition.x = WeaponOwner.transform.position.x - Mathf.Abs(WeaponOwner.transform.position.x - newPosition.x);
             }
+            //transform.position = newPosition;
             transform.localScale = newScale;
         //}
     }

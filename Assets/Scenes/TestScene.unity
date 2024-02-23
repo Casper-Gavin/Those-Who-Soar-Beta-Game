@@ -2272,6 +2272,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b13915f06409c73468272319dd9e3549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenu: {fileID: 0}
+  pauseMenu: {fileID: 1814331353}
   fullScreenButton: {fileID: 0}
 --- !u!95 &371709622
 Animator:
@@ -26185,6 +26187,7 @@ MonoBehaviour:
   shieldRegenRate: 0.25
   initialHealthPlayer: 10
   maxHealthPlayer: 10
+  isDead: 0
 --- !u!114 &1503698342
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -44,6 +44,11 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 1.0
+### Version 1.0.2
+- Fix dead state bug from pressing 'esc' on the main menu options submenu
+- Fix bug where pause menu options submenu returned to game not pause menu
+- Fix bug where cursor was invisible on main menu options submenu in build
+
 ### Version 1.0.1
 - Fix bug where revive ('p') during death animation would not revive player
 - Add camera snap on player revive ('p')

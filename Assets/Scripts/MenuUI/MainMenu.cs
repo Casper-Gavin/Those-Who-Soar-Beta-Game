@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] private GameObject optionsMenu;
+
     private bool cursorVisibilityToRestore;
     public void OnEnable()
     {
@@ -28,5 +30,12 @@ public class MainMenu : MonoBehaviour
     public void QuitGame() {
         Debug.Log("Quit");
         Application.Quit();
+    }
+
+    public void OptionsButtonPressed()
+    {
+        optionsMenu.SetActive(true);
+        gameObject.SetActive(false);
+        Cursor.visible = true;
     }
 }

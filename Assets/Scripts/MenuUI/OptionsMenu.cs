@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class OptionsMenu : MonoBehaviour {
+    [SerializeField] private GameObject mainMenu;
+    [SerializeField] private GameObject pauseMenu;
+
     private AudioManager audioManager;
 
     public Button fullScreenButton;
@@ -35,7 +39,14 @@ public class OptionsMenu : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Escape) && selfObject) {
             gameObject.SetActive(false);
 
-            GameObject.Find("PauseMenu").SetActive(true);
+            if (SceneManager.GetActiveScene().name == "MainMenu")
+            {
+                mainMenu.SetActive(true);
+            }
+            else
+            {
+                pauseMenu.SetActive(true);
+            }
             Cursor.visible = true;
         }
     }
