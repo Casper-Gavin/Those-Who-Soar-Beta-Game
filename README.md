@@ -45,6 +45,10 @@ Unity Version: 2022.3.9f1 (LTS)
 
 ## Version 1.0
 
+### Version 1.0.3
+- Added fake wall components
+- Started on level one
+
 ### Version 1.0.2
 - Fixed tutorial-specific bugs
 
