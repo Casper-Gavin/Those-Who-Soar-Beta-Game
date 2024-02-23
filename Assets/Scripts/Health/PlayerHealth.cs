@@ -40,6 +40,7 @@ public class PlayerHealth : HealthBase
     protected override void Awake()
     {
         character = GetComponent<Character>(); // this should be a player
+        //skillMenu = SkillMenu.skillMenu;
         controller = GetComponent<PlayerController>();
         collide2D = GetComponent<Collider2D>();
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>(); // allow for any expansion of hierarchy
