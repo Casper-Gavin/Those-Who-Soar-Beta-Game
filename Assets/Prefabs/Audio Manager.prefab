@@ -59,3 +59,11 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
     tag: GameMusic
+  - clip: {fileID: 8300000, guid: c768de366c9c36848a19717e0ce612cd, type: 3}
+    name: Boss
+    volume: 0.2
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+    tag: BossMusic
+  bossDetect: {fileID: 0}

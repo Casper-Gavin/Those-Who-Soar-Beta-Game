@@ -6,15 +6,24 @@ using UnityEngine.Events;
 public class BossDetect : MonoBehaviour {
     public UnityEvent OnPlayerEnterBossZone;
     public UnityEvent OnPlayerExitBossZone;
+    public UnityEvent OnBossDead;
 
     public bool canLeaveBossZone;
     public bool isInBossZone;
     public string bossTag;
+    public bool isBossDead;
 
 
     private void Awake() {
         canLeaveBossZone = true;
         isInBossZone = false;
+    }
+
+    private void Update() {
+        if (isInBossZone && canLeaveBossZone) {
+            OnBossDead.Invoke();
+            isBossDead = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other) {

@@ -44,6 +44,11 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 1.0
+### Version 1.0.5
+- Fix other menu buttons not highlighting when hovered over
+- Made volume transfer between scenes
+- Added Boss Music for when you enter the boss zone
+
 ### Version 1.0.4
 - Fix dead state bug from pressing 'esc' on the main menu options submenu
 - Fix bug where pause menu options submenu returned to game not pause menu
