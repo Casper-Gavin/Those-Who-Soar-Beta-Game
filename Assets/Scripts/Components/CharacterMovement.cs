@@ -14,8 +14,15 @@ public class CharacterMovement : CharacterAbilities {
 
     private readonly int isMovingParam = Animator.StringToHash("IsMoving");
 
+    [SerializeField] private SoundManager soundManager;
+    [SerializeField] private CharacterDash characterDash;
+
     private void Awake() {
         skillMenu = FindObjectOfType<SkillMenu>();
+
+        soundManager = FindObjectOfType<SoundManager>();
+
+        characterDash = GetComponent<CharacterDash>();
     }
 
     protected override void Start() {
@@ -33,6 +40,14 @@ public class CharacterMovement : CharacterAbilities {
             isSkilMenuMoveUnlockedOnce = true;
             walkSpeed = 7.5f;
         }
+
+        if (soundManager == null) {
+            soundManager = FindObjectOfType<SoundManager>();
+        }
+
+        if (characterDash == null) {
+            characterDash = GetComponent<CharacterDash>();
+        }
     }
 
     protected override void HandleAbility() {
@@ -48,6 +63,24 @@ public class CharacterMovement : CharacterAbilities {
         Vector2 moveInput = movement;
         Vector2 movementNormalized = moveInput.normalized;
         Vector2 movementSpeed = movementNormalized * MoveSpeed;
+
+        if (movementSpeed != Vector2.zero) {
+            isCharcterMoving = true;
+
+            if (character.CharacterTypes == Character.CharacterTypeEnum.Player) {
+                if (!characterDash.isDashing) {
+                    if (MoveSpeed == walkSpeed) {
+                        soundManager.WalkingSound();
+                    } else {
+                        soundManager.RunningSound();
+                    }
+                }
+            }
+        } else {
+            isCharcterMoving = false;
+
+            soundManager.audioSource.Stop();
+        }
 
         controller.SetMovement(movementSpeed);
     }

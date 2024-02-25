@@ -44,6 +44,10 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 1.0
+### Version 1.0.6
+- Added new sound effect sounds (most not implemented)
+- Bug where you can hear implemented sounds
+
 ### Version 1.0.5
 - Fix other menu buttons not highlighting when hovered over
 - Made volume transfer between scenes

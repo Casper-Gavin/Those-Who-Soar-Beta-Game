@@ -8,7 +8,7 @@ public class CharacterDash : CharacterAbilities {
     [SerializeField] private float dashDuration = 0.5f;
     [SerializeField ]private float dashCooldownTimer = 0.75f;
 
-    private bool isDashing;
+    public bool isDashing;
     private float dashTimer;
     private Vector2 dashOrigin;
     private Vector2 dashDestination;
@@ -17,8 +17,12 @@ public class CharacterDash : CharacterAbilities {
     private SkillMenu skillMenu;
     private bool isSkilMenuDashUnlockedOnce;
 
+    [SerializeField] private SoundManager soundManager;
+
     private void Awake() {
         skillMenu = FindObjectOfType<SkillMenu>();
+
+        soundManager = FindObjectOfType<SoundManager>();
     }
 
     protected override void Update() {
@@ -27,6 +31,10 @@ public class CharacterDash : CharacterAbilities {
         if (!isSkilMenuDashUnlockedOnce && skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseDash] > 0) {
             isSkilMenuDashUnlockedOnce = true;
             dashDistance = 6f;
+        }
+
+        if (soundManager == null) {
+            soundManager = FindObjectOfType<SoundManager>();
         }
     }
 
@@ -63,6 +71,8 @@ public class CharacterDash : CharacterAbilities {
         controller.NormalMovement = false;
 
         dashDestination = transform.position + (Vector3)controller.CurrentMovement.normalized * dashDistance;
+
+        soundManager.DashSound();
     }
 
     private void StopDash() {

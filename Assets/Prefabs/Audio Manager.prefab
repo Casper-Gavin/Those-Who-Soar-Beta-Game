@@ -67,3 +67,5 @@ MonoBehaviour:
     source: {fileID: 0}
     tag: BossMusic
   bossDetect: {fileID: 0}
+  characterMovement: {fileID: 0}
+  characterDash: {fileID: 0}
