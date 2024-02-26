@@ -2,6 +2,7 @@ using UnityEngine.Audio;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class AudioManager : Singleton<AudioManager> {
     public Music[] music;
@@ -207,6 +208,12 @@ public class AudioManager : Singleton<AudioManager> {
         }
     }
 
+    public void SetSFXVolume(string name, float volume) {
+        Sfx f = Array.Find(sfx, sfx => sfx.name == name);
+
+        f.source.volume = volume;
+    }
+
     public float GetVolume(string name) {
         Music m = Array.Find(music, music => music.name == name);
         
@@ -219,6 +226,12 @@ public class AudioManager : Singleton<AudioManager> {
         }
 
         return m.source.volume;
+    }
+
+    public float GetSFXVolume(string name) {
+        Sfx f = Array.Find(sfx, sfx => sfx.name == name);
+
+        return f.source.volume;
     }
 
     public string GetCurrentlyPlaying() {
@@ -261,6 +274,56 @@ public class AudioManager : Singleton<AudioManager> {
         return null;
     }
 
+    public bool IsPlaying(string name) {
+        Music m = Array.Find(music, music => music.name == name);
+
+        return m.source.isPlaying;
+    }
+
+    public bool IsPlayingSFX(string name) {
+        Sfx f = Array.Find(sfx, sfx => sfx.name == name);
+
+        return f.source.isPlaying;
+    }
+
+    public void FadeOut(string name) {
+        Music m = Array.Find(music, music => music.name == name);
+
+        StartCoroutine(FadeOutMusic(m.source, 1f));
+    }
+
+    public void FadeOutSFX(string name) {
+        Sfx f = Array.Find(sfx, sfx => sfx.name == name);
+
+        StartCoroutine(FadeOutSFX(f.source, 1f));
+    }
+
+    private IEnumerator FadeOutMusic(AudioSource audioSource, float FadeTime) {
+        float startVolume = audioSource.volume;
+
+        while (audioSource.volume > 0) {
+            audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
+
+            yield return null;
+        }
+
+        audioSource.Stop();
+        audioSource.volume = startVolume;
+    }
+
+    private IEnumerator FadeOutSFX(AudioSource audioSource, float FadeTime) {
+        float startVolume = audioSource.volume;
+
+        while (audioSource.volume > 0) {
+            audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
+
+            yield return null;
+        }
+
+        audioSource.Stop();
+        audioSource.volume = startVolume;
+    }
+
     public void PlayBossMusic() {
         Stop("Gameplay");
 
@@ -280,5 +343,13 @@ public class AudioManager : Singleton<AudioManager> {
 
         Play("Gameplay");
         SetVolume("Gameplay", PlayerPrefs.GetFloat(AUDIO2KEY));
+    }
+
+    public void ClickButton() {
+        PlaySFX("ClickButton");
+    }
+
+    public void ClickSkill() {
+        PlaySFX("ClickSkill");
     }
 }

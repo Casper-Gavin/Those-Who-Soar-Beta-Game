@@ -12,6 +12,8 @@ TagManager:
   - Bomber
   - LevelComponents
   - Boss
+  - BoxComponent
+  - JarComponent
   layers:
   - Default
   - TransparentFX

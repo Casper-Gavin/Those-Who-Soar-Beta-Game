@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 18017270458521519}
   m_Layer: 7
   m_Name: Box_Component 1
-  m_TagString: Untagged
+  m_TagString: BoxComponent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -175,6 +175,7 @@ MonoBehaviour:
   damagedSprite: {fileID: 188850393, guid: 90d9c0d78a2bba249b7dd60bb300696a, type: 3}
   damage: 1
   isDamageable: 1
+  boxShiftAmount: 0.1
 --- !u!114 &18017270458521519
 MonoBehaviour:
   m_ObjectHideFlags: 0

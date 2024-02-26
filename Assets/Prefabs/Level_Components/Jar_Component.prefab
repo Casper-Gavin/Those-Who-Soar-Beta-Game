@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2989938059964292191}
   m_Layer: 7
   m_Name: Jar_Component
-  m_TagString: LevelComponents
+  m_TagString: JarComponent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -176,6 +176,7 @@ MonoBehaviour:
   damagedSprite: {fileID: -1176510024, guid: 90d9c0d78a2bba249b7dd60bb300696a, type: 3}
   damage: 1
   isDamageable: 0
+  boxShiftAmount: 0.1
 --- !u!114 &-1751088422071234554
 MonoBehaviour:
   m_ObjectHideFlags: 0

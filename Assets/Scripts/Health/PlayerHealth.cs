@@ -35,6 +35,8 @@ public class PlayerHealth : HealthBase
     public float CurrentShield { get; set; }
     public bool isDead = false;
 
+    [SerializeField] private AudioManager audioManager;
+
 
     // Awake is called before start
     protected override void Awake()
@@ -57,11 +59,17 @@ public class PlayerHealth : HealthBase
 
         lastCheckHealth = 0;
         lastCheckShield = 0;
+
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     protected override void Update ()
     {
         base.Update();
+
+        if (audioManager == null) {
+            audioManager = FindObjectOfType<AudioManager>();
+        }
 
         // fieldOfView.SetAimDirection(aimDir);
         fieldOfView.SetOrigin(transform.position);
@@ -89,6 +97,10 @@ public class PlayerHealth : HealthBase
 
     public override void TakeDamage(int damage)
     {
+        if (audioManager != null) {
+            audioManager.PlaySFX("Hurt");
+        }
+
         if (CurrentHealth <= 0)
         {
             return;
@@ -195,6 +207,10 @@ public class PlayerHealth : HealthBase
         CurrentHealth = Mathf.Min(CurrentHealth + amount, maxHealthPlayer);
         UIManager.Instance.FlashHealthEffect();
         UpdateHealth();
+
+        if (audioManager != null) {
+            audioManager.PlaySFX("PickupItem");
+        }
     }
 
     public void GainMaxHealth(int amount)
@@ -205,6 +221,10 @@ public class PlayerHealth : HealthBase
             UpdateHealth();
             UIManager.Instance.FlashHealthEffect(); // Might want to disable this b/c it might just flash even though the health UI isnt visible
             lastCheckHealth ++;
+
+            if (audioManager != null) {
+                audioManager.PlaySFX("PickupItem");
+            }
         }
     }
 
@@ -217,6 +237,10 @@ public class PlayerHealth : HealthBase
         {
             shieldBroken = false;
         }
+
+        if (audioManager != null) {
+            audioManager.PlaySFX("PickupItem");
+        }
     }
 
     public void GainMaxShield(int amount)
@@ -227,6 +251,10 @@ public class PlayerHealth : HealthBase
             UpdateHealth();
             UIManager.Instance.FlashShieldEffect();
             lastCheckShield ++;
+
+            if (audioManager != null) {
+                audioManager.PlaySFX("PickupItem");
+            }
         }
     }
 

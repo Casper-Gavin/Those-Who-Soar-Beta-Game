@@ -16,15 +16,28 @@ public class Chest : MonoBehaviour
     private Animator animator;
     private readonly int chestOpenedParameter = Animator.StringToHash("Rewarded");
 
+    [SerializeField] private AudioManager audioManager;
 
     private void Start() {
         animator = GetComponent<Animator>();
+
+        if (audioManager == null) {
+            audioManager = FindObjectOfType<AudioManager>();
+        }
     }
 
     private void Update() {
+        if (audioManager == null) {
+            audioManager = FindObjectOfType<AudioManager>();
+        }
+
         if (Input.GetKeyDown(KeyCode.C)) {
             if (canReward) {
                 RewardPlayer();
+
+                if (audioManager != null) {
+                    audioManager.PlaySFX("OpenChest");
+                }
             }
         }
     }

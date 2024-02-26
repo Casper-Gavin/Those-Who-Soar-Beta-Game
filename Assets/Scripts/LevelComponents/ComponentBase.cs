@@ -17,12 +17,23 @@ public class ComponentBase : MonoBehaviour
     private JarReward jarReward;
     private Collider2D collider2D;
     
+    [SerializeField] private AudioManager audioManager;
 
     private void Start() {
         health = GetComponent<ComponentHealth>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         jarReward = GetComponent<JarReward>();
         collider2D = GetComponent<Collider2D>();
+
+        if (audioManager == null) {
+            audioManager = FindObjectOfType<AudioManager>();
+        }
+    }
+
+    private void Update() {
+        if (audioManager == null) {
+            audioManager = FindObjectOfType<AudioManager>();
+        }
     }
 
     // using health for non-player object
@@ -30,6 +41,25 @@ public class ComponentBase : MonoBehaviour
         if (other.CompareTag("Bullet") || other.CompareTag("PlayerSword"))
         {
             TakeDamage(other.transform.position.x > transform.position.x);
+
+            if (this.gameObject.tag == "BoxComponent" && audioManager != null) {
+                int random = Random.Range(1, 3);
+
+                if (random == 1) {
+                    audioManager.PlaySFX("HitBox1");
+                } else if (random == 2) {
+                    audioManager.PlaySFX("HitBox2");
+                } else {
+                    audioManager.PlaySFX("HitBox3");
+                }
+            } else if (this.gameObject.tag == "JarComponent" && audioManager != null) {
+                audioManager.PlaySFX("JarSmash");
+            } else {
+                if (audioManager != null) {
+                    // Add sword hitting wall sound?
+                    // audioManager.PlaySFX("SwordHit");
+                }
+            }
         }
     }
 
@@ -49,6 +79,10 @@ public class ComponentBase : MonoBehaviour
             if (isDamageable) {
                 // Box
                 Destroy(gameObject);
+
+                if (this.gameObject.tag == "BoxComponent" && audioManager != null) {
+                    audioManager.PlaySFX("BoxBreak");
+                }
             } else {
                 // Jar
                 spriteRenderer.sprite = damagedSprite;

@@ -44,6 +44,10 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 1.0
+### Version 1.0.7
+- Added all other sound effects that I made or gathered
+- Walking/Running Logic change - Sound still does not work
+
 ### Version 1.0.6.2
 - Small Fix on audio:
     - Fixed problem with game music not playing

@@ -27,12 +27,24 @@ public class ProjectileWeapon : WeaponBase
 
     public WeaponAmmo WeaponAmmo { get; set; }
 
+    [SerializeField] private AudioManager audioManager;
+
     protected override void Awake()
     {
         base.Awake();
         Pooler = GetComponent<ObjectPooler>();
         animator = GetComponent<Animator>();
         WeaponAmmo = GetComponent<WeaponAmmo>();
+
+        audioManager = FindObjectOfType<AudioManager>();
+    }
+
+    protected override void Update() {
+        base.Update();
+
+        if (audioManager == null) {
+            audioManager = FindObjectOfType<AudioManager>();
+        }
     }
 
     // see if we can even make a request to attack
@@ -62,18 +74,24 @@ public class ProjectileWeapon : WeaponBase
     // attempt to shoot (may not be off cooldown)
     protected override void RequestAttack()
     {
-        if (OffAttackCooldown)
-        {
-            animator.SetTrigger(shootAnimationParameter);
-            WeaponAmmo.ConsumeAmmo();
-            if (WeaponOwner.CharacterTypes == Character.CharacterTypeEnum.Player)
+        if (!audioManager.IsPlayingSFX("GunReload")) {
+            if (OffAttackCooldown)
             {
-                UIManager.Instance.UpdateAmmo(CurrentAmmo, magazineSize);
+                animator.SetTrigger(shootAnimationParameter);
+                WeaponAmmo.ConsumeAmmo();
+                if (WeaponOwner.CharacterTypes == Character.CharacterTypeEnum.Player)
+                {
+                    UIManager.Instance.UpdateAmmo(CurrentAmmo, magazineSize);
+                }
+                muzzlePS.Play();
+                SpawnProjectile(DetermineProjectileSpawnPosition());
+                OffAttackCooldown = false;
+                nextAttackTime = Time.time + attackCooldown;
+
+                if (audioManager != null) {
+                    audioManager.PlaySFX("GunShoot");
+                }
             }
-            muzzlePS.Play();
-            SpawnProjectile(DetermineProjectileSpawnPosition());
-            OffAttackCooldown = false;
-            nextAttackTime = Time.time + attackCooldown;
         }
     }
 
@@ -142,6 +160,10 @@ public class ProjectileWeapon : WeaponBase
             if (WeaponOwner.CharacterTypes == Character.CharacterTypeEnum.Player)
             {
                 UIManager.Instance.UpdateAmmo(CurrentAmmo, magazineSize);
+
+                if (audioManager != null) {
+                    audioManager.PlaySFX("GunReload");
+                }
             }
         }
     }

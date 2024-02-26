@@ -50,18 +50,31 @@ public class CharacterMovement : CharacterAbilities {
             characterDash = GetComponent<CharacterDash>();
         }
 
-        if (character.CharacterTypes == Character.CharacterTypeEnum.Player) {
-            if (!characterDash.isDashing) {
-                if (MoveSpeed != walkSpeed) {
+        if (horizontalInput != 0 || verticalInput != 0) {
+            if (Input.GetKey(KeyCode.LeftShift)) {
+                if (audioManager.GetCurrentlyPlayingSFX() == "Walk") {
                     audioManager.StopSFX("Walk");
+                }
+                
+                if (!audioManager.IsPlayingSFX("Run")) {
                     audioManager.PlaySFX("Run");
-                } else {
-                    audioManager.StopSFX("Run");
-                    audioManager.PlaySFX("Walk");
                 }
             } else {
-                audioManager.StopSFX("Walk");
+                if (audioManager.GetCurrentlyPlayingSFX() == "Run") {
+                    audioManager.StopSFX("Run");
+                }
+
+                if (!audioManager.IsPlayingSFX("Walk")) {
+                    audioManager.PlaySFX("Walk");
+                }    
+            }
+        } else {
+            if (audioManager.GetCurrentlyPlayingSFX() == "Run") {
                 audioManager.StopSFX("Run");
+            }
+
+            if (audioManager.GetCurrentlyPlayingSFX() == "Walk") {
+                audioManager.StopSFX("Walk");
             }
         }
 
