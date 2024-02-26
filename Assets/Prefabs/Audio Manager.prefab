@@ -44,28 +44,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d4a93048dfe15409dfc6be45a7a3c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds:
+  music:
   - clip: {fileID: 8300000, guid: c7598bd4474d86349974be3ac220256d, type: 3}
     name: MainMenu
-    volume: 0.2
+    volume: 1
     pitch: 1
     loop: 1
     source: {fileID: 0}
     tag: MenuMusic
   - clip: {fileID: 8300000, guid: 9c05e9d5658edbe41afc77c4bc8704db, type: 3}
     name: Gameplay
-    volume: 0.2
+    volume: 1
     pitch: 1
     loop: 1
     source: {fileID: 0}
     tag: GameMusic
   - clip: {fileID: 8300000, guid: c768de366c9c36848a19717e0ce612cd, type: 3}
     name: Boss
-    volume: 0.2
+    volume: 1
     pitch: 1
     loop: 1
     source: {fileID: 0}
     tag: BossMusic
+  sfx:
+  - clip: {fileID: 8300000, guid: 66aa9d05b64f0b94a91cb364a03b5daa, type: 3}
+    name: Dash1
+    volume: 0.25
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    tag: Dash1SFX
+  - clip: {fileID: 8300000, guid: 19aaf6c795027d84ea13a5595a26ffe3, type: 3}
+    name: Dash2
+    volume: 0.25
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    tag: Dash2SFX
+  - clip: {fileID: 8300000, guid: 960f17285ab8db74baa5fa878f2567a7, type: 3}
+    name: Walk
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+    tag: WalkSFX
+  - clip: {fileID: 8300000, guid: 544fede454ddec244bbee544eb1f6914, type: 3}
+    name: Run
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+    tag: RunSFX
+  uiManager: {fileID: 0}
   bossDetect: {fileID: 0}
-  characterMovement: {fileID: 0}
-  characterDash: {fileID: 0}

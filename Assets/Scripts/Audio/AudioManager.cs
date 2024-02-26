@@ -4,14 +4,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class AudioManager : Singleton<AudioManager> {
-    public Sound[] sounds;
+    public Music[] music;
+    public Sfx[] sfx;
 
     public static AudioManager instance;
 
-    private readonly string AUDIO1KEY = "Audio1"; // MainMenu
-    private readonly string AUDIO2KEY = "Audio2"; // Gameplay
-    private readonly string AUDIO3KEY = "Audio3"; // Boss
+    private readonly string AUDIO1KEY = "MainMenu";
+    private readonly string AUDIO2KEY = "Gameplay";
+    private readonly string AUDIO3KEY = "Boss";
 
+    [SerializeField] private UIManager uiManager;
     [SerializeField] private BossDetect bossDetect;
 
     protected override void Awake() {
@@ -26,12 +28,20 @@ public class AudioManager : Singleton<AudioManager> {
 
         DontDestroyOnLoad(gameObject);
 
-        foreach (Sound s in sounds) {
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
-            s.source.loop = s.loop;
+        foreach (Music m in music) {
+            m.source = gameObject.AddComponent<AudioSource>();
+            m.source.clip = m.clip;
+            m.source.volume = m.volume;
+            m.source.pitch = m.pitch;
+            m.source.loop = m.loop;
+        }
+
+        foreach (Sfx f in sfx) {
+            f.source = gameObject.AddComponent<AudioSource>();
+            f.source.clip = f.clip;
+            f.source.volume = f.volume;
+            f.source.pitch = f.pitch;
+            f.source.loop = f.loop;
         }
     }
 
@@ -60,6 +70,10 @@ public class AudioManager : Singleton<AudioManager> {
     */
 
     private void Update() {
+        if (uiManager == null) {
+            uiManager = FindObjectOfType<UIManager>();
+        }
+
         if (bossDetect == null) {
             bossDetect = FindObjectOfType<BossDetect>();
         }
@@ -104,35 +118,85 @@ public class AudioManager : Singleton<AudioManager> {
                 SetVolume("Gameplay", PlayerPrefs.GetFloat(AUDIO2KEY));
             }
         }
-    }
+
+        Debug.Log(GetCurrentlyPlaying());
+
+        /*
+        if (uiManager != null) {
+            if (UIManager.GameIsPaused) {
+                PauseMusic(GetCurrentlyPlayingMusic());
+
+                PauseSFX(GetCurrentlyPlayingSFX());
+                return;
+            } else {
+                UnPauseMusic(GetCurrentlyPlayingMusic());
+
+                UnPauseSFX(GetCurrentlyPlayingSFX());
+            }
+        }
+        */
+    }   
 
     public void Play(string name) {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
-        if (s == null) {
+        Music m = Array.Find(music, music => music.name == name);
+        if (m == null) {
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
 
-        if (UIManager.GameIsPaused) {
-            s.source.Pause();
+        m.source.Play();
+    }
+
+    public void PlaySFX(string name) {
+        Sfx f = Array.Find(sfx, sfx => sfx.name == name);
+        if (f == null) {
+            Debug.LogWarning("Sound: " + name + " not found!");
             return;
-        } else {
-            s.source.UnPause();
         }
 
-        s.source.Play();
+        f.source.Play();
     }
 
     public void Stop(string name) {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
+        Music m = Array.Find(music, music => music.name == name);
 
-        s.source.Stop();
+        m.source.Stop();
+    }
+
+    public void StopSFX(string name) {
+        Sfx f = Array.Find(sfx, sfx => sfx.name == name);
+
+        f.source.Stop();
+    }
+
+    public void Pause(string name) {
+        Music m = Array.Find(music, music => music.name == name);
+
+        m.source.Pause();
+    }
+
+    public void PauseSFX(string name) {
+        Sfx f = Array.Find(sfx, sfx => sfx.name == name);
+
+        f.source.Pause();
+    }
+
+    public void UnPause(string name) {
+        Music m = Array.Find(music, music => music.name == name);
+
+        m.source.UnPause();
+    }
+
+    public void UnPauseSFX(string name) {
+        Sfx f = Array.Find(sfx, sfx => sfx.name == name);
+
+        f.source.UnPause();
     }
 
     public void SetVolume(string name, float volume) {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
+        Music m = Array.Find(music, music => music.name == name);
 
-        s.source.volume = volume;
+        m.source.volume = volume;
 
         if (name == "MainMenu") {
             PlayerPrefs.SetFloat(AUDIO1KEY, volume);
@@ -144,23 +208,33 @@ public class AudioManager : Singleton<AudioManager> {
     }
 
     public float GetVolume(string name) {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
+        Music m = Array.Find(music, music => music.name == name);
         
         if (name == "MainMenu") {
-            s.source.volume = PlayerPrefs.GetFloat(AUDIO1KEY);
+            m.source.volume = PlayerPrefs.GetFloat(AUDIO1KEY);
         } else if (name == "Gameplay") {
-            s.source.volume = PlayerPrefs.GetFloat(AUDIO2KEY);
+            m.source.volume = PlayerPrefs.GetFloat(AUDIO2KEY);
         } else if (name == "Boss") {
-            s.source.volume = PlayerPrefs.GetFloat(AUDIO3KEY);
+            m.source.volume = PlayerPrefs.GetFloat(AUDIO3KEY);
         }
 
-        return s.source.volume;
+        return m.source.volume;
     }
 
     public string GetCurrentlyPlaying() {
-        foreach (Sound s in sounds) {
-            if (s.source.isPlaying) {
-                return s.name;
+        foreach (Music m in music) {
+            if (m.source.isPlaying) {
+                return m.name;
+            }
+        }
+
+        return null;
+    }
+
+    public string GetCurrentlyPlayingSFX() {
+        foreach (Sfx f in sfx) {
+            if (f.source.isPlaying) {
+                return f.name;
             }
         }
 
@@ -168,9 +242,19 @@ public class AudioManager : Singleton<AudioManager> {
     }
 
     public string GetCurrentlyPlayingTag() {
-        foreach (Sound s in sounds) {
-            if (s.source.isPlaying) {
-                return s.tag;
+        foreach (Music m in music) {
+            if (m.source.isPlaying) {
+                return m.tag;
+            }
+        }
+
+        return null;
+    }
+
+    public string GetCurrentlyPlayingSFXTag() {
+        foreach (Sfx f in sfx) {
+            if (f.source.isPlaying) {
+                return f.tag;
             }
         }
 

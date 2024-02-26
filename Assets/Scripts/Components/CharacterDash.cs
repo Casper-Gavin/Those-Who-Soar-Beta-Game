@@ -17,12 +17,12 @@ public class CharacterDash : CharacterAbilities {
     private SkillMenu skillMenu;
     private bool isSkilMenuDashUnlockedOnce;
 
-    [SerializeField] private SoundManager soundManager;
+    [SerializeField] private AudioManager audioManager;
 
     private void Awake() {
         skillMenu = FindObjectOfType<SkillMenu>();
 
-        soundManager = FindObjectOfType<SoundManager>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     protected override void Update() {
@@ -33,8 +33,8 @@ public class CharacterDash : CharacterAbilities {
             dashDistance = 6f;
         }
 
-        if (soundManager == null) {
-            soundManager = FindObjectOfType<SoundManager>();
+        if (audioManager == null) {
+            audioManager = FindObjectOfType<AudioManager>();
         }
     }
 
@@ -72,7 +72,15 @@ public class CharacterDash : CharacterAbilities {
 
         dashDestination = transform.position + (Vector3)controller.CurrentMovement.normalized * dashDistance;
 
-        soundManager.DashSound();
+        int randomDashSound = UnityEngine.Random.Range(1, 2);
+        
+        if (audioManager != null) {
+            if (randomDashSound == 1) {
+                audioManager.PlaySFX("Dash1");
+            } else {
+                audioManager.PlaySFX("Dash2");
+            }
+        }
     }
 
     private void StopDash() {

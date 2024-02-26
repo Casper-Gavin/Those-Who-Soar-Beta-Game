@@ -13,14 +13,15 @@ public class CharacterMovement : CharacterAbilities {
     public float MoveSpeed { get; set; }
 
     private readonly int isMovingParam = Animator.StringToHash("IsMoving");
+    public bool isCharcterMoving;
 
-    [SerializeField] private SoundManager soundManager;
+    [SerializeField] private AudioManager audioManager;
     [SerializeField] private CharacterDash characterDash;
 
     private void Awake() {
         skillMenu = FindObjectOfType<SkillMenu>();
 
-        soundManager = FindObjectOfType<SoundManager>();
+        audioManager = FindObjectOfType<AudioManager>();
 
         characterDash = GetComponent<CharacterDash>();
     }
@@ -41,13 +42,28 @@ public class CharacterMovement : CharacterAbilities {
             walkSpeed = 7.5f;
         }
 
-        if (soundManager == null) {
-            soundManager = FindObjectOfType<SoundManager>();
+        if (audioManager == null) {
+            audioManager = FindObjectOfType<AudioManager>();
         }
 
         if (characterDash == null) {
             characterDash = GetComponent<CharacterDash>();
         }
+
+        if (character.CharacterTypes == Character.CharacterTypeEnum.Player) {
+            if (!characterDash.isDashing && isCharcterMoving) {
+                if (MoveSpeed == walkSpeed) {
+                    audioManager.PlaySFX("Walk");
+                } else {
+                    audioManager.PlaySFX("Run");
+                }
+            } else {
+                audioManager.StopSFX("Walk");
+                audioManager.StopSFX("Run");
+            }
+        }
+
+        Debug.Log(audioManager.GetCurrentlyPlayingSFX());
     }
 
     protected override void HandleAbility() {
@@ -66,20 +82,11 @@ public class CharacterMovement : CharacterAbilities {
 
         if (movementSpeed != Vector2.zero) {
             isCharcterMoving = true;
-
-            if (character.CharacterTypes == Character.CharacterTypeEnum.Player) {
-                if (!characterDash.isDashing) {
-                    if (MoveSpeed == walkSpeed) {
-                        soundManager.WalkingSound();
-                    } else {
-                        soundManager.RunningSound();
-                    }
-                }
-            }
         } else {
             isCharcterMoving = false;
 
-            soundManager.audioSource.Stop();
+            audioManager.StopSFX("Walk");
+            audioManager.StopSFX("Run");
         }
 
         controller.SetMovement(movementSpeed);
