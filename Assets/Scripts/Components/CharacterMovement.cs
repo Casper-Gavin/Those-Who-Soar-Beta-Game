@@ -13,7 +13,6 @@ public class CharacterMovement : CharacterAbilities {
     public float MoveSpeed { get; set; }
 
     private readonly int isMovingParam = Animator.StringToHash("IsMoving");
-    public bool isCharcterMoving;
 
     [SerializeField] private AudioManager audioManager;
     [SerializeField] private CharacterDash characterDash;
@@ -50,31 +49,35 @@ public class CharacterMovement : CharacterAbilities {
             characterDash = GetComponent<CharacterDash>();
         }
 
-        if (horizontalInput != 0 || verticalInput != 0) {
-            if (Input.GetKey(KeyCode.LeftShift)) {
-                if (audioManager.GetCurrentlyPlayingSFX() == "Walk") {
-                    audioManager.StopSFX("Walk");
-                }
-                
-                if (!audioManager.IsPlayingSFX("Run")) {
-                    audioManager.PlaySFX("Run");
+        if (character.CharacterTypes == Character.CharacterTypeEnum.Player)
+        {
+            if (Mathf.Abs(horizontalInput) >= 0.1f || Mathf.Abs(verticalInput) >= 0.1f) {
+                if (Input.GetKey(KeyCode.LeftShift)) {
+                    if (audioManager.IsPlayingSFX("Walk")) {
+                        audioManager.StopSFX("Walk");
+                    }
+                    
+                    if (!audioManager.IsPlayingSFX("Run")) {
+                        audioManager.PlaySFX("Run");
+                    }
+                } else {
+                    if (audioManager.IsPlayingSFX("Run")) {
+                        audioManager.StopSFX("Run");
+                    }
+
+                    if (!audioManager.IsPlayingSFX("Walk")) {
+                        audioManager.PlaySFX("Walk");
+                    }
+
                 }
             } else {
-                if (audioManager.GetCurrentlyPlayingSFX() == "Run") {
+                if (audioManager.IsPlayingSFX("Run")) {
                     audioManager.StopSFX("Run");
                 }
 
-                if (!audioManager.IsPlayingSFX("Walk")) {
-                    audioManager.PlaySFX("Walk");
-                }    
-            }
-        } else {
-            if (audioManager.GetCurrentlyPlayingSFX() == "Run") {
-                audioManager.StopSFX("Run");
-            }
-
-            if (audioManager.GetCurrentlyPlayingSFX() == "Walk") {
-                audioManager.StopSFX("Walk");
+                if (audioManager.IsPlayingSFX("Walk")) {
+                    audioManager.StopSFX("Walk");
+                }
             }
         }
 
@@ -95,12 +98,6 @@ public class CharacterMovement : CharacterAbilities {
         Vector2 movementNormalized = moveInput.normalized;
         Vector2 movementSpeed = movementNormalized * MoveSpeed;
 
-        /*
-        if (movementSpeed != Vector2.zero) {
-            isCharcterMoving = true;
-        } else {
-            isCharcterMoving = false;
-        }*/
 
         controller.SetMovement(movementSpeed);
     }
