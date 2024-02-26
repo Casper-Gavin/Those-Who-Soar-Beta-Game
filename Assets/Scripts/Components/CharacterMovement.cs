@@ -51,11 +51,13 @@ public class CharacterMovement : CharacterAbilities {
         }
 
         if (character.CharacterTypes == Character.CharacterTypeEnum.Player) {
-            if (!characterDash.isDashing && isCharcterMoving) {
-                if (MoveSpeed == walkSpeed) {
-                    audioManager.PlaySFX("Walk");
-                } else {
+            if (!characterDash.isDashing) {
+                if (MoveSpeed != walkSpeed) {
+                    audioManager.StopSFX("Walk");
                     audioManager.PlaySFX("Run");
+                } else {
+                    audioManager.StopSFX("Run");
+                    audioManager.PlaySFX("Walk");
                 }
             } else {
                 audioManager.StopSFX("Walk");
@@ -63,7 +65,7 @@ public class CharacterMovement : CharacterAbilities {
             }
         }
 
-        Debug.Log(audioManager.GetCurrentlyPlayingSFX());
+        //Debug.Log(audioManager.GetCurrentlyPlayingSFX());
     }
 
     protected override void HandleAbility() {
@@ -80,14 +82,12 @@ public class CharacterMovement : CharacterAbilities {
         Vector2 movementNormalized = moveInput.normalized;
         Vector2 movementSpeed = movementNormalized * MoveSpeed;
 
+        /*
         if (movementSpeed != Vector2.zero) {
             isCharcterMoving = true;
         } else {
             isCharcterMoving = false;
-
-            audioManager.StopSFX("Walk");
-            audioManager.StopSFX("Run");
-        }
+        }*/
 
         controller.SetMovement(movementSpeed);
     }

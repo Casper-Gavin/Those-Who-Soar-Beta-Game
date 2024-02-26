@@ -119,7 +119,7 @@ public class AudioManager : Singleton<AudioManager> {
             }
         }
 
-        Debug.Log(GetCurrentlyPlaying());
+        //Debug.Log(GetCurrentlyPlaying());
 
         /*
         if (uiManager != null) {

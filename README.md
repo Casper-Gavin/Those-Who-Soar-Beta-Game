@@ -44,8 +44,13 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 1.0
+### Version 1.0.6.2
+- Small Fix on audio:
+    - Fixed problem with game music not playing
+    - Got walking/running sounds to play but they were very inconsistent and dont work most of the time
+
 ### Version 1.0.6.1
-- Broke, then - partially - fixed, audio manager
+- Broke, then - partially - fixed, audio manager:
     - Only Main Menu music and Dash sound effects will play
 
 ### Version 1.0.6
