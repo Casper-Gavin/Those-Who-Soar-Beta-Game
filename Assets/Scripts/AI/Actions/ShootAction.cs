@@ -24,8 +24,11 @@ public class ShootAction : AIAction
 
         if (controller.CharacterWeapon.CurrentWeapon != null)
         {
-            controller.CharacterWeapon.CurrentWeapon.WeaponAim.SetAim(aimDirection);
-            controller.CharacterWeapon.CurrentWeapon.Attack();
+            if (controller.Target.GetComponent<HealthBase>().CurrentHealth > 0)
+            {
+                controller.CharacterWeapon.CurrentWeapon.WeaponAim.SetAim(aimDirection);
+                controller.CharacterWeapon.CurrentWeapon.Attack();
+            }
         }
     }
 

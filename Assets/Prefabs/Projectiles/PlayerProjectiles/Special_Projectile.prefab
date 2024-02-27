@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5585966584043836627}
@@ -192,6 +192,7 @@ MonoBehaviour:
     m_Bits: 704
   lifeTime: 2
   impactPS: {fileID: 4029167210124178775}
+  audioManager: {fileID: 0}
 --- !u!1001 &7759248471082052925
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -39,15 +39,8 @@ public class ReturnToPool : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //Debug.Log("Projectile contact!");
         if (MyLibrary.CheckLayer(other.gameObject.layer, objectMask))
         {
-            //Debug.Log("Other layer: " + other.gameObject.layer);
-            //Debug.Log("Passed Check Layer!");
-            //if (other.gameObject.layer == 9)
-            //{
-                //other.gameObject.transform.position = new Vector3(-10, -10, 0);
-            //}
             if (projectile != null)
             {
                 projectile.DisableProjectile();

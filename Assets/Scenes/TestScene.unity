@@ -26849,7 +26849,7 @@ GameObject:
   - component: {fileID: 1617556948}
   - component: {fileID: 1617556947}
   - component: {fileID: 1617556946}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: BossDetect
   m_TagString: Untagged
   m_Icon: {fileID: 0}

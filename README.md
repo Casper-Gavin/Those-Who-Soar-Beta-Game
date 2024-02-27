@@ -44,6 +44,12 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 1.0
+### Version 1.0.9
+- Fix bug where player projectiles did not work in boss area
+- Adjust sword position/size for melee enemies
+- Fix bug where projectile enemy would continue shooting after player died
+- Shrink projectile weapon for player and bring slightly closer
+
 ### Version 1.0.8
 - Fix bug where walk/run sfx continued on player death
 - Fix bug where player could slide during death animation
