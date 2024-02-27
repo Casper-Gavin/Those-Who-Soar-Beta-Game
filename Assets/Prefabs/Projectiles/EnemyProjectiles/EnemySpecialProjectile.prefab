@@ -192,6 +192,7 @@ MonoBehaviour:
     m_Bits: 448
   lifeTime: 2
   impactPS: {fileID: 4029167210124178775}
+  audioManager: {fileID: 0}
 --- !u!1001 &7759248471082052925
 PrefabInstance:
   m_ObjectHideFlags: 0

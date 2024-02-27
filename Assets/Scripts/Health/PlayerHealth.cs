@@ -31,6 +31,7 @@ public class PlayerHealth : HealthBase
     private CharacterWeapon characterWeapon;
     private CharacterFlip characterFlip;
     private CharacterDash characterDash;
+    private CharacterMovement characterMovement;
     private bool shieldBroken;
     public float CurrentShield { get; set; }
     public bool isDead = false;
@@ -49,6 +50,7 @@ public class PlayerHealth : HealthBase
         characterWeapon = GetComponent<CharacterWeapon>();
         characterFlip = GetComponent<CharacterFlip>();
         characterDash = GetComponent<CharacterDash>();
+        characterMovement = GetComponent<CharacterMovement>();
         CurrentHealth = initialHealthPlayer;
         CurrentShield = initialShield;
         isDead = false;
@@ -146,6 +148,17 @@ public class PlayerHealth : HealthBase
         characterWeapon.enabled = false;
         characterFlip.enabled = false;
         characterDash.enabled = false;
+        characterMovement.SetHorizontal(0.0f);
+        characterMovement.SetVertical(0.0f);
+        if (audioManager.IsPlayingSFX("Walk"))
+        {
+            audioManager.StopSFX("Walk");
+        }
+        if (audioManager.IsPlayingSFX("Run"))
+        {
+            audioManager.StopSFX("Run");
+        }
+        characterMovement.enabled = false;
         character.CharacterAnimator.SetTrigger("PlayerDeath");
     }
 
@@ -186,6 +199,7 @@ public class PlayerHealth : HealthBase
             characterWeapon.Enable();
             characterFlip.enabled = true;
             characterDash.enabled = true;
+            characterMovement.enabled = true;
             foreach (SpriteRenderer s in spriteRenderers)
             {
                 s.enabled = true;
