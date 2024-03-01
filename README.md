@@ -44,6 +44,13 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 1.0
+
+### Version 1.1
+### Version 1.1.0
+- Added LevelOneScene to the build
+- Created level one
+- Added a level clear event - still needs functionality to go to new level (like the pause menu?)
+
 ### Version 1.0.9
 - Fix bug where player projectiles did not work in boss area
 - Adjust sword position/size for melee enemies

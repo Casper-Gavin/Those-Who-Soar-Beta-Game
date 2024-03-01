@@ -19,8 +19,15 @@ public class MainMenu : MonoBehaviour
         Cursor.visible = cursorVisibilityToRestore;
     }
 
+    // if you want to be able to go to a scene from main menu, you need to make sure it's in the build
+    // in Unity (on the scene you want to add), file -> build settings -> add open scenes
+
     public void PlayGame() {
-        SceneManager.LoadScene("TestScene");
+        SceneManager.LoadScene("TestScene"); 
+    }
+
+    public void PlayLevelOne() {
+        SceneManager.LoadScene("LevelOneScene"); 
     }
 
     public void PlayTutorial() {

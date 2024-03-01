@@ -45,6 +45,9 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject bossHealthBarPanel; // HealthContainer
     [SerializeField] private GameObject bossIntroPanel; // BossIntro
 
+    [Header("Level Clear")]
+    [SerializeField] private GameObject levelClearImage; // EndLevelImage - in canvas
+
 
     private float playerCurrentHealth;
     private float playerMaxHealth;
@@ -341,6 +344,10 @@ public class UIManager : Singleton<UIManager>
         }));
     }
 
+    public void LevelClearUI() {
+        levelClearImage.SetActive(true);
+    }
+
     // subscribe to event
     private void OnEnable() {
         GameEvent.OnEventFired += OnEventResponse;
@@ -360,6 +367,9 @@ public class UIManager : Singleton<UIManager>
                 break;
             case GameEvent.EventType.BossFightStart:
                 BossFightStart();
+                break;
+            case GameEvent.EventType.LevelClear:
+                LevelClearUI();
                 break;
         }
     }
