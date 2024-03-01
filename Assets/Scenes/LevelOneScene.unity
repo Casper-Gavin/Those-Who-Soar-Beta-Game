@@ -64097,7 +64097,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5467002295590356507, guid: c93457e15697ce24db47f328eba688bb, type: 3}
       propertyPath: pos1.y
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5467002295590356507, guid: c93457e15697ce24db47f328eba688bb, type: 3}
       propertyPath: pos2.x
@@ -64105,7 +64105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5467002295590356507, guid: c93457e15697ce24db47f328eba688bb, type: 3}
       propertyPath: pos2.y
-      value: -5
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 5467002295590356507, guid: c93457e15697ce24db47f328eba688bb, type: 3}
       propertyPath: clusters
