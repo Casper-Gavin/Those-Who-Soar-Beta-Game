@@ -14826,6 +14826,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b13915f06409c73468272319dd9e3549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenu: {fileID: 0}
+  pauseMenu: {fileID: 0}
   fullScreenButton: {fileID: 0}
 --- !u!95 &371709622
 Animator:
@@ -30473,7 +30475,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 76, y: -8.2}
+  m_AnchoredPosition: {x: 75.69, y: -9.14}
   m_SizeDelta: {x: 8, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &455590596
@@ -39441,6 +39443,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 5
+  audioManager: {fileID: 0}
+  characterDash: {fileID: 0}
 --- !u!114 &1503698334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39469,6 +39473,8 @@ MonoBehaviour:
   dashDistance: 5
   dashDuration: 0.3
   dashCooldownTimer: 0.75
+  isDashing: 0
+  audioManager: {fileID: 0}
 --- !u!114 &1503698336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39536,6 +39542,7 @@ MonoBehaviour:
   initialHealthPlayer: 10
   maxHealthPlayer: 10
   isDead: 0
+  audioManager: {fileID: 0}
 --- !u!114 &1503698342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40123,9 +40130,13 @@ MonoBehaviour:
   OnPlayerExitBossZone:
     m_PersistentCalls:
       m_Calls: []
+  OnBossDead:
+    m_PersistentCalls:
+      m_Calls: []
   canLeaveBossZone: 0
   isInBossZone: 0
   bossTag: 
+  isBossDead: 0
 --- !u!61 &1617556947
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -42354,6 +42365,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   vendorTag: 
+  audioManager: {fileID: 0}
 --- !u!61 &1844658661
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -42756,6 +42768,7 @@ MonoBehaviour:
   bossHealthImage: {fileID: 1138232105}
   bossHealthBarPanel: {fileID: 1759901990}
   bossIntroPanel: {fileID: 1189059180}
+  levelClearImage: {fileID: 0}
 --- !u!4 &1889091533
 Transform:
   m_ObjectHideFlags: 0
