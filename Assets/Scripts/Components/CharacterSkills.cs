@@ -13,6 +13,10 @@ public class CharacterSkills : MonoBehaviour {
 
     public int[] ConnectedSkills;
 
+    public void Update() {
+        UpdateUI();
+    }
+
     public void UpdateUI() {
         TitleText.text = $"{skillMenu.skillLevels[id]}/{skillMenu.skillCaps[id]}\n{skillMenu.skillNames[id]}\nCost: {skillMenu.skillPoints}/{skillMenu.skillCosts[id]} SP";
 
