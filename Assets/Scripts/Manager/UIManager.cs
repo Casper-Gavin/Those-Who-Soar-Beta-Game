@@ -5,14 +5,11 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.InputSystem;
 using System;
 using static SkillMenu;
 
 public class UIManager : Singleton<UIManager>
 {
-    public InputMaster controls;
-
     [Header("Pause Menu")]
     [SerializeField] private GameObject pauseMenuUI;
     public static bool GameIsPaused = false;

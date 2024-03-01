@@ -9,6 +9,8 @@ public class WeaponAim : MonoBehaviour //Singleton<WeaponAim>
     public float CurrentAimAngleAbsolute { get; set; }
     public float CurrentAimAngle { get; set; }
 
+    public bool InjectPlayer = false;
+
     private Camera mainCamera;
     private GameObject reticle;
     private WeaponBase weapon;
@@ -34,13 +36,18 @@ public class WeaponAim : MonoBehaviour //Singleton<WeaponAim>
         mainCamera = Camera.main;
 
         reticle = Instantiate(reticlePrefab);
-        if (weapon.WeaponOwner.CharacterTypes != Character.CharacterTypeEnum.Player) {
+        if (!InjectPlayer && weapon.WeaponOwner.CharacterTypes != Character.CharacterTypeEnum.Player) {
             reticle.GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 
     private void Update()
     {
+        if (InjectPlayer)
+        {
+            return;
+        }
+        
         if (weapon.WeaponOwner.CharacterTypes == Character.CharacterTypeEnum.Player)
         {
             GetMousePosition();

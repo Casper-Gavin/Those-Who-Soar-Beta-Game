@@ -46,6 +46,9 @@ Unity Version: 2022.3.9f1 (LTS)
 ## Version 1.0
 
 ### Version 1.1
+### Version 1.1.2
+- Add unit test for weapon ammo
+
 ### Version 1.1.1
 - Fixed a few level one issues after peer testing
 
