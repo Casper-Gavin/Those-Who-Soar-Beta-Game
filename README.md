@@ -49,6 +49,7 @@ Unity Version: 2022.3.9f1 (LTS)
 ### Version 1.1.6
 - Fixed issue where certain GameObjects werent updated
 - Fixed errors
+- Fixed skill tree not displaying costs
 
 ### Version 1.1.5
 - Added unit test for music (current music)

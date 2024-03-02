@@ -36,7 +36,7 @@ public class CharacterSkills : MonoBehaviour {
     }
 
     public void UpdateUI(int id) {
-        TitleText.text = skillMenu.skillNames[id] + " " + skillMenu.skillLevels[id] + "/" + skillMenu.skillCaps[id];
+        TitleText.text = $"{skillMenu.skillLevels[id]}/{skillMenu.skillCaps[id]}\n{skillMenu.skillNames[id]}\nCost: {skillMenu.skillPoints}/{skillMenu.skillCosts[id]} SP";
 
         GetComponent<Image>().color = skillMenu.skillLevels[id] >= skillMenu.skillCaps[id] ? Color.yellow : skillMenu.skillPoints >= skillMenu.skillCosts[id] ? Color.green : Color.red;
     }
