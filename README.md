@@ -51,6 +51,7 @@ Unity Version: 2022.3.9f1 (LTS)
 
 ### Version 1.1.9
 - Fixed a fake wall bug and edited level one
+- Fixed boss intro interfering with pause menu
 
 ### Version 1.1.8
 - Increase Boss Health

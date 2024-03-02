@@ -291,6 +291,7 @@ public class UIManager : Singleton<UIManager>
     }
 
     public void Pause() {
+        bossIntroPanel.SetActive(false);
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
