@@ -66,8 +66,11 @@ public class SkillMenu : MonoBehaviour {
     }
 
     public void UpdateAllSkillUI() {
+        int idCounter = 0;
         foreach (var skill in skillList) {
-            skill.UpdateUI();
+            skill.UpdateUI(idCounter);
+
+            idCounter++;
         }
     }
 }

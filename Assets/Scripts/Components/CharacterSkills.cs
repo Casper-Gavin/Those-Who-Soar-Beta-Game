@@ -24,12 +24,18 @@ public class CharacterSkills : MonoBehaviour {
             skillTreeMenu = GameObject.Find("SkillTreeMenu");
         } else {
             if (skillTreeMenu.activeSelf) {
-                UpdateUI();
+                UpdateAllUI();
             }
         }
     }
 
-    public void UpdateUI() {
+    public void UpdateAllUI() {
+        for (var i = 0; i < skillMenu.skillList.Count; i++) {
+            skillMenu.skillList[i].UpdateUI(i);
+        }
+    }
+
+    public void UpdateUI(int id) {
         TitleText.text = skillMenu.skillNames[id] + " " + skillMenu.skillLevels[id] + "/" + skillMenu.skillCaps[id];
 
         GetComponent<Image>().color = skillMenu.skillLevels[id] >= skillMenu.skillCaps[id] ? Color.yellow : skillMenu.skillPoints >= skillMenu.skillCosts[id] ? Color.green : Color.red;
