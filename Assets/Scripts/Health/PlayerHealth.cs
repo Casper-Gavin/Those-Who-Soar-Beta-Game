@@ -76,12 +76,16 @@ public class PlayerHealth : HealthBase
         // fieldOfView.SetAimDirection(aimDir);
         fieldOfView.SetOrigin(transform.position);
 
-        if (skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseHealth] > lastCheckHealth) {
-            GainMaxHealth(1);
-        }
+        if (skillMenu != null) {
+            if (skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseHealth] > lastCheckHealth) {
+                GainMaxHealth(1);
+            }
 
-        if (skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseShield] > lastCheckShield) {
-            GainMaxShield(2);
+            if (skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseShield] > lastCheckShield) {
+                GainMaxShield(2);
+            }
+        } else {
+            skillMenu = SkillMenu.skillMenu;
         }
 
         if (needRegen && Time.time > timeToStartRegen)

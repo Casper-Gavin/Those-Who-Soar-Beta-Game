@@ -29,6 +29,8 @@ public class EnemyHealth : HealthBase
 
         CurrentHealth = initialHealth;
 
+        UpdateHealth();
+
         //skillMenu = SkillMenu.skillMenu;
     }
 

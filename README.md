@@ -46,6 +46,10 @@ Unity Version: 2022.3.9f1 (LTS)
 ## Version 1.0
 
 ### Version 1.1
+### Version 1.1.8
+- Increase Boss Health
+- Fix build issue where boss health wouldnt show
+
 ### Version 1.1.7
 - Volume Consistency
 
