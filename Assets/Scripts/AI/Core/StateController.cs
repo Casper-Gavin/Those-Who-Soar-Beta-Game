@@ -37,8 +37,8 @@ public class StateController : MonoBehaviour
         Path = GetComponent<Path>();
         Collider2D = GetComponent<Collider2D>();
 
-        Player = GameObject.FindWithTag("Player").transform;
-        PlayerHealth = Player.GetComponent<PlayerHealth>();
+        Player = GameObject.FindWithTag("Player")?.transform;
+        PlayerHealth = Player?.GetComponent<PlayerHealth>();
         currentState.InitActions(this);
 
         BossCirclePattern = GetComponent<BossCirclePattern>();

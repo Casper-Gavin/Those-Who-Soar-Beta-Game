@@ -36,7 +36,8 @@ public class CharacterMovement : CharacterAbilities {
 
         //skillMenu = FindObjectOfType<SkillMenu>();
 
-        if (!isSkilMenuMoveUnlockedOnce && skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseSpeed] > 0) {
+        // only players can get movement buff from skill tree
+        if (character.CharacterTypes == Character.CharacterTypeEnum.Player && !isSkilMenuMoveUnlockedOnce && skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseSpeed] > 0) {
             isSkilMenuMoveUnlockedOnce = true;
             walkSpeed = 7.5f;
         }
