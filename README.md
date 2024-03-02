@@ -46,6 +46,9 @@ Unity Version: 2022.3.9f1 (LTS)
 ## Version 1.0
 
 ### Version 1.1
+### Version 1.1.10
+- Fix revive bug on level 1
+
 ### Version 1.1.9
 - Fixed a fake wall bug and edited level one
 

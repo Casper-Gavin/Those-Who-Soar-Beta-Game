@@ -72880,8 +72880,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e00e7e241bdcdc248a61f345c5053c74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playableCharacter: {fileID: 0}
-  spawnPosition: {fileID: 0}
+  playableCharacter: {fileID: 1503698331}
+  spawnPosition: {fileID: 1976290502}
 --- !u!4 &1993696803
 Transform:
   m_ObjectHideFlags: 0
