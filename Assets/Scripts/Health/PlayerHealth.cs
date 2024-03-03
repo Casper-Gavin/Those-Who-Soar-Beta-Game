@@ -62,16 +62,12 @@ public class PlayerHealth : HealthBase
         lastCheckHealth = 0;
         lastCheckShield = 0;
 
-        audioManager = FindObjectOfType<AudioManager>();
+        audioManager = AudioManager.Instance;
     }
 
     protected override void Update ()
     {
         base.Update();
-
-        if (audioManager == null) {
-            audioManager = FindObjectOfType<AudioManager>();
-        }
 
         // fieldOfView.SetAimDirection(aimDir);
         fieldOfView.SetOrigin(transform.position);

@@ -15,7 +15,6 @@ public class MeleeWeapon : WeaponBase
     private Animator animator;
     private readonly int useMeleeWeapon = Animator.StringToHash("UseMeleeWeapon");
 
-    [SerializeField] private AudioManager audioManager;
     private Character character;
 
     protected override void Awake() // this was Start, see if Awake works
@@ -24,16 +23,11 @@ public class MeleeWeapon : WeaponBase
         animator = GetComponent<Animator>();
         base.Awake();
 
-        audioManager = FindObjectOfType<AudioManager>();
         character = GetComponentInParent<Character>();
     }
 
     protected virtual void Update() {
         base.Update();
-        
-        if (audioManager == null) {
-            audioManager = FindObjectOfType<AudioManager>();
-        }
 
         if (character == null) {
             character = GetComponentInParent<Character>();
@@ -109,9 +103,7 @@ public class MeleeWeapon : WeaponBase
         }
 
         /*if (character.CharacterTypes == Character.CharacterTypeEnum.Player) {*/
-            if (audioManager != null) {
-                audioManager.PlaySFX("SwordSlash");
-            }
+            AudioManager.Instance.PlaySFX("SwordSlash");
         //}
     }
 

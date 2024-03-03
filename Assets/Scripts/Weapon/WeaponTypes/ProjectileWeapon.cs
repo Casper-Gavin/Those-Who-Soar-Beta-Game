@@ -36,15 +36,11 @@ public class ProjectileWeapon : WeaponBase
         animator = GetComponent<Animator>();
         WeaponAmmo = GetComponent<WeaponAmmo>();
 
-        audioManager = FindObjectOfType<AudioManager>();
+        audioManager = AudioManager.Instance;
     }
 
     protected override void Update() {
         base.Update();
-
-        if (audioManager == null) {
-            audioManager = FindObjectOfType<AudioManager>();
-        }
     }
 
     // see if we can even make a request to attack
@@ -88,9 +84,7 @@ public class ProjectileWeapon : WeaponBase
                 OffAttackCooldown = false;
                 nextAttackTime = Time.time + attackCooldown;
 
-                if (audioManager != null) {
-                    audioManager.PlaySFX("GunShoot");
-                }
+                audioManager.PlaySFX("GunShoot");
             }
         }
     }
@@ -161,9 +155,7 @@ public class ProjectileWeapon : WeaponBase
             {
                 UIManager.Instance.UpdateAmmo(CurrentAmmo, magazineSize);
 
-                if (audioManager != null) {
-                    audioManager.PlaySFX("GunReload");
-                }
+                audioManager.PlaySFX("GunReload");
             }
         }
     }

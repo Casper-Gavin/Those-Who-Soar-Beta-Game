@@ -46,7 +46,7 @@ Unity Version: 2022.3.9f1 (LTS)
 ## Version 1.1
 ### Version 1.1.12
 - Fix sfx on tutorial scene menus
-- Unify volume across scenes (fix bug where volume would keep increasing) (TODO)
+- Unify volume across scenes (fix bug where volume would keep increasing)
 
 ### Version 1.1.11
 - Clean up boss health code + errors

@@ -17,15 +17,19 @@ public class AudioManager : Singleton<AudioManager> {
     [SerializeField] private BossDetect bossDetect;
 
     protected override void Awake() {
+        if (GameObject.FindObjectsOfType<AudioManager>().Length > 1)
+        {
+            Destroy(gameObject);
+            return;
+        }
         base.Awake();
 
-        // VOLUME THING - make stuff static?
         DontDestroyOnLoad(gameObject);
 
         foreach (Music m in music) {
             m.source = gameObject.AddComponent<AudioSource>();
             m.source.clip = m.clip;
-            m.source.volume = m.volume;
+            m.source.volume = PlayerPrefs.GetFloat(MUSICKEY);
             m.source.pitch = m.pitch;
             m.source.loop = m.loop;
         }
@@ -57,23 +61,19 @@ public class AudioManager : Singleton<AudioManager> {
         }
 
         if (SceneManager.GetActiveScene().name == "MainMenu" && GetCurrentlyPlayingTag() != "MenuMusic") {
-            Stop("Gameplay");
-
+            StopAllMusic();
             Play("MainMenu");
         } else if (SceneManager.GetActiveScene().name != "MainMenu" && GetCurrentlyPlayingTag() != "GameMusic" && (!bossDetect || !bossDetect.isInBossZone)) {
-            Stop("MainMenu");
-            Stop("Boss");
-
+            StopAllMusic();
             Play("Gameplay");
         } else if (bossDetect != null) {
             if (GetCurrentlyPlayingTag() != "BossMusic" && bossDetect.isInBossZone && !bossDetect.isBossDead) {
-                Stop("Gameplay");
-
+                StopAllMusic();
                 Play("Boss");
             }
         } else if (SceneManager.GetActiveScene().name != "MainMenu" && GetCurrentlyPlaying() == "Boss") {
             if (bossDetect.isBossDead || bossDetect.isInBossZone == false) {
-                Stop("Boss");
+                StopAllMusic();
                 Play("Gameplay");
             }
         }
@@ -88,11 +88,6 @@ public class AudioManager : Singleton<AudioManager> {
         }
 
         m.source.Play();
-        // in case we want some music to have a different volume controller
-        if (name == "MainMenu" || name == "Gameplay" || name == "Boss")
-        {
-            m.source.volume = PlayerPrefs.GetFloat(MUSICKEY);
-        }
     }
 
     public void PlaySFX(string name) {
@@ -141,16 +136,19 @@ public class AudioManager : Singleton<AudioManager> {
         f.source.UnPause();
     }
 
-    public void SetVolume(string name, float volume) {
-        Music m = Array.Find(music, music => music.name == name);
-
-        m.source.volume = volume;
-
-        // in case we want some music to have a different volume controller
-        if (name == "MainMenu" || name == "Gameplay" || name == "Boss")
+    public void StopAllMusic()
+    {
+        foreach (Music m in music)
         {
-            PlayerPrefs.SetFloat(MUSICKEY, volume);
-            Debug.Log("MUSICKEY set to " + volume);
+            m.source.Stop();
+        }
+    }
+
+    public void SetVolume(float volume) {
+        PlayerPrefs.SetFloat(MUSICKEY, volume);
+        foreach (Music m in music)
+        {
+            m.source.volume = volume;
         }
     }
 
@@ -160,15 +158,8 @@ public class AudioManager : Singleton<AudioManager> {
         f.source.volume = volume;
     }
 
-    public float GetVolume(string name) {
-        Music m = Array.Find(music, music => music.name == name);
-        
-        if (name == "MainMenu" || name == "Gameplay" || name == "Boss")
-        {
-            m.source.volume = PlayerPrefs.GetFloat(MUSICKEY);
-        }
-
-        return m.source.volume;
+    public float GetVolume() {
+        return PlayerPrefs.GetFloat(MUSICKEY);
     }
 
     public float GetSFXVolume(string name) {

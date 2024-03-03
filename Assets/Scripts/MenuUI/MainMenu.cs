@@ -45,4 +45,14 @@ public class MainMenu : MonoBehaviour
         gameObject.SetActive(false);
         Cursor.visible = true;
     }
+
+    public void ClickButton()
+    {
+        AudioManager.ClickButton();
+    }
+
+    public void ClickSkill()
+    {
+        AudioManager.ClickSkill();
+    }
 }

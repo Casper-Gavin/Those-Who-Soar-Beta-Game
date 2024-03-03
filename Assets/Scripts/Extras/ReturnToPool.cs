@@ -18,15 +18,10 @@ public class ReturnToPool : MonoBehaviour {
         projectile = GetComponent<Projectile>();
         bossProjectile = GetComponent<BossProjectile>();
 
-        if (audioManager == null) {
-            audioManager = FindObjectOfType<AudioManager>();
-        }
+        audioManager = AudioManager.Instance;
     }
 
     private void Update() {
-        if (audioManager == null) {
-            audioManager = FindObjectOfType<AudioManager>();
-        }
     }
 
     private void Return () {
