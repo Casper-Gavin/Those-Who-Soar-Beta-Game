@@ -6,15 +6,11 @@ using UnityEngine.UI;
 
 public class BossHealth : EnemyHealth
 {
-    [SerializeField] protected float initialHealth = 100f;
-    [SerializeField] protected float maxHealth = 100f;
-
     public static Action OnBossDead;
 
     // Awake is called before start
     protected override void Awake()
     {
-        maxHealth = 100f;
         initialHealth = maxHealth;
 
         base.Awake();
@@ -22,7 +18,7 @@ public class BossHealth : EnemyHealth
 
     protected override void UpdateHealth()
     {
-        UIManager.Instance.UpdateBossHealth(CurrentHealth, this.maxHealth);
+        UIManager.Instance.UpdateBossHealth(CurrentHealth, maxHealth);
     }
 
     // public override void TakeDamage(int damage) {

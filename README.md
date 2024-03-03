@@ -43,9 +43,14 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 
-## Version 1.0
+## Version 1.1
+### Version 1.1.11
+- Clean up boss health code + errors
+- Fix projectile enemy gun flickering
+- Fix enemy AI to make deep copies instead of sharing decision making scripts
+    - This means that we can now have many enemies without their AI messing up
+- Fix projectile enemies staring at dead player
 
-### Version 1.1
 ### Version 1.1.10
 - Fix revive bug on level 1
 
@@ -86,6 +91,7 @@ Unity Version: 2022.3.9f1 (LTS)
 - Created level one
 - Added a level clear event - still needs functionality to go to new level (like the pause menu?)
 
+## Version 1.0
 ### Version 1.0.9
 - Fix bug where player projectiles did not work in boss area
 - Adjust sword position/size for melee enemies
