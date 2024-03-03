@@ -57,6 +57,7 @@ Unity Version: 2022.3.9f1 (LTS)
     - This means that we can now have many enemies without their AI messing up
 - Fix projectile enemies staring at dead player
 - Fix boss music
+- Fix menu button click sfx
 - (TODO) Unify volume across scenes (fix bug where volume would keep increasing)
 - (TODO) Add sfx to tutorial scene menus
 
