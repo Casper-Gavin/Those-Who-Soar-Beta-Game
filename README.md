@@ -45,10 +45,8 @@ Unity Version: 2022.3.9f1 (LTS)
 
 ## Version 1.1
 ### Version 1.1.12
-- Fix enemy AI wander state
-- Fix boss music not starting
-- Fix menu click sfx ***
-- Fix main menu music on first level
+- Fix sfx on tutorial scene menus
+- Unify volume across scenes (fix bug where volume would keep increasing) (TODO)
 
 ### Version 1.1.11
 - Clean up boss health code + errors
@@ -58,8 +56,6 @@ Unity Version: 2022.3.9f1 (LTS)
 - Fix projectile enemies staring at dead player
 - Fix boss music
 - Fix menu button click sfx
-- (TODO) Unify volume across scenes (fix bug where volume would keep increasing)
-- (TODO) Add sfx to tutorial scene menus
 
 ### Version 1.1.10
 - Fix revive bug on level 1

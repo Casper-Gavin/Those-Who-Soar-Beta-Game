@@ -8,7 +8,7 @@ public class AudioManager : Singleton<AudioManager> {
     public Music[] music;
     public Sfx[] sfx;
 
-    private readonly string AUDIOKEY = "MUSIC_KEY";
+    private readonly string MUSICKEY = "MUSIC_KEY";
     //private readonly string AUDIO1KEY = "MainMenu";
     //private readonly string AUDIO2KEY = "Gameplay";
     //private readonly string AUDIO3KEY = "Boss";
@@ -42,26 +42,10 @@ public class AudioManager : Singleton<AudioManager> {
     private void Start() {
         if (SceneManager.GetActiveScene().name == "MainMenu") {
             Play("MainMenu");
-            SetVolume("MainMenu", PlayerPrefs.GetFloat(AUDIOKEY));
         } else {
             Play("Gameplay");
-            SetVolume("Gameplay", PlayerPrefs.GetFloat(AUDIOKEY));
         }
     }
-
-    /*
-    private void OnEnable() {
-        bossDetect.OnPlayerEnterBossZone.AddListener(PlayBossMusic);
-        bossDetect.OnPlayerExitBossZone.AddListener(PlayGameMusic);
-        bossDetect.OnBossDead.AddListener(StopBossMusic);
-    }
-
-    private void OnDisable() {
-        bossDetect.OnPlayerEnterBossZone.RemoveListener(PlayBossMusic);
-        bossDetect.OnPlayerExitBossZone.RemoveListener(PlayGameMusic);
-        bossDetect.OnBossDead.RemoveListener(StopBossMusic);
-    }
-    */
 
     private void Update() {
         if (uiManager == null) {
@@ -72,67 +56,28 @@ public class AudioManager : Singleton<AudioManager> {
             bossDetect = FindObjectOfType<BossDetect>();
         }
 
-        /*
-        // Set up the listeners for the boss music
-        if (bossDetect.OnPlayerEnterBossZone == null) {
-            bossDetect.OnPlayerEnterBossZone.AddListener(PlayBossMusic);
-        }
-
-        if (bossDetect.OnPlayerExitBossZone == null) {
-            bossDetect.OnPlayerExitBossZone.AddListener(PlayGameMusic);
-        }
-
-        if (bossDetect.OnBossDead == null) {
-            bossDetect.OnBossDead.AddListener(StopBossMusic);
-        }
-        */
-
         if (SceneManager.GetActiveScene().name == "MainMenu" && GetCurrentlyPlayingTag() != "MenuMusic") {
             Stop("Gameplay");
 
             Play("MainMenu");
-            SetVolume("MainMenu", PlayerPrefs.GetFloat(AUDIOKEY));
-            Debug.Log("Playing MainMenu at " + PlayerPrefs.GetFloat(AUDIOKEY));
         } else if (SceneManager.GetActiveScene().name != "MainMenu" && GetCurrentlyPlayingTag() != "GameMusic" && (!bossDetect || !bossDetect.isInBossZone)) {
             Stop("MainMenu");
             Stop("Boss");
 
             Play("Gameplay");
-            SetVolume("Gameplay", PlayerPrefs.GetFloat(AUDIOKEY));
-            Debug.Log("Playing Gameplay at " + PlayerPrefs.GetFloat(AUDIOKEY));
         } else if (bossDetect != null) {
             if (GetCurrentlyPlayingTag() != "BossMusic" && bossDetect.isInBossZone && !bossDetect.isBossDead) {
                 Stop("Gameplay");
 
                 Play("Boss");
-                SetVolume("Boss", PlayerPrefs.GetFloat(AUDIOKEY));
-                Debug.Log("Playing Boss at " + PlayerPrefs.GetFloat(AUDIOKEY));
             }
         } else if (SceneManager.GetActiveScene().name != "MainMenu" && GetCurrentlyPlaying() == "Boss") {
             if (bossDetect.isBossDead || bossDetect.isInBossZone == false) {
                 Stop("Boss");
                 Play("Gameplay");
-                SetVolume("Gameplay", PlayerPrefs.GetFloat(AUDIOKEY));
-                Debug.Log("Playing Gameplay at " + PlayerPrefs.GetFloat(AUDIOKEY));
             }
         }
 
-        //Debug.Log(GetCurrentlyPlaying());
-
-        /*
-        if (uiManager != null) {
-            if (UIManager.GameIsPaused) {
-                PauseMusic(GetCurrentlyPlayingMusic());
-
-                PauseSFX(GetCurrentlyPlayingSFX());
-                return;
-            } else {
-                UnPauseMusic(GetCurrentlyPlayingMusic());
-
-                UnPauseSFX(GetCurrentlyPlayingSFX());
-            }
-        }
-        */
     }   
 
     public void Play(string name) {
@@ -143,6 +88,11 @@ public class AudioManager : Singleton<AudioManager> {
         }
 
         m.source.Play();
+        // in case we want some music to have a different volume controller
+        if (name == "MainMenu" || name == "Gameplay" || name == "Boss")
+        {
+            m.source.volume = PlayerPrefs.GetFloat(MUSICKEY);
+        }
     }
 
     public void PlaySFX(string name) {
@@ -199,7 +149,8 @@ public class AudioManager : Singleton<AudioManager> {
         // in case we want some music to have a different volume controller
         if (name == "MainMenu" || name == "Gameplay" || name == "Boss")
         {
-            PlayerPrefs.SetFloat(AUDIOKEY, volume);
+            PlayerPrefs.SetFloat(MUSICKEY, volume);
+            Debug.Log("MUSICKEY set to " + volume);
         }
     }
 
@@ -214,7 +165,7 @@ public class AudioManager : Singleton<AudioManager> {
         
         if (name == "MainMenu" || name == "Gameplay" || name == "Boss")
         {
-            m.source.volume = PlayerPrefs.GetFloat(AUDIOKEY);
+            m.source.volume = PlayerPrefs.GetFloat(MUSICKEY);
         }
 
         return m.source.volume;
@@ -314,27 +265,6 @@ public class AudioManager : Singleton<AudioManager> {
 
         audioSource.Stop();
         audioSource.volume = startVolume;
-    }
-
-    public void PlayBossMusic() {
-        Stop("Gameplay");
-
-        Play("Boss");
-        SetVolume("Boss", PlayerPrefs.GetFloat(AUDIOKEY));
-    }
-
-    public void PlayGameMusic() {
-        Stop("Boss");
-
-        Play("Gameplay");
-        SetVolume("Gameplay", PlayerPrefs.GetFloat(AUDIOKEY));
-    }
-
-    public void StopBossMusic() {
-        Stop("Boss");
-
-        Play("Gameplay");
-        SetVolume("Gameplay", PlayerPrefs.GetFloat(AUDIOKEY));
     }
 
     public static void ClickButton() {

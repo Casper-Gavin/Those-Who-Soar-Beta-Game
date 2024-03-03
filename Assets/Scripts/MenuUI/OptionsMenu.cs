@@ -18,7 +18,7 @@ public class OptionsMenu : MonoBehaviour {
         cursorVisibilityToRestore = Cursor.visible;
         Cursor.visible = true;
 
-        Debug.Log("Volume fetched");
+        Debug.Log("Volume fetched onEnable");
         // Set the volume slider to the current volume
         currentlyPlaying = AudioManager.Instance.GetCurrentlyPlaying();
         gameObject.GetComponentInChildren<UnityEngine.UI.Slider>().value = AudioManager.Instance.GetVolume(currentlyPlaying);
@@ -30,7 +30,7 @@ public class OptionsMenu : MonoBehaviour {
     }
 
     private void Start() {
-        Debug.Log("Volume fetched");
+        Debug.Log("Volume fetched start");
 
         // Set the volume slider to the current volume
         currentlyPlaying = AudioManager.Instance.GetCurrentlyPlaying();
@@ -55,9 +55,8 @@ public class OptionsMenu : MonoBehaviour {
     }
 
     public void SetVolume(float volume) {
-        Debug.Log("Options menu set volume to " + volume);
-
         currentlyPlaying = AudioManager.Instance.GetCurrentlyPlaying();
+        Debug.Log("Options menu set volume for " + currentlyPlaying + " to " + volume);
         AudioManager.Instance.SetVolume(currentlyPlaying, volume);
     }
 
