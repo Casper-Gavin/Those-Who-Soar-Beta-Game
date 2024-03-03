@@ -44,6 +44,11 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 1.1
+### Version 1.1.13
+- Fixed Tutorial Scene not having correct GameObjects
+- Converted many GameObjects that are conencted to a single transferable Prefab
+- Added fullscreen button in game
+
 ### Version 1.1.12
 - Fix sfx on tutorial scene menus
 - Unify volume across scenes (fix bug where volume would keep increasing)

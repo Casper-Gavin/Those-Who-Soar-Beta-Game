@@ -53,6 +53,15 @@ public class OptionsMenu : MonoBehaviour {
 
     public void ToggleFullscreen() {
         Screen.fullScreen = !Screen.fullScreen;
+
+        if (Screen.fullScreen) {
+            Screen.SetResolution(1920, 1080, false);
+        } else {
+            // Set the screen resolution to the best resolution for the current monitor
+            Resolution[] resolutions = Screen.resolutions;
+            Resolution bestResolution = resolutions[resolutions.Length - 1];
+            Screen.SetResolution(bestResolution.width, bestResolution.height, true);
+        }
     }    
 
     public void ClickButton()
