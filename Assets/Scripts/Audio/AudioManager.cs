@@ -8,8 +8,6 @@ public class AudioManager : Singleton<AudioManager> {
     public Music[] music;
     public Sfx[] sfx;
 
-    public static AudioManager instance;
-
     private readonly string AUDIOKEY = "MUSIC_KEY";
     //private readonly string AUDIO1KEY = "MainMenu";
     //private readonly string AUDIO2KEY = "Gameplay";
@@ -21,13 +19,7 @@ public class AudioManager : Singleton<AudioManager> {
     protected override void Awake() {
         base.Awake();
 
-        if (instance == null) {
-            instance = this;
-        } else {
-            Destroy(gameObject);
-            return;
-        }
-
+        // VOLUME THING - make stuff static?
         DontDestroyOnLoad(gameObject);
 
         foreach (Music m in music) {
@@ -100,24 +92,28 @@ public class AudioManager : Singleton<AudioManager> {
 
             Play("MainMenu");
             SetVolume("MainMenu", PlayerPrefs.GetFloat(AUDIOKEY));
-        } else if (SceneManager.GetActiveScene().name != "MainMenu" && GetCurrentlyPlayingTag() != "GameMusic" && !bossDetect.isInBossZone) {
+            Debug.Log("Playing MainMenu at " + PlayerPrefs.GetFloat(AUDIOKEY));
+        } else if (SceneManager.GetActiveScene().name != "MainMenu" && GetCurrentlyPlayingTag() != "GameMusic" && (!bossDetect || !bossDetect.isInBossZone)) {
             Stop("MainMenu");
             Stop("Boss");
 
             Play("Gameplay");
             SetVolume("Gameplay", PlayerPrefs.GetFloat(AUDIOKEY));
+            Debug.Log("Playing Gameplay at " + PlayerPrefs.GetFloat(AUDIOKEY));
         } else if (bossDetect != null) {
             if (GetCurrentlyPlayingTag() != "BossMusic" && bossDetect.isInBossZone && !bossDetect.isBossDead) {
                 Stop("Gameplay");
 
                 Play("Boss");
                 SetVolume("Boss", PlayerPrefs.GetFloat(AUDIOKEY));
+                Debug.Log("Playing Boss at " + PlayerPrefs.GetFloat(AUDIOKEY));
             }
         } else if (SceneManager.GetActiveScene().name != "MainMenu" && GetCurrentlyPlaying() == "Boss") {
             if (bossDetect.isBossDead || bossDetect.isInBossZone == false) {
                 Stop("Boss");
                 Play("Gameplay");
                 SetVolume("Gameplay", PlayerPrefs.GetFloat(AUDIOKEY));
+                Debug.Log("Playing Gameplay at " + PlayerPrefs.GetFloat(AUDIOKEY));
             }
         }
 
@@ -200,11 +196,9 @@ public class AudioManager : Singleton<AudioManager> {
 
         m.source.volume = volume;
 
-        if (name == "MainMenu") {
-            PlayerPrefs.SetFloat(AUDIOKEY, volume);
-        } else if (name == "Gameplay") {
-            PlayerPrefs.SetFloat(AUDIOKEY, volume);
-        } else if (name == "Boss") {
+        // in case we want some music to have a different volume controller
+        if (name == "MainMenu" || name == "Gameplay" || name == "Boss")
+        {
             PlayerPrefs.SetFloat(AUDIOKEY, volume);
         }
     }
@@ -218,11 +212,8 @@ public class AudioManager : Singleton<AudioManager> {
     public float GetVolume(string name) {
         Music m = Array.Find(music, music => music.name == name);
         
-        if (name == "MainMenu") {
-            m.source.volume = PlayerPrefs.GetFloat(AUDIOKEY);
-        } else if (name == "Gameplay") {
-            m.source.volume = PlayerPrefs.GetFloat(AUDIOKEY);
-        } else if (name == "Boss") {
+        if (name == "MainMenu" || name == "Gameplay" || name == "Boss")
+        {
             m.source.volume = PlayerPrefs.GetFloat(AUDIOKEY);
         }
 
@@ -346,11 +337,11 @@ public class AudioManager : Singleton<AudioManager> {
         SetVolume("Gameplay", PlayerPrefs.GetFloat(AUDIOKEY));
     }
 
-    public void ClickButton() {
-        PlaySFX("ClickButton");
+    public static void ClickButton() {
+        Instance.PlaySFX("ClickButton");
     }
 
-    public void ClickSkill() {
-        PlaySFX("ClickSkill");
+    public static void ClickSkill() {
+        Instance.PlaySFX("ClickSkill");
     }
 }

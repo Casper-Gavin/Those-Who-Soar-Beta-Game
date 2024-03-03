@@ -8,8 +8,6 @@ public class OptionsMenu : MonoBehaviour {
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject pauseMenu;
 
-    private AudioManager audioManager;
-
     public Button fullScreenButton;
 
     private string currentlyPlaying;
@@ -19,6 +17,11 @@ public class OptionsMenu : MonoBehaviour {
     {
         cursorVisibilityToRestore = Cursor.visible;
         Cursor.visible = true;
+
+        Debug.Log("Volume fetched");
+        // Set the volume slider to the current volume
+        currentlyPlaying = AudioManager.Instance.GetCurrentlyPlaying();
+        gameObject.GetComponentInChildren<UnityEngine.UI.Slider>().value = AudioManager.Instance.GetVolume(currentlyPlaying);
     }
 
     public void OnDisable()
@@ -27,11 +30,11 @@ public class OptionsMenu : MonoBehaviour {
     }
 
     private void Start() {
-        audioManager = FindObjectOfType<AudioManager>();
+        Debug.Log("Volume fetched");
 
         // Set the volume slider to the current volume
-        currentlyPlaying = audioManager.GetCurrentlyPlaying();
-        gameObject.GetComponentInChildren<UnityEngine.UI.Slider>().value = audioManager.GetVolume(currentlyPlaying);
+        currentlyPlaying = AudioManager.Instance.GetCurrentlyPlaying();
+        gameObject.GetComponentInChildren<UnityEngine.UI.Slider>().value = AudioManager.Instance.GetVolume(currentlyPlaying);
     }
 
     private void Update() {    
@@ -52,10 +55,10 @@ public class OptionsMenu : MonoBehaviour {
     }
 
     public void SetVolume(float volume) {
-        //Debug.Log(volume);
+        Debug.Log("Options menu set volume to " + volume);
 
-        currentlyPlaying = audioManager.GetCurrentlyPlaying();
-        audioManager.SetVolume(currentlyPlaying, volume);
+        currentlyPlaying = AudioManager.Instance.GetCurrentlyPlaying();
+        AudioManager.Instance.SetVolume(currentlyPlaying, volume);
     }
 
     public void ToggleFullscreen() {

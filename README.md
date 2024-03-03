@@ -44,12 +44,21 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 1.1
+### Version 1.1.12
+- Fix enemy AI wander state
+- Fix boss music not starting
+- Fix menu click sfx ***
+- Fix main menu music on first level
+
 ### Version 1.1.11
 - Clean up boss health code + errors
 - Fix projectile enemy gun flickering
 - Fix enemy AI to make deep copies instead of sharing decision making scripts
     - This means that we can now have many enemies without their AI messing up
 - Fix projectile enemies staring at dead player
+- Fix boss music
+- (TODO) Unify volume across scenes (fix bug where volume would keep increasing)
+- (TODO) Add sfx to tutorial scene menus
 
 ### Version 1.1.10
 - Fix revive bug on level 1
