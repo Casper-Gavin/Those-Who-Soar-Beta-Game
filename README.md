@@ -46,6 +46,7 @@ Unity Version: 2022.3.9f1 (LTS)
 ## Version 1.1
 
 ### Version 1.1.14
+- Boss health bar disappers after you revive
 - Made and edited prefabs to fix bugs across scenes
 
 ### Version 1.1.13

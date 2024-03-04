@@ -6176,7 +6176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playableCharacter: {fileID: 2880836534751050665, guid: e68e80a2750728647b7920281eca5bbd, type: 3}
   spawnPosition: {fileID: 2928571997196453304, guid: 6c91c01a7da52c04d826b1871af55b51, type: 3}
-  bossHealthBarPanel: {fileID: 7622407032186501337}
+  bossHealthBarImage: {fileID: 7622407032186501337}
 --- !u!1 &6697289931792878887
 GameObject:
   m_ObjectHideFlags: 0
