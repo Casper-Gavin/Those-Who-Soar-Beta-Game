@@ -71,6 +71,15 @@ public class ProjectileWeapon : WeaponBase
     protected override void RequestAttack()
     {
         if (!audioManager.IsPlayingSFX("GunReload")) {
+            /*
+            // if we have no ammo and we are holding the fire button, reload
+            if (CurrentAmmo <= 0 && Input.GetMouseButton(0)) {
+                Reload();
+                audioManager.PlaySFX("GunReload");
+                return;
+            }
+            */
+
             if (OffAttackCooldown)
             {
                 animator.SetTrigger(shootAnimationParameter);
@@ -144,7 +153,7 @@ public class ProjectileWeapon : WeaponBase
 
     public override void Reload()
     {
-        if (WeaponAmmo != null)
+        if (WeaponAmmo != null && !audioManager.IsPlayingSFX("GunReload") && CurrentAmmo < magazineSize)
         {
             if (useMagazine)
             {
