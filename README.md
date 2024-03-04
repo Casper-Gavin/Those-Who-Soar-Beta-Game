@@ -44,6 +44,9 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 1.1
+### Version 1.1.15
+- Fixed menu bugs around skill menu and submenus (pausing, not being able to press escape)
+
 
 ### Version 1.1.14
 - Boss health bar disappers after you revive

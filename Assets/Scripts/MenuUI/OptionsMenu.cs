@@ -44,6 +44,7 @@ public class OptionsMenu : MonoBehaviour {
                 pauseMenu.SetActive(true);
             }
             Cursor.visible = true;
+            FindObjectOfType<UIManager>()?.Pause();
         }
     }
 
