@@ -322,6 +322,11 @@ public class UIManager : Singleton<UIManager>
         SceneManager.LoadScene(0);
     }
 
+    public void SetBossHealthBarVisible(bool visible)
+    {
+        bossHealthBarPanel.SetActive(visible);
+    }
+
     private void BossFight() {
         bossIntroPanel.SetActive(true);
         StartCoroutine(MyLibrary.FadeCanvasGroup(bossIntroPanel.GetComponent<CanvasGroup>(), 1f, 1f, () => {
@@ -356,6 +361,7 @@ public class UIManager : Singleton<UIManager>
     // unsubscribe to event
     private void OnDisable() {
         GameEvent.OnEventFired -= OnEventResponse;
+        BossHealth.OnBossDead -= OnBossDead;
     }
 
     private void OnEventResponse(GameEvent.EventType obj) {

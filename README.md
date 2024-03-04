@@ -44,6 +44,10 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 1.1
+### Version 1.1.18
+- Fix boss health bar visibility for in and outside the area
+- Fix bug where boss would not die
+
 ### Version 1.1.17
 - Made Skill Tree Damage Additions apply to weapon projectiles (not just applying to the sword as it was before)
 
