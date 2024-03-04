@@ -43,7 +43,11 @@ public class EnemyHealth : HealthBase
     {
         if (other.CompareTag("Bullet"))
         {
-            TakeDamage(damageTakenFromBullet);
+            if (skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage] > 0) {
+                TakeDamage(damageTakenFromBullet + skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage]);
+            } else {
+                TakeDamage(damageTakenFromBullet);
+            }
         }
     }
 

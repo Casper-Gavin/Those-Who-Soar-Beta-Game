@@ -44,6 +44,9 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 1.1
+### Version 1.1.17
+- Made Skill Tree Damage Additions apply to weapon projectiles (not just applying to the sword as it was before)
+
 ### Version 1.1.16
 - Fixed reload bugs (could reload at full ammo, could reload during a reload)
 
