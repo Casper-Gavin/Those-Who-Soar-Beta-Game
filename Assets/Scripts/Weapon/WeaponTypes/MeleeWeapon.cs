@@ -47,7 +47,7 @@ public class MeleeWeapon : WeaponBase
     
     public override void StopAttack()
     {
-        //Debug.Log("Attack stopped");
+        Debug.Log("Attack stopped");
         boxCollider.enabled = false;
     }
 
@@ -98,6 +98,7 @@ public class MeleeWeapon : WeaponBase
             return;
         }
 
+        Debug.Log("Collider enabled");
         boxCollider.enabled = true; // disable once contact is made or cooldown expires
         if (OffAttackCooldown)
         {

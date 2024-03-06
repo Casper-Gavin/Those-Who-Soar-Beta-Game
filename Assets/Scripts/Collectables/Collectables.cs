@@ -21,7 +21,7 @@ public class Collectables : MonoBehaviour {
     protected bool flippedY = false;
     protected float timeAccumulated = 0.0f;
 
-    private void Start() {
+    protected void Start() {
         spriteRenderer = GetComponent<SpriteRenderer>();
         collider2D = GetComponent<Collider2D>();
         timeForNextBounce = Time.time + timeBetweenBounces;

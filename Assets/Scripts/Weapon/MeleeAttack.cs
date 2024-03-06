@@ -36,11 +36,6 @@ public class MeleeAttack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // make this work with any component with a health
-        // but wait, we don't want it to be able
-        // to damage other enemies? Maybe a layer thing, like for bullets
-        // check!!!!
-        //other.GetComponent<PlayerHealth>()?.TakeDamage(damage);
         if (gameObject.layer == 9 /* enemy hit player*/)
         {
             other.GetComponent<PlayerHealth>()?.TakeDamage(damage);
@@ -66,11 +61,11 @@ public class MeleeAttack : MonoBehaviour
                     damageToEnemy += skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage];
                 }
 
+                Debug.Log("not crit");
                 other.GetComponent<HealthBase>().TakeDamage(damageToEnemy);
             }
 
             // cancel sword collider (can't double attack enemies)
-
             gameObject.GetComponent<MeleeWeapon>().StopAttack();
         }
         // level component damage is even more custom, handled in componentBase

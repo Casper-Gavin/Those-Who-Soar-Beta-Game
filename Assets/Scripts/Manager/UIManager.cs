@@ -45,6 +45,10 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject bossHealthBarPanel; // HealthContainer
     [SerializeField] private GameObject bossIntroPanel; // BossIntro
 
+    [Header("Keys")]
+    [SerializeField] private GameObject initialKeySpot;
+    [SerializeField] private bool expandHorizontal = true;
+    [SerializeField] private float keySpacer = 48.0f;
 
     private float playerCurrentHealth;
     private float playerMaxHealth;
@@ -63,6 +67,9 @@ public class UIManager : Singleton<UIManager>
     private float bossMaxHealth;
 
     private SkillMenu skillMenu;
+
+    private List<Key> keys;
+    private List<GameObject> keyImages;
 
     private void Start()
     {
@@ -88,6 +95,8 @@ public class UIManager : Singleton<UIManager>
         //SkillPointManager.Instance.ResetSkillPoints(); // For testing only
 
         skillMenu = SkillMenu.skillMenu;
+
+        initialKeySpot.SetActive(false);
     }
 
     private void Update()
@@ -361,6 +370,45 @@ public class UIManager : Singleton<UIManager>
             case GameEvent.EventType.BossFightStart:
                 BossFightStart();
                 break;
+        }
+    }
+
+    public void AddKey(Key k)
+    {
+        GameObject image = Instantiate(initialKeySpot) as GameObject;
+        //image.transform.SetParent(canvas.transform, false);
+        image.GetComponent<Image>().sprite = k.GetComponent<SpriteRenderer>().sprite;
+        if (expandHorizontal)
+        {
+            image.transform.position = new Vector3(image.transform.position.x + keys.Count * keySpacer, 
+                                                   image.transform.position.y, 
+                                                   image.transform.position.z);
+        }
+        else
+        {
+            image.transform.position = new Vector3(image.transform.position.x, 
+                                                   image.transform.position.y + keys.Count * keySpacer, 
+                                                   image.transform.position.z);        }
+        keys.Add(k);
+        keyImages.Add(image);
+    }
+
+    public void RemoveKey(Key k)
+    {
+        if (keys.Contains(k))
+        {
+            keys.Remove(k);
+            List<Key> copy = keys;
+            keyImages.Clear();
+            keys.Clear();
+            foreach (Key key in copy)
+            {
+                AddKey(key);
+            }
+        }
+        else
+        {
+            Debug.Log("Tried to remove a key that didn't exist in the UI");
         }
     }
 }
