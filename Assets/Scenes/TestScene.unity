@@ -1237,7 +1237,7 @@ MonoBehaviour:
   bossOffset: {x: 0, y: 0}
   cameraMode: 0
   cameraFollow: 0
-  dampingFactor: 1.05
+  dampingFactor: 1.5
   vendor: {fileID: 1844658660}
   bossDetect: {fileID: 1617556946}
   boss: {fileID: 1210029136}

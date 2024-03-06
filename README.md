@@ -44,6 +44,11 @@ Unity Version: 2022.3.9f1 (LTS)
 # Version History
 
 ## Version 1.1
+### Version 1.1.19
+- Added some fake walls to the tutorial
+- Adjusted fake wall sprite to be more obvious
+- Added a few enemies to level one
+
 ### Version 1.1.18
 - Fix boss health bar visibility for in and outside the area
 - Fix bug where boss would not die
