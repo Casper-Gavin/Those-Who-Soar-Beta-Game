@@ -198,4 +198,5 @@ MonoBehaviour:
   timeBetweenBounces: 2
   bounceDuration: 0.25
   bounceDistance: 0.15
+  imageForUI: {fileID: 1504601322, guid: 41fc1d1554d4fed43bb302f1adb3c589, type: 3}
   pickedUp: 0

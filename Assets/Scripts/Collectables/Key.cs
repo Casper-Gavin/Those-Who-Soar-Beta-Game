@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Key : Collectables
 {
-public bool pickedUp = false;
+    [SerializeField] private Sprite imageForUI;
+    public bool pickedUp = false;
 
     private void Start()
     {
@@ -18,5 +19,10 @@ public bool pickedUp = false;
         UIManager.Instance.AddKey(this);
         // show key in player UI (move sprite? would have to override ontriggerenter2d)
         // play noise?
+    }
+
+    public Sprite GetKeyImageForUI()
+    {
+        return imageForUI;
     }
 }

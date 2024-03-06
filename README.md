@@ -45,6 +45,10 @@ Unity Version: 2022.3.9f1 (LTS)
 ## Version 1.2
 ### Version 1.2.0
 - Add key/door system
+- Add keys to UI, scale with UI (underneath bars container)
+- TODO: test with multiple keys
+- TODO: make key asset match game quality + resolution
+- TODO: add to map somehow, include in shader
 
 ## Version 1.1
 ### Version 1.1.19

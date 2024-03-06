@@ -23,8 +23,9 @@ public class Door : MonoBehaviour
 
     protected void Update()
     {
-        if (key.pickedUp && Vector3.Distance(transform.position, playerRef.transform.position) < distToDoorToOpen)
+        if (!doorOpened && key.pickedUp && Vector3.Distance(transform.position, playerRef.transform.position) < distToDoorToOpen)
         {
+            doorOpened = true;
             // open door
             // remove key from UI, remove door from scene
             UIManager.Instance.RemoveKey(key);

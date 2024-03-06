@@ -46,6 +46,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject initialKeySpot;
     [SerializeField] private bool expandHorizontal = true;
     [SerializeField] private float keySpacer = 48.0f;
+    [SerializeField] private Canvas canvas;
     
     [Header("Level Clear")]
     [SerializeField] private GameObject levelClearImage; // EndLevelImage - in canvas
@@ -98,6 +99,8 @@ public class UIManager : Singleton<UIManager>
         skillMenu = SkillMenu.skillMenu;
 
         initialKeySpot.SetActive(false);
+        keys = new List<Key>();
+        keyImages = new List<GameObject>();
     }
 
     private void Update()
@@ -391,8 +394,9 @@ public class UIManager : Singleton<UIManager>
     public void AddKey(Key k)
     {
         GameObject image = Instantiate(initialKeySpot) as GameObject;
-        //image.transform.SetParent(canvas.transform, false);
-        image.GetComponent<Image>().sprite = k.GetComponent<SpriteRenderer>().sprite;
+        image.transform.SetParent(canvas.transform.FindChild("BarsContainer").transform, false);
+        image.GetComponent<Image>().sprite = k.GetKeyImageForUI();
+        image.SetActive(true);
         if (expandHorizontal)
         {
             image.transform.position = new Vector3(image.transform.position.x + keys.Count * keySpacer, 
@@ -403,27 +407,47 @@ public class UIManager : Singleton<UIManager>
         {
             image.transform.position = new Vector3(image.transform.position.x, 
                                                    image.transform.position.y + keys.Count * keySpacer, 
-                                                   image.transform.position.z);        }
+                                                   image.transform.position.z);
+        }
         keys.Add(k);
         keyImages.Add(image);
     }
 
     public void RemoveKey(Key k)
     {
-        if (keys.Contains(k))
+        int index = -1;
+        for (int i = 0; i < keys.Count; i++)
         {
-            keys.Remove(k);
-            List<Key> copy = keys;
-            keyImages.Clear();
-            keys.Clear();
-            foreach (Key key in copy)
+            if (k == keys[i])
             {
-                AddKey(key);
+                index = i;
             }
         }
-        else
+        if (index == -1)
         {
-            Debug.Log("Tried to remove a key that didn't exist in the UI");
+            Debug.Log("Error: Tried to remove a key that doesn't exist on the UI side!");
+            return;
+        }
+
+        keys.Remove(keys[index]);
+        Destroy(keyImages[index]);
+        keyImages.RemoveAt(index);
+
+        // shift all other keys after the one removed
+        for (int i = index; i < keyImages.Count; i++)
+        {
+            if (expandHorizontal)
+            {
+                keyImages[i].transform.position = new Vector3(keyImages[i].transform.position.x - keySpacer, 
+                                                              keyImages[i].transform.position.y, 
+                                                              keyImages[i].transform.position.z);
+            }
+            else
+            {
+                keyImages[i].transform.position = new Vector3(keyImages[i].transform.position.x, 
+                                                              keyImages[i].transform.position.y - keySpacer, 
+                                                              keyImages[i].transform.position.z);
+            }
         }
     }
 }
