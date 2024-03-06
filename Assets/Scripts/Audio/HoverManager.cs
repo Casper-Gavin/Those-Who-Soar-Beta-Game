@@ -7,13 +7,10 @@ public class HoverManager : MonoBehaviour, IPointerEnterHandler {
     private AudioManager audioManager;
 
     private void Start() {
-        audioManager = FindObjectOfType<AudioManager>();
+        audioManager = AudioManager.Instance;
     }
 
     private void Update() {
-        if (audioManager == null) {
-            audioManager = FindObjectOfType<AudioManager>();
-        }
     }
 
     public void OnPointerEnter(PointerEventData eventData) {

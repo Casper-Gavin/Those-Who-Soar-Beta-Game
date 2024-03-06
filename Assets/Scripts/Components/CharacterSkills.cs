@@ -13,7 +13,29 @@ public class CharacterSkills : MonoBehaviour {
 
     public int[] ConnectedSkills;
 
-    public void UpdateUI() {
+    [SerializeField] private GameObject skillTreeMenu;
+
+    private void Start() {
+        skillTreeMenu = GameObject.Find("SkillTreeMenu");
+    }
+
+    public void Update() {
+        if (skillTreeMenu == null) {
+            skillTreeMenu = GameObject.Find("SkillTreeMenu");
+        } else {
+            if (skillTreeMenu.activeSelf) {
+                UpdateAllUI();
+            }
+        }
+    }
+
+    public void UpdateAllUI() {
+        for (var i = 0; i < skillMenu.skillList.Count; i++) {
+            skillMenu.skillList[i].UpdateUI(i);
+        }
+    }
+
+    public void UpdateUI(int id) {
         TitleText.text = $"{skillMenu.skillLevels[id]}/{skillMenu.skillCaps[id]}\n{skillMenu.skillNames[id]}\nCost: {skillMenu.skillPoints}/{skillMenu.skillCosts[id]} SP";
 
         GetComponent<Image>().color = skillMenu.skillLevels[id] >= skillMenu.skillCaps[id] ? Color.yellow : skillMenu.skillPoints >= skillMenu.skillCosts[id] ? Color.green : Color.red;

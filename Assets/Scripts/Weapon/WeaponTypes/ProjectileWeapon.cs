@@ -36,15 +36,11 @@ public class ProjectileWeapon : WeaponBase
         animator = GetComponent<Animator>();
         WeaponAmmo = GetComponent<WeaponAmmo>();
 
-        audioManager = FindObjectOfType<AudioManager>();
+        audioManager = AudioManager.Instance;
     }
 
     protected override void Update() {
         base.Update();
-
-        if (audioManager == null) {
-            audioManager = FindObjectOfType<AudioManager>();
-        }
     }
 
     // see if we can even make a request to attack
@@ -75,6 +71,15 @@ public class ProjectileWeapon : WeaponBase
     protected override void RequestAttack()
     {
         if (!audioManager.IsPlayingSFX("GunReload")) {
+            /*
+            // if we have no ammo and we are holding the fire button, reload
+            if (CurrentAmmo <= 0 && Input.GetMouseButton(0)) {
+                Reload();
+                audioManager.PlaySFX("GunReload");
+                return;
+            }
+            */
+
             if (OffAttackCooldown)
             {
                 animator.SetTrigger(shootAnimationParameter);
@@ -88,9 +93,7 @@ public class ProjectileWeapon : WeaponBase
                 OffAttackCooldown = false;
                 nextAttackTime = Time.time + attackCooldown;
 
-                if (audioManager != null) {
-                    audioManager.PlaySFX("GunShoot");
-                }
+                audioManager.PlaySFX("GunShoot");
             }
         }
     }
@@ -150,7 +153,7 @@ public class ProjectileWeapon : WeaponBase
 
     public override void Reload()
     {
-        if (WeaponAmmo != null)
+        if (WeaponAmmo != null && !audioManager.IsPlayingSFX("GunReload") && CurrentAmmo < magazineSize)
         {
             if (useMagazine)
             {
@@ -161,9 +164,7 @@ public class ProjectileWeapon : WeaponBase
             {
                 UIManager.Instance.UpdateAmmo(CurrentAmmo, magazineSize);
 
-                if (audioManager != null) {
-                    audioManager.PlaySFX("GunReload");
-                }
+                audioManager.PlaySFX("GunReload");
             }
         }
     }

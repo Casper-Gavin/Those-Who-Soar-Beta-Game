@@ -6,7 +6,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Tilemaps;
-using UnityEngine.InputSystem;
 
 public class Vendor : MonoBehaviour
 {
@@ -29,18 +28,11 @@ public class Vendor : MonoBehaviour
 
     protected Character character;
 
-    [SerializeField] private AudioManager audioManager;
-
     private void Awake() {
-        audioManager = FindObjectOfType<AudioManager>();
     }
 
     // open and close shop panel
     private void Update() {
-        if (audioManager == null) {
-            audioManager = FindObjectOfType<AudioManager>();
-        }
-
         if (canOpenShop) {
             if(Input.GetKeyDown(KeyCode.J)) {
                 CanBuyProduct();
@@ -115,9 +107,7 @@ public class Vendor : MonoBehaviour
         shopPanel.SetActive(false);
         CoinManager.Instance.RemoveCoins(amount);
 
-        if (audioManager != null) {
-            audioManager.PlaySFX("VendorBuy");
-        }
+        AudioManager.Instance.PlaySFX("VendorBuy");
     }
 
     // change color of cost text - red (can't buy) or yellow (can buy)

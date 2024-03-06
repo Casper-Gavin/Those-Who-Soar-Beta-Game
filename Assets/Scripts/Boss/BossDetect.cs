@@ -32,6 +32,7 @@ public class BossDetect : MonoBehaviour {
             isInBossZone = true;
             bossTag = "Boss";
             OnPlayerEnterBossZone.Invoke();
+            GameObject.FindObjectOfType<UIManager>().SetBossHealthBarVisible(true);
         }
     }
 
@@ -41,6 +42,7 @@ public class BossDetect : MonoBehaviour {
             isInBossZone = false;
             bossTag = null;
             OnPlayerExitBossZone.Invoke();
+            GameObject.FindObjectOfType<UIManager>().SetBossHealthBarVisible(false);
         }
     }
 }

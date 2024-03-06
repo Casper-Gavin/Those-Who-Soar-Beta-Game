@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: -1207120505
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -795822645, guid: 1836b7a5512adf54b82eb5de57c36114, type: 3}
+  m_Sprite: {fileID: 570931467, guid: 90d9c0d78a2bba249b7dd60bb300696a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -124,7 +124,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -172,10 +172,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff3c9f69ff0090a4bab92a7972e6909b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagedSprite: {fileID: 2050055948, guid: 90d9c0d78a2bba249b7dd60bb300696a, type: 3}
+  damagedSprite: {fileID: 570931467, guid: 90d9c0d78a2bba249b7dd60bb300696a, type: 3}
   damage: 1
   isDamageable: 1
   boxShiftAmount: 0.05
+  audioManager: {fileID: 0}
 --- !u!114 &18017270458521519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,8 +189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82b53b5e8bf0abe4b8481f858f7a7e09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialHealth: 3
-  maxHealth: 3
+  initialHealth: 1
+  maxHealth: 1
   destroyObject: 0
   skillTreeDmg: 0
   skillTreeHealthMulti: 0

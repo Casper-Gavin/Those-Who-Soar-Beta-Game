@@ -33,6 +33,11 @@ public class CharacterWeapon : CharacterAbilities
     // left mouse is shoot, R is reload, more to come
     protected override void HandleInput()
     {
+        if (UIManager.GameIsPaused)
+        {
+            return;
+        }
+
         if (character.CharacterTypes == Character.CharacterTypeEnum.Player)
         {
             // 0 is left mouse button - GetMouseButtonDown makes a non-auto weapon vs GetMouseButton which is auto

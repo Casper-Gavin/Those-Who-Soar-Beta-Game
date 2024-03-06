@@ -22,7 +22,7 @@ public class CharacterDash : CharacterAbilities {
     private void Awake() {
         skillMenu = FindObjectOfType<SkillMenu>();
 
-        audioManager = FindObjectOfType<AudioManager>();
+        audioManager = AudioManager.Instance;
     }
 
     protected override void Update() {
@@ -31,10 +31,6 @@ public class CharacterDash : CharacterAbilities {
         if (!isSkilMenuDashUnlockedOnce && skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseDash] > 0) {
             isSkilMenuDashUnlockedOnce = true;
             dashDistance = 6f;
-        }
-
-        if (audioManager == null) {
-            audioManager = FindObjectOfType<AudioManager>();
         }
     }
 

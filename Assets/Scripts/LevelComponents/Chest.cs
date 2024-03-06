@@ -21,15 +21,10 @@ public class Chest : MonoBehaviour
     private void Start() {
         animator = GetComponent<Animator>();
 
-        if (audioManager == null) {
-            audioManager = FindObjectOfType<AudioManager>();
-        }
+        audioManager = AudioManager.Instance;
     }
 
     private void Update() {
-        if (audioManager == null) {
-            audioManager = FindObjectOfType<AudioManager>();
-        }
 
         if (Input.GetKeyDown(KeyCode.C)) {
             if (canReward) {

@@ -8,17 +8,15 @@ public class OptionsMenu : MonoBehaviour {
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject pauseMenu;
 
-    private AudioManager audioManager;
-
     public Button fullScreenButton;
-
-    private string currentlyPlaying;
-
     private bool cursorVisibilityToRestore;
     public void OnEnable()
     {
         cursorVisibilityToRestore = Cursor.visible;
         Cursor.visible = true;
+
+        // Set the volume slider to the current volume
+        gameObject.GetComponentInChildren<UnityEngine.UI.Slider>().value = AudioManager.Instance.GetVolume();
     }
 
     public void OnDisable()
@@ -27,11 +25,9 @@ public class OptionsMenu : MonoBehaviour {
     }
 
     private void Start() {
-        audioManager = FindObjectOfType<AudioManager>();
 
         // Set the volume slider to the current volume
-        currentlyPlaying = audioManager.GetCurrentlyPlaying();
-        gameObject.GetComponentInChildren<UnityEngine.UI.Slider>().value = audioManager.GetVolume(currentlyPlaying);
+        gameObject.GetComponentInChildren<UnityEngine.UI.Slider>().value = AudioManager.Instance.GetVolume();
     }
 
     private void Update() {    
@@ -48,17 +44,34 @@ public class OptionsMenu : MonoBehaviour {
                 pauseMenu.SetActive(true);
             }
             Cursor.visible = true;
+            FindObjectOfType<UIManager>()?.Pause();
         }
     }
 
     public void SetVolume(float volume) {
-        //Debug.Log(volume);
-
-        currentlyPlaying = audioManager.GetCurrentlyPlaying();
-        audioManager.SetVolume(currentlyPlaying, volume);
+        AudioManager.Instance.SetVolume(volume);
     }
 
     public void ToggleFullscreen() {
         Screen.fullScreen = !Screen.fullScreen;
+
+        if (Screen.fullScreen) {
+            Screen.SetResolution(1920, 1080, false);
+        } else {
+            // Set the screen resolution to the best resolution for the current monitor
+            Resolution[] resolutions = Screen.resolutions;
+            Resolution bestResolution = resolutions[resolutions.Length - 1];
+            Screen.SetResolution(bestResolution.width, bestResolution.height, true);
+        }
+    }    
+
+    public void ClickButton()
+    {
+        AudioManager.ClickButton();
+    }
+
+    public void ClickSkill()
+    {
+        AudioManager.ClickSkill();
     }
 }

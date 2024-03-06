@@ -7,18 +7,11 @@ public class CoinManager : Singleton<CoinManager> {
 
     private readonly string COINS_KEY = "MyGame_MyCoins_DontCheat";
 
-    private AudioManager audioManager;
-
     private void Start() {
         LoadCoins();
-
-        audioManager = FindObjectOfType<AudioManager>();
     }
 
     private void Update() {
-        if (audioManager == null) {
-            audioManager = FindObjectOfType<AudioManager>();
-        }
     }
 
     private void LoadCoins() {
@@ -30,9 +23,7 @@ public class CoinManager : Singleton<CoinManager> {
         PlayerPrefs.SetInt(COINS_KEY, Coins);
         UIManager.Instance.FlashCoinEffect();
 
-        if (audioManager != null) {
-            audioManager.PlaySFX("PickupCoin");
-        }
+        AudioManager.Instance.PlaySFX("PickupCoin");
     }
 
     public void RemoveCoins(int amount) {

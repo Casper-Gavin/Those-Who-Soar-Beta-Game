@@ -11,6 +11,8 @@ public class BossHealth : EnemyHealth
     // Awake is called before start
     protected override void Awake()
     {
+        initialHealth = maxHealth;
+
         base.Awake();
     }
 

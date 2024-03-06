@@ -42,6 +42,91 @@ AIVA's modification tools.
 Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
+## Version 1.2
+### Version 1.2.0
+- Add key/door system
+
+## Version 1.1
+### Version 1.1.19
+- Added some fake walls to the tutorial
+- Adjusted fake wall sprite to be more obvious
+- Added a few enemies to level one
+
+### Version 1.1.18
+- Fix boss health bar visibility for in and outside the area
+- Fix bug where boss would not die
+
+### Version 1.1.17
+- Made Skill Tree Damage Additions apply to weapon projectiles (not just applying to the sword as it was before)
+
+### Version 1.1.16
+- Fixed reload bugs (could reload at full ammo, could reload during a reload)
+
+### Version 1.1.15
+- Fixed menu bugs around skill menu and submenus (pausing, not being able to press escape)
+
+
+### Version 1.1.14
+- Boss health bar disappers after you revive
+- Made and edited prefabs to fix bugs across scenes
+
+### Version 1.1.13
+- Fixed Tutorial Scene not having correct GameObjects
+- Converted many GameObjects that are conencted to a single transferable Prefab
+- Added fullscreen button in game
+
+### Version 1.1.12
+- Fix sfx on tutorial scene menus
+- Unify volume across scenes (fix bug where volume would keep increasing)
+
+### Version 1.1.11
+- Clean up boss health code + errors
+- Fix projectile enemy gun flickering
+- Fix enemy AI to make deep copies instead of sharing decision making scripts
+    - This means that we can now have many enemies without their AI messing up
+- Fix projectile enemies staring at dead player
+- Fix boss music
+- Fix menu button click sfx
+
+### Version 1.1.10
+- Fix revive bug on level 1
+
+### Version 1.1.9
+- Fixed a fake wall bug and edited level one
+- Fixed boss intro interfering with pause menu
+
+### Version 1.1.8
+- Increase Boss Health
+- Fix build issue where boss health wouldnt show
+
+### Version 1.1.7
+- Volume Consistency
+
+### Version 1.1.6
+- Fixed issue where certain GameObjects werent updated
+- Fixed errors
+- Fixed skill tree not displaying costs
+
+### Version 1.1.5
+- Added unit test for music (current music)
+
+### Version 1.1.4
+- Fix Error bug relating to when skill menu is not active
+- Added "Test" button to main menu to get to testing scene
+
+### Version 1.1.3
+- Add unit test for enemy health (take damage)
+
+### Version 1.1.2
+- Add unit test for weapon ammo (consume ammo)
+
+### Version 1.1.1
+- Fixed a few level one issues after peer testing
+
+### Version 1.1.0
+- Added LevelOneScene to the build
+- Created level one
+- Added a level clear event - still needs functionality to go to new level (like the pause menu?)
 
 ## Version 1.0
 ### Version 1.0.9

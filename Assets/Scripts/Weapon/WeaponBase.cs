@@ -55,8 +55,11 @@ public abstract class WeaponBase : MonoBehaviour
 
     protected virtual void FlipWeapon()
     {
-        bool right = WeaponOwner.GetComponent<CharacterFlip>().FacingRight;
-        transform.localScale = new Vector3(right ? 1 : -1, 1, 1);
+        if (WeaponOwner)
+        {
+            bool right = WeaponOwner.GetComponent<CharacterFlip>().FacingRight;
+            transform.localScale = new Vector3(right ? 1 : -1, 1, 1);
+        }
     }
 
     public virtual void SetOwner(Character owner)

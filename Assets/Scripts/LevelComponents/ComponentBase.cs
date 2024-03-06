@@ -25,15 +25,10 @@ public class ComponentBase : MonoBehaviour
         jarReward = GetComponent<JarReward>();
         collider2D = GetComponent<Collider2D>();
 
-        if (audioManager == null) {
-            audioManager = FindObjectOfType<AudioManager>();
-        }
+        audioManager = AudioManager.Instance;
     }
 
     private void Update() {
-        if (audioManager == null) {
-            audioManager = FindObjectOfType<AudioManager>();
-        }
     }
 
     // using health for non-player object

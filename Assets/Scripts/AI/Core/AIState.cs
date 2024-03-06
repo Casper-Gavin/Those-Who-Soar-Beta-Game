@@ -38,4 +38,25 @@ public class AIState : ScriptableObject
             controller.TransitionToState(result ? transition.TrueState : transition.FalseState);
         }
     }
+
+    // Could be memory leaking - hopefully not - oh well c# should clean it up
+    public AIState DeepCopy()
+    {
+        AIState deepCopy = Instantiate(this);
+        deepCopy.Actions = new AIAction[Actions.Length];
+        for (int i = 0; i < deepCopy.Actions.Length; i++)
+        {
+            deepCopy.Actions[i] = Instantiate(Actions[i]);            
+        }
+        return deepCopy;
+    }
+
+    public void DeepDelete()
+    {
+        for (int i = 0; i < Actions.Length; i++)
+        {
+            Destroy(Actions[i]);            
+        }
+        Destroy(this);
+    }
 }

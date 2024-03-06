@@ -11,12 +11,20 @@ public class DecisionCanSeePlayer : AIDecision
 
     public override bool Decide(StateController controller)
     {
+        bool seePlayer = CanSeePlayer(controller);
         EvaluateWeaponDirection(controller);
-        return CanSeePlayer(controller);
+        return seePlayer;
     }
 
     private bool CanSeePlayer(StateController controller)
     {
+        if (controller.Player.GetComponent<HealthBase>().CurrentHealth == 0)
+        {
+            // don't shoot a dead guy
+            controller.Target = null;
+            return false;
+        }
+
         if (controller.FieldOfView != null)
         {
             viewDistance = controller.FieldOfView.pointLightInnerRadius;
@@ -35,6 +43,7 @@ public class DecisionCanSeePlayer : AIDecision
             {
                 if (Physics2D.Linecast(controller.transform.position, controller.Player.position, obstacleMask))
                 {
+                    controller.Target = null;
                     return false;
                 }
                 controller.Target = controller.Player;

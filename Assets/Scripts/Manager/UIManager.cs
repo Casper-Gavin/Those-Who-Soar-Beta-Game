@@ -5,14 +5,11 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.InputSystem;
 using System;
 using static SkillMenu;
 
 public class UIManager : Singleton<UIManager>
 {
-    public InputMaster controls;
-
     [Header("Pause Menu")]
     [SerializeField] private GameObject pauseMenuUI;
     public static bool GameIsPaused = false;
@@ -49,6 +46,10 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject initialKeySpot;
     [SerializeField] private bool expandHorizontal = true;
     [SerializeField] private float keySpacer = 48.0f;
+    
+    [Header("Level Clear")]
+    [SerializeField] private GameObject levelClearImage; // EndLevelImage - in canvas
+
 
     private float playerCurrentHealth;
     private float playerMaxHealth;
@@ -300,6 +301,7 @@ public class UIManager : Singleton<UIManager>
     }
 
     public void Pause() {
+        bossIntroPanel.SetActive(false);
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
@@ -330,6 +332,11 @@ public class UIManager : Singleton<UIManager>
         SceneManager.LoadScene(0);
     }
 
+    public void SetBossHealthBarVisible(bool visible)
+    {
+        bossHealthBarPanel.SetActive(visible);
+    }
+
     private void BossFight() {
         bossIntroPanel.SetActive(true);
         StartCoroutine(MyLibrary.FadeCanvasGroup(bossIntroPanel.GetComponent<CanvasGroup>(), 1f, 1f, () => {
@@ -350,6 +357,10 @@ public class UIManager : Singleton<UIManager>
         }));
     }
 
+    public void LevelClearUI() {
+        levelClearImage.SetActive(true);
+    }
+
     // subscribe to event
     private void OnEnable() {
         GameEvent.OnEventFired += OnEventResponse;
@@ -360,6 +371,7 @@ public class UIManager : Singleton<UIManager>
     // unsubscribe to event
     private void OnDisable() {
         GameEvent.OnEventFired -= OnEventResponse;
+        BossHealth.OnBossDead -= OnBossDead;
     }
 
     private void OnEventResponse(GameEvent.EventType obj) {
@@ -369,6 +381,9 @@ public class UIManager : Singleton<UIManager>
                 break;
             case GameEvent.EventType.BossFightStart:
                 BossFightStart();
+                break;
+            case GameEvent.EventType.LevelClear:
+                LevelClearUI();
                 break;
         }
     }

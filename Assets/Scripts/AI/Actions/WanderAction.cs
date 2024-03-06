@@ -18,6 +18,7 @@ public class WanderAction : AIAction
     public override void Init(StateController controller)
     {
         // do nothing
+        wanderCheckTime = 0.0f;
     }
 
     public override void Act(StateController controller)

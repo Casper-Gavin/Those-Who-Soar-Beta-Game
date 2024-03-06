@@ -62,26 +62,26 @@ public class PlayerHealth : HealthBase
         lastCheckHealth = 0;
         lastCheckShield = 0;
 
-        audioManager = FindObjectOfType<AudioManager>();
+        audioManager = AudioManager.Instance;
     }
 
     protected override void Update ()
     {
         base.Update();
 
-        if (audioManager == null) {
-            audioManager = FindObjectOfType<AudioManager>();
-        }
-
         // fieldOfView.SetAimDirection(aimDir);
         fieldOfView.SetOrigin(transform.position);
 
-        if (skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseHealth] > lastCheckHealth) {
-            GainMaxHealth(1);
-        }
+        if (skillMenu != null) {
+            if (skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseHealth] > lastCheckHealth) {
+                GainMaxHealth(1);
+            }
 
-        if (skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseShield] > lastCheckShield) {
-            GainMaxShield(2);
+            if (skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseShield] > lastCheckShield) {
+                GainMaxShield(2);
+            }
+        } else {
+            skillMenu = SkillMenu.skillMenu;
         }
 
         if (needRegen && Time.time > timeToStartRegen)

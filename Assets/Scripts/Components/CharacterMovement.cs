@@ -20,7 +20,7 @@ public class CharacterMovement : CharacterAbilities {
     private void Awake() {
         skillMenu = FindObjectOfType<SkillMenu>();
 
-        audioManager = FindObjectOfType<AudioManager>();
+        audioManager = AudioManager.Instance;
 
         characterDash = GetComponent<CharacterDash>();
     }
@@ -36,13 +36,10 @@ public class CharacterMovement : CharacterAbilities {
 
         //skillMenu = FindObjectOfType<SkillMenu>();
 
-        if (!isSkilMenuMoveUnlockedOnce && skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseSpeed] > 0) {
+        // only players can get movement buff from skill tree
+        if (character.CharacterTypes == Character.CharacterTypeEnum.Player && !isSkilMenuMoveUnlockedOnce && skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseSpeed] > 0) {
             isSkilMenuMoveUnlockedOnce = true;
             walkSpeed = 7.5f;
-        }
-
-        if (audioManager == null) {
-            audioManager = FindObjectOfType<AudioManager>();
         }
 
         if (characterDash == null) {

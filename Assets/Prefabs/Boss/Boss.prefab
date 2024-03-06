@@ -124,6 +124,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 5
+  audioManager: {fileID: 0}
+  characterDash: {fileID: 0}
 --- !u!114 &8408299333557638892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,8 +306,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd3b3b97ded3d4499d5a404218cdbf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialHealth: 10
-  maxHealth: 10
+  initialHealth: 100
+  maxHealth: 100
   destroyObject: 1
   skillTreeDmg: 0
   skillTreeHealthMulti: 0
@@ -313,6 +315,8 @@ MonoBehaviour:
   enemyHealthBarPrefab: {fileID: 0}
   offset: {x: 0, y: 1, z: 0}
   damageTakenFromBullet: 1
+  initialHealth: 10
+  maxHealth: 10
 --- !u!1 &9087279717261920155
 GameObject:
   m_ObjectHideFlags: 0

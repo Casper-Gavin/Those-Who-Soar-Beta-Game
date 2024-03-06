@@ -37,8 +37,9 @@ public class StateController : MonoBehaviour
         Path = GetComponent<Path>();
         Collider2D = GetComponent<Collider2D>();
 
-        Player = GameObject.FindWithTag("Player").transform;
-        PlayerHealth = Player.GetComponent<PlayerHealth>();
+        Player = GameObject.FindWithTag("Player")?.transform;
+        PlayerHealth = Player?.GetComponent<PlayerHealth>();
+        currentState = currentState.DeepCopy(); // make a copy
         currentState.InitActions(this);
 
         BossCirclePattern = GetComponent<BossCirclePattern>();
@@ -56,7 +57,8 @@ public class StateController : MonoBehaviour
     {
         if (nextState != remainState)
         {
-            currentState = nextState;
+            currentState.DeepDelete(); // clean up old SO
+            currentState = nextState.DeepCopy(); // make copy and reassign
             currentState.InitActions(this);
         }
     }
