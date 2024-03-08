@@ -9,9 +9,9 @@ public class Camera2DShake : MonoBehaviour {
     [SerializeField] private float shakeTime = 0.01f;
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.G)) {
+        /*if (Input.GetKeyDown(KeyCode.G)) {
             Shake();
-        }
+        }*/
     }
 
     public void Shake() {

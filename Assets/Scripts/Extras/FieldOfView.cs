@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FieldOfView : MonoBehaviour {
     [SerializeField] private Character character;
+    private GameObject characterBackup;
 
     [SerializeField] private LayerMask layerMask;
     private Mesh mesh;
@@ -12,8 +13,17 @@ public class FieldOfView : MonoBehaviour {
     private Vector3 origin;
     private float startingAngle;
 
+    [SerializeField] private GameObject torch;
+    private CTorch torchScript;
+
     private void Awake() {
         character = GetComponent<Character>();
+        characterBackup = GameObject.Find("Player");
+        torch = GameObject.Find("Torch");
+
+        if (torch != null) {
+            torchScript = torch.GetComponent<CTorch>();
+        }
     }
 
     private void Start() {
@@ -30,10 +40,28 @@ public class FieldOfView : MonoBehaviour {
 
     private void Update () {
         //SetOrigin(character.transform.position);
+
+        if (character != null) {
+            //SetOrigin(character.transform.position);
+        } else {
+            //SetOrigin(Vector3.zero);
+
+            character = characterBackup.GetComponent<Character>();
+        }
+
+        if (torch == null) {
+            torch = GameObject.Find("Torch");
+        } else {
+            if (torchScript == null) {
+                torchScript = torch.GetComponent<CTorch>();
+            } else if (torchScript.torchHasSpawned) {
+                viewDistance = Mathf.Lerp(viewDistance, torchScript.newViewDistance, torchScript.torchLerpTime * Time.deltaTime);
+            }
+        }
     }
 
     private void LateUpdate() {
-        int rayCount = 300;
+        int rayCount = 1000;
         float angle = startingAngle;
         float angleIncrease = fov / rayCount;
 

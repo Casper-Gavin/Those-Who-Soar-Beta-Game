@@ -21,13 +21,13 @@ public class Collectables : MonoBehaviour {
     protected bool flippedY = false;
     protected float timeAccumulated = 0.0f;
 
-    protected void Start() {
+    protected virtual void Start() {
         spriteRenderer = GetComponent<SpriteRenderer>();
         collider2D = GetComponent<Collider2D>();
         timeForNextBounce = Time.time + timeBetweenBounces;
     }
 
-    protected void Update()
+    protected virtual void Update()
     {
         if (canBounce)
         {

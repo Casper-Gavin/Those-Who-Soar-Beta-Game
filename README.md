@@ -43,6 +43,11 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.2
+- Added torch
+- Changed original black mask black-ness
+- Changed Vendor to a Prefab
+- Added more rays to cast for the FOV effect so there isnt as much rigid movements around corners
+
 ### Version 1.2.2
 - Put in vendor framework for torch - Torch collectable, scriptable object, and instance in vendor
     - no actual functionality/ doing stuff

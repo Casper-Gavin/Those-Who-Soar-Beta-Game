@@ -44,10 +44,10 @@ public class Camera2D : Singleton<Camera2D> {
     [SerializeField] private Vendor vendor;
     [SerializeField] private BossDetect bossDetect;
     [SerializeField] private GameObject boss;
-    [SerializeField] private float smoothSpeed = 1.5f;
-    [SerializeField] [Range(0f, 4f)] private float vendorZoomOut = 0.5f;
-    [SerializeField] [Range(0f, 4f)] private float bossZoomOut = 0.25f;
-    private float originalZoom;
+    [SerializeField] private float smoothSpeed = 2.0f;
+    [SerializeField] [Range(0f, 4f)] public float vendorZoomOut = 0.5f;
+    [SerializeField] [Range(0f, 4f)] public float bossZoomOut = 0.25f;
+    public float originalZoom;
     private Vector3 currentVelocity;
     private bool isTransitionComplete = false;
 
