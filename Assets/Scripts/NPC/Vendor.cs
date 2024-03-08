@@ -17,6 +17,7 @@ public class Vendor : MonoBehaviour
     [SerializeField] private VendorItem weaponItem;
     [SerializeField] private VendorItem healthItem;
     [SerializeField] private VendorItem shieldItem;
+    [SerializeField] private VendorItem torchItem;
 
 
     public bool canOpenShop;
@@ -68,6 +69,15 @@ public class Vendor : MonoBehaviour
                 }
             }
         }
+
+        // if (Input.GetKeyDown(KeyCode.N)) {
+        //     if (CoinManager.Instance.Coins >= torchItem.Cost) {
+        //         if (true) { // check if torch doesn't already exist?
+        //             // do torch stuff - using GetComponent and built in methods from CTorch and such
+        //             ProductBought(torchItem.Cost);
+        //         }
+        //     }
+        // }
 
         //buy health
         if (Input.GetKeyDown(KeyCode.B)) {

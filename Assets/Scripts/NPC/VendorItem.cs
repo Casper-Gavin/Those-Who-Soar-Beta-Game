@@ -8,5 +8,6 @@ public class VendorItem : ScriptableObject
     public CShield shieldItem;
     public CHealth healthItem;
     public WeaponBase WeaponToSell;
+    public CTorch TorchToSell;
     public int Cost;
 }

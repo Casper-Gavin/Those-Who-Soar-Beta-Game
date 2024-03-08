@@ -23007,6 +23007,7 @@ MonoBehaviour:
   weaponItem: {fileID: 11400000, guid: ee5e4e5105f14af47bd6db191824933d, type: 2}
   healthItem: {fileID: 11400000, guid: 84fe41917ab9f634e8e4a83cf16cfdfd, type: 2}
   shieldItem: {fileID: 11400000, guid: 799bc097dacf94d40862ebfb8defe830, type: 2}
+  torchItem: {fileID: 11400000, guid: f079dea1faee7674ea1a8e167a4f936a, type: 2}
   canOpenShop: 0
   OnPlayerEnterShopZone:
     m_PersistentCalls:

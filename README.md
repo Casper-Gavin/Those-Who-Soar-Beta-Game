@@ -43,6 +43,11 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.2
+### Version 1.2.2
+- Put in vendor framework for torch - Torch collectable, scriptable object, and instance in vendor
+    - no actual functionality/ doing stuff
+- Added LevelTwoScene
+
 ### Version 1.2.1
 - Made enemies shoot slower
 - Changed walking and running sounds
