@@ -43,6 +43,11 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.2
+### Version 1.2.1
+- Made enemies shoot slower
+- Changed walking and running sounds
+    - Still unsure about how they sound
+
 ### Version 1.2.0
 - Add key/door system
 - Add keys to UI, scale with UI (underneath bars container)

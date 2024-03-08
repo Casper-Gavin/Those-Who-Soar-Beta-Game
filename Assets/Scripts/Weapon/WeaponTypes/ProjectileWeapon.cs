@@ -9,7 +9,7 @@ public class ProjectileWeapon : WeaponBase
 
     [Header("Weapon")]
     [SerializeField] private bool useMagazine = true;
-    [SerializeField] private int magazineSize = 30;
+    [SerializeField] private int magazineSize = 15;
     [SerializeField] private bool reloadAutomatically = false;
 
     [Header("Effects")]
@@ -31,6 +31,8 @@ public class ProjectileWeapon : WeaponBase
 
     protected override void Awake()
     {
+        attackCooldown = 0.5f;
+
         base.Awake();
         Pooler = GetComponent<ObjectPooler>();
         animator = GetComponent<Animator>();

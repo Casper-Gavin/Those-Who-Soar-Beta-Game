@@ -394,7 +394,7 @@ public class UIManager : Singleton<UIManager>
     public void AddKey(Key k)
     {
         GameObject image = Instantiate(initialKeySpot) as GameObject;
-        image.transform.SetParent(canvas.transform.FindChild("BarsContainer").transform, false);
+        image.transform.SetParent(canvas.transform.Find("BarsContainer").transform, false);
         image.GetComponent<Image>().sprite = k.GetKeyImageForUI();
         image.SetActive(true);
         if (expandHorizontal)
