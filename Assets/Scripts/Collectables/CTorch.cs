@@ -10,6 +10,7 @@ public class CTorch : Collectables {
     [SerializeField] private GameObject camera;
 
     [Header("Torch Settings")]
+    [SerializeField] private Vendor vendor;
     [SerializeField] private Transform vendorPosition;
     [SerializeField] private float spawnOffsetX;
     [SerializeField] private float spawnOffsetY;
@@ -30,6 +31,12 @@ public class CTorch : Collectables {
         characterTransform = GameObject.Find("Player").transform;
         camera = GameObject.Find("Main Camera");
 
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        collider2D = GetComponent<Collider2D>();
+
+        vendor = GameObject.Find("Vendor").GetComponent<Vendor>();
+        vendorPosition = vendor.transform;
+
         transform.position = new Vector2(vendorPosition.position.x + spawnOffsetX, vendorPosition.position.y + spawnOffsetY);
     }
 
@@ -46,10 +53,11 @@ public class CTorch : Collectables {
             characterTransform = GameObject.Find("Player").transform;
         }
 
-        if (Input.GetKeyDown(KeyCode.G)) {
-            spriteRenderer = GetComponent<SpriteRenderer>();
-            collider2D = GetComponent<Collider2D>();
+        if (vendor == null) {
+            vendor = GameObject.Find("Vendor").GetComponent<Vendor>();
+        }
 
+        if (vendor.torchBought) {
             SpawnTorch();
 
             torchHasSpawned = true;
@@ -116,18 +124,6 @@ public class CTorch : Collectables {
 
     protected override void Pick()
     {
-        //EquipTorch(character);
-    }
-
-    protected override void PlayEffects()
-    {
-        // don't know if we want torch effects - maybe a flame/fire or something?
-    }
-
-    private void EquipTorch()
-    {
-        // what will go in here depends on whether we just want the torch to change some FOV values (look at CShield/CHealth)
-        // or:
-        // equip an actual torch (look at CWeapon)
+        SpawnTorch();
     }
 }

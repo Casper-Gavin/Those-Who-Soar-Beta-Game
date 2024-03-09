@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 642a8f1218e87b8438f841077550099f, type: 3}
   m_Name: VendorItemTorch
   m_EditorClassIdentifier: 
-  shieldItem: {fileID: 639646786546376298, guid: 38ea5c504e00215429fbeb23abd60fd0, type: 3}
+  shieldItem: {fileID: 0}
   healthItem: {fileID: 0}
   WeaponToSell: {fileID: 0}
   TorchToSell: {fileID: -8845464861895365667, guid: 0fd30e4f3ebba3d45894f77d45f9dc1c, type: 3}

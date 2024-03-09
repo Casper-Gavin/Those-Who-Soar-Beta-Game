@@ -26,6 +26,7 @@ public class Vendor : MonoBehaviour
     public UnityEvent OnPlayerEnterShopZone;
     public UnityEvent OnPlayerExitShopZone;
     public string vendorTag;
+    public bool torchBought;
 
     protected Character character;
 
@@ -60,6 +61,7 @@ public class Vendor : MonoBehaviour
             }
         }
 
+        /*
         // buy shield - checks for coin amount and then checks if the player has max shield (buying shield has no point)
         if (Input.GetKeyDown(KeyCode.N)) {
             if (CoinManager.Instance.Coins >= shieldItem.Cost) {
@@ -69,15 +71,18 @@ public class Vendor : MonoBehaviour
                 }
             }
         }
+        */
 
-        // if (Input.GetKeyDown(KeyCode.N)) {
-        //     if (CoinManager.Instance.Coins >= torchItem.Cost) {
-        //         if (true) { // check if torch doesn't already exist?
-        //             // do torch stuff - using GetComponent and built in methods from CTorch and such
-        //             ProductBought(torchItem.Cost);
-        //         }
-        //     }
-        // }
+        // buy torch
+        if (!torchBought) {
+            if (Input.GetKeyDown(KeyCode.N)) {
+                if (CoinManager.Instance.Coins >= torchItem.Cost) {
+                    torchBought = true;
+
+                    ProductBought(torchItem.Cost);
+                }
+            }
+        }
 
         //buy health
         if (Input.GetKeyDown(KeyCode.B)) {

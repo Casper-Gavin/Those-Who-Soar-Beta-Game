@@ -42,6 +42,10 @@ AIVA's modification tools.
 Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
+## Version 1.2.1
+- Added effects to torch
+- Added torch to buy menu
+
 ## Version 1.2
 - Added torch
 - Changed original black mask black-ness
