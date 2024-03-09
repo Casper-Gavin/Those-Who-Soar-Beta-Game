@@ -15,6 +15,11 @@ public class FieldOfView : MonoBehaviour {
 
     [SerializeField] private GameObject torch;
     private CTorch torchScript;
+    private float currentPhase = 0f;
+    public float pulseSpeed = 1f;
+    public float pulseMagnitude = 0.5f;
+    public bool shouldUpdatePulseParameters = true;
+
 
     private void Awake() {
         character = GetComponent<Character>();
@@ -54,8 +59,27 @@ public class FieldOfView : MonoBehaviour {
         } else {
             if (torchScript == null) {
                 torchScript = torch.GetComponent<CTorch>();
-            } else if (torchScript.torchHasSpawned) {
-                viewDistance = Mathf.Lerp(viewDistance, torchScript.newViewDistance, torchScript.torchLerpTime * Time.deltaTime);
+            } else if (torchScript.torchHasSpawned && torchScript.newViewDistance != viewDistance) {
+                currentPhase = Mathf.Sin(pulseSpeed * Time.time);
+
+                if (currentPhase > 0 && shouldUpdatePulseParameters) {
+                    pulseSpeed = Random.Range(0.5f, 1.5f);
+                    pulseMagnitude = Random.Range(0.25f, 1.0f);
+                    shouldUpdatePulseParameters = false;
+                } else if (currentPhase < 0) {
+                    shouldUpdatePulseParameters = true;
+                }
+
+                float targetViewDistance = torchScript.newViewDistance + (Mathf.Sin(pulseSpeed * Time.time) * pulseMagnitude);
+
+                viewDistance = Mathf.Lerp(viewDistance, targetViewDistance, torchScript.torchLerpTime * Time.deltaTime);
+
+                //float pulseSpeed = Random.Range(0.5f, 1.5f);
+                //float pulseMagnitude = Random.Range(0.25f, 1.0f);
+
+                //float targetViewDistance = torchScript.newViewDistance + (Mathf.Sin(pulseSpeed * Time.time) * pulseMagnitude);
+
+                //viewDistance = Mathf.Lerp(viewDistance, targetViewDistance, torchScript.torchLerpTime * Time.deltaTime);
             }
         }
     }

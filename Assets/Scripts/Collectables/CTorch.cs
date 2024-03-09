@@ -8,6 +8,7 @@ public class CTorch : Singleton<CTorch> {
     [SerializeField] private GameObject fieldOfView;
     [SerializeField] private Transform characterTransform;
     [SerializeField] private GameObject camera;
+    [SerializeField] private AudioManager audioManager;
 
     [Header("Torch Settings")]
     [SerializeField] private GameObject vendor;
@@ -19,6 +20,13 @@ public class CTorch : Singleton<CTorch> {
     [SerializeField] private float newCameraDistance = 6.5f;
     [SerializeField] private float torchFollowSpeed = 1.0f;
     [SerializeField] public float torchLerpTime = 2.0f;
+    [SerializeField] private float alphaOscillationSpeed = 1.0f;
+    [SerializeField] private float alphaOscillationMagnitude = 0.1f; // Adjust for desired effect
+    private float baseAlpha = 0.85f; // The central value of alpha around which it oscillates
+    [SerializeField] private float maxVol = 0.15f;
+    [SerializeField] private float minVol = 0.015f;
+
+
 
     private float lastOffsetX;
     private float lastOffsetY;
@@ -27,8 +35,6 @@ public class CTorch : Singleton<CTorch> {
 
     private readonly string TORCHKEY = "TORCH_KEY";
 
-    // EVEN THOUGH WE HAVE THIS SAVING, WHAT HAPPENS IF WE BUY THE TORCH,
-    // GO TO A SCENE THAT DOESNT HAVE IT, THEN QUIT THE GAME? DOES IT SAVE?
     protected override void Awake() {
         if (GameObject.FindObjectsOfType<CTorch>().Length > 1) {
             Destroy(gameObject);
@@ -38,6 +44,13 @@ public class CTorch : Singleton<CTorch> {
         DontDestroyOnLoad(gameObject);
 
         base.Awake();
+
+        // THIS IS JUST FOR TESTING PURPOSES
+        PlayerPrefs.SetInt(TORCHKEY, 0); 
+
+        if (audioManager == null) {
+            audioManager = FindObjectOfType<AudioManager>();
+        }
     }
 
     private void Start() {
@@ -54,25 +67,47 @@ public class CTorch : Singleton<CTorch> {
         vendorPosition = vendor.transform;
 
         transform.position = new Vector2(vendorPosition.position.x + spawnOffsetX, vendorPosition.position.y + spawnOffsetY);
+
+        TorchRequirements();
     }
 
     private void Update() {
-        if (blackMask == null) {
-            blackMask = GameObject.Find("Black");
+        TorchRequirements();
+    }
+
+    private void TorchRequirements() {
+        if (audioManager == null) {
+            audioManager = FindObjectOfType<AudioManager>();
         }
 
         if (fieldOfView == null) {
             fieldOfView = GameObject.Find("FieldOfView");
         }
 
+        if (blackMask == null) {
+            blackMask = GameObject.Find("Black");
+        } else {
+            if (fieldOfView != null) {
+                if (fieldOfView.GetComponent<FieldOfView>().shouldUpdatePulseParameters && torchHasSpawned) {
+                    alphaOscillationSpeed = fieldOfView.GetComponent<FieldOfView>().pulseSpeed * 0.2f;
+                    alphaOscillationMagnitude = fieldOfView.GetComponent<FieldOfView>().pulseMagnitude * 0.2f;
+                
+                    OscillateAlpha();
+                }
+            }
+        }
         if (characterTransform == null) {
-            characterTransform = GameObject.Find("Player").transform;
+            if (GameObject.Find("Player") != null) {
+                characterTransform = GameObject.Find("Player").transform;
+            }
         }
 
         if (vendor == null) {
             vendor = GameObject.Find("Vendor");
-            vendorScript = vendor.GetComponent<Vendor>();
-            vendorPosition = vendor.transform;
+            if (vendor != null) {
+                vendorScript = vendor.GetComponent<Vendor>();
+                vendorPosition = vendor.transform;
+            }
         }
 
         if (vendorScript.torchBought || PlayerPrefs.GetInt(TORCHKEY) == 1) {
@@ -86,6 +121,13 @@ public class CTorch : Singleton<CTorch> {
         }
 
         if (torchHasSpawned) {
+            if (audioManager != null) {
+                if (!audioManager.IsPlayingSFX("8BitFire")) {
+                    AdjustFireSoundVolume();
+                    audioManager.PlaySFX("8BitFire");
+                }
+            }
+
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
 
@@ -97,12 +139,21 @@ public class CTorch : Singleton<CTorch> {
                 lastOffsetX = offsetX;
                 lastOffsetY = offsetY;
             } else {
-                if (!(transform.position.x < lastOffsetX + 0.5f) || !(transform.position.y < lastOffsetY + 0.5f)) {
+                if ((!(transform.position.x < lastOffsetX + 0.5f) || !(transform.position.y < lastOffsetY + 0.5f)) && characterTransform != null) {
                     transform.position = Vector2.Lerp(transform.position, new Vector2(characterTransform.position.x - lastOffsetX, characterTransform.position.y - lastOffsetY), torchFollowSpeed * Time.deltaTime);
                 }
             }
 
-            StartFadingAlpha( (195f/ 255f), torchLerpTime);
+            if (blackMask != null) {
+                if (fieldOfView != null) {
+                    if (fieldOfView.GetComponent<FieldOfView>().shouldUpdatePulseParameters && torchHasSpawned) {
+                        alphaOscillationSpeed = fieldOfView.GetComponent<FieldOfView>().pulseSpeed * 0.1f;
+                        alphaOscillationMagnitude = fieldOfView.GetComponent<FieldOfView>().pulseMagnitude * 0.1f;
+
+                        OscillateAlpha();
+                    }
+                }
+            }
         } else {
             vendor = GameObject.Find("Vendor");
             vendorScript = vendor.GetComponent<Vendor>();
@@ -118,7 +169,7 @@ public class CTorch : Singleton<CTorch> {
         if (camera == null) {
             camera = GameObject.Find("Main Camera");
         } else {
-            if (Camera.main.orthographicSize != newCameraDistance) {
+            if (Camera.main.orthographicSize != newCameraDistance && camera.GetComponent<Camera2D>() != null) {
                 camera.GetComponent<Camera2D>().originalZoom = newCameraDistance;
                 camera.GetComponent<Camera2D>().vendorZoomOut = 1.5f;
                 camera.GetComponent<Camera2D>().bossZoomOut = 1.9f;
@@ -126,6 +177,35 @@ public class CTorch : Singleton<CTorch> {
         }
     }
 
+    private void OscillateAlpha() {
+        SpriteRenderer blackMaskSpriteRenderer = blackMask.GetComponent<SpriteRenderer>();
+        Color targetColor;
+
+        if (blackMaskSpriteRenderer != null) {
+            float oAlpha = baseAlpha + Mathf.Sin(alphaOscillationSpeed * Time.time) * alphaOscillationMagnitude;
+            targetColor = new Color(blackMaskSpriteRenderer.color.r, blackMaskSpriteRenderer.color.g, blackMaskSpriteRenderer.color.b, oAlpha);
+            blackMaskSpriteRenderer.color = Color.Lerp(blackMaskSpriteRenderer.color, targetColor, torchLerpTime * Time.deltaTime);
+        } else {
+            Debug.LogError("blackMask does not have a SpriteRenderer component.");
+        }
+    }
+
+    private void AdjustFireSoundVolume() {
+        if (!torchHasSpawned || characterTransform == null) {
+            return;
+        }
+
+        float distanceToPlayer = Vector2.Distance(transform.position, characterTransform.position);
+
+        float maxDistance = 3.5f;
+
+        distanceToPlayer = Mathf.Clamp(distanceToPlayer, 0, maxDistance);
+        float volume = Mathf.Lerp(maxVol, minVol, distanceToPlayer / maxDistance);
+
+        audioManager.SetSFXVolume("8BitFire", volume);
+    }
+
+    /*
     public void StartFadingAlpha(float targetAlpha, float duration) {
         SpriteRenderer blackMaskSpriteRenderer = blackMask.GetComponent<SpriteRenderer>();
         if (blackMaskSpriteRenderer != null) {
@@ -134,6 +214,7 @@ public class CTorch : Singleton<CTorch> {
             Debug.LogError("blackMask does not have a SpriteRenderer component.");
         }
     }
+
 
     private IEnumerator FadeToAlpha(SpriteRenderer spriteRenderer, float targetAlpha, float duration) {
         float time = 0;
@@ -146,10 +227,13 @@ public class CTorch : Singleton<CTorch> {
             // Ensure the normalized time is not greater than 1.
             normalizedTime = Mathf.Clamp01(normalizedTime);
 
-            spriteRenderer.color = Color.Lerp(startColor, targetColor, normalizedTime);
+            if (spriteRenderer != null) {
+                spriteRenderer.color = Color.Lerp(startColor, targetColor, normalizedTime);
+            }
             yield return null;
         }
     }
+    */
 
     public void Pick() {
         SpawnTorch();

@@ -333,20 +333,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cca1e9deea149049a5a066713ed47cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canDestroyItem: 0
-  canBounce: 0
-  timeBetweenBounces: 2
-  bounceDuration: 0.25
-  bounceDistance: 0.15
   blackMask: {fileID: 0}
   fieldOfView: {fileID: 0}
   characterTransform: {fileID: 0}
   camera: {fileID: 0}
+  vendor: {fileID: 0}
   vendorPosition: {fileID: 0}
   spawnOffsetX: -2
   spawnOffsetY: 0
   newViewDistance: 12
   newCameraDistance: 6.5
-  torchFollowSpeed: 1
+  torchFollowSpeed: 2
   torchLerpTime: 2
   torchHasSpawned: 0

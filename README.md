@@ -42,6 +42,15 @@ AIVA's modification tools.
 Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
+## Version 1.2.7
+- Bunch of torch refining
+    - Added a variability to the darkness and length of view distance to make it seem like an actual torch
+    - Add a bunch of null object checks to stop from getting errors when transferring scenes
+    - Added torch to every scene for future when coming back into the game after quitting
+    - Made the torch follow more closely/quickly
+- Changed the height of the character so they can fit more places better
+- Added fire sound effect for the torch
+    - The volume is variable, so when you are close, the torch is louder
 
 ## Version 1.2.6
 - Updated torch to singleton

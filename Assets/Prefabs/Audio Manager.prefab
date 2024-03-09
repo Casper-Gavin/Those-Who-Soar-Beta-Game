@@ -235,5 +235,12 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
     tag: HoverButton4SFX
+  - clip: {fileID: 8300000, guid: c76b38ee045331c4f8e30986aa542c12, type: 3}
+    name: 8BitFire
+    volume: 0.075
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+    tag: 8BitFireSFX
   uiManager: {fileID: 0}
   bossDetect: {fileID: 0}
