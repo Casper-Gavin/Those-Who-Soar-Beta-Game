@@ -127,7 +127,7 @@ public class Vendor : MonoBehaviour
 
     // change color of cost text - red (can't buy) or yellow (can buy)
     public void CanBuyProduct() {
-        if (CoinManager.Instance.Coins >= shieldItem.Cost) {
+        if (CoinManager.Instance.Coins >= torchItem.Cost) {
             // yellow
             GameObject Tmp = shopPanel.transform.GetChild(0).GetChild(1).GetChild(0).gameObject;
             ChangeProductColor(Tmp, 'y');
