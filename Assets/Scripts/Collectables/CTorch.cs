@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CTorch : Collectables {
+public class CTorch : Singleton<CTorch> {
     [Header("Required Connections")]
     [SerializeField] private GameObject blackMask;
     [SerializeField] private GameObject fieldOfView;
@@ -10,7 +10,8 @@ public class CTorch : Collectables {
     [SerializeField] private GameObject camera;
 
     [Header("Torch Settings")]
-    [SerializeField] private Vendor vendor;
+    [SerializeField] private GameObject vendor;
+    private Vendor vendorScript;
     [SerializeField] private Transform vendorPosition;
     [SerializeField] private float spawnOffsetX;
     [SerializeField] private float spawnOffsetY;
@@ -24,23 +25,38 @@ public class CTorch : Collectables {
 
     public bool torchHasSpawned;
 
-    protected override void Start() {
+    private readonly string TORCHKEY = "TORCH_KEY";
+
+    // EVEN THOUGH WE HAVE THIS SAVING, WHAT HAPPENS IF WE BUY THE TORCH,
+    // GO TO A SCENE THAT DOESNT HAVE IT, THEN QUIT THE GAME? DOES IT SAVE?
+    protected override void Awake() {
+        if (GameObject.FindObjectsOfType<CTorch>().Length > 1) {
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject);
+
+        base.Awake();
+    }
+
+    private void Start() {
         // Im not using the base class Start() method because I want to 
         // have it follow the player like the things in binding of isaac
         // (sorry if that doesn't make sense, I don't know how else to explain it)
         characterTransform = GameObject.Find("Player").transform;
         camera = GameObject.Find("Main Camera");
 
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        collider2D = GetComponent<Collider2D>();
+        //spriteRenderer = GetComponent<SpriteRenderer>();
 
-        vendor = GameObject.Find("Vendor").GetComponent<Vendor>();
+        vendor = GameObject.Find("Vendor");
+        vendorScript = vendor.GetComponent<Vendor>();
         vendorPosition = vendor.transform;
 
         transform.position = new Vector2(vendorPosition.position.x + spawnOffsetX, vendorPosition.position.y + spawnOffsetY);
     }
 
-    protected override void Update() {
+    private void Update() {
         if (blackMask == null) {
             blackMask = GameObject.Find("Black");
         }
@@ -54,13 +70,19 @@ public class CTorch : Collectables {
         }
 
         if (vendor == null) {
-            vendor = GameObject.Find("Vendor").GetComponent<Vendor>();
+            vendor = GameObject.Find("Vendor");
+            vendorScript = vendor.GetComponent<Vendor>();
+            vendorPosition = vendor.transform;
         }
 
-        if (vendor.torchBought) {
+        if (vendorScript.torchBought || PlayerPrefs.GetInt(TORCHKEY) == 1) {
+            vendorScript.torchBought = true;
+
             SpawnTorch();
 
             torchHasSpawned = true;
+
+            PlayerPrefs.SetInt(TORCHKEY, 1);
         }
 
         if (torchHasSpawned) {
@@ -81,6 +103,14 @@ public class CTorch : Collectables {
             }
 
             StartFadingAlpha( (195f/ 255f), torchLerpTime);
+        } else {
+            vendor = GameObject.Find("Vendor");
+            vendorScript = vendor.GetComponent<Vendor>();
+            vendorPosition = GameObject.Find("Vendor").transform;
+
+            transform.position = new Vector2(vendorPosition.position.x + spawnOffsetX, vendorPosition.position.y + spawnOffsetY);
+
+            PlayerPrefs.SetInt(TORCHKEY, 0);
         }
     }
 
@@ -121,9 +151,11 @@ public class CTorch : Collectables {
         }
     }
 
-
-    protected override void Pick()
-    {
+    public void Pick() {
         SpawnTorch();
+    }
+
+    private void OnQuit() {
+        PlayerPrefs.SetInt(TORCHKEY, 0);
     }
 }

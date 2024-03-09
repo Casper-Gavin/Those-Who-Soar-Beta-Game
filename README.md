@@ -43,7 +43,11 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 
-## Version 1.2
+## Version 1.2.6
+- Updated torch to singleton
+    - What happens if we buy the torch, go to another scene, quit (saving the game), then come back? Do we still have the torch?
+- Transfered Vendor changed to LevelTwoScene - duplicated original LevelTwo just in case
+
 ### Version 1.2.5
 - Added torch to VendorCanvas
 
