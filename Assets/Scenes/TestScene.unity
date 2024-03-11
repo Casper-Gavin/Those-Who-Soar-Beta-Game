@@ -32873,6 +32873,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2362834148729785227, guid: b52277af0abb932489597e1a7980df0c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2429702429831645055, guid: b52277af0abb932489597e1a7980df0c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 237.80693
@@ -32927,6 +32931,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5376003800172764809, guid: b52277af0abb932489597e1a7980df0c, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444612694474149367, guid: b52277af0abb932489597e1a7980df0c, type: 3}
+      propertyPath: m_fontSize
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444612694474149367, guid: b52277af0abb932489597e1a7980df0c, type: 3}
+      propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444612694474149367, guid: b52277af0abb932489597e1a7980df0c, type: 3}
+      propertyPath: m_lineSpacing
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444612694474149367, guid: b52277af0abb932489597e1a7980df0c, type: 3}
+      propertyPath: m_enableAutoSizing
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6981282757982793092, guid: b52277af0abb932489597e1a7980df0c, type: 3}

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8306290534033980438}
   - component: {fileID: 2048523206224085343}
   - component: {fileID: 8701005915891291525}
+  - component: {fileID: 3014228526522790995}
   m_Layer: 0
   m_Name: Vendor
   m_TagString: Vendor
@@ -171,6 +172,9 @@ MonoBehaviour:
   healthItem: {fileID: 11400000, guid: 84fe41917ab9f634e8e4a83cf16cfdfd, type: 2}
   shieldItem: {fileID: 11400000, guid: 799bc097dacf94d40862ebfb8defe830, type: 2}
   torchItem: {fileID: 11400000, guid: f079dea1faee7674ea1a8e167a4f936a, type: 2}
+  dialogueTrigger: {fileID: 3014228526522790995}
+  vendorName: 
+  vendorDialogue: 
   canOpenShop: 0
   OnPlayerEnterShopZone:
     m_PersistentCalls:
@@ -179,3 +183,20 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   vendorTag: 
+  torchBought: 0
+--- !u!114 &3014228526522790995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7106938087102622387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e597b5a5039c335489539fe4711d8816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Vendor
+    sentences:
+    - 

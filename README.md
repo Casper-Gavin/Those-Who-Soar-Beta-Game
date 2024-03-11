@@ -42,6 +42,11 @@ AIVA's modification tools.
 Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
+## Version 1.2.8
+- Added Dialogue System
+    - Attached Dialogue System to Vendor
+- Changed quality settings
+
 ## Version 1.2.7.2
 - Changed Main Menu background
 - Changed text on Main Menu
