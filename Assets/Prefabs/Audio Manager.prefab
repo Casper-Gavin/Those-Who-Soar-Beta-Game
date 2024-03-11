@@ -242,5 +242,12 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
     tag: 8BitFireSFX
+  - clip: {fileID: 8300000, guid: 887735780ad5c3c40a6e7b7ca8b22298, type: 3}
+    name: Wind
+    volume: 0.15
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+    tag: WindSFX
   uiManager: {fileID: 0}
   bossDetect: {fileID: 0}

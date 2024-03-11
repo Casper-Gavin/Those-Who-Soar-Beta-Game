@@ -46,6 +46,7 @@ public class AudioManager : Singleton<AudioManager> {
     private void Start() {
         if (SceneManager.GetActiveScene().name == "MainMenu") {
             Play("MainMenu");
+            PlaySFX("Wind");
         } else {
             Play("Gameplay");
         }
@@ -63,17 +64,23 @@ public class AudioManager : Singleton<AudioManager> {
         if (SceneManager.GetActiveScene().name == "MainMenu" && GetCurrentlyPlayingTag() != "MenuMusic") {
             StopAllMusic();
             Play("MainMenu");
+            if (GetCurrentlyPlayingSFX() != "Wind") {
+                PlaySFX("Wind");
+            }
         } else if (SceneManager.GetActiveScene().name != "MainMenu" && GetCurrentlyPlayingTag() != "GameMusic" && (!bossDetect || !bossDetect.isInBossZone)) {
             StopAllMusic();
+            StopSFX("Wind");
             Play("Gameplay");
         } else if (bossDetect != null) {
             if (GetCurrentlyPlayingTag() != "BossMusic" && bossDetect.isInBossZone && !bossDetect.isBossDead) {
                 StopAllMusic();
+                StopSFX("Wind");
                 Play("Boss");
             }
         } else if (SceneManager.GetActiveScene().name != "MainMenu" && GetCurrentlyPlaying() == "Boss") {
             if (bossDetect.isBossDead || bossDetect.isInBossZone == false) {
                 StopAllMusic();
+                StopSFX("Wind");
                 Play("Gameplay");
             }
         }

@@ -42,6 +42,13 @@ AIVA's modification tools.
 Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
+## Version 1.2.7.2
+- Changed Main Menu background
+- Changed text on Main Menu
+    - Updated color gradient
+    - Gave outline
+- Added background wind sfx to main menu
+
 ## Version 1.2.7
 - Bunch of torch refining
     - Added a variability to the darkness and length of view distance to make it seem like an actual torch
