@@ -38,11 +38,7 @@ public class Vendor : MonoBehaviour
     protected Character character;
 
     private void Awake() {
-        vendorName = GetVendorName();
-        vendorDialogue = GetVendorDialogue();
-
-        dialogueTrigger.SetName(vendorName);
-        dialogueTrigger.SetSentences(new string[] { vendorDialogue });
+        CaptureDialogueValues();
     }
 
     // open and close shop panel
@@ -114,6 +110,7 @@ public class Vendor : MonoBehaviour
             canOpenShop = true;
             vendorTag = "Vendor";
             popUpPanel.SetActive(true); 
+            CaptureDialogueValues();
             dialogueTrigger.TriggerDialogue();
             OnPlayerEnterShopZone.Invoke();
         }
@@ -240,5 +237,13 @@ public class Vendor : MonoBehaviour
         int randomIndex = UnityEngine.Random.Range(0, vendorDialogues.Length);
 
         return vendorDialogues[randomIndex];
+    }
+
+    public void CaptureDialogueValues() {
+        vendorName = GetVendorName();
+        vendorDialogue = GetVendorDialogue();
+
+        dialogueTrigger.SetName(vendorName);
+        dialogueTrigger.SetSentences(new string[] { vendorDialogue });
     }
 }
