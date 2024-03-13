@@ -42,6 +42,9 @@ AIVA's modification tools.
 Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
+## Version 1.2.9.2
+- Made own sounds for the Dialogue Audio and Implemented it
+
 ## Version 1.2.9
 - Restructuring Audio Stuff
 - Add Randomized/Predictable Dialogue Audio

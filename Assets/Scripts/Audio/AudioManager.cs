@@ -141,12 +141,13 @@ public class AudioManager : Singleton<AudioManager> {
         }
     }
 
-    public void MakeAndPlaySFXVariable(string name, float pitch) {
+    public void MakeAndPlaySFXVariable(string name, float pitch, float volume) {
         // play the first available sfx of the same name
         Sfx[] allSfx = Array.FindAll(sfx, sfx => sfx.name == name);
         foreach (Sfx f in allSfx) {
             if (!f.source.isPlaying) {
                 f.source.pitch = pitch;
+                f.source.volume = volume;
                 f.source.Play();
                 return;
             }

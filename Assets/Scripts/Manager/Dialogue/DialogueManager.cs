@@ -22,6 +22,7 @@ public class DialogueManager : Singleton<DialogueManager> {
     [SerializeField] private bool isRandomSFX = false;
     [SerializeField] private bool isRandomNotPred = true;
     [SerializeField] private bool isPredictableSFX = true; // Make this opposite of isRandomSFX
+    [SerializeField] private float volume = 0.65f;
 
     private void Start() {
         sentences = new Queue<string>();
@@ -76,14 +77,14 @@ public class DialogueManager : Singleton<DialogueManager> {
                     float randomPitch = Random.Range(minPitch, maxPitch);
 
                     if (isRandomNotPred) {
-                        audioManager.MakeAndPlaySFXVariable("TextSound", randomPitch);
+                        audioManager.MakeAndPlaySFXVariable("TextSound", randomPitch, volume);
                     } else {
                         int randomIndex = Random.Range(0, 2);
 
                         if (randomIndex == 0) {
-                            audioManager.MakeAndPlaySFXVariable("TextSound", randomPitch);
+                            audioManager.MakeAndPlaySFXVariable("TextSound", randomPitch, volume);
                         } else {
-                            audioManager.MakeAndPlaySFXVariable("TextSound1", randomPitch);
+                            audioManager.MakeAndPlaySFXVariable("TextSound1", randomPitch, volume);
                         }
                     }
                 } else {
@@ -94,13 +95,21 @@ public class DialogueManager : Singleton<DialogueManager> {
                     int maxPitchInt = (int)(maxPitch * 100);
                     int pitchRange = maxPitchInt - minPitchInt;
 
+                    int randomRange = Random.Range(0, 3);
+
                     if (pitchRange != 0) {
                         int predPitchInt = minPitchInt + (currentCharHash % pitchRange);
                         float predPitch = predPitchInt / 100.0f;
 
-                        audioManager.MakeAndPlaySFXVariable("TextSound", predPitch);
+                        if (randomRange == 0) {
+                            audioManager.MakeAndPlaySFXVariable("TextSound", predPitch, volume);
+                        } else if (randomRange == 1) {
+                            audioManager.MakeAndPlaySFXVariable("TextSound3", predPitch, volume);
+                        } else {
+                            audioManager.MakeAndPlaySFXVariable("TextSound4", predPitch, volume);
+                        }
                     } else {
-                        audioManager.MakeAndPlaySFXVariable("TextSound", minPitch);
+                        audioManager.MakeAndPlaySFXVariable("TextSound", minPitch, volume);
                     }
                 }
             }
