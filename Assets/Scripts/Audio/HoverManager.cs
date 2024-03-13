@@ -25,16 +25,9 @@ public class HoverManager : MonoBehaviour, IPointerEnterHandler {
     }
 
     public void HoverSound() {
+
         if (audioManager != null) {
-            if (!audioManager.IsPlayingSFX("HoverButton1")) {
-                audioManager.PlaySFX("HoverButton1");
-            } else if (!audioManager.IsPlayingSFX("HoverButton2")) {
-                audioManager.PlaySFX("HoverButton2");
-            } else if (!audioManager.IsPlayingSFX("HoverButton3")) {
-                audioManager.PlaySFX("HoverButton3");
-            } else if (!audioManager.IsPlayingSFX("HoverButton4")) {
-                audioManager.PlaySFX("HoverButton4");
-            }
+            audioManager.MakeAndPlaySFX("HoverButton");
         }
     }
 

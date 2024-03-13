@@ -102,7 +102,7 @@ public class MeleeWeapon : WeaponBase
         }
 
         /*if (character.CharacterTypes == Character.CharacterTypeEnum.Player) {*/
-            AudioManager.Instance.PlaySFX("SwordSlash");
+            AudioManager.Instance.MakeAndPlaySFX("SwordSlash");
         //}
     }
 

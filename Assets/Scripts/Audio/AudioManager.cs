@@ -107,6 +107,52 @@ public class AudioManager : Singleton<AudioManager> {
         f.source.Play();
     }
 
+    /*
+    public Sfx[] MakeCopyOfSameSFX(string name, int count) {
+        Sfx f = Array.Find(sfx, sfx => sfx.name == name);
+        if (f == null) {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return null;
+        }
+
+        Sfx[] sfxArray = new Sfx[count];
+        for (int i = 0; i < count; i++) {
+            sfxArray[i] = new Sfx();
+            sfxArray[i].source = gameObject.AddComponent<AudioSource>();
+            sfxArray[i].source.name = name + i;
+            sfxArray[i].source.clip = f.clip;
+            sfxArray[i].source.volume = f.volume;
+            sfxArray[i].source.pitch = f.pitch;
+            sfxArray[i].source.loop = f.loop;
+        }
+
+        return sfxArray;
+    }
+    */
+
+    public void MakeAndPlaySFX(string name) {
+        // play the first available sfx of the same name
+        Sfx[] allSfx = Array.FindAll(sfx, sfx => sfx.name == name);
+        foreach (Sfx f in allSfx) {
+            if (!f.source.isPlaying) {
+                f.source.Play();
+                return;
+            }
+        }
+    }
+
+    public void MakeAndPlaySFXVariable(string name, float pitch) {
+        // play the first available sfx of the same name
+        Sfx[] allSfx = Array.FindAll(sfx, sfx => sfx.name == name);
+        foreach (Sfx f in allSfx) {
+            if (!f.source.isPlaying) {
+                f.source.pitch = pitch;
+                f.source.Play();
+                return;
+            }
+        }
+    }
+
     public void Stop(string name) {
         Music m = Array.Find(music, music => music.name == name);
 

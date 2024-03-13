@@ -2549,6 +2549,13 @@ MonoBehaviour:
   dialogueText: {fileID: 6444612694474149367}
   continueButton: {fileID: 4459507966003185623}
   animator: {fileID: 7548615209610712083}
+  audioManager: {fileID: 0}
+  frequencyLevel: 3
+  minPitch: 0.85
+  maxPitch: 1.1
+  isRandomSFX: 0
+  isRandomNotPred: 1
+  isPredictableSFX: 1
 --- !u!1 &2258700383750671428
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,11 +12,30 @@ public class DialogueManager : Singleton<DialogueManager> {
     public TMPro.TextMeshProUGUI continueButton;
     public Animator animator;
 
+    [Header("Audio")]
+    [SerializeField] private AudioManager audioManager;
+    [SerializeField] private int frequencyLevel = 3;
+    [Range(-3.0f, 3.0f)]
+    [SerializeField] private float minPitch = 0.85f;
+    [Range(-3.0f, 3.0f)]
+    [SerializeField] private float maxPitch = 1.10f;
+    [SerializeField] private bool isRandomSFX = false;
+    [SerializeField] private bool isRandomNotPred = true;
+    [SerializeField] private bool isPredictableSFX = true; // Make this opposite of isRandomSFX
+
     private void Start() {
         sentences = new Queue<string>();
+
+        if (audioManager == null) {
+            audioManager = FindObjectOfType<AudioManager>();
+        }
     }
 
     private void Update() {
+        if (audioManager == null) {
+            audioManager = FindObjectOfType<AudioManager>();
+        }
+
         SetContinueButton();
     }
 
@@ -48,8 +67,46 @@ public class DialogueManager : Singleton<DialogueManager> {
     private IEnumerator TypeSentence(string sentence) {
         dialogueText.text = "";
         yield return new WaitForSeconds(0.35f);
+        int counter = 0;
         foreach (char letter in sentence.ToCharArray()) {
             dialogueText.text += letter;
+
+            if ((counter % frequencyLevel == 0) && audioManager != null) {
+                if (!isPredictableSFX){
+                    float randomPitch = Random.Range(minPitch, maxPitch);
+
+                    if (isRandomNotPred) {
+                        audioManager.MakeAndPlaySFXVariable("TextSound", randomPitch);
+                    } else {
+                        int randomIndex = Random.Range(0, 2);
+
+                        if (randomIndex == 0) {
+                            audioManager.MakeAndPlaySFXVariable("TextSound", randomPitch);
+                        } else {
+                            audioManager.MakeAndPlaySFXVariable("TextSound1", randomPitch);
+                        }
+                    }
+                } else {
+                    int currentCharHash = letter.GetHashCode();
+                    int predIndex = currentCharHash % 2;
+
+                    int minPitchInt = (int)(minPitch * 100);
+                    int maxPitchInt = (int)(maxPitch * 100);
+                    int pitchRange = maxPitchInt - minPitchInt;
+
+                    if (pitchRange != 0) {
+                        int predPitchInt = minPitchInt + (currentCharHash % pitchRange);
+                        float predPitch = predPitchInt / 100.0f;
+
+                        audioManager.MakeAndPlaySFXVariable("TextSound", predPitch);
+                    } else {
+                        audioManager.MakeAndPlaySFXVariable("TextSound", minPitch);
+                    }
+                }
+            }
+
+            counter++;
+
             yield return new WaitForSeconds(0.03f);
             // yield return null;
         }

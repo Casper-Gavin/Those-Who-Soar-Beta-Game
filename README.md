@@ -42,6 +42,10 @@ AIVA's modification tools.
 Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
+## Version 1.2.9
+- Restructuring Audio Stuff
+- Add Randomized/Predictable Dialogue Audio
+
 ## Version 1.2.8.2
 - Fixed dialogue box not showing up
 - Added LoreScene

@@ -108,7 +108,14 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-    tag: GunShootSFX
+    tag: GunShoot1SFX
+  - clip: {fileID: 8300000, guid: 46e5a98316d16d146b8a2c2bacbda433, type: 3}
+    name: GunShoot
+    volume: 0.25
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    tag: GunShoot2SFX
   - clip: {fileID: 8300000, guid: e5e9885c87461114a9d186b172a5b9ce, type: 3}
     name: GunReload
     volume: 0.15
@@ -122,7 +129,42 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-    tag: BulletHitSFX
+    tag: BulletHit1SFX
+  - clip: {fileID: 8300000, guid: d731d0b7807e5fa468c65f39bf9a276a, type: 3}
+    name: BulletHit
+    volume: 0.15
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    tag: BulletHit2SFX
+  - clip: {fileID: 8300000, guid: d731d0b7807e5fa468c65f39bf9a276a, type: 3}
+    name: BulletHit
+    volume: 0.15
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    tag: BulletHit3SFX
+  - clip: {fileID: 8300000, guid: d731d0b7807e5fa468c65f39bf9a276a, type: 3}
+    name: BulletHit
+    volume: 0.15
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    tag: BulletHit4SFX
+  - clip: {fileID: 8300000, guid: d731d0b7807e5fa468c65f39bf9a276a, type: 3}
+    name: BulletHit
+    volume: 0.15
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    tag: BulletHit5SFX
+  - clip: {fileID: 8300000, guid: d731d0b7807e5fa468c65f39bf9a276a, type: 3}
+    name: BulletHit
+    volume: 0.15
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    tag: BulletHit6SFX
   - clip: {fileID: 8300000, guid: 3529bc8b699907b49999e5d91b271444, type: 3}
     name: HitBox1
     volume: 0.35
@@ -150,7 +192,21 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-    tag: JarSmashSFX
+    tag: JarSmash1SFX
+  - clip: {fileID: 8300000, guid: 16c00986487e05d4eb39b09cca1c391e, type: 3}
+    name: JarSmash
+    volume: 0.65
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    tag: JarSmash2SFX
+  - clip: {fileID: 8300000, guid: 16c00986487e05d4eb39b09cca1c391e, type: 3}
+    name: JarSmash
+    volume: 0.65
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    tag: JarSmash3SFX
   - clip: {fileID: 8300000, guid: 4ab651118f73bde49a6edfc28080dd9c, type: 3}
     name: OpenChest
     volume: 0.45
@@ -171,7 +227,14 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-    tag: HurtSFX
+    tag: Hurt1SFX
+  - clip: {fileID: 8300000, guid: 362efa5c1271b1d49b2c39538ba0976e, type: 3}
+    name: Hurt
+    volume: 0.25
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    tag: Hurt2SFX
   - clip: {fileID: 8300000, guid: ecea4a861f376c34ab31a4ebebc18c29, type: 3}
     name: VendorBuy
     volume: 0.75
@@ -185,14 +248,49 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-    tag: PickupCoinSFX
+    tag: PickupCoin1SFX
+  - clip: {fileID: 8300000, guid: 469e5dc0cbe7a1348968e6be88c2f097, type: 3}
+    name: PickupCoin
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    tag: PickupCoin2SFX
+  - clip: {fileID: 8300000, guid: 469e5dc0cbe7a1348968e6be88c2f097, type: 3}
+    name: PickupCoin
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    tag: PickupCoin3SFX
   - clip: {fileID: 8300000, guid: 7b189dab1175b6640bdfc296af401986, type: 3}
     name: PickupItem
     volume: 0.1
     pitch: 1
     loop: 0
     source: {fileID: 0}
-    tag: PickupItemSFX
+    tag: PickupItem1SFX
+  - clip: {fileID: 8300000, guid: 7b189dab1175b6640bdfc296af401986, type: 3}
+    name: PickupItem
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    tag: PickupItem2SFX
+  - clip: {fileID: 8300000, guid: 7b189dab1175b6640bdfc296af401986, type: 3}
+    name: PickupItem
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    tag: PickupItem3SFX
+  - clip: {fileID: 8300000, guid: 7b189dab1175b6640bdfc296af401986, type: 3}
+    name: PickupItem
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    tag: PickupItem4SFX
   - clip: {fileID: 8300000, guid: e9a9bd6411fe89744bab27478694803b, type: 3}
     name: ClickButton
     volume: 0.3
@@ -208,28 +306,28 @@ MonoBehaviour:
     source: {fileID: 0}
     tag: ClickSkillSFX
   - clip: {fileID: 8300000, guid: 0bfe223565746fa42a6429093372c7b4, type: 3}
-    name: HoverButton1
+    name: HoverButton
     volume: 0.05
     pitch: 1
     loop: 0
     source: {fileID: 0}
     tag: HoverButton1SFX
   - clip: {fileID: 8300000, guid: 0bfe223565746fa42a6429093372c7b4, type: 3}
-    name: HoverButton2
+    name: HoverButton
     volume: 0.05
     pitch: 1
     loop: 0
     source: {fileID: 0}
     tag: HoverButton2SFX
   - clip: {fileID: 8300000, guid: 0bfe223565746fa42a6429093372c7b4, type: 3}
-    name: HoverButton3
+    name: HoverButton
     volume: 0.05
     pitch: 1
     loop: 0
     source: {fileID: 0}
     tag: HoverButton3SFX
   - clip: {fileID: 8300000, guid: 0bfe223565746fa42a6429093372c7b4, type: 3}
-    name: HoverButton4
+    name: HoverButton
     volume: 0.05
     pitch: 1
     loop: 0
@@ -249,5 +347,75 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
     tag: WindSFX
+  - clip: {fileID: 8300000, guid: 665b9a752117aa747abd90b9903d1f2b, type: 3}
+    name: TextSound
+    volume: 0.15
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    tag: Text1SFX
+  - clip: {fileID: 8300000, guid: 665b9a752117aa747abd90b9903d1f2b, type: 3}
+    name: TextSound
+    volume: 0.15
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    tag: Text1SFX
+  - clip: {fileID: 8300000, guid: 665b9a752117aa747abd90b9903d1f2b, type: 3}
+    name: TextSound
+    volume: 0.15
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    tag: Text2SFX
+  - clip: {fileID: 8300000, guid: 665b9a752117aa747abd90b9903d1f2b, type: 3}
+    name: TextSound
+    volume: 0.15
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    tag: Text2SFX
+  - clip: {fileID: 8300000, guid: 665b9a752117aa747abd90b9903d1f2b, type: 3}
+    name: TextSound
+    volume: 0.15
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    tag: Text3SFX
+  - clip: {fileID: 8300000, guid: 247b50395e692524187c2f6f7d85499b, type: 3}
+    name: TextSound1
+    volume: 0.15
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    tag: Text3SFX
+  - clip: {fileID: 8300000, guid: 247b50395e692524187c2f6f7d85499b, type: 3}
+    name: TextSound1
+    volume: 0.15
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    tag: Text4SFX
+  - clip: {fileID: 8300000, guid: 247b50395e692524187c2f6f7d85499b, type: 3}
+    name: TextSound1
+    volume: 0.15
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    tag: Text4SFX
+  - clip: {fileID: 8300000, guid: 247b50395e692524187c2f6f7d85499b, type: 3}
+    name: TextSound1
+    volume: 0.15
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    tag: Text5SFX
+  - clip: {fileID: 8300000, guid: 247b50395e692524187c2f6f7d85499b, type: 3}
+    name: TextSound1
+    volume: 0.15
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    tag: Text5SFX
   uiManager: {fileID: 0}
   bossDetect: {fileID: 0}

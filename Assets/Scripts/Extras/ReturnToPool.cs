@@ -54,7 +54,7 @@ public class ReturnToPool : MonoBehaviour {
                     audioManager.PlaySFX("JarSmash");
                 } else {
                     if (audioManager != null) {
-                        audioManager.PlaySFX("BulletHit");
+                        audioManager.MakeAndPlaySFX("BulletHit");
                     }
                 }
             }

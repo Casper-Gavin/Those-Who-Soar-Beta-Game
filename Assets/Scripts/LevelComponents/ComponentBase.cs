@@ -48,7 +48,7 @@ public class ComponentBase : MonoBehaviour
                     audioManager.PlaySFX("HitBox3");
                 }
             } else if (this.gameObject.tag == "JarComponent" && audioManager != null) {
-                audioManager.PlaySFX("JarSmash");
+                audioManager.MakeAndPlaySFX("JarSmash");
             } else {
                 if (audioManager != null) {
                     // Add sword hitting wall sound?

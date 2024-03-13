@@ -36,8 +36,8 @@ public class PlayerHealth : HealthBase
     public float CurrentShield { get; set; }
     public bool isDead = false;
 
+    [Header("Audio")]
     [SerializeField] private AudioManager audioManager;
-
 
     // Awake is called before start
     protected override void Awake()
@@ -100,7 +100,7 @@ public class PlayerHealth : HealthBase
     public override void TakeDamage(int damage)
     {
         if (audioManager != null) {
-            audioManager.PlaySFX("Hurt");
+            audioManager.MakeAndPlaySFX("Hurt");
         }
 
         if (CurrentHealth <= 0)
@@ -223,7 +223,7 @@ public class PlayerHealth : HealthBase
         UpdateHealth();
 
         if (audioManager != null) {
-            audioManager.PlaySFX("PickupItem");
+            audioManager.MakeAndPlaySFX("PickupItem");
         }
     }
 
@@ -237,7 +237,7 @@ public class PlayerHealth : HealthBase
             lastCheckHealth ++;
 
             if (audioManager != null) {
-                audioManager.PlaySFX("PickupItem");
+                audioManager.MakeAndPlaySFX("PickupItem");
             }
         }
     }
@@ -253,7 +253,7 @@ public class PlayerHealth : HealthBase
         }
 
         if (audioManager != null) {
-            audioManager.PlaySFX("PickupItem");
+            audioManager.MakeAndPlaySFX("PickupItem");
         }
     }
 
@@ -267,7 +267,7 @@ public class PlayerHealth : HealthBase
             lastCheckShield ++;
 
             if (audioManager != null) {
-                audioManager.PlaySFX("PickupItem");
+                audioManager.MakeAndPlaySFX("PickupItem");
             }
         }
     }

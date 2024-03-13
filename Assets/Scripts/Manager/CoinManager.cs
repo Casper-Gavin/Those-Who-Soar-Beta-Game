@@ -23,7 +23,7 @@ public class CoinManager : Singleton<CoinManager> {
         PlayerPrefs.SetInt(COINS_KEY, Coins);
         UIManager.Instance.FlashCoinEffect();
 
-        AudioManager.Instance.PlaySFX("PickupCoin");
+        AudioManager.Instance.MakeAndPlaySFX("PickupCoin");
     }
 
     public void RemoveCoins(int amount) {

@@ -95,7 +95,7 @@ public class ProjectileWeapon : WeaponBase
                 OffAttackCooldown = false;
                 nextAttackTime = Time.time + attackCooldown;
 
-                audioManager.PlaySFX("GunShoot");
+                audioManager.MakeAndPlaySFX("GunShoot");
             }
         }
     }
