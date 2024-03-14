@@ -42,30 +42,35 @@ AIVA's modification tools.
 Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
-## Version 1.2.9.2
+## Version 1.2
+### Version 1.2.10
+- Increase key item size and in UI
+- Add red, green, blue keys and doors
+
+### Version 1.2.9.2
 - Made own sounds for the Dialogue Audio and Implemented it
 
-## Version 1.2.9
+### Version 1.2.9
 - Restructuring Audio Stuff
 - Add Randomized/Predictable Dialogue Audio
 
-## Version 1.2.8.2
+### Version 1.2.8.2
 - Fixed dialogue box not showing up
 - Added LoreScene
 
-## Version 1.2.8
+### Version 1.2.8
 - Added Dialogue System
     - Attached Dialogue System to Vendor
 - Changed quality settings
 
-## Version 1.2.7.2
+### Version 1.2.7.2
 - Changed Main Menu background
 - Changed text on Main Menu
     - Updated color gradient
     - Gave outline
 - Added background wind sfx to main menu
 
-## Version 1.2.7
+### Version 1.2.7
 - Bunch of torch refining
     - Added a variability to the darkness and length of view distance to make it seem like an actual torch
     - Add a bunch of null object checks to stop from getting errors when transferring scenes
@@ -75,7 +80,7 @@ Unity Version: 2022.3.9f1 (LTS)
 - Added fire sound effect for the torch
     - The volume is variable, so when you are close, the torch is louder
 
-## Version 1.2.6
+### Version 1.2.6
 - Updated torch to singleton
     - What happens if we buy the torch, go to another scene, quit (saving the game), then come back? Do we still have the torch?
 - Transfered Vendor changed to LevelTwoScene - duplicated original LevelTwo just in case
