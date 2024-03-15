@@ -23,7 +23,7 @@ public class MainMenu : MonoBehaviour
     // in Unity (on the scene you want to add), file -> build settings -> add open scenes
 
     public void PlayGame() {
-        SceneManager.LoadScene("TestScene"); 
+        SceneManager.LoadScene("LevelTwoScene"); 
     }
 
     public void PlayLevelOne() {

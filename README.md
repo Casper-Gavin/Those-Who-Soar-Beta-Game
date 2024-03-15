@@ -43,6 +43,12 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.2
+
+### Version 1.2.11
+- Created level two
+- Added level clear scene functionality
+- Tested adding a key to chests - didn't work (not a big deal)
+
 ### Version 1.2.10
 - Increase key item size and in UI
 - Add red, green, blue keys and doors

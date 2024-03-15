@@ -360,8 +360,28 @@ public class UIManager : Singleton<UIManager>
         }));
     }
 
-    public void LevelClearUI() {
+    public IEnumerator LevelClearOne() {
         levelClearImage.SetActive(true);
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("LevelTwoScene");
+    }
+
+    public IEnumerator LevelClearTwo() {
+        levelClearImage.SetActive(true);
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("LevelThreeScene");
+    }
+
+    public IEnumerator LevelClearThree() {
+        levelClearImage.SetActive(true);
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("LevelFourScene");
+    }
+
+    public IEnumerator LevelClearFour() {
+        levelClearImage.SetActive(true);
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("LevelFiveScene");
     }
 
     // subscribe to event
@@ -386,7 +406,7 @@ public class UIManager : Singleton<UIManager>
                 BossFightStart();
                 break;
             case GameEvent.EventType.LevelClear:
-                LevelClearUI();
+                StartCoroutine(LevelClearOne());
                 break;
         }
     }
