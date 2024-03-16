@@ -43,6 +43,11 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.2
+### Version 1.2.13
+- First version of lore scene
+    - Added pixel art
+    - Changed around story
+
 ### Version 1.2.12
 - Lore Scene Functionality
 

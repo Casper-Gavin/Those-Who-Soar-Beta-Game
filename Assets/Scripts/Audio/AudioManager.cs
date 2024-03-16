@@ -61,7 +61,14 @@ public class AudioManager : Singleton<AudioManager> {
             bossDetect = FindObjectOfType<BossDetect>();
         }
 
-        if (SceneManager.GetActiveScene().name == "MainMenu" && GetCurrentlyPlayingTag() != "MenuMusic") {
+        if (SceneManager.GetActiveScene().name == "LoreScene") {
+            StopAllMusic();
+
+            if (GetCurrentlyPlayingSFX() == "Wind") {
+                StopSFX("Wind");
+            }
+
+        } else if (SceneManager.GetActiveScene().name == "MainMenu" && GetCurrentlyPlayingTag() != "MenuMusic") {
             StopAllMusic();
             Play("MainMenu");
             if (GetCurrentlyPlayingSFX() != "Wind") {
@@ -84,7 +91,6 @@ public class AudioManager : Singleton<AudioManager> {
                 Play("Gameplay");
             }
         }
-
     }   
 
     public void Play(string name) {
