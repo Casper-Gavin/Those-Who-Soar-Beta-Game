@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DialogueTrigger : MonoBehaviour {
     public Dialogue dialogue;
@@ -11,6 +12,10 @@ public class DialogueTrigger : MonoBehaviour {
 
     public void EndDialogue() {
         DialogueManager.Instance.EndDialogue();
+    }
+
+    public void EndAllDialogue() {
+        DialogueManager.Instance.EndAllDialogue();
     }
 
     public void SetName(string name) {

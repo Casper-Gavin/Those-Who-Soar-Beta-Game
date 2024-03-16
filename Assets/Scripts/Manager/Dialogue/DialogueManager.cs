@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : Singleton<DialogueManager> {
     private Queue<string> sentences;
@@ -24,17 +25,49 @@ public class DialogueManager : Singleton<DialogueManager> {
     [SerializeField] private bool isPredictableSFX = true; // Make this opposite of isRandomSFX
     [SerializeField] private float volume = 0.65f;
 
+    public GameObject[] imgs;
+    public bool dialogueIsDisplaying = false;
+    private int currentImg = 0;
+
     private void Start() {
         sentences = new Queue<string>();
 
         if (audioManager == null) {
             audioManager = FindObjectOfType<AudioManager>();
         }
+
+        if (SceneManager.GetActiveScene().name == "LoreScene") {
+            for (int i = 0; i < imgs.Length; i++) {
+                if (i == 0) {
+                    imgs[i].SetActive(true);
+                } else {
+                    imgs[i].SetActive(false);
+                }
+            }
+
+            StartDialogue(imgs[currentImg].GetComponent<DialogueTrigger>().dialogue);
+        }
     }
 
     private void Update() {
         if (audioManager == null) {
             audioManager = FindObjectOfType<AudioManager>();
+        }
+
+        if (SceneManager.GetActiveScene().name == "LoreScene") {
+            if (Input.GetKeyDown(KeyCode.Space) && !dialogueIsDisplaying) {
+                currentImg++;
+                StartDialogue(imgs[currentImg].GetComponent<DialogueTrigger>().dialogue);
+                HandleImages(currentImg);
+            } else if (Input.anyKeyDown && dialogueIsDisplaying) {
+                DisplayNextSentence();
+            } else if (Input.GetKeyDown(KeyCode.Escape) && dialogueIsDisplaying) {
+                EndDialogue();
+            }
+
+            if (currentImg == imgs.Length) {
+                SceneManager.LoadScene("LevelOneScene");
+            }
         }
 
         SetContinueButton();
@@ -61,6 +94,7 @@ public class DialogueManager : Singleton<DialogueManager> {
         }
 
         string sentence = sentences.Dequeue();
+        dialogueIsDisplaying = true;
         StopAllCoroutines(); // Stop the previous sentence from being typed
         StartCoroutine(TypeSentence(sentence));
     }
@@ -123,13 +157,44 @@ public class DialogueManager : Singleton<DialogueManager> {
 
     private void SetContinueButton() {
         if (sentences.Count == 0) {
-            continueButton.text = "End >>>";
+            dialogueIsDisplaying = false;
+
+            if (SceneManager.GetActiveScene().name == "LoreScene") {
+                if (currentImg == imgs.Length - 1) {
+                    continueButton.text = "End >>>";
+                } else {
+                    continueButton.text = "Next >>>";
+                }
+            } else {
+                continueButton.text = "End >>>";
+            }
         } else {
+            dialogueIsDisplaying = true;
+
             continueButton.text = "Continue >>>";
         }
     }
 
     public void EndDialogue() {
         animator.SetBool("IsOpen", false); // Close the dialogue box
+    }
+
+    public void EndAllDialogue() {
+        animator.SetBool("IsOpen", false); // Close the dialogue box
+        sentences.Clear();
+
+        SceneManager.LoadScene("LevelOneScene");
+    }
+
+    private void HandleImages(int counter) {
+        if (counter < imgs.Length) {
+            imgs[counter].SetActive(true);
+            
+            for (int i = 0; i < imgs.Length; i++) {
+                if (i != counter) {
+                    imgs[i].SetActive(false);
+                }
+            }
+        }
     }
 }

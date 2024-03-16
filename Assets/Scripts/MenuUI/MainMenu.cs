@@ -27,7 +27,7 @@ public class MainMenu : MonoBehaviour
     }
 
     public void PlayLevelOne() {
-        SceneManager.LoadScene("LevelOneScene"); 
+        SceneManager.LoadScene("LoreScene"); 
     }
 
     public void PlayTutorial() {
