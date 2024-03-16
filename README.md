@@ -47,6 +47,7 @@ Unity Version: 2022.3.9f1 (LTS)
 - First version of lore scene
     - Added pixel art
     - Changed around story
+- Fixed Torch Bug on First Level
 
 ### Version 1.2.12
 - Lore Scene Functionality
