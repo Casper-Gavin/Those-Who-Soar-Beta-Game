@@ -315,8 +315,7 @@ MonoBehaviour:
   enemyHealthBarPrefab: {fileID: 0}
   offset: {x: 0, y: 1, z: 0}
   damageTakenFromBullet: 1
-  initialHealth: 10
-  maxHealth: 10
+  damageIndicator: {fileID: 8943900089246078224, guid: ef5f3a2d35e9af54991cc386e65419cb, type: 3}
 --- !u!1 &9087279717261920155
 GameObject:
   m_ObjectHideFlags: 0

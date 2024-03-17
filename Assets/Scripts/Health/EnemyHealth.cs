@@ -13,6 +13,7 @@ public class EnemyHealth : HealthBase
     protected Image healthBarImage;
     protected GameObject gameObjectHealthBar;
 
+    [SerializeField] private GameObject damageIndicator;
     //protected SkillMenu skillMenu;
 
     protected override void Awake() // this used to be Start(), it is apparently very weird to use Start() with MonoBehavior inheritance
@@ -45,7 +46,9 @@ public class EnemyHealth : HealthBase
         {
             if (skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage] > 0) {
                 TakeDamage(damageTakenFromBullet + skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage]);
-            } else {
+            }
+            else
+            {
                 TakeDamage(damageTakenFromBullet);
             }
         }
@@ -56,6 +59,13 @@ public class EnemyHealth : HealthBase
         {
             return;
         }
+        string text = "-" + damage;
+        Vector3 pos = new Vector3(transform.position.x + Random.Range(-0.5f, 0.5f), transform.position.y + Random.Range(-0.5f, 0.5f), 0.0f);
+        GameObject d = GameObject.Instantiate(damageIndicator, 
+                                              pos,
+                                              Quaternion.identity);
+        d.GetComponent<DamageIndicator>().SetText(text);
+
         //Debug.Log("hit for " + damage);
         CurrentHealth -= damage;
 
