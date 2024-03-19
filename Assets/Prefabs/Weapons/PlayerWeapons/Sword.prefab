@@ -116,8 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
-  damageToEnemy: 2
-  critChance: 0.5
+  critChance: 25
 --- !u!114 &-2219299530553652623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reticlePrefab: {fileID: 8572780044803757455, guid: 33593b4f5f3d5de4695c1936c2377a5d, type: 3}
+  InjectPlayer: 0
 --- !u!1 &2860121596719681031
 GameObject:
   m_ObjectHideFlags: 0

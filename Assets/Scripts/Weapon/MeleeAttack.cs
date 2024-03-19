@@ -7,31 +7,15 @@ public class MeleeAttack : MonoBehaviour
 {
 
     [SerializeField] private int damage;
-    [SerializeField] public int damageToEnemy;
 
-    [Range(0f, 1f)]
+    [Range(0f, 100f)]
     [SerializeField] public float critChance;
 
     private SkillMenu skillMenu;
-    private int prevDamage;
 
     private void Awake()
     {
-        damageToEnemy = 2;
-
         skillMenu = SkillMenu.skillMenu;
-        prevDamage = 0;
-
-        critChance = 5f;
-    }
-
-    private void LateUpdate()
-    {
-        if (prevDamage < skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseDamage])
-        {
-            damageToEnemy = damage + skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseDamage];
-            prevDamage = skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseDamage];
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -44,24 +28,15 @@ public class MeleeAttack : MonoBehaviour
         }
         else if (other.gameObject.layer == 9 /* player hit enemy */)
         {
+            int totalDamage = damage + skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage];
             if (Random.Range(0, 100) < critChance)
             {
-                damageToEnemy += damageToEnemy/2;
-
-                if (skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage] > 0)
-                {
-                    damageToEnemy += skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage];
-                }
-                
-                other.GetComponent<HealthBase>()?.TakeDamage(damageToEnemy);
-                damageToEnemy -= damageToEnemy/3;
-            } else {
-                if (skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage] > 0)
-                {
-                    damageToEnemy += skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage];
-                }
-
-                other.GetComponent<HealthBase>()?.TakeDamage(damageToEnemy);
+                totalDamage += totalDamage / 2; // crit damage
+                other.GetComponent<HealthBase>()?.TakeDamage(totalDamage);
+            }
+            else
+            {
+                other.GetComponent<HealthBase>()?.TakeDamage(totalDamage);
             }
 
             // cancel sword collider (can't double attack enemies)
@@ -73,7 +48,7 @@ public class MeleeAttack : MonoBehaviour
         // that we might not want inside of ComponentHealth
         else if (other.gameObject.layer != 7 /* player hit level component */)
         {
-            other.GetComponent<HealthBase>()?.TakeDamage(damage);
+            other.GetComponent<HealthBase>()?.TakeDamage(1);
         }
     }
 }

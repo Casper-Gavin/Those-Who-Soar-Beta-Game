@@ -43,6 +43,9 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.2
+### Version 1.2.15
+- Fix skill tree damage + critical hit chance (25%)
+
 ### Version 1.2.14
 - Add initial damage indicators
     - They are ugly, but functional
