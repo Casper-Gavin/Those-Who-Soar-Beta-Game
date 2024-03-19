@@ -8496,6 +8496,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7402460065934740943, guid: 494a2c652cda2ef45bdaf5af4653c92c, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 519420028}
+    - target: {fileID: 7402460065934740943, guid: 494a2c652cda2ef45bdaf5af4653c92c, type: 3}
+      propertyPath: blackMask
+      value: 
+      objectReference: {fileID: 578278233}
+    - target: {fileID: 7402460065934740943, guid: 494a2c652cda2ef45bdaf5af4653c92c, type: 3}
+      propertyPath: fieldOfView
+      value: 
+      objectReference: {fileID: 578278232}
+    - target: {fileID: 7402460065934740943, guid: 494a2c652cda2ef45bdaf5af4653c92c, type: 3}
+      propertyPath: characterTransform
+      value: 
+      objectReference: {fileID: 1503698328}
     - target: {fileID: 8619639253897119408, guid: 494a2c652cda2ef45bdaf5af4653c92c, type: 3}
       propertyPath: m_Name
       value: Torch
@@ -9634,7 +9650,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3217213857876884518, guid: b52277af0abb932489597e1a7980df0c, type: 3}
   m_PrefabInstance: {fileID: 578278229}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 578278232}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f63d117ccc6fa3c44928ae91f95587b3, type: 3}
@@ -9643,6 +9659,16 @@ MonoBehaviour:
 --- !u!1 &578278231 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2538939827139009817, guid: b52277af0abb932489597e1a7980df0c, type: 3}
+  m_PrefabInstance: {fileID: 578278229}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &578278232 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 71477098871637083, guid: b52277af0abb932489597e1a7980df0c, type: 3}
+  m_PrefabInstance: {fileID: 578278229}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &578278233 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5482128528882608478, guid: b52277af0abb932489597e1a7980df0c, type: 3}
   m_PrefabInstance: {fileID: 578278229}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &585360447

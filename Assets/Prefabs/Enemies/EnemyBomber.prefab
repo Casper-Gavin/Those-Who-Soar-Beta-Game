@@ -361,6 +361,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 6
+  audioManager: {fileID: 0}
+  characterDash: {fileID: 0}
 --- !u!114 &4585017240799912773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,6 +433,7 @@ MonoBehaviour:
   enemyHealthBarPrefab: {fileID: 1902742380146519168, guid: 406c2ac19145103419cbcb1b1676ec4f, type: 3}
   offset: {x: 0, y: 1, z: 0}
   damageTakenFromBullet: 1
+  damageIndicator: {fileID: 8943900089246078224, guid: ef5f3a2d35e9af54991cc386e65419cb, type: 3}
 --- !u!1 &7770707990892436187
 GameObject:
   m_ObjectHideFlags: 0
