@@ -16,7 +16,8 @@ public class CharacterFlip : CharacterAbilities {
 
     private void Awake()
     {
-        FacingRight = true;
+        //FacingRight = true;
+        FacingRight = transform.root.transform.localScale.x == 1;
     }
 
     protected override void HandleAbility() {

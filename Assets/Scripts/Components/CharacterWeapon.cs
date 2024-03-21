@@ -24,6 +24,7 @@ public class CharacterWeapon : CharacterAbilities
     protected override void Start()
     {
         base.Start();
+        weaponHolderPosition.localScale = new Vector3(transform.root.transform.localScale.x > 0 ? weaponHolderPosition.localScale.x : -weaponHolderPosition.localScale.x, weaponHolderPosition.localScale.y, weaponHolderPosition.localScale.z);
         if (weaponToUse)
         {
             EquipWeapon(weaponToUse, weaponHolderPosition);
