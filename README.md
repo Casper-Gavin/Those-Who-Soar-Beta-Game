@@ -42,6 +42,11 @@ AIVA's modification tools.
 Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
+## Version 1.3
+### Version 1.3.0
+- Created level three
+- Still needs unmoving projectile enemies to replace regular ones
+
 ## Version 1.2
 ### Version 1.2.15
 - Fix skill tree damage + critical hit chance (25%)

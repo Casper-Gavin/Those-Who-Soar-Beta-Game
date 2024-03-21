@@ -10,7 +10,10 @@ public class GameEvent : MonoBehaviour
     public enum EventType { // only BossFight is used - can put other events in (make sure to change in UIManager too)
         BossFightIntro,
         BossFightStart,
-        LevelClear
+        LevelClearOne,
+        LevelClearTwo,
+        LevelClearThree,
+        LevelClearFour
     }
 
     [SerializeField] private EventType eventType;

@@ -375,7 +375,7 @@ public class UIManager : Singleton<UIManager>
     public IEnumerator LevelClearThree() {
         levelClearImage.SetActive(true);
         yield return new WaitForSeconds(3);
-        SceneManager.LoadScene("LevelFourScene");
+        SceneManager.LoadScene("LevelOneScene"); // change to "LevelFourScene" when 4 is created
     }
 
     public IEnumerator LevelClearFour() {
@@ -405,8 +405,17 @@ public class UIManager : Singleton<UIManager>
             case GameEvent.EventType.BossFightStart:
                 BossFightStart();
                 break;
-            case GameEvent.EventType.LevelClear:
+            case GameEvent.EventType.LevelClearOne:
                 StartCoroutine(LevelClearOne());
+                break;
+            case GameEvent.EventType.LevelClearTwo:
+                StartCoroutine(LevelClearTwo());
+                break;
+            case GameEvent.EventType.LevelClearThree:
+                StartCoroutine(LevelClearThree());
+                break;
+            case GameEvent.EventType.LevelClearFour:
+                StartCoroutine(LevelClearFour());
                 break;
         }
     }

@@ -1026,7 +1026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54ba4c0f559a25d42b4ff1d8ab4cd4f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventType: 2
+  eventType: 3
   eventLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -43879,11 +43879,11 @@ PrefabInstance:
       objectReference: {fileID: 578278230}
     - target: {fileID: 9184277850046091617, guid: e68e80a2750728647b7920281eca5bbd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 9184277850046091617, guid: e68e80a2750728647b7920281eca5bbd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 26.7
       objectReference: {fileID: 0}
     - target: {fileID: 9184277850046091617, guid: e68e80a2750728647b7920281eca5bbd, type: 3}
       propertyPath: m_LocalPosition.z
