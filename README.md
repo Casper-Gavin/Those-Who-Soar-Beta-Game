@@ -43,6 +43,9 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.3
+### Version 1.3.2
+- Fixed traps colliding with bullets
+
 ### Version 1.3.1
 - Added camping projectile enemies to level 3
 - Added ability to flip direction of enemies on prefab placement (change x scale to -1, and it should fix enemy behavior and weapon)
