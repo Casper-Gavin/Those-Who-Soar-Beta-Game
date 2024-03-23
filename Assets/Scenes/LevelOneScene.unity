@@ -3438,6 +3438,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c145e395fd8f33443b4c6b841de0d84e, type: 3}
+--- !u!1 &219433038 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7106938087102622387, guid: c145e395fd8f33443b4c6b841de0d84e, type: 3}
+  m_PrefabInstance: {fileID: 219433037}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &220587005
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8501,6 +8506,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 519420028}
     - target: {fileID: 7402460065934740943, guid: 494a2c652cda2ef45bdaf5af4653c92c, type: 3}
+      propertyPath: vendor
+      value: 
+      objectReference: {fileID: 219433038}
+    - target: {fileID: 7402460065934740943, guid: 494a2c652cda2ef45bdaf5af4653c92c, type: 3}
       propertyPath: blackMask
       value: 
       objectReference: {fileID: 578278233}
@@ -8508,6 +8517,10 @@ PrefabInstance:
       propertyPath: fieldOfView
       value: 
       objectReference: {fileID: 578278232}
+    - target: {fileID: 7402460065934740943, guid: 494a2c652cda2ef45bdaf5af4653c92c, type: 3}
+      propertyPath: vendorPosition
+      value: 
+      objectReference: {fileID: 1321347390}
     - target: {fileID: 7402460065934740943, guid: 494a2c652cda2ef45bdaf5af4653c92c, type: 3}
       propertyPath: characterTransform
       value: 
@@ -37837,7 +37850,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8701005915891291525, guid: c145e395fd8f33443b4c6b841de0d84e, type: 3}
   m_PrefabInstance: {fileID: 219433037}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 219433038}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab8b89d00cb34e6428245fa3fc6b7d00, type: 3}

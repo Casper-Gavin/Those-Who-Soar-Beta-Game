@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class DialogueTrigger : MonoBehaviour {
     public Dialogue dialogue;
+    public bool isInDialogue;
 
     public void TriggerDialogue() {
         DialogueManager.Instance.StartDialogue(dialogue);
@@ -24,5 +25,17 @@ public class DialogueTrigger : MonoBehaviour {
 
     public void SetSentences(string[] sentences) {
         dialogue.sentences = sentences;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.CompareTag("Player")) {
+            isInDialogue = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other) {
+        if (other.CompareTag("Player")) {
+            isInDialogue = false;
+        }
     }
 }

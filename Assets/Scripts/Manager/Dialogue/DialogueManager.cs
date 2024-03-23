@@ -29,6 +29,9 @@ public class DialogueManager : Singleton<DialogueManager> {
     public bool dialogueIsDisplaying = false;
     private int currentImg = 0;
 
+    [SerializeField] private GameObject character;
+    [SerializeField] public GameObject[] dialogueCanvas;
+
     private void Start() {
         sentences = new Queue<string>();
 
@@ -47,11 +50,19 @@ public class DialogueManager : Singleton<DialogueManager> {
 
             StartDialogue(imgs[currentImg].GetComponent<DialogueTrigger>().dialogue);
         }
+
+        if (character == null) {
+            character = GameObject.Find("Player");
+        }
     }
 
     private void Update() {
         if (audioManager == null) {
             audioManager = FindObjectOfType<AudioManager>();
+        }
+
+        if (character == null) {
+            character = GameObject.Find("Player");
         }
 
         if (SceneManager.GetActiveScene().name == "LoreScene") {
@@ -68,7 +79,30 @@ public class DialogueManager : Singleton<DialogueManager> {
             if (currentImg == imgs.Length) {
                 SceneManager.LoadScene("LevelOneScene");
             }
-        }
+        } else if (SceneManager.GetActiveScene().name == "TutorialScene") {
+            if (!dialogueIsDisplaying) {
+                // if the character is in any of the dialogueCanvas's transform, then start the dialogue
+                for (int i = 0; i < dialogueCanvas.Length; i++) {
+                    if (dialogueCanvas[i].GetComponent<DialogueTrigger>().isInDialogue) {
+                        StartDialogue(dialogueCanvas[i].GetComponent<DialogueTrigger>().dialogue);
+                    }
+                }
+            } else if (Input.GetKeyDown(KeyCode.Q) && dialogueIsDisplaying) {
+                DisplayNextSentence();
+            } else if (dialogueIsDisplaying) {
+                int counter = 0;
+                for (int i = 0; i < dialogueCanvas.Length; i++) {
+                    if (!dialogueCanvas[i].GetComponent<DialogueTrigger>().isInDialogue) {
+                        counter++;
+                    }
+                }
+
+                if (counter == dialogueCanvas.Length) {
+                    EndDialogue();
+                    CloseDialogue();
+                }
+            }
+        } 
 
         SetContinueButton();
     }
@@ -184,6 +218,11 @@ public class DialogueManager : Singleton<DialogueManager> {
         sentences.Clear();
 
         SceneManager.LoadScene("LevelOneScene");
+    }
+
+    public void CloseDialogue() {
+        animator.SetBool("IsOpen", false); // Close the dialogue box
+        sentences.Clear();
     }
 
     private void HandleImages(int counter) {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CTorch : Singleton<CTorch> {
     [Header("Required Connections")]
@@ -26,12 +27,13 @@ public class CTorch : Singleton<CTorch> {
     [SerializeField] private float maxVol = 0.15f;
     [SerializeField] private float minVol = 0.015f;
 
-
-
     private float lastOffsetX;
     private float lastOffsetY;
 
     public bool torchHasSpawned;
+
+    public bool sceneIsSame;
+    public string currentScene;
 
     private readonly string TORCHKEY = "TORCH_KEY";
 
@@ -46,11 +48,14 @@ public class CTorch : Singleton<CTorch> {
         base.Awake();
 
         // THIS IS JUST FOR TESTING PURPOSES
-        PlayerPrefs.SetInt(TORCHKEY, 0); 
+        //PlayerPrefs.SetInt(TORCHKEY, 0); 
 
         if (audioManager == null) {
             audioManager = FindObjectOfType<AudioManager>();
         }
+
+        currentScene = SceneManager.GetActiveScene().name;
+        sceneIsSame = true;
     }
 
     private void Start() {
@@ -71,6 +76,17 @@ public class CTorch : Singleton<CTorch> {
         TorchRequirements();
     }
 
+    private void EarlyUpdate() {
+        audioManager = FindObjectOfType<AudioManager>();
+        fieldOfView = GameObject.Find("FieldOfView");
+        blackMask = GameObject.Find("Black");
+        characterTransform = GameObject.Find("Player").transform;
+        camera = GameObject.Find("Main Camera");
+        vendor = GameObject.Find("Vendor");
+        vendorScript = vendor.GetComponent<Vendor>();
+        vendorPosition = vendor.transform;
+    }
+
     private void Update() {
         TorchRequirements();
     }
@@ -87,13 +103,11 @@ public class CTorch : Singleton<CTorch> {
         if (blackMask == null) {
             blackMask = GameObject.Find("Black");
         } else {
-            if (fieldOfView != null) {
-                if (fieldOfView.GetComponent<FieldOfView>().shouldUpdatePulseParameters && torchHasSpawned) {
-                    alphaOscillationSpeed = fieldOfView.GetComponent<FieldOfView>().pulseSpeed * 0.2f;
-                    alphaOscillationMagnitude = fieldOfView.GetComponent<FieldOfView>().pulseMagnitude * 0.2f;
+            if (fieldOfView.GetComponent<FieldOfView>().shouldUpdatePulseParameters && torchHasSpawned) {
+                alphaOscillationSpeed = fieldOfView.GetComponent<FieldOfView>().pulseSpeed * 0.2f;
+                alphaOscillationMagnitude = fieldOfView.GetComponent<FieldOfView>().pulseMagnitude * 0.2f;
                 
-                    OscillateAlpha();
-                }
+                OscillateAlpha();
             }
         }
         if (characterTransform == null) {
@@ -107,6 +121,24 @@ public class CTorch : Singleton<CTorch> {
             if (vendor != null) {
                 vendorScript = vendor.GetComponent<Vendor>();
                 vendorPosition = vendor.transform;
+            }
+        }
+
+        if (!sceneIsSame) {
+            currentScene = SceneManager.GetActiveScene().name;
+            sceneIsSame = true;
+
+            audioManager = FindObjectOfType<AudioManager>();
+            fieldOfView = GameObject.Find("FieldOfView");
+            blackMask = GameObject.Find("Black");
+            characterTransform = GameObject.Find("Player").transform;
+            camera = GameObject.Find("Main Camera");
+            vendor = GameObject.Find("Vendor");
+            vendorScript = vendor.GetComponent<Vendor>();
+            vendorPosition = vendor.transform;
+
+            if (torchHasSpawned) {
+                PlayerPrefs.SetInt(TORCHKEY, 1);
             }
         }
 
@@ -162,6 +194,12 @@ public class CTorch : Singleton<CTorch> {
             transform.position = new Vector2(vendorPosition.position.x + spawnOffsetX, vendorPosition.position.y + spawnOffsetY);
 
             PlayerPrefs.SetInt(TORCHKEY, 0);
+        }
+    }
+
+    private void LateUpdate() {
+        if (currentScene != SceneManager.GetActiveScene().name) {
+            sceneIsSame = false;
         }
     }
 
