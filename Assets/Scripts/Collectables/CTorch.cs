@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class CTorch : Singleton<CTorch> {
     [Header("Required Connections")]
     [SerializeField] private GameObject blackMask;
-    [SerializeField] private GameObject fieldOfView;
+    [SerializeField] private FieldOfView fieldOfView;
     [SerializeField] private Transform characterTransform;
     [SerializeField] private GameObject camera;
     [SerializeField] private AudioManager audioManager;
@@ -78,7 +78,7 @@ public class CTorch : Singleton<CTorch> {
 
     private void EarlyUpdate() {
         audioManager = FindObjectOfType<AudioManager>();
-        fieldOfView = GameObject.Find("FieldOfView");
+        fieldOfView = FindObjectOfType<FieldOfView>();
         blackMask = GameObject.Find("Black");
         characterTransform = GameObject.Find("Player").transform;
         camera = GameObject.Find("Main Camera");
@@ -97,7 +97,7 @@ public class CTorch : Singleton<CTorch> {
         }
 
         if (fieldOfView == null) {
-            fieldOfView = GameObject.Find("FieldOfView");
+            fieldOfView = FindObjectOfType<FieldOfView>();
         }
 
         if (blackMask == null) {
@@ -129,7 +129,7 @@ public class CTorch : Singleton<CTorch> {
             sceneIsSame = true;
 
             audioManager = FindObjectOfType<AudioManager>();
-            fieldOfView = GameObject.Find("FieldOfView");
+            fieldOfView = FindObjectOfType<FieldOfView>();
             blackMask = GameObject.Find("Black");
             characterTransform = GameObject.Find("Player").transform;
             camera = GameObject.Find("Main Camera");

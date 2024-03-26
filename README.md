@@ -43,6 +43,10 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.3
+### Version 1.3.4
+- Fix torch transfer between levels and error spam
+- Fix enemy bomber weapon error spam
+
 ### Version 1.3.3
 - Unfinished fix to the torch
 - Changed the tutorial text boxes over to dialogue boxes
