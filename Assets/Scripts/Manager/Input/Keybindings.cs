@@ -10,6 +10,16 @@ public class Keybindings : ScriptableObject {
         public KeyCode keyCode;
     }
 
+    // default keybindings
+    public KeybindingCheck[] keyDefaults = {
+        new KeybindingCheck { keybindingActions = KeybindingActions.Dash, keyCode = KeyCode.Space },
+        new KeybindingCheck { keybindingActions = KeybindingActions.Sprint, keyCode = KeyCode.LeftShift },
+        new KeybindingCheck { keybindingActions = KeybindingActions.Pause, keyCode = KeyCode.Escape },
+        new KeybindingCheck { keybindingActions = KeybindingActions.SkillMenu, keyCode = KeyCode.T },
+        new KeybindingCheck { keybindingActions = KeybindingActions.Interact, keyCode = KeyCode.C },
+        new KeybindingCheck { keybindingActions = KeybindingActions.Reload, keyCode = KeyCode.R }
+    };
+
     public KeybindingCheck[] keybindings;
 
     // class to save the keybindings to PlayerPrefs
@@ -52,6 +62,10 @@ public class Keybindings : ScriptableObject {
     // in awake, load the keybindings
     private void Awake() {
         LoadKeybindings();
+
+        if (keybindings[0].keyCode == KeyCode.None) {
+            keybindings = keyDefaults;
+        }
     }
 
     // when the game is closed, save the keybindings
