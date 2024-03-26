@@ -7,6 +7,7 @@ public class CharacterDash : CharacterAbilities {
     [SerializeField] private float dashDistance = 5f;
     [SerializeField] private float dashDuration = 0.5f;
     [SerializeField ]private float dashCooldownTimer = 0.75f;
+    
 
     public bool isDashing;
     private float dashTimer;
@@ -35,7 +36,7 @@ public class CharacterDash : CharacterAbilities {
     }
 
     protected override void HandleInput() {
-        if (Input.GetKeyDown(KeyCode.Space) && !isDashing && dashCooldownTimer <= 0f) {
+        if (InputManager.instance.GetKeyDown(KeybindingActions.Dash) && !isDashing && dashCooldownTimer <= 0f) {
             Dash();
             dashCooldownTimer = 1f;
         }

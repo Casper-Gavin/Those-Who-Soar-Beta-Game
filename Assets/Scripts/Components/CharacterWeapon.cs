@@ -52,7 +52,7 @@ public class CharacterWeapon : CharacterAbilities
                 StopAttack();
             }
 
-            if (Input.GetKeyDown(KeyCode.R))
+            if (InputManager.instance.GetKeyDown(KeybindingActions.Reload))
             {
                 Reload();
             }

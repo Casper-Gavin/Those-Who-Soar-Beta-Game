@@ -23,11 +23,11 @@ public class CharacterRun : CharacterAbilities {
     }
 
     protected override void HandleInput() {
-        if (Input.GetKey(KeyCode.LeftShift)) {
+        if (InputManager.instance.GetKey(KeybindingActions.Sprint)) {
             Run();
         }
 
-        if (Input.GetKeyUp(KeyCode.LeftShift)) {
+        if (InputManager.instance.GetKeyUp(KeybindingActions.Sprint)) {
             StopRunning();
         }
     }

@@ -43,6 +43,11 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.3
+### Version 1.3.5
+- Added Input Manager
+    - Certain buttons now use the manager
+    - Can be set (through the ScriptableObject for now)
+
 ### Version 1.3.4
 - Fix torch transfer between levels and error spam
 - Fix enemy bomber weapon error spam

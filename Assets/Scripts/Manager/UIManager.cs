@@ -18,6 +18,10 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject skillTreeUI;
     public static bool SkillTreeIsOpen = false;
 
+    [Header("Control Menu")]
+    [SerializeField] private GameObject controlMenuUI;
+    public static bool ControlMenuIsOpen = false;
+
     [Header("Settings")]
     [SerializeField] private Image damageIndicator;
     [SerializeField] private Image healthIndicator;
@@ -50,6 +54,8 @@ public class UIManager : Singleton<UIManager>
     
     [Header("Level Clear")]
     [SerializeField] private GameObject levelClearImage; // EndLevelImage - in canvas
+
+    [SerializeField] public KeybindingActions keybindingActions;
 
 
     private float playerCurrentHealth;
@@ -105,8 +111,8 @@ public class UIManager : Singleton<UIManager>
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            if (!SkillTreeIsOpen) {
+        if (InputManager.instance.GetKeyDown(KeybindingActions.Pause)) {
+            if (!SkillTreeIsOpen && !ControlMenuIsOpen) {
                 if (GameIsPaused) {
                     Resume();
                 } else {
@@ -115,7 +121,7 @@ public class UIManager : Singleton<UIManager>
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.T)) {
+        if (InputManager.instance.GetKeyDown(KeybindingActions.SkillMenu)) {
             if (!GameIsPaused) {
                 if (SkillTreeIsOpen) {
                     SkillMenuClose();
@@ -322,6 +328,22 @@ public class UIManager : Singleton<UIManager>
         skillTreeUI.SetActive(false);
         Time.timeScale = 1f;
         SkillTreeIsOpen = false;
+        Cursor.visible = false;
+    }
+
+    public void ControlMenuOpen() {
+        controlMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+        ControlMenuIsOpen = true;
+        Cursor.visible = true;
+    }
+
+    public void ControlMenuClose() {
+        controlMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+        ControlMenuIsOpen = false;
         Cursor.visible = false;
     }
 

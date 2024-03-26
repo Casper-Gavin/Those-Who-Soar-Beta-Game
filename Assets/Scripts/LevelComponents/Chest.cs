@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Chest : MonoBehaviour
 {
+    [SerializeField] public KeybindingActions keybindingActions;
+    
     [Header("Reward Position")]
     [SerializeField] private float xRandomPosition = 2f;
     [SerializeField] private float yRandomPosition = 2f;
@@ -25,8 +27,7 @@ public class Chest : MonoBehaviour
     }
 
     private void Update() {
-
-        if (Input.GetKeyDown(KeyCode.C)) {
+        if (InputManager.instance.GetKeyDown(KeybindingActions.Interact)) {
             if (canReward) {
                 RewardPlayer();
 
