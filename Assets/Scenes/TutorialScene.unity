@@ -12849,6 +12849,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ExternalHolder
       objectReference: {fileID: 0}
+    - target: {fileID: 9013190664395335815, guid: b52277af0abb932489597e1a7980df0c, type: 3}
+      propertyPath: playableCharacter
+      value: 
+      objectReference: {fileID: 1503698331}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
