@@ -43,6 +43,9 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.3
+### Version 1.3.7
+- Begin ghost enemy implementation
+
 ### Version 1.3.6
 - Finished most of level 4 and level 5
 - Waiting for new enemies to finish level 4

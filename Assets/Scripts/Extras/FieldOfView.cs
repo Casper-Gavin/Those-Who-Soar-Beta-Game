@@ -20,7 +20,11 @@ public class FieldOfView : MonoBehaviour {
     public float pulseMagnitude = 0.5f;
     public bool shouldUpdatePulseParameters = true;
 
-
+    public float getViewDistance()
+    {
+        return viewDistance;
+    }
+    
     private void Awake() {
         character = GetComponent<Character>();
         characterBackup = GameObject.Find("Player");
