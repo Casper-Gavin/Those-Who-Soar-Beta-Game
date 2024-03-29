@@ -43,6 +43,11 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.3
+### Version 1.3.6
+- Finished most of level 4 and level 5
+- Waiting for new enemies to finish level 4
+- Still need to check if level 5's boss works
+
 ### Version 1.3.5
 - Added Input Manager
     - Certain buttons now use the manager
