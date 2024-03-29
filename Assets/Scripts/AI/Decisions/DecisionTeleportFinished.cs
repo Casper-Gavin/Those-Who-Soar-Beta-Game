@@ -5,6 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "AI/Decisions/TeleportFinished", fileName = "TeleportFinished")]
 public class DecisionTeleportFinished : AIDecision
 {
+    public override void Init(StateController controller)
+    {
+        // nothing
+    }
+
     public override bool Decide(StateController controller)
     {
         return TeleportFinished(controller);
@@ -12,8 +17,13 @@ public class DecisionTeleportFinished : AIDecision
 
     private bool TeleportFinished(StateController controller)
     {
-        if (controller.transform.GetChild(1).GetComponent<SpriteRenderer>().color.a == 1.0f) // if this doesnt work, add flag to teleporter component
+        if (controller.transform.GetComponentInChildren<Teleporter>().finished) 
         {
+            SpriteRenderer spriteRenderer = controller.transform.GetChild(0).GetComponent<SpriteRenderer>();
+            Color c = spriteRenderer.color;
+            c.a = 1.0f;
+            spriteRenderer.color = c;
+            controller.transform.GetComponentInChildren<Teleporter>().finished = false;
             return true;
         }
         return false;

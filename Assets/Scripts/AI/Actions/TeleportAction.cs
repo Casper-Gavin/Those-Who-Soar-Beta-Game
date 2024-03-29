@@ -12,7 +12,7 @@ public class TeleportAction : AIAction
 
     public override void Init(StateController controller)
     {
-        spriteRenderer = controller.transform.GetChild(1).GetComponent<SpriteRenderer>();
+        spriteRenderer = controller.transform.GetChild(0).GetComponent<SpriteRenderer>();
         timeAccumulator = 0.0f;
         teleporter = controller.transform.GetComponentInChildren<Teleporter>();
     }
@@ -65,10 +65,10 @@ public class TeleportAction : AIAction
             position.y = Random.Range(teleporter.pos1.y, teleporter.pos2.y);
             hit = Physics.CheckBox(position, new Vector3(0.5f * enemyCollider.size.x, 0.5f * enemyCollider.size.y, 0.0f));
         } while (hit || Vector3.Distance(position, player.transform.position) < fov.getViewDistance());
-
         controller.transform.position = position;
         Color c = spriteRenderer.color;
         c.a = 1.0f;
         spriteRenderer.color = c;
+        teleporter.finished = true;
     }
 }

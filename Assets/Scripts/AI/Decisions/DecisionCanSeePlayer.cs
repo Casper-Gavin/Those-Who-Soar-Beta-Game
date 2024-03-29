@@ -9,6 +9,11 @@ public class DecisionCanSeePlayer : AIDecision
     private float viewDistance;
     private float viewAngle;
 
+    public override void Init(StateController controller)
+    {
+        // nothing
+    }
+
     public override bool Decide(StateController controller)
     {
         bool seePlayer = CanSeePlayer(controller);

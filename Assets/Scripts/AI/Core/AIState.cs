@@ -16,6 +16,14 @@ public class AIState : ScriptableObject
         }
     }
 
+    public void InitTransitions(StateController controller)
+    {
+        foreach (AITransition transition in Transitions)
+        {
+            transition.Decision.Init(controller);    
+        }
+    }
+
     public void EvaluateState(StateController controller)
     {
         DoActions(controller);

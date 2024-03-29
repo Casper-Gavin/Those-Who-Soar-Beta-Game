@@ -7,7 +7,10 @@ public class DecisionDetectPlayer : AIDecision
     public LayerMask targetMask;
 
     private Collider2D targetCollider2D;
-
+    public override void Init(StateController controller)
+    {
+        // nothing
+    }
     public override bool Decide(StateController controller)
     {
         return CheckTarget(controller);   

@@ -41,6 +41,7 @@ public class StateController : MonoBehaviour
         PlayerHealth = Player?.GetComponent<PlayerHealth>();
         currentState = currentState.DeepCopy(); // make a copy
         currentState.InitActions(this);
+        currentState.InitTransitions(this);
 
         BossCirclePattern = GetComponent<BossCirclePattern>();
         BossRandomPattern = GetComponent<BossRandomPattern>();
@@ -60,6 +61,7 @@ public class StateController : MonoBehaviour
             currentState.DeepDelete(); // clean up old SO
             currentState = nextState.DeepCopy(); // make copy and reassign
             currentState.InitActions(this);
+            currentState.InitTransitions(this);
         }
     }
 

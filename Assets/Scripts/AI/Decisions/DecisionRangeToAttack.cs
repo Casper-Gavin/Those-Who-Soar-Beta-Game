@@ -7,6 +7,11 @@ public class DecisionRangeToAttack : AIDecision
 {
     public float minDistanceToAttack = 1.5f;
 
+    public override void Init(StateController controller)
+    {
+        // nothing
+    }
+
     public override bool Decide(StateController controller)
     {
         return PlayerInRangeToAttack(controller);

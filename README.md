@@ -45,6 +45,9 @@ Unity Version: 2022.3.9f1 (LTS)
 ## Version 1.3
 ### Version 1.3.7
 - Begin ghost enemy implementation
+- Note: Put ghost enemy in large empty space
+- Bug: enemy should flip with weapon
+- TODO: make invulnerable during teleport phase
 
 ### Version 1.3.6
 - Finished most of level 4 and level 5

@@ -5,7 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "AI/Decisions/ThreeSecondsElapsed", fileName = "ThreeSecondsElapsed")]
 public class DecisionThreeSecondsElapsed : AIDecision
 {
-    private float timePassed = 0.0f; // does this work? 0.0 every time?
+    private float timePassed = 0.0f;
+    public override void Init(StateController controller)
+    {
+        timePassed = 0.0f;
+    }
     public override bool Decide(StateController controller)
     {
         return ThreeSecondsElapsed(controller);

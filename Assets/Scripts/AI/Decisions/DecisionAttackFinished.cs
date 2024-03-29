@@ -5,6 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "AI/Decisions/AttackFinished", fileName = "AttackFinished")]
 public class DecisionAttackFinished : AIDecision
 {
+
+    public override void Init(StateController controller)
+    {
+        // nothing
+    }
     public override bool Decide(StateController controller)
     {
         return AttackCompleted(controller);
