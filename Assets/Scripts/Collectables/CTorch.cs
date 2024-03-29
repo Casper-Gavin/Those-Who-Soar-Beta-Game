@@ -153,11 +153,15 @@ public class CTorch : Singleton<CTorch> {
         }
 
         if (torchHasSpawned) {
-            if (audioManager != null) {
-                if (!audioManager.IsPlayingSFX("8BitFire")) {
+            if (audioManager != null && SceneManager.GetActiveScene().name != "MainMenu") {
+                if (SceneManager.GetActiveScene().name == "LoreScene"){
+                    audioManager.StopSFX("8BitFire");
+                } else if (!audioManager.IsPlayingSFX("8BitFire")) {
                     AdjustFireSoundVolume();
                     audioManager.PlaySFX("8BitFire");
                 }
+            } else if (SceneManager.GetActiveScene().name == "MainMenu") {
+                audioManager.StopSFX("8BitFire");
             }
 
             float horizontal = Input.GetAxis("Horizontal");

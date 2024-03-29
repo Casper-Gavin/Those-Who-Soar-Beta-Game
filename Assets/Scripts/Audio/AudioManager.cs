@@ -71,9 +71,15 @@ public class AudioManager : Singleton<AudioManager> {
         } else if (SceneManager.GetActiveScene().name == "MainMenu" && GetCurrentlyPlayingTag() != "MenuMusic") {
             StopAllMusic();
             Play("MainMenu");
+
             if (GetCurrentlyPlayingSFX() != "Wind") {
                 PlaySFX("Wind");
             }
+
+            if (GetCurrentlyPlayingSFX() == "8BitFire") {
+                StopSFX("8BitFire");
+            }
+
         } else if (SceneManager.GetActiveScene().name != "MainMenu" && GetCurrentlyPlayingTag() != "GameMusic" && (!bossDetect || !bossDetect.isInBossZone)) {
             StopAllMusic();
             StopSFX("Wind");

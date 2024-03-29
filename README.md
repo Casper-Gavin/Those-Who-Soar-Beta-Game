@@ -43,6 +43,12 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.3
+### Version 1.3.8
+- Finished up (maybe) input manager
+    - Input Manager is now avaliable in any scene (main menu or level)
+    - You can set any key to any other key as long as it isnt already being used by another key
+    - You can reset all keys to default
+
 ### Version 1.3.7
 - Begin ghost enemy implementation
 - Note: Put ghost enemy in large empty space

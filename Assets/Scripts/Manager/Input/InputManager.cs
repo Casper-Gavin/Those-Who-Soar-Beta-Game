@@ -133,4 +133,96 @@ public class InputManager : Singleton<InputManager> {
 
         //GetComponent<Image>().color = skillMenu.skillLevels[id] >= skillMenu.skillCaps[id] ? Color.yellow : skillMenu.skillPoints >= skillMenu.skillCosts[id] ? Color.green : Color.red;
     }
+
+    public void SetKeybindingToDefault() {
+        //Debug.Log("START setting keybindings to default");
+        // Create a new array for keybindings.keybindings
+        keybindings.keybindings = new Keybindings.KeybindingCheck[keybindings.keyDefaults.Length];
+
+        // Copy each default keybinding into the new keybindings list
+        for (int i = 0; i < keybindings.keyDefaults.Length; i++) {
+            keybindings.keybindings[i] = new Keybindings.KeybindingCheck() {
+                keybindingActions = keybindings.keyDefaults[i].keybindingActions,
+                keyCode = keybindings.keyDefaults[i].keyCode
+            };
+            //Debug.Log($"Keybinding {keybindings.keybindings[i].keybindingActions} reset to {keybindings.keybindings[i].keyCode}");
+        }
+
+        // Save the newly reset keybindings
+        keybindings.SaveKeybindings();
+
+        // Update the UI to reflect these changes
+        UpdateAllControlsUI();
+
+        //Debug.Log("END setting keybindings to default");
+    }
+
+    public void StartRebindingDash() {
+        //Debug.Log("Rebinding Dash");
+        StartCoroutine(WaitForKeyPress(KeybindingActions.Dash));
+    }
+
+    public void StartRebindingSprint() {
+        //Debug.Log("Rebinding Sprint");
+        StartCoroutine(WaitForKeyPress(KeybindingActions.Sprint));
+    }
+
+    public void StartRebindingPause() {
+        //Debug.Log("Rebinding Pause");
+        StartCoroutine(WaitForKeyPress(KeybindingActions.Pause));
+    }
+
+    public void StartRebindingSkillMenu() {
+        //Debug.Log("Rebinding Skill Menu");
+        StartCoroutine(WaitForKeyPress(KeybindingActions.SkillMenu));
+    }
+
+    public void StartRebindingInteract() {
+        //Debug.Log("Rebinding Interact");
+        StartCoroutine(WaitForKeyPress(KeybindingActions.Interact));
+    }
+
+    public void StartRebindingReload() {
+        //Debug.Log("Rebinding Reload");
+        StartCoroutine(WaitForKeyPress(KeybindingActions.Reload));
+    }
+
+    private IEnumerator WaitForKeyPress(KeybindingActions action) {
+        bool waitingForKey = true;
+
+        // wait for 0.1 seconds to prevent the key press from being detected twice
+        yield return new WaitForSeconds(0.2f);
+    
+        while (waitingForKey) {
+            foreach (KeyCode keyCode in System.Enum.GetValues(typeof(KeyCode))) {
+                if (Input.GetKeyDown(keyCode)) {
+                    if (Input.GetKeyDown(keyCode)) {
+                        bool isKeyAlreadyBound = false;
+                        
+                        foreach (Keybindings.KeybindingCheck keybinding in keybindings.keybindings) {
+                            if (keybinding.keybindingActions != action && keybinding.keyCode == keyCode) {
+                                isKeyAlreadyBound = true;
+                                break; // Key is already bound to another action
+                            }
+                        }
+
+                        if (!isKeyAlreadyBound) {
+                            SetKeyForAction(action, keyCode);
+                            keybindings.SaveKeybindings();
+                            UpdateAllControlsUI();
+                            waitingForKey = false;
+                        } else {
+                            // Handle key already bound scenario, e.g., show a message to the user
+                        }
+
+                        break; // Break the loop after handling key press
+                    }
+
+                    break; // Break the foreach loop
+                }
+            }
+
+            yield return null; // Wait for the next frame
+        }
+    }
 }
