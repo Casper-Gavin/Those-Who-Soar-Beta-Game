@@ -15,6 +15,14 @@ public class CharacterSkills : MonoBehaviour {
 
     [SerializeField] private GameObject skillTreeMenu;
 
+    private void Awake() {
+        LoadSkillLevels();
+    }
+
+    private void OnApplicationQuit() {
+        SaveSkillLevels();
+    }
+
     private void Start() {
         skillTreeMenu = GameObject.Find("SkillTreeMenu");
     }
@@ -30,6 +38,8 @@ public class CharacterSkills : MonoBehaviour {
     }
 
     public void UpdateAllUI() {
+        LoadSkillLevels();
+
         for (var i = 0; i < skillMenu.skillList.Count; i++) {
             skillMenu.skillList[i].UpdateUI(i);
         }
@@ -48,6 +58,20 @@ public class CharacterSkills : MonoBehaviour {
 
         SkillPointManager.Instance.RemoveSkillPointsTotal(skillMenu.skillCosts[id]);
 
+        SaveSkillLevels();
+
         skillMenu.UpdateAllSkillUI();
+    }
+
+    public void SaveSkillLevels() {
+        for (var i = 0; i < skillMenu.skillList.Count; i++) {
+            PlayerPrefs.SetInt($"SkillLevel_{i}", skillMenu.skillLevels[i]);
+        }
+    }
+
+    public void LoadSkillLevels() {
+        for (var i = 0; i < skillMenu.skillList.Count; i++) {
+            skillMenu.skillLevels[i] = PlayerPrefs.GetInt($"SkillLevel_{i}");
+        }
     }
 }

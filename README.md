@@ -43,6 +43,9 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.3
+### Version 1.3.9
+- Skill Levels for each skill now save through quitting
+
 ### Version 1.3.8
 - Finished up (maybe) input manager
     - Input Manager is now avaliable in any scene (main menu or level)
