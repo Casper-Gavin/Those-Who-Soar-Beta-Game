@@ -48,7 +48,7 @@ public class CTorch : Singleton<CTorch> {
         base.Awake();
 
         // THIS IS JUST FOR TESTING PURPOSES
-        //PlayerPrefs.SetInt(TORCHKEY, 0); 
+        PlayerPrefs.SetInt(TORCHKEY, 0); 
 
         if (audioManager == null) {
             audioManager = FindObjectOfType<AudioManager>();
