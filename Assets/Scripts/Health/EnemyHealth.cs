@@ -13,7 +13,7 @@ public class EnemyHealth : HealthBase
     protected Image healthBarImage;
     protected GameObject gameObjectHealthBar;
 
-    [SerializeField] private GameObject damageIndicator;
+    [SerializeField] protected GameObject damageIndicator;
     //protected SkillMenu skillMenu;
 
     protected override void Awake() // this used to be Start(), it is apparently very weird to use Start() with MonoBehavior inheritance
@@ -79,9 +79,9 @@ public class EnemyHealth : HealthBase
 
     protected override void UpdateHealth()
     {
-            if (healthBarImage != null) {
-                healthBarImage.fillAmount = Mathf.Lerp(healthBarImage.fillAmount, CurrentHealth / maxHealth, 10f * Time.deltaTime);
-            }
+        if (healthBarImage != null) {
+            healthBarImage.fillAmount = Mathf.Lerp(healthBarImage.fillAmount, CurrentHealth / maxHealth, 10f * Time.deltaTime);
+        }
     }
 
     protected override void Die()
