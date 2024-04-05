@@ -54,6 +54,7 @@ public class UIManager : Singleton<UIManager>
     
     [Header("Level Clear")]
     [SerializeField] private GameObject levelClearImage; // EndLevelImage - in canvas
+    [SerializeField] private GameObject gameClearImage; // only for final level
 
     [SerializeField] public KeybindingActions keybindingActions;
 
@@ -379,6 +380,7 @@ public class UIManager : Singleton<UIManager>
     public void OnBossDead() {
         StartCoroutine(MyLibrary.FadeCanvasGroup(bossHealthBarPanel.GetComponent<CanvasGroup>(), 1f, 0f, () => {
             bossHealthBarPanel.SetActive(false);
+            gameClearImage.SetActive(true);
         }));
     }
 

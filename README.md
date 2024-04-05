@@ -43,6 +43,12 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.3
+### Version 1.3.10
+- Added the two other guns in levels (bar in 1, special in 5)
+- Created Weapon Bar item
+- Finished Levels 4 and 5
+- Added basic game clear functionality (use OnBossDead event)
+
 ### Version 1.3.9
 - Skill Levels for each skill now save through quitting
 
