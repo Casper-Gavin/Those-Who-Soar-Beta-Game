@@ -32,12 +32,13 @@ public class MeleeAttack : MonoBehaviour
             if (Random.Range(0, 100) < critChance)
             {
                 totalDamage += totalDamage / 2; // crit damage
-                other.GetComponent<HealthBase>()?.TakeDamage(totalDamage);
+                other.GetComponent<EnemyHealth>()?.SpawnDamageIndicator(totalDamage, true);
             }
             else
             {
-                other.GetComponent<HealthBase>()?.TakeDamage(totalDamage);
+                other.GetComponent<EnemyHealth>()?.SpawnDamageIndicator(totalDamage, false);
             }
+            other.GetComponent<EnemyHealth>()?.TakeDamage(totalDamage);
 
             // cancel sword collider (can't double attack enemies)
             gameObject.GetComponent<MeleeWeapon>().StopAttack();

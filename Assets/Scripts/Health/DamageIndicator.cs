@@ -22,6 +22,16 @@ public class DamageIndicator : MonoBehaviour
         tmp.text = text;
     }
 
+    public Color GetColor()
+    {
+        return tmp.color;
+    }
+
+    public void SetColor(Color c)
+    {
+        tmp.color = c;
+    }
+
     public void SetDuration(float duration)
     {
         this.duration = duration;

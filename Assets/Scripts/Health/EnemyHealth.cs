@@ -44,13 +44,12 @@ public class EnemyHealth : HealthBase
     {
         if (other.CompareTag("Bullet"))
         {
+            int damage = damageTakenFromBullet;
             if (skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage] > 0) {
-                TakeDamage(damageTakenFromBullet + skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage]);
+                damage += skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage];
             }
-            else
-            {
-                TakeDamage(damageTakenFromBullet);
-            }
+            TakeDamage(damage);
+            SpawnDamageIndicator(damage);
         }
     }
 
@@ -59,12 +58,6 @@ public class EnemyHealth : HealthBase
         {
             return;
         }
-        string text = "-" + damage;
-        Vector3 pos = new Vector3(transform.position.x + Random.Range(-0.5f, 0.5f), transform.position.y + Random.Range(-0.5f, 0.5f), 0.0f);
-        GameObject d = GameObject.Instantiate(damageIndicator, 
-                                              pos,
-                                              Quaternion.identity);
-        d.GetComponent<DamageIndicator>().SetText(text);
 
         //Debug.Log("hit for " + damage);
         CurrentHealth -= damage;
@@ -90,5 +83,20 @@ public class EnemyHealth : HealthBase
 
         int randomRoll = Random.Range(10, 50);
         SkillPointManager.Instance.AddSkillPoints(randomRoll);
+    }
+
+    public void SpawnDamageIndicator(int damage, bool crit = false)
+    {
+        string text = "-" + damage;
+        Vector3 pos = new Vector3(transform.position.x + Random.Range(-0.5f, 0.5f), transform.position.y + Random.Range(-0.5f, 0.5f), 0.0f);
+        GameObject d = GameObject.Instantiate(damageIndicator, 
+                                              pos,
+                                              Quaternion.identity);
+        d.GetComponent<DamageIndicator>().SetText(text);
+        Color c = d.GetComponent<DamageIndicator>().GetColor();
+        float alpha = c.a;
+        c = crit ? Color.yellow : Color.red;
+        c.a = alpha;
+        d.GetComponent<DamageIndicator>().SetColor(c);
     }
 }
