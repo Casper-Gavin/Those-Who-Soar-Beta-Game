@@ -384,6 +384,12 @@ public class UIManager : Singleton<UIManager>
         }));
     }
 
+    public IEnumerator LevelClearTutorial() {
+        levelClearImage.SetActive(true);
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("MainMenu");
+    }
+
     public IEnumerator LevelClearOne() {
         levelClearImage.SetActive(true);
         yield return new WaitForSeconds(3);
@@ -428,6 +434,9 @@ public class UIManager : Singleton<UIManager>
                 break;
             case GameEvent.EventType.BossFightStart:
                 BossFightStart();
+                break;
+            case GameEvent.EventType.LevelClearTutorial:
+                StartCoroutine(LevelClearTutorial());
                 break;
             case GameEvent.EventType.LevelClearOne:
                 StartCoroutine(LevelClearOne());

@@ -42,6 +42,10 @@ AIVA's modification tools.
 Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
+### Version 1.4.0
+- Added level clear to tutorial
+- Fixed tutorial vendor canvas in shadows
+
 ## Version 1.3
 ### Version 1.3.13
 - Add special coloring to damage indicators for critical hits
