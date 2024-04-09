@@ -43,6 +43,9 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.3
+### Version 1.3.12
+- Add sprite for bulletproof enemy
+
 ### Version 1.3.11
 - Add bulletproof melee enemy
 - Add regenerating enemy
