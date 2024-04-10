@@ -42,6 +42,9 @@ AIVA's modification tools.
 Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
+### Version 1.4.1
+- Added a door to boss room so you can't leave
+
 ### Version 1.4.0
 - Added level clear to tutorial
 - Fixed tutorial vendor canvas in shadows

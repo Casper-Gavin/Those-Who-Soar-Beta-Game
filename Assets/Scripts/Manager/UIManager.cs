@@ -45,6 +45,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private Image bossHealthImage; // BossHealth
     [SerializeField] private GameObject bossHealthBarPanel; // HealthContainer
     [SerializeField] private GameObject bossIntroPanel; // BossIntro
+    [SerializeField] private GameObject bossDoor; // a door without a key
 
     [Header("Keys")]
     [SerializeField] private GameObject initialKeySpot;
@@ -372,6 +373,7 @@ public class UIManager : Singleton<UIManager>
     }
 
     private void BossFightStart() {
+        bossDoor.SetActive(true);
         StartCoroutine(MyLibrary.FadeCanvasGroup(bossIntroPanel.GetComponent<CanvasGroup>(), 0.5f, 0f, () => {
             bossIntroPanel.SetActive(false);
         }));
