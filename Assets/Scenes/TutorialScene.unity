@@ -12589,7 +12589,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 232601427}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DialogueCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28627,7 +28627,7 @@ GameObject:
   - component: {fileID: 470169012}
   - component: {fileID: 470169014}
   - component: {fileID: 470169013}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Dialogue1 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29032,7 +29032,7 @@ GameObject:
   - component: {fileID: 577571203}
   - component: {fileID: 577571205}
   - component: {fileID: 577571204}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Dialogue1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30334,7 +30334,7 @@ GameObject:
   - component: {fileID: 987143421}
   - component: {fileID: 987143423}
   - component: {fileID: 987143422}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Dialogue1 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31697,7 +31697,7 @@ GameObject:
   - component: {fileID: 1296478692}
   - component: {fileID: 1296478694}
   - component: {fileID: 1296478693}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Dialogue1 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31997,7 +31997,7 @@ GameObject:
   - component: {fileID: 1471677359}
   - component: {fileID: 1471677361}
   - component: {fileID: 1471677360}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Dialogue1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32119,7 +32119,7 @@ Transform:
   m_GameObject: {fileID: 1503698326}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 204.3, y: 1.9, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -32367,7 +32367,7 @@ GameObject:
   - component: {fileID: 1515982387}
   - component: {fileID: 1515982389}
   - component: {fileID: 1515982388}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Dialogue1 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33181,7 +33181,7 @@ GameObject:
   - component: {fileID: 1724605017}
   - component: {fileID: 1724605019}
   - component: {fileID: 1724605018}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Dialogue1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33341,7 +33341,7 @@ GameObject:
   - component: {fileID: 1793321068}
   - component: {fileID: 1793321070}
   - component: {fileID: 1793321069}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Dialogue1 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33682,7 +33682,7 @@ GameObject:
   - component: {fileID: 1841958351}
   - component: {fileID: 1841958353}
   - component: {fileID: 1841958352}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Dialogue1 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34708,7 +34708,7 @@ GameObject:
   - component: {fileID: 2138493562}
   - component: {fileID: 2138493564}
   - component: {fileID: 2138493563}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Dialogue1 (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
