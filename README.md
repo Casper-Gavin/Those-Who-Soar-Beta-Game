@@ -42,6 +42,10 @@ AIVA's modification tools.
 Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
+### Version 1.4.3
+- Added Level Select menu to main menu
+- Fixed Reset to Defaul button for Controls Menu
+
 ### Version 1.4.2
 - Fixed tutorial bullet bug
 
