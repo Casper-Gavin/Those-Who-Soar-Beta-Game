@@ -42,6 +42,11 @@ AIVA's modification tools.
 Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
+## Version 1.4
+### Version 1.4.4
+- Fixed boss door with no key bug
+- Fixed vendor canvas in level one
+
 ### Version 1.4.3
 - Added Level Select menu to main menu
 - Fixed Reset to Defaul button for Controls Menu
