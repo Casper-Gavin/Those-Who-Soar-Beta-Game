@@ -108,7 +108,10 @@ public class PlayerHealth : HealthBase
             return;
         }
 
-        UIManager.Instance.FlashDamageEffect();
+        if (!UIManager.Instance.isStart) {
+            UIManager.Instance.FlashDamageEffect();
+        }
+        
         if (!shieldBroken)
         {
             CurrentShield -= damage;
@@ -219,7 +222,11 @@ public class PlayerHealth : HealthBase
     public override void GainHealth(int amount)
     {
         CurrentHealth = Mathf.Min(CurrentHealth + amount, maxHealthPlayer);
-        UIManager.Instance.FlashHealthEffect();
+
+        if (!UIManager.Instance.isStart) {
+            UIManager.Instance.FlashHealthEffect();
+        }
+        
         UpdateHealth();
 
         if (audioManager != null) {
@@ -233,7 +240,11 @@ public class PlayerHealth : HealthBase
             maxHealthPlayer *= amount;
             CurrentHealth = maxHealthPlayer;
             UpdateHealth();
-            UIManager.Instance.FlashHealthEffect(); // Might want to disable this b/c it might just flash even though the health UI isnt visible
+
+            if (!UIManager.Instance.isStart) {
+                UIManager.Instance.FlashHealthEffect(); // Might want to disable this b/c it might just flash even though the health UI isnt visible
+            }
+            
             lastCheckHealth ++;
 
             if (audioManager != null) {
@@ -245,7 +256,11 @@ public class PlayerHealth : HealthBase
     public void GainShield(int amount)
     {
         CurrentShield = Mathf.Min(CurrentShield + amount, maxShield);
-        UIManager.Instance.FlashShieldEffect();
+
+        if (!UIManager.Instance.isStart) {
+            UIManager.Instance.FlashShieldEffect();
+        }
+        
         UpdateHealth();
         if (CurrentShield > 0 && shieldBroken)
         {
@@ -263,7 +278,11 @@ public class PlayerHealth : HealthBase
             maxShield *= amount;
             CurrentShield = maxShield;
             UpdateHealth();
-            UIManager.Instance.FlashShieldEffect();
+
+            if (!UIManager.Instance.isStart) {
+                UIManager.Instance.FlashShieldEffect();
+            }
+            
             lastCheckShield ++;
 
             if (audioManager != null) {

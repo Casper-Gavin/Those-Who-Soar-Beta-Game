@@ -18,6 +18,10 @@ public class MeleeAttack : MonoBehaviour
         skillMenu = SkillMenu.skillMenu;
     }
 
+    private void Update() {
+        skillMenu = SkillMenu.skillMenu;
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (gameObject.layer == 9 /* enemy hit player*/)

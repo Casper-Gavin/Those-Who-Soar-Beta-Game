@@ -82,8 +82,12 @@ public class UIManager : Singleton<UIManager>
     private List<Key> keys;
     private List<GameObject> keyImages;
 
+    public bool isStart = true;
+
     private void Start()
     {
+        isStart = true;
+
         Color c = damageIndicator.color;
         c.a = 0;
         damageIndicator.color = c;
@@ -135,6 +139,11 @@ public class UIManager : Singleton<UIManager>
         }
 
         InternalUpdate();
+
+        // if it has been 2 seconds since the game started, then we can change the bool
+        if (isStart && Time.timeSinceLevelLoad > 2) {
+            isStart = false;
+        }
     }
 
     public void FlashDamageEffect()

@@ -999,6 +999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f43210ae25cea0a49b41e8a70a2275b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillPointUI: {fileID: 1224676130229337780}
 --- !u!1 &459363719276029874
 GameObject:
   m_ObjectHideFlags: 0
@@ -10629,6 +10630,8 @@ MonoBehaviour:
   bossHealthImage: {fileID: 6295078394781742600}
   bossHealthBarPanel: {fileID: 7622407032186501337}
   bossIntroPanel: {fileID: 2109191020235453221}
+  bossDoor: {fileID: 0}
+  bossKey: {fileID: 0}
   initialKeySpot: {fileID: 6135635096626143562}
   expandHorizontal: 1
   keySpacer: 48

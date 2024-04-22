@@ -9,9 +9,13 @@ public class SkillPointManager : Singleton<SkillPointManager> {
     private readonly string SKILLPOINTS_KEY = "MyGame_MySkillPoints_DontCheat";
     private readonly string SKILLPOINTSTOTAL_KEY = "MyGame_MySkillPointsTotal_DontCheat";
 
+    [SerializeField] private GameObject skillPointUI;
+
     private void Start() {
+        skillPointUI.SetActive(true);
         LoadSkillPoints();
         LoadSkillPointsTotal();
+        skillPointUI.SetActive(false);
     }
 
     private void OnApplicationQuit() {
