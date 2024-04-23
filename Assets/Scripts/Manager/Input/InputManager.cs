@@ -199,6 +199,13 @@ public class InputManager : Singleton<InputManager> {
                     if (Input.GetKeyDown(keyCode)) {
                         bool isKeyAlreadyBound = false;
                         
+                        // blacklisted keys (reserved for core movement or core functions)
+                        if (keyCode == KeyCode.W || keyCode == KeyCode.A || keyCode == KeyCode.S || keyCode == KeyCode.D || keyCode == KeyCode.Mouse0 || keyCode == KeyCode.Alpha1 || keyCode == KeyCode.Alpha2)
+                        {
+                            isKeyAlreadyBound = true; // don't even really need this line since we break immediately
+                            break;
+                        }
+
                         foreach (Keybindings.KeybindingCheck keybinding in keybindings.keybindings) {
                             if (keybinding.keybindingActions != action && keybinding.keyCode == keyCode) {
                                 isKeyAlreadyBound = true;

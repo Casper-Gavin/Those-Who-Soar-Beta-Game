@@ -43,6 +43,12 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.4
+### Version 1.4.7
+- Cleanup walls on tutorial scene
+- Add items to the vendor area
+- Extend black area to cover entire tutorial
+- Tutorial is finished?
+
 ### Version 1.4.6
 - Added bullet proof enemies to levels 2, 4, and 5
 
