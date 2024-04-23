@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7371390695014329295}
   m_Layer: 14
   m_Name: Desert_Projectile
-  m_TagString: Bullet
+  m_TagString: DeagleBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -192,6 +192,7 @@ MonoBehaviour:
     m_Bits: 704
   lifeTime: 2
   impactPS: {fileID: 4029167210124178775}
+  audioManager: {fileID: 0}
 --- !u!1001 &7759248471082052925
 PrefabInstance:
   m_ObjectHideFlags: 0

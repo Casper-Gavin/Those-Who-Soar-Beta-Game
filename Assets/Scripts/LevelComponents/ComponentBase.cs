@@ -33,7 +33,7 @@ public class ComponentBase : MonoBehaviour
 
     // using health for non-player object
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("Bullet") || other.CompareTag("PlayerSword"))
+        if (other.CompareTag("DeagleBullet") || other.CompareTag("Bullet") || other.CompareTag("PlayerSword"))
         {
             TakeDamage(other.transform.position.x > transform.position.x);
 

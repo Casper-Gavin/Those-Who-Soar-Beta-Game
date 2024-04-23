@@ -45,7 +45,16 @@ public class EnemyHealth : HealthBase
         if (other.CompareTag("Bullet"))
         {
             int damage = damageTakenFromBullet;
-            if (skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage] > 0) {
+            if (damage != 0 && skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage] > 0) {
+                damage += skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage];
+            }
+            TakeDamage(damage);
+            SpawnDamageIndicator(damage);
+        }
+        else if (other.CompareTag("DeagleBullet"))
+        {
+            int damage = damageTakenFromBullet * 2;
+            if (damage != 0 && skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage] > 0) {
                 damage += skillMenu.skillLevels[(int)SkillEnum.IncreaseDamage];
             }
             TakeDamage(damage);

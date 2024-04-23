@@ -43,6 +43,11 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.4
+### Version 1.4.10
+- Fixed a bug where you could not shoot in the boss area on level 5
+- Make deagle bullets do more damage (2x normal bullets)
+- Fixed a bug where bullets dealt damage to bulletproof enemies due to the skill tree
+
 ### Version 1.4.9
 - Fixed Level Select crash bug
 - Fixed unintended effect of player skipping dialogue and being able to dash in the tutorial (advance sentence has been changed from Space to Enter)
