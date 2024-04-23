@@ -7,14 +7,14 @@ public class PlayerHealth : HealthBase
     [SerializeField] private FieldOfView fieldOfView;
 
     [Header("Shield")]
-    [SerializeField] private float initialShield = 5f;
+    //[SerializeField] private float initialShield = 5f;
     [SerializeField] protected float maxShield = 5f;
     [SerializeField] protected float delayAfterDmgToBeginShieldRegen = 1.0f; // seconds
     [SerializeField] protected float shieldRegenRate = 0.25f; // shield / second
 
     [Header("Health")]
-    [SerializeField] private float initialHealthPlayer = 10f;
-    [SerializeField] protected float maxHealthPlayer = 10f;
+    //[SerializeField] private float initialHealthPlayer = 10f;
+    //[SerializeField] protected float maxHealthPlayer = 10f;
     
     private float timeToStartRegen = 0.0f;
     private bool needRegen = false;
@@ -51,8 +51,8 @@ public class PlayerHealth : HealthBase
         characterFlip = GetComponent<CharacterFlip>();
         characterDash = GetComponent<CharacterDash>();
         characterMovement = GetComponent<CharacterMovement>();
-        CurrentHealth = initialHealthPlayer;
-        CurrentShield = initialShield;
+        CurrentHealth = maxHealth;
+        CurrentShield = maxShield;
         isDead = false;
         UpdateHealth();
 
@@ -74,11 +74,11 @@ public class PlayerHealth : HealthBase
 
         if (skillMenu != null) {
             if (skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseHealth] > lastCheckHealth) {
-                GainMaxHealth(1);
+                GainMaxHealth(2);
             }
 
             if (skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseShield] > lastCheckShield) {
-                GainMaxShield(2);
+                GainMaxShield(1);
             }
         } else {
             skillMenu = SkillMenu.skillMenu;
@@ -153,6 +153,7 @@ public class PlayerHealth : HealthBase
         characterDash.enabled = false;
         characterMovement.SetHorizontal(0.0f);
         characterMovement.SetVertical(0.0f);
+        characterMovement.enabled = false;
         if (audioManager.IsPlayingSFX("Walk"))
         {
             audioManager.StopSFX("Walk");
@@ -211,8 +212,8 @@ public class PlayerHealth : HealthBase
         }
 
         gameObject.SetActive(true);
-        CurrentHealth = initialHealth;
-        CurrentShield = initialShield;
+        CurrentHealth = maxHealth;
+        CurrentShield = maxShield;
         shieldBroken = false;
 
         UpdateHealth();
@@ -221,7 +222,7 @@ public class PlayerHealth : HealthBase
 
     public override void GainHealth(int amount)
     {
-        CurrentHealth = Mathf.Min(CurrentHealth + amount, maxHealthPlayer);
+        CurrentHealth = Mathf.Min(CurrentHealth + amount, maxHealth);
 
         if (!UIManager.Instance.isStart) {
             UIManager.Instance.FlashHealthEffect();
@@ -237,8 +238,8 @@ public class PlayerHealth : HealthBase
     public void GainMaxHealth(int amount)
     {
         if (skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseHealth] > lastCheckHealth) {
-            maxHealthPlayer *= amount;
-            CurrentHealth = maxHealthPlayer;
+            maxHealth += amount;
+            CurrentHealth = maxHealth;
             UpdateHealth();
 
             if (!UIManager.Instance.isStart) {
@@ -275,7 +276,7 @@ public class PlayerHealth : HealthBase
     public void GainMaxShield(int amount)
     {
         if (skillMenu.skillLevels[(int)SkillMenu.SkillEnum.IncreaseShield] > lastCheckShield) {
-            maxShield *= amount;
+            maxShield += amount;
             CurrentShield = maxShield;
             UpdateHealth();
 
@@ -293,12 +294,12 @@ public class PlayerHealth : HealthBase
 
     protected override void UpdateHealth()
     {
-        UIManager.Instance.UpdateHealth(CurrentHealth, maxHealthPlayer, CurrentShield, maxShield);
+        UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield);
     }
 
     public bool IsFullHealth(string healthType ) {
         if (healthType.Equals("health")) {
-            if (maxHealthPlayer == CurrentHealth) {
+            if (maxHealth == CurrentHealth) {
                 return true;
             }
         }
