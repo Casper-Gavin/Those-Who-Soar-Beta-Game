@@ -47,6 +47,7 @@ Unity Version: 2022.3.9f1 (LTS)
 - Cleanup walls on tutorial scene
 - Add items to the vendor area
 - Extend black area to cover entire tutorial
+- Blacklist W,A,S,D,Mouse0,1,2 from key bindings
 - Tutorial is finished?
 
 ### Version 1.4.6
