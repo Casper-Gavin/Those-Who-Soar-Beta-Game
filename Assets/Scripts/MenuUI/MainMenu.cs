@@ -19,6 +19,16 @@ public class MainMenu : MonoBehaviour
         Cursor.visible = cursorVisibilityToRestore;
     }
 
+    public void SetCursorVisible()
+    {
+        Cursor.visible = true;
+    }
+
+    public void SetCursorInvisible()
+    {
+        Cursor.visible = false;
+    }
+
     // if you want to be able to go to a scene from main menu, you need to make sure it's in the build
     // in Unity (on the scene you want to add), file -> build settings -> add open scenes
 
