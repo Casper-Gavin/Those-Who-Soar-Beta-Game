@@ -43,6 +43,10 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.4
+### Version 1.4.9
+- Fixed Level Select crash bug
+- Fixed unintended effect of player skipping dialogue and being able to dash in the tutorial (advance sentence has been changed from Space to Enter)
+
 ### Version 1.4.8
 - Fixed a bug where the torch would cause crashes on the main menu
 - Probably fixed a bug where the game would not start (on clicking play) due to skillMenu not being initialized early enough

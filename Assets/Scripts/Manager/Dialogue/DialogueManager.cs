@@ -66,7 +66,8 @@ public class DialogueManager : Singleton<DialogueManager> {
         }
 
         if (SceneManager.GetActiveScene().name == "LoreScene") {
-            if (Input.GetKeyDown(KeyCode.Space) && !dialogueIsDisplaying) {
+            // Return is the same as Enter
+            if (Input.GetKeyDown(KeyCode.Return) && !dialogueIsDisplaying) {
                 currentImg++;
                 StartDialogue(imgs[currentImg].GetComponent<DialogueTrigger>().dialogue);
                 HandleImages(currentImg);
