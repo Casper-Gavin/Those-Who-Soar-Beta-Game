@@ -16,7 +16,7 @@ public class CharacterSkills : MonoBehaviour {
     [SerializeField] private GameObject skillTreeMenu;
 
     private void Awake() {
-        LoadSkillLevels();
+        StartCoroutine(LoadSkillLevelsInitial());
     }
 
     private void OnApplicationQuit() {
@@ -69,7 +69,14 @@ public class CharacterSkills : MonoBehaviour {
         }
     }
 
-    public void LoadSkillLevels() {
+    public IEnumerator LoadSkillLevelsInitial()
+    {
+        yield return null; // wait for next frame, skillMenu may not be initialized yet
+        LoadSkillLevels();
+    }
+
+    public void LoadSkillLevels()
+    {
         for (var i = 0; i < skillMenu.skillList.Count; i++) {
             skillMenu.skillLevels[i] = PlayerPrefs.GetInt($"SkillLevel_{i}");
         }

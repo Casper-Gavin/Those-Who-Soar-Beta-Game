@@ -92,6 +92,11 @@ public class CTorch : Singleton<CTorch> {
     }
 
     private void TorchRequirements() {
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            // NO TORCH LOGIC ON MAIN MENU
+            return;
+        }
         if (audioManager == null) {
             audioManager = FindObjectOfType<AudioManager>();
         }

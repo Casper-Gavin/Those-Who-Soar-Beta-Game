@@ -31,7 +31,7 @@ public class ProjectileWeapon : WeaponBase
 
     protected override void Awake()
     {
-        attackCooldown = 0.5f;
+        //attackCooldown = 0.5f;
 
         base.Awake();
         Pooler = GetComponent<ObjectPooler>();

@@ -6,7 +6,7 @@ using UnityEngine;
 public class SkillMenu : MonoBehaviour {
     public static SkillMenu skillMenu;
 
-    private void Awake() => skillMenu = this; // Singleton
+    //private void Awake() => skillMenu = this; // Singleton
 
     public int[] skillLevels = new int[5];
     public int[] skillCosts;
@@ -29,7 +29,8 @@ public class SkillMenu : MonoBehaviour {
 
     public int skillPoints;
 
-    private void Start() {
+    private void Awake() {
+        skillMenu = this;
         skillPoints = SkillPointManager.Instance.SkillPointsTotal;
 
         //staticskillLevels = new int[5];

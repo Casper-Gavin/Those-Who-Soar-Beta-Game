@@ -43,6 +43,11 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.4
+### Version 1.4.8
+- Fixed a bug where the torch would cause crashes on the main menu
+- Probably fixed a bug where the game would not start (on clicking play) due to skillMenu not being initialized early enough
+- Increased fire rate for the BAR weapon, and increased item size on the ground
+
 ### Version 1.4.7
 - Cleanup walls on tutorial scene
 - Add items to the vendor area

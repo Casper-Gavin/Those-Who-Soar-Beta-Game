@@ -63,6 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reticlePrefab: {fileID: 8572780044803757455, guid: 33593b4f5f3d5de4695c1936c2377a5d, type: 3}
+  InjectPlayer: 0
 --- !u!114 &3425733555376981645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Special
-  attackCooldown: 0.15
+  attackCooldown: 0.5
   weaponUISprite: {fileID: 0}
   projectileSpawnPosition: {x: 1.55, y: 0.11, z: 0}
   projectileSpread: {x: 0, y: 0, z: 5}
@@ -120,6 +121,7 @@ MonoBehaviour:
   magazineSize: 30
   reloadAutomatically: 1
   muzzlePS: {fileID: 6648466872139044970, guid: 883841be30f5d984e8e47af34eebbee1, type: 3}
+  audioManager: {fileID: 0}
 --- !u!1 &3888321724954760950
 GameObject:
   m_ObjectHideFlags: 0
