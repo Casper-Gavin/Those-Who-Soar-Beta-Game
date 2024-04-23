@@ -12,6 +12,9 @@ public class CoinManager : Singleton<CoinManager> {
     }
 
     private void Update() {
+        if (!GameManager.Instance.PLAYER_PREF_KEYS.Contains(COINS_KEY)) {
+            GameManager.Instance.PLAYER_PREF_KEYS.Add(COINS_KEY);
+        }
     }
 
     private void LoadCoins() {

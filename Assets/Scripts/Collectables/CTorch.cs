@@ -50,6 +50,10 @@ public class CTorch : Singleton<CTorch> {
         // THIS IS JUST FOR TESTING PURPOSES
         PlayerPrefs.SetInt(TORCHKEY, 0); 
 
+        if (!GameManager.Instance.PLAYER_PREF_KEYS.Contains(TORCHKEY)) {
+            GameManager.Instance.PLAYER_PREF_KEYS.Add(TORCHKEY);
+        }
+
         if (audioManager == null) {
             audioManager = FindObjectOfType<AudioManager>();
         }
@@ -77,6 +81,10 @@ public class CTorch : Singleton<CTorch> {
     }
 
     private void EarlyUpdate() {
+        if (!GameManager.Instance.PLAYER_PREF_KEYS.Contains(TORCHKEY)) {
+            GameManager.Instance.PLAYER_PREF_KEYS.Add(TORCHKEY);
+        }
+
         audioManager = FindObjectOfType<AudioManager>();
         fieldOfView = FindObjectOfType<FieldOfView>();
         blackMask = GameObject.Find("Black");
@@ -197,10 +205,11 @@ public class CTorch : Singleton<CTorch> {
             }
         } else {
             vendor = GameObject.Find("Vendor");
-            vendorScript = vendor.GetComponent<Vendor>();
-            vendorPosition = GameObject.Find("Vendor").transform;
-
-            transform.position = new Vector2(vendorPosition.position.x + spawnOffsetX, vendorPosition.position.y + spawnOffsetY);
+            if (vendor != null) {
+                vendorScript = vendor.GetComponent<Vendor>();
+                vendorPosition = GameObject.Find("Vendor").transform;
+                transform.position = new Vector2(vendorPosition.position.x + spawnOffsetX, vendorPosition.position.y + spawnOffsetY);
+            }
 
             PlayerPrefs.SetInt(TORCHKEY, 0);
         }

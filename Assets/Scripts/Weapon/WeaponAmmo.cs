@@ -49,9 +49,17 @@ public class WeaponAmmo : MonoBehaviour
 
     public void SaveAmmo() {
         PlayerPrefs.SetInt(WEAPON_AMMO_SAVELOAD + weapon.WeaponName, weapon.CurrentAmmo);
+
+        if (!GameManager.Instance.PLAYER_PREF_KEYS.Contains(WEAPON_AMMO_SAVELOAD + weapon.WeaponName)) {
+            GameManager.Instance.PLAYER_PREF_KEYS.Add(WEAPON_AMMO_SAVELOAD + weapon.WeaponName);
+        }
     }
 
     public int LoadAmmo() {
+        if (!GameManager.Instance.PLAYER_PREF_KEYS.Contains(WEAPON_AMMO_SAVELOAD + weapon.WeaponName)) {
+            GameManager.Instance.PLAYER_PREF_KEYS.Add(WEAPON_AMMO_SAVELOAD + weapon.WeaponName);
+        }
+        
         // returns the saved ammo or the magazine size if the 1st argument (the string) is null
         return PlayerPrefs.GetInt(WEAPON_AMMO_SAVELOAD + weapon.WeaponName, weapon.MagazineSize);
     }

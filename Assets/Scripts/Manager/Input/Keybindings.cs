@@ -26,6 +26,18 @@ public class Keybindings : ScriptableObject {
     public void SaveKeybindings() {
         foreach (KeybindingCheck keybinding in keybindings) {
             PlayerPrefs.SetInt(keybinding.keybindingActions.ToString(), (int)keybinding.keyCode);
+        
+            if (!GameManager.Instance.PLAYER_PREF_KEYS.Contains(keybinding.keybindingActions.ToString())) {
+                GameManager.Instance.PLAYER_PREF_KEYS.Add(keybinding.keybindingActions.ToString());
+            }
+        }
+
+        foreach (KeybindingCheck keybinddef in keyDefaults) {
+            PlayerPrefs.SetInt(keybinddef.keybindingActions.ToString(), (int)keybinddef.keyCode);
+
+            if (!GameManager.Instance.PLAYER_PREF_KEYS_UNCHANGEABLE.Contains(keybinddef.keybindingActions.ToString())) {
+                GameManager.Instance.PLAYER_PREF_KEYS_UNCHANGEABLE.Add(keybinddef.keybindingActions.ToString());
+            }
         }
     }
 

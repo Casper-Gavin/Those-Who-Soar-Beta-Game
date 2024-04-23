@@ -36,6 +36,17 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("TestScene"); 
     }
 
+    public void Play() {
+        // if the CurrentScene is set in the GameManager, load that scene
+        if (GameManager.Instance.CURRENT_SCENE != "" && GameManager.Instance.CURRENT_SCENE != null) {
+            PlayerPrefs.SetString("CURRENT_SCENE", GameManager.Instance.CURRENT_SCENE);
+            SceneManager.LoadScene(PlayerPrefs.GetString("CURRENT_SCENE"));
+        } else {
+            PlayerPrefs.SetString("CURRENT_SCENE", PlayerPrefs.GetString("DEFAULT_SCENE"));
+            SceneManager.LoadScene(PlayerPrefs.GetString("DEFAULT_SCENE"));
+        }
+    }
+
     public void PlayLoreScene() {
         SceneManager.LoadScene("LoreScene"); 
     }

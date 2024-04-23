@@ -18,6 +18,16 @@ public class SkillPointManager : Singleton<SkillPointManager> {
         skillPointUI.SetActive(false);
     }
 
+    private void Update() {
+        if (!GameManager.Instance.PLAYER_PREF_KEYS.Contains(SKILLPOINTS_KEY)) {
+            GameManager.Instance.PLAYER_PREF_KEYS.Add(SKILLPOINTS_KEY);
+        }
+
+        if (!GameManager.Instance.PLAYER_PREF_KEYS.Contains(SKILLPOINTSTOTAL_KEY)) {
+            GameManager.Instance.PLAYER_PREF_KEYS.Add(SKILLPOINTSTOTAL_KEY);
+        }
+    }
+
     private void OnApplicationQuit() {
         SaveSkillPoints();
         SaveSkillPointsTotal();

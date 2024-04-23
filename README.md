@@ -43,6 +43,10 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.4
+### Version 1.4.12
+- Added a GameManager to send the player to the correct scene and handle player prefs
+- Added reset progress button to main menu
+
 ### Version 1.4.11
 - Fixed shield and health increase logic and matched the skill tree advertisements
 - Probably fixed sliding on death and movement on respawn

@@ -66,6 +66,10 @@ public class CharacterSkills : MonoBehaviour {
     public void SaveSkillLevels() {
         for (var i = 0; i < skillMenu.skillList.Count; i++) {
             PlayerPrefs.SetInt($"SkillLevel_{i}", skillMenu.skillLevels[i]);
+
+            if (!GameManager.Instance.PLAYER_PREF_KEYS.Contains($"SkillLevel_{i}")) {
+                GameManager.Instance.PLAYER_PREF_KEYS.Add($"SkillLevel_{i}");
+            }
         }
     }
 
@@ -79,6 +83,10 @@ public class CharacterSkills : MonoBehaviour {
     {
         for (var i = 0; i < skillMenu.skillList.Count; i++) {
             skillMenu.skillLevels[i] = PlayerPrefs.GetInt($"SkillLevel_{i}");
+
+            if (!GameManager.Instance.PLAYER_PREF_KEYS.Contains($"SkillLevel_{i}")) {
+                GameManager.Instance.PLAYER_PREF_KEYS.Add($"SkillLevel_{i}");
+            }
         }
     }
 }

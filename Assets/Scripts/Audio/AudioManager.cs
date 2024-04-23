@@ -30,6 +30,11 @@ public class AudioManager : Singleton<AudioManager> {
             m.source = gameObject.AddComponent<AudioSource>();
             m.source.clip = m.clip;
             m.source.volume = PlayerPrefs.GetFloat(MUSICKEY);
+
+            if (!GameManager.Instance.PLAYER_PREF_KEYS.Contains(MUSICKEY)) {
+                GameManager.Instance.PLAYER_PREF_KEYS.Add(MUSICKEY);
+            } 
+
             m.source.pitch = m.pitch;
             m.source.loop = m.loop;
         }
@@ -212,6 +217,11 @@ public class AudioManager : Singleton<AudioManager> {
 
     public void SetVolume(float volume) {
         PlayerPrefs.SetFloat(MUSICKEY, volume);
+
+        if (!GameManager.Instance.PLAYER_PREF_KEYS.Contains(MUSICKEY)) {
+            GameManager.Instance.PLAYER_PREF_KEYS.Add(MUSICKEY);
+        }
+
         foreach (Music m in music)
         {
             m.source.volume = volume;
