@@ -43,6 +43,9 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.4
+### Version 1.4.6
+- Added bullet proof enemies to levels 2, 4, and 5
+
 ### Version 1.4.5
 - Fixed Skill Points not loading when entering a level until you open the skill menu
 - Small fix for the level select button not playing a clicking sound when you select it
