@@ -139,10 +139,12 @@ public class ProjectileWeapon : WeaponBase
             if (weaponUISprite != null)
             {
                 UIManager.Instance.UpdateWeaponSprite(weaponUISprite);
+                nextAttackTime = Time.time + attackCooldown;
             }
             else
             {
                 UIManager.Instance.UpdateWeaponSprite(gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite);
+                nextAttackTime = Time.time + attackCooldown;
             }
         }
     }
