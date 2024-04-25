@@ -49,6 +49,7 @@ public class WeaponAmmo : MonoBehaviour
 
     public void SaveAmmo() {
         PlayerPrefs.SetInt(WEAPON_AMMO_SAVELOAD + weapon.WeaponName, weapon.CurrentAmmo);
+        PlayerPrefs.SetString("SCENE_LAST_OPENED_GUN", PlayerPrefs.GetString("CURRENT_SCENE"));
 
         if (!GameManager.Instance.PLAYER_PREF_KEYS.Contains(WEAPON_AMMO_SAVELOAD + weapon.WeaponName)) {
             GameManager.Instance.PLAYER_PREF_KEYS.Add(WEAPON_AMMO_SAVELOAD + weapon.WeaponName);
@@ -60,7 +61,12 @@ public class WeaponAmmo : MonoBehaviour
             GameManager.Instance.PLAYER_PREF_KEYS.Add(WEAPON_AMMO_SAVELOAD + weapon.WeaponName);
         }
         
-        // returns the saved ammo or the magazine size if the 1st argument (the string) is null
-        return PlayerPrefs.GetInt(WEAPON_AMMO_SAVELOAD + weapon.WeaponName, weapon.MagazineSize);
+        // returns the saved ammo or the magazine size if the 1st argument (the string) is null and if the current scene is the same as the last time you loaded the gun
+        if (PlayerPrefs.GetString("SCENE_LAST_OPENED_GUN") == PlayerPrefs.GetString("CURRENT_SCENE")) {
+            return PlayerPrefs.GetInt(WEAPON_AMMO_SAVELOAD + weapon.WeaponName, weapon.MagazineSize);
+        } else {
+            return weapon.MagazineSize;
+        }
+        
     }
 }

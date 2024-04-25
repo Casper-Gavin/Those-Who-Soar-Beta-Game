@@ -43,8 +43,11 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.4
+### Version 1.4.14
+- Stopped ammo count from being kept through scenes
+
 ### Version 1.4.13
-- Fixed gun shooting opposite direction when equipped (added reset cooldown in ProjectileWeapon's EquipWeapon)
+- Fixed gun shooting opposite direction when equipped (equipping weapon resets cooldown)
 
 ### Version 1.4.12
 - Added a GameManager to send the player to the correct scene and handle player prefs
