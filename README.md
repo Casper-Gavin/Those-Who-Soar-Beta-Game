@@ -43,6 +43,9 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.4
+### Version 1.4.15
+- Fix bugs where the input manager would still be listening for key presses after escaping the input control menu
+
 ### Version 1.4.14
 - Stopped ammo count from being kept through scenes
 
