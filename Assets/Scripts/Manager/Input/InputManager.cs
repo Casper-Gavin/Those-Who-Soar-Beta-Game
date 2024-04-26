@@ -158,45 +158,45 @@ public class InputManager : Singleton<InputManager> {
     }
 
     public void StartRebindingDash() {
-        //Debug.Log("Rebinding Dash");
+        // Debug.Log("Rebinding Dash");
         StartCoroutine(WaitForKeyPress(KeybindingActions.Dash));
     }
 
     public void StartRebindingSprint() {
-        //Debug.Log("Rebinding Sprint");
+        // Debug.Log("Rebinding Sprint");
         StartCoroutine(WaitForKeyPress(KeybindingActions.Sprint));
     }
 
     public void StartRebindingPause() {
-        //Debug.Log("Rebinding Pause");
+        // Debug.Log("Rebinding Pause");
         StartCoroutine(WaitForKeyPress(KeybindingActions.Pause));
     }
 
     public void StartRebindingSkillMenu() {
-        //Debug.Log("Rebinding Skill Menu");
+        // Debug.Log("Rebinding Skill Menu");
         StartCoroutine(WaitForKeyPress(KeybindingActions.SkillMenu));
     }
 
     public void StartRebindingInteract() {
-        //Debug.Log("Rebinding Interact");
+        // Debug.Log("Rebinding Interact");
         StartCoroutine(WaitForKeyPress(KeybindingActions.Interact));
     }
 
     public void StartRebindingReload() {
-        //Debug.Log("Rebinding Reload");
+        // Debug.Log("Rebinding Reload");
         StartCoroutine(WaitForKeyPress(KeybindingActions.Reload));
     }
 
-    private IEnumerator WaitForKeyPress(KeybindingActions action) {
+    private IEnumerator WaitForKeyPress(KeybindingActions action)
+    {
         bool waitingForKey = true;
-
         // wait for 0.1 seconds to prevent the key press from being detected twice
-        yield return new WaitForSeconds(0.2f);
-    
+        yield return  StartCoroutine(WaitForRealSeconds(0.2f));
         while (waitingForKey) {
             foreach (KeyCode keyCode in System.Enum.GetValues(typeof(KeyCode))) {
                 if (Input.GetKeyDown(keyCode)) {
                     if (Input.GetKeyDown(keyCode)) {
+
                         bool isKeyAlreadyBound = false;
                         
                         // blacklisted keys (reserved for core movement or core functions)
@@ -230,6 +230,15 @@ public class InputManager : Singleton<InputManager> {
             }
 
             yield return null; // Wait for the next frame
+        }
+    }
+
+    private IEnumerator WaitForRealSeconds(float seconds)
+    {
+        float start = Time.realtimeSinceStartup;
+        while (Time.realtimeSinceStartup - start < seconds)
+        {
+            yield return null;
         }
     }
 }

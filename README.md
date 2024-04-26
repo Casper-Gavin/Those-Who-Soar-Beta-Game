@@ -43,6 +43,9 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.4
+### Version 1.4.17
+- Fixed a bug where you could not rebind keys in-game due to time being paused
+
 ### Version 1.4.16
 - Fixed a bug where the reset progress didn't work if the mainmenu was unloaded at least once
 - STILL A BUG: reset progress does not reset the saved level scene
