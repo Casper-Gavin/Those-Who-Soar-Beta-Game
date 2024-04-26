@@ -317,6 +317,7 @@ MonoBehaviour:
     - He remembered clearly the day when everything had gone wrong, when he had failed
       in his quest to save the princess from the clutches of evil.
     - It had been a dark time, filled with despair and loss.
+  isInDialogue: 0
 --- !u!1 &464380625
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,7 +505,8 @@ MonoBehaviour:
   dialogue:
     name: 
     sentences:
-    - "Press the Space Bar to Show the Story. \n\nPress and Hold the F Key to Skip"
+    - "Press the Enter Key to Show the Story. \n\nPress and Hold the F Key to Skip"
+  isInDialogue: 0
 --- !u!114 &590659929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -600,6 +602,7 @@ MonoBehaviour:
     sentences:
     - This is my first sentence
     - This is my second sentence
+  isInDialogue: 0
 --- !u!114 &791468791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -751,6 +754,7 @@ MonoBehaviour:
       revealed another room filled with even more coins.
     - This time, however, they were all empty! Disappointed but undeterred, he continued
       down the hallway until he was at the end.
+  isInDialogue: 0
 --- !u!114 &793299998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -921,6 +925,7 @@ MonoBehaviour:
       the rough terrain of the path that led to the tower.
     - He had traveled far and wide, seeking out a place where he could find what
       he needed most - a chance at redemption.
+  isInDialogue: 0
 --- !u!114 &883014699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1143,6 +1148,8 @@ MonoBehaviour:
   - {fileID: 793299995}
   - {fileID: 1565092131}
   dialogueIsDisplaying: 0
+  character: {fileID: 0}
+  dialogueCanvas: []
 --- !u!4 &1121100602
 Transform:
   m_ObjectHideFlags: 0
@@ -1352,6 +1359,7 @@ MonoBehaviour:
       teleported to a new hallway.
     - Intrigued - and with no other choice but to go forward - the knight continued
       on in the new area of the tower.
+  isInDialogue: 0
 --- !u!114 &1565092134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1431,6 +1439,7 @@ MonoBehaviour:
     - "The knight took a deep breath, steeling himself for whatever lay ahead.\r"
     - "He knew that this journey would not be easy, but he also knew that it was
       necessary.\r"
+  isInDialogue: 0
 --- !u!114 &1594068021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1718,6 +1727,7 @@ MonoBehaviour:
     - Inside was a shiny golden coin.
     - The knight pocketed it quickly, feeling a sense of satisfaction at having found
       such a valuable item so early in his adventure.
+  isInDialogue: 0
 --- !u!1 &2039601755
 GameObject:
   m_ObjectHideFlags: 0

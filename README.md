@@ -43,6 +43,11 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.4
+### Version 1.4.18
+- Changed wording in lore scene dialogue to follow button prompts accurately
+- Made reset button (correctly) affect the current scene
+- Current Scene is not set back to default on reopening the game anymore
+
 ### Version 1.4.17
 - Fixed a bug where you could not rebind keys in-game due to time being paused
 

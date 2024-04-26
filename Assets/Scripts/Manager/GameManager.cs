@@ -28,7 +28,7 @@ public class GameManager : Singleton<GameManager> {
         DontDestroyOnLoad(gameObject);
 
         PlayerPrefs.SetString("DEFAULT_SCENE", DEFAULT_SCENE);
-        PlayerPrefs.SetString("CURRENT_SCENE", DEFAULT_SCENE);
+        //PlayerPrefs.SetString("CURRENT_SCENE", DEFAULT_SCENE);
 
         if (CURRENT_SCENE == null || CURRENT_SCENE == "") {
             if (PlayerPrefs.HasKey("CURRENT_SCENE")) {
@@ -103,8 +103,7 @@ public class GameManager : Singleton<GameManager> {
         PlayerPrefs.SetString("CURRENT_SCENE", CURRENT_SCENE);
     }
 
-    public void ResetPlayerPrefs()
-    {
+    public void ResetPlayerPrefs() {
         // if a player pref is in the regular list, delete it
         
         PlayerPrefs.DeleteKey("TORCH_KEY");
@@ -124,6 +123,8 @@ public class GameManager : Singleton<GameManager> {
         }
 
         // TODO: reset scene to restore
+        PlayerPrefs.SetString("CURRENT_SCENE", DEFAULT_SCENE);
+        CURRENT_SCENE = DEFAULT_SCENE;
 
         showNotice = true;
         if (!resetNotice)
