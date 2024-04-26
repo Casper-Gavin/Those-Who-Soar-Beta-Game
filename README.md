@@ -43,6 +43,12 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.4
+### Version 1.4.16
+- Fixed a bug where the reset progress didn't work if the mainmenu was unloaded at least once
+- STILL A BUG: reset progress does not reset the saved level scene
+- Fixed a crash where the torch was not found in the lore scene (blacklist lore scene for torch requirements)
+
+
 ### Version 1.4.15
 - Fix bugs where the input manager would still be listening for key presses after escaping the input control menu
 

@@ -29,6 +29,19 @@ public class MainMenu : MonoBehaviour
         Cursor.visible = false;
     }
 
+    public void ResetPlayerPrefs()
+    {
+        GameManager manager = FindObjectOfType<GameManager>();
+        if (manager)
+        {
+            manager.ResetPlayerPrefs();
+        }
+        else
+        {
+            Debug.Log("ERROR! No Game Manager!!");
+        }
+    }
+
     // if you want to be able to go to a scene from main menu, you need to make sure it's in the build
     // in Unity (on the scene you want to add), file -> build settings -> add open scenes
 

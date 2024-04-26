@@ -450,18 +450,27 @@ public class UIManager : Singleton<UIManager>
                 break;
             case GameEvent.EventType.LevelClearTutorial:
                 StartCoroutine(LevelClearTutorial());
+                //FindObjectOfType<GameManager>()?.ResetPlayerPrefs(); // dont save anything from tutorial
                 break;
             case GameEvent.EventType.LevelClearOne:
                 StartCoroutine(LevelClearOne());
+                SkillPointManager.Instance.SaveSkillPoints();
+                SkillPointManager.Instance.SaveSkillPointsTotal();
                 break;
             case GameEvent.EventType.LevelClearTwo:
                 StartCoroutine(LevelClearTwo());
+                SkillPointManager.Instance.SaveSkillPoints();
+                SkillPointManager.Instance.SaveSkillPointsTotal();
                 break;
             case GameEvent.EventType.LevelClearThree:
                 StartCoroutine(LevelClearThree());
+                SkillPointManager.Instance.SaveSkillPoints();
+                SkillPointManager.Instance.SaveSkillPointsTotal();
                 break;
             case GameEvent.EventType.LevelClearFour:
                 StartCoroutine(LevelClearFour());
+                SkillPointManager.Instance.SaveSkillPoints();
+                SkillPointManager.Instance.SaveSkillPointsTotal();
                 break;
         }
     }

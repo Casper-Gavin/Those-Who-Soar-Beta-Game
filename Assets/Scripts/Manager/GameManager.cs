@@ -103,13 +103,33 @@ public class GameManager : Singleton<GameManager> {
         PlayerPrefs.SetString("CURRENT_SCENE", CURRENT_SCENE);
     }
 
-    public void ResetPlayerPrefs() {
+    public void ResetPlayerPrefs()
+    {
         // if a player pref is in the regular list, delete it
-        foreach (object key in PLAYER_PREF_KEYS) {
+        
+        PlayerPrefs.DeleteKey("TORCH_KEY");
+        PlayerPrefs.DeleteKey("MyGame_MySkillPoints_DontCheat");
+        PlayerPrefs.DeleteKey("MyGame_MySkillPointsTotal_DontCheat");
+        PlayerPrefs.DeleteKey("SkillLevel_0");
+        PlayerPrefs.DeleteKey("SkillLevel_1");
+        PlayerPrefs.DeleteKey("SkillLevel_2");
+        PlayerPrefs.DeleteKey("SkillLevel_3");
+        PlayerPrefs.DeleteKey("SkillLevel_4");
+
+        PlayerPrefs.DeleteKey("MyGame_MyCoins_DontCheat");
+
+        foreach (object key in PLAYER_PREF_KEYS)
+        {
             PlayerPrefs.DeleteKey(key.ToString());
         }
 
+        // TODO: reset scene to restore
+
         showNotice = true;
+        if (!resetNotice)
+        {
+            resetNotice = GameObject.Find("ResetProgressNoticeWrapper").transform.GetChild(0).gameObject;
+        }
         resetNotice.SetActive(true);
     }
 }

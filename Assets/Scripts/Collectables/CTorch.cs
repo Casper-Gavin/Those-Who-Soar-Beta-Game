@@ -100,9 +100,9 @@ public class CTorch : Singleton<CTorch> {
     }
 
     private void TorchRequirements() {
-        if (SceneManager.GetActiveScene().name == "MainMenu")
+        if (SceneManager.GetActiveScene().name == "MainMenu" || SceneManager.GetActiveScene().name == "LoreScene")
         {
-            // NO TORCH LOGIC ON MAIN MENU
+            // NO TORCH LOGIC ON MAIN MENU OR LORESCENE
             return;
         }
         if (audioManager == null) {
