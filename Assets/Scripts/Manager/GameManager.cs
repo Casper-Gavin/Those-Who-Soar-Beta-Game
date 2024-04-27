@@ -17,6 +17,8 @@ public class GameManager : Singleton<GameManager> {
     [SerializeField] private float showNoticeTime = 3f;
     private bool showNotice = false;
 
+    public bool hasReset = false;
+
     private void Awake() {
         if (GameObject.FindObjectsOfType<GameManager>().Length > 1) {
             Destroy(gameObject);
@@ -95,6 +97,10 @@ public class GameManager : Singleton<GameManager> {
                 showNotice = false;
                 showNoticeTime = 3f;
                 resetNotice.SetActive(false);
+
+                if (hasReset) {
+                    hasReset = false;
+                }
             }
         }
     }
@@ -132,5 +138,7 @@ public class GameManager : Singleton<GameManager> {
             resetNotice = GameObject.Find("ResetProgressNoticeWrapper").transform.GetChild(0).gameObject;
         }
         resetNotice.SetActive(true);
+
+        hasReset = true;
     }
 }

@@ -43,6 +43,10 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.4
+### Version 1.4.20
+- Fixed bug where dialogue would cause issues when it was open and you paused the game.
+- Fixed bug where torch wouldnt get reset when it was bought and the player reset their progress
+
 ### Version 1.4.19
 - Fixed a bug where you could force re-equip a weapon you already had equipped (minor visual appearance issue)
 - Fixed an assert that would pop up when dialogue was finished on the lore scene

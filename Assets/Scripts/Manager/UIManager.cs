@@ -84,6 +84,8 @@ public class UIManager : Singleton<UIManager>
 
     public bool isStart = true;
 
+    [SerializeField] private GameObject dialogueManager;
+
     private void Start()
     {
         isStart = true;
@@ -317,6 +319,18 @@ public class UIManager : Singleton<UIManager>
     public void Resume() {
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
+
+        if (SceneManager.GetActiveScene().name != "MainMenu" && SceneManager.GetActiveScene().name != "LoreScene") {
+            if (dialogueManager != null) {
+                if (DialogueManager.instance.dialogueIsDisplaying && !DialogueManager.instance.dialogueCanvasObj.activeSelf) {
+                    DialogueManager.instance.dialogueCanvasObj.SetActive(true);
+                    DialogueManager.instance.animator.SetBool("IsOpen", true);
+                }
+            } else {
+                dialogueManager = GameObject.Find("DialogueManager");
+            }
+        }
+        
         GameIsPaused = false;
         Cursor.visible = false;
     }
@@ -324,9 +338,31 @@ public class UIManager : Singleton<UIManager>
     public void Pause() {
         bossIntroPanel.SetActive(false);
         pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
+
+        if (SceneManager.GetActiveScene().name != "MainMenu" && SceneManager.GetActiveScene().name != "LoreScene") {
+            if (dialogueManager != null ) {
+                if (DialogueManager.instance.dialogueIsDisplaying && DialogueManager.instance.dialogueCanvasObj.activeSelf) {
+                    DialogueManager.instance.dialogueCanvasObj.SetActive(false);
+                    DialogueManager.instance.animator.SetBool("IsOpen", false);
+                }
+            } else {
+                dialogueManager = GameObject.Find("DialogueManager");
+            }
+        }
+
+        // IEnumerator to pause time
+        StartCoroutine(WaitToPause());
+
         GameIsPaused = true;
         Cursor.visible = true;
+    }
+
+    private IEnumerator WaitToPause() {
+        yield return new WaitForSeconds(0.05f);
+        
+        if (Time.timeScale == 1f) {
+            Time.timeScale = 0f;
+        }
     }
 
     public void SkillMenuOpen() {

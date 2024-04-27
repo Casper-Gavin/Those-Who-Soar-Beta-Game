@@ -100,6 +100,12 @@ public class CTorch : Singleton<CTorch> {
     }
 
     private void TorchRequirements() {
+        if (GameManager.Instance.hasReset) {
+            vendorScript.torchBought = false;
+            torchHasSpawned = false;
+            PlayerPrefs.SetInt(TORCHKEY, 0);
+        }
+
         if (SceneManager.GetActiveScene().name == "MainMenu" || SceneManager.GetActiveScene().name == "LoreScene")
         {
             // NO TORCH LOGIC ON MAIN MENU OR LORESCENE
@@ -158,9 +164,9 @@ public class CTorch : Singleton<CTorch> {
         if (vendorScript.torchBought || PlayerPrefs.GetInt(TORCHKEY) == 1) {
             vendorScript.torchBought = true;
 
-            Debug.Log("Spawning torch");
-            Debug.Log("Torch bought: " + vendorScript.torchBought);
-            Debug.Log("torchkey pref: " + PlayerPrefs.GetInt(TORCHKEY));
+            // Debug.Log("Spawning torch");
+            // Debug.Log("Torch bought: " + vendorScript.torchBought);
+            // Debug.Log("torchkey pref: " + PlayerPrefs.GetInt(TORCHKEY));
             SpawnTorch();
 
             torchHasSpawned = true;
@@ -250,6 +256,8 @@ public class CTorch : Singleton<CTorch> {
     }
 
     private void AdjustFireSoundVolume() {
+        characterTransform = GameObject.Find("Player").transform;
+        
         if (!torchHasSpawned || characterTransform == null) {
             return;
         }

@@ -32,6 +32,13 @@ public class DialogueManager : Singleton<DialogueManager> {
     [SerializeField] private GameObject character;
     [SerializeField] public GameObject[] dialogueCanvas;
 
+    [SerializeField] public GameObject dialogueCanvasObj;
+    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject optionsMenu;
+    [SerializeField] private GameObject skillTreeMenu;
+    [SerializeField] private GameObject inputMenu;
+    [SerializeField] private GameObject[] vendorDialogues;
+
     private void Start() {
         sentences = new Queue<string>();
 
@@ -111,6 +118,11 @@ public class DialogueManager : Singleton<DialogueManager> {
         } 
 
         SetContinueButton();
+
+        // if the scene is not the main menu, lore scene, tutorial scene, or test scene, then check if the game is paused
+        if (SceneManager.GetActiveScene().name != "MainMenu" && SceneManager.GetActiveScene().name != "LoreScene" && SceneManager.GetActiveScene().name != "TutorialScene" && SceneManager.GetActiveScene().name != "TestScene") {
+            //CheckIsPaused();
+        }
     }
 
     public void StartDialogue(Dialogue dialogue) {
@@ -239,6 +251,22 @@ public class DialogueManager : Singleton<DialogueManager> {
                 if (i != counter) {
                     imgs[i].SetActive(false);
                 }
+            }
+        }
+    }
+
+    private void CheckIsPaused() {
+        if (pauseMenu.activeSelf || optionsMenu.activeSelf || skillTreeMenu.activeSelf || inputMenu.activeSelf) {
+            if (dialogueIsDisplaying && dialogueCanvasObj.activeSelf) {
+                Time.timeScale = 1f;
+                dialogueCanvasObj.SetActive(false);
+                animator.SetBool("IsOpen", false);
+                Time.timeScale = 0f;
+            }
+        } else {
+            if (dialogueIsDisplaying && !dialogueCanvasObj.activeSelf) {
+                dialogueCanvasObj.SetActive(true);
+                animator.SetBool("IsOpen", true);
             }
         }
     }
