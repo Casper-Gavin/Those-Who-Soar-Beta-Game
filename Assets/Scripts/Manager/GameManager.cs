@@ -117,10 +117,10 @@ public class GameManager : Singleton<GameManager> {
 
         PlayerPrefs.DeleteKey("MyGame_MyCoins_DontCheat");
 
-        foreach (object key in PLAYER_PREF_KEYS)
+        /*foreach (object key in PLAYER_PREF_KEYS)
         {
             PlayerPrefs.DeleteKey(key.ToString());
-        }
+        }*/
 
         // TODO: reset scene to restore
         PlayerPrefs.SetString("CURRENT_SCENE", DEFAULT_SCENE);

@@ -48,7 +48,7 @@ public class CTorch : Singleton<CTorch> {
         base.Awake();
 
         // THIS IS JUST FOR TESTING PURPOSES
-        PlayerPrefs.SetInt(TORCHKEY, 0); 
+        //PlayerPrefs.SetInt(TORCHKEY, 0); 
 
         if (!GameManager.Instance.PLAYER_PREF_KEYS.Contains(TORCHKEY)) {
             GameManager.Instance.PLAYER_PREF_KEYS.Add(TORCHKEY);
@@ -158,6 +158,9 @@ public class CTorch : Singleton<CTorch> {
         if (vendorScript.torchBought || PlayerPrefs.GetInt(TORCHKEY) == 1) {
             vendorScript.torchBought = true;
 
+            Debug.Log("Spawning torch");
+            Debug.Log("Torch bought: " + vendorScript.torchBought);
+            Debug.Log("torchkey pref: " + PlayerPrefs.GetInt(TORCHKEY));
             SpawnTorch();
 
             torchHasSpawned = true;
