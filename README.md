@@ -43,6 +43,9 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.4
+### Version 1.4.19
+- Fixed a bug where you could force re-equip a weapon you already had equipped (minor visual appearance issue)
+
 ### Version 1.4.18
 - Changed wording in lore scene dialogue to follow button prompts accurately
 - Made reset button (correctly) affect the current scene

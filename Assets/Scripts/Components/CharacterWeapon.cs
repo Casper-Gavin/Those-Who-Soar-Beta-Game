@@ -57,13 +57,13 @@ public class CharacterWeapon : CharacterAbilities
                 Reload();
             }
             // Aplha1 is 1 on num pad - && stops equiping if there's no secondary weapon
-            if (Input.GetKeyDown(KeyCode.Alpha1) && SecondaryWeapon != null)
+            if (secondaryEquipped && Input.GetKeyDown(KeyCode.Alpha1) && SecondaryWeapon != null)
             {
                 secondaryEquipped = false;
                 EquipWeapon(weaponToUse, weaponHolderPosition);
             }
 
-            if (Input.GetKeyDown(KeyCode.Alpha2) && SecondaryWeapon != null)
+            if (!secondaryEquipped && Input.GetKeyDown(KeyCode.Alpha2) && SecondaryWeapon != null)
             {
                 EquipWeapon(SecondaryWeapon, weaponHolderPosition);
                 secondaryEquipped = true;
