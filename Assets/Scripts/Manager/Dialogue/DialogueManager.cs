@@ -69,6 +69,11 @@ public class DialogueManager : Singleton<DialogueManager> {
             // Return is the same as Enter
             if (Input.GetKeyDown(KeyCode.Return) && !dialogueIsDisplaying) {
                 currentImg++;
+                if (currentImg == imgs.Length)
+                {
+                    SceneManager.LoadScene("LevelOneScene");
+                    return;
+                }
                 StartDialogue(imgs[currentImg].GetComponent<DialogueTrigger>().dialogue);
                 HandleImages(currentImg);
             } else if (Input.anyKeyDown && dialogueIsDisplaying) {
