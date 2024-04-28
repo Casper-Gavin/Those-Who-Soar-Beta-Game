@@ -122,8 +122,10 @@ public class Vendor : MonoBehaviour
             characterWeapon = null;
             canOpenShop = false;
             vendorTag = null;
+            if (shopPanel.activeSelf) {
+                shopPanel.SetActive(false);
+            }
             popUpPanel.SetActive(false);
-            shopPanel.SetActive(false);
             dialogueTrigger.EndDialogue();
             OnPlayerExitShopZone.Invoke();
         }

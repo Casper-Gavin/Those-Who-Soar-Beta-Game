@@ -14,7 +14,7 @@ public class UIManager : Singleton<UIManager>
     [Header("Pause Menu")]
     [SerializeField] private GameObject pauseMenuUI;
     [SerializeField] private GameObject shopPanel;
-    [SerializeField] private GameObject dialogueBox;
+    //[SerializeField] private GameObject dialogueBox;
     
     public static bool GameIsPaused = false;
 
@@ -404,8 +404,10 @@ public class UIManager : Singleton<UIManager>
     }
 
     public void LoadMainMenu() {
-        shopPanel.SetActive(false);
-        dialogueBox.SetActive(false);
+        if (shopPanel.activeSelf) {
+            shopPanel.SetActive(false);
+        }
+        //dialogueBox.SetActive(false);
         Resume();
         SceneManager.LoadScene(0);
     }
