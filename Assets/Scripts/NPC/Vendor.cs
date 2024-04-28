@@ -65,6 +65,7 @@ public class Vendor : MonoBehaviour
                 {
                     characterWeapon.EquipWeapon(characterWeapon.SecondaryWeapon);
                 }
+                characterWeapon.information = null; // force a full reset on equipped weapon
                 ProductBought(weaponItem.Cost);
             }
         }

@@ -43,6 +43,11 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.4
+### Version 1.4.21
+- Fixed a bug where the player ammo would not be full on picking up a new gun
+- Reworked ammo system entirely
+- Fixed another bug where bullets would disappear as soon as the player would holster their projectile weapon
+
 ### Version 1.4.20
 - Fixed bug where dialogue would cause issues when it was open and you paused the game.
 - Fixed bug where torch wouldnt get reset when it was bought and the player reset their progress

@@ -21,6 +21,8 @@ public class CharacterWeapon : CharacterAbilities
 
     public WeaponAim WeaponAim { get; set; }
 
+    public List<object> information = new List<object>();
+
     protected override void Start()
     {
         base.Start();
@@ -121,11 +123,17 @@ public class CharacterWeapon : CharacterAbilities
 
     public void EquipWeapon(WeaponBase weapon, Transform weaponPosition)
     {
-        if (CurrentWeapon != null) {
+        List<object> temp = null;
+        if (CurrentWeapon != null)
+        {
             // destroys the current reticle, projectile pool, and weapon after saving the weapon ammo
             CurrentWeapon.HolsterWeapon();
             CurrentWeapon.WeaponAim.DestroyReticle(); // could do just WeaponAim.DestoryReticle() without the CurrentWeapon maybe
-            Destroy(CurrentWeapon.gameObject);
+            temp = CurrentWeapon.GetWeaponInformation();
+
+            // destroy in 3 seconds
+            CurrentWeapon.gameObject.SetActive(false);
+            Destroy(CurrentWeapon.gameObject, 3f);
         }
         // creates reference to weapon to be used by player
         CurrentWeapon = Instantiate(weapon, weaponPosition.position, weaponPosition.rotation);
@@ -133,6 +141,8 @@ public class CharacterWeapon : CharacterAbilities
         CurrentWeapon.SetOwner(character);
         WeaponAim = CurrentWeapon.GetComponent<WeaponAim>();
 
+        CurrentWeapon.SetWeaponInformation(information);
+        information = temp;
         CurrentWeapon.EquipWeapon();
     }
 }

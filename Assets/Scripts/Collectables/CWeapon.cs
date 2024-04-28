@@ -19,6 +19,7 @@ public class CWeapon : Collectables
             {
                 characterWeapon.EquipWeapon(characterWeapon.SecondaryWeapon);
             }
+            characterWeapon.information = null; // force a full reset on equipped weapon
         }
     }
 }

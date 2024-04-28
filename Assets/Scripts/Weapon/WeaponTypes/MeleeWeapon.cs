@@ -127,4 +127,14 @@ public class MeleeWeapon : WeaponBase
             transform.localScale = newScale;
         //}
     }
+
+    public override List<object> GetWeaponInformation()
+    {
+        return null;
+    }
+    public override void SetWeaponInformation(List<object> weaponInformation)
+    {
+        return;
+    }
+
 }

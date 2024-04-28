@@ -39,6 +39,8 @@ public abstract class WeaponBase : MonoBehaviour
     protected abstract void RequestAttack();
     public abstract void EquipWeapon();
     public abstract void HolsterWeapon();
+    public abstract List<object> GetWeaponInformation();
+    public abstract void SetWeaponInformation(List<object> weaponInformation);
 
     // Reload will not be applicable for every weapon, but since we need to call it
     // regardless when the reload key is pressed, unconcerned weappons should just

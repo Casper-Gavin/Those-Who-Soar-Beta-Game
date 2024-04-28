@@ -17,15 +17,10 @@ public class ProjectileWeapon : WeaponBase
 
     public ObjectPooler Pooler { get; set; }
 
-    public int MagazineSize => magazineSize;
-    public bool UseMagazine => useMagazine;
-
     public int CurrentAmmo { get; set; }
 
     private Animator animator;
     private readonly int shootAnimationParameter = Animator.StringToHash("weaponUse");
-
-    public WeaponAmmo WeaponAmmo { get; set; }
 
     [SerializeField] private AudioManager audioManager;
 
@@ -36,8 +31,7 @@ public class ProjectileWeapon : WeaponBase
         base.Awake();
         Pooler = GetComponent<ObjectPooler>();
         animator = GetComponent<Animator>();
-        WeaponAmmo = GetComponent<WeaponAmmo>();
-
+        CurrentAmmo = magazineSize;
         audioManager = AudioManager.Instance;
     }
 
@@ -45,21 +39,23 @@ public class ProjectileWeapon : WeaponBase
         base.Update();
     }
 
+    private bool CanUseWeapon()
+    {
+        return CurrentAmmo > 0 && UIManager.GameIsPaused == false;
+    }
+
     // see if we can even make a request to attack
     public override void Attack()
     {
         if (useMagazine)
         {
-            if (WeaponAmmo != null)
+            if (CanUseWeapon())
             {
-                if (WeaponAmmo.CanUseWeapon())
-                {
-                    RequestAttack();
-                }
-                else if (reloadAutomatically)
-                {
-                    Reload(); // reload instantly, don't shoot
-                }
+                RequestAttack();
+            }
+            else if (reloadAutomatically)
+            {
+                Reload(); // reload instantly, don't shoot
             }
         }
         else
@@ -69,23 +65,23 @@ public class ProjectileWeapon : WeaponBase
         }
     }
 
+    private void ConsumeAmmo()
+    {
+        if (useMagazine)
+        {
+            CurrentAmmo -=1;
+        }
+    }
+
     // attempt to shoot (may not be off cooldown)
     protected override void RequestAttack()
     {
-        if (!audioManager.IsPlayingSFX("GunReload")) {
-            /*
-            // if we have no ammo and we are holding the fire button, reload
-            if (CurrentAmmo <= 0 && Input.GetMouseButton(0)) {
-                Reload();
-                audioManager.PlaySFX("GunReload");
-                return;
-            }
-            */
-
+        if (!audioManager.IsPlayingSFX("GunReload"))
+        {
             if (OffAttackCooldown)
             {
                 animator.SetTrigger(shootAnimationParameter);
-                WeaponAmmo.ConsumeAmmo();
+                ConsumeAmmo();
                 if (WeaponOwner.CharacterTypes == Character.CharacterTypeEnum.Player)
                 {
                     UIManager.Instance.UpdateAmmo(CurrentAmmo, magazineSize);
@@ -151,17 +147,28 @@ public class ProjectileWeapon : WeaponBase
 
     public override void HolsterWeapon()
     {
-        WeaponAmmo.SaveAmmo();
+    }
+
+    private void OnDestroy()
+    {
         Pooler.DestroyPool();
+    }
+
+    private void RefillAmmo()
+    {
+        if (useMagazine && UIManager.GameIsPaused == false)
+        {
+            CurrentAmmo = magazineSize;
+        }
     }
 
     public override void Reload()
     {
-        if (WeaponAmmo != null && !audioManager.IsPlayingSFX("GunReload") && CurrentAmmo < magazineSize)
+        if (!audioManager.IsPlayingSFX("GunReload") && CurrentAmmo < magazineSize)
         {
             if (useMagazine)
             {
-                WeaponAmmo.RefillAmmo();
+                RefillAmmo();
             }
 
             if (WeaponOwner.CharacterTypes == Character.CharacterTypeEnum.Player)
@@ -172,4 +179,24 @@ public class ProjectileWeapon : WeaponBase
             }
         }
     }
+
+    public override List<object> GetWeaponInformation()
+    {
+        List<object> info = new List<object>();
+        info.Add(CurrentAmmo);
+        return info;
+    }
+
+    public override void SetWeaponInformation(List<object> weaponInformation)
+    {
+        if (weaponInformation == null || weaponInformation.Count == 0)
+        {
+            CurrentAmmo = magazineSize;
+        }
+        else
+        {
+            CurrentAmmo = (int) weaponInformation[0];
+        }
+    }
+
 }

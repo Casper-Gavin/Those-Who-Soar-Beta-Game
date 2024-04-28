@@ -334,12 +334,9 @@ MonoBehaviour:
   skillTreeHealthMulti: 0
   skillTreeShieldMulti: 0
   fieldOfView: {fileID: 0}
-  initialShield: 5
   maxShield: 5
   delayAfterDmgToBeginShieldRegen: 3
   shieldRegenRate: 0.25
-  initialHealthPlayer: 10
-  maxHealthPlayer: 10
   isDead: 0
   audioManager: {fileID: 0}
 --- !u!114 &6553492919831264532

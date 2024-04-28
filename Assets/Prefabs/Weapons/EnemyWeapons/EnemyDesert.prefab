@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1354687409012893772}
-  - component: {fileID: 2974324980653821011}
   - component: {fileID: 7058752396774444385}
   - component: {fileID: 3425733555376981645}
   - component: {fileID: 1102644163925626313}
@@ -38,18 +37,6 @@ Transform:
   - {fileID: 1509435199630287395}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2974324980653821011
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1650591272571040746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41afce8452bb1094cb78931868b32e44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7058752396774444385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,6 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reticlePrefab: {fileID: 8572780044803757455, guid: 33593b4f5f3d5de4695c1936c2377a5d, type: 3}
+  InjectPlayer: 0
 --- !u!114 &3425733555376981645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,6 +108,7 @@ MonoBehaviour:
   magazineSize: 10
   reloadAutomatically: 1
   muzzlePS: {fileID: 6648466872139044970, guid: 883841be30f5d984e8e47af34eebbee1, type: 3}
+  audioManager: {fileID: 0}
 --- !u!1 &3888321724954760950
 GameObject:
   m_ObjectHideFlags: 0
