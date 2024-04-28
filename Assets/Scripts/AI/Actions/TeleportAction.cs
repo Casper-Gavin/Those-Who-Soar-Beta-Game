@@ -46,6 +46,15 @@ public class TeleportAction : AIAction
         // pick location in teleport area and out of player FOV (if possible)
         FieldOfView fov = GameObject.FindObjectOfType<FieldOfView>();
         GameObject player = GameObject.Find("Player");
+        if (player == null)
+        {
+            Color color = spriteRenderer.color;
+            color.a = 1.0f;
+            spriteRenderer.color = color;
+            teleporter.finished = true;
+            return;
+        }
+
         BoxCollider2D enemyCollider = controller.GetComponentInChildren<BoxCollider2D>();
 
         int numFailures = -1;
