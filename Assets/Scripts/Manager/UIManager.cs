@@ -462,7 +462,7 @@ public class UIManager : Singleton<UIManager>
     public IEnumerator LevelClearThree() {
         levelClearImage.SetActive(true);
         yield return new WaitForSeconds(3);
-        SceneManager.LoadScene("LevelOneScene"); // change to "LevelFourScene" when 4 is created
+        SceneManager.LoadScene("LevelFourScene"); // change to "LevelFourScene" when 4 is created
     }
 
     public IEnumerator LevelClearFour() {
