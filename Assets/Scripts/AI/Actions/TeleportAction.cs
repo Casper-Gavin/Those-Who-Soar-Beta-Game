@@ -15,6 +15,7 @@ public class TeleportAction : AIAction
         spriteRenderer = controller.transform.GetChild(0).GetComponent<SpriteRenderer>();
         timeAccumulator = 0.0f;
         teleporter = controller.transform.GetComponentInChildren<Teleporter>();
+        controller.transform.GetChild(1).gameObject.SetActive(false); // set gun inactive (weapon holder position specifically)
     }
 
 
@@ -52,6 +53,7 @@ public class TeleportAction : AIAction
             color.a = 1.0f;
             spriteRenderer.color = color;
             teleporter.finished = true;
+            controller.transform.GetChild(1).gameObject.SetActive(true); // set gun active (weapon holder position specifically)
             return;
         }
 
@@ -78,6 +80,7 @@ public class TeleportAction : AIAction
         Color c = spriteRenderer.color;
         c.a = 1.0f;
         spriteRenderer.color = c;
+        controller.transform.GetChild(1).gameObject.SetActive(true); // set gun active (weapon holder position specifically)
         teleporter.finished = true;
     }
 }

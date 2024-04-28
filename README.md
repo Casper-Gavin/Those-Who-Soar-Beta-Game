@@ -43,6 +43,9 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.4
+### Version 1.4.26
+- Disabled enemy gun while teleporting for ghost enemy
+
 ### Version 1.4.25
 - Fixed crash where the player was dead when the teleporting enemy tried to teleport
 
