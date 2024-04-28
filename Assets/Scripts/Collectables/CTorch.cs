@@ -108,7 +108,9 @@ public class CTorch : Singleton<CTorch> {
     }
 
     private void TorchRequirements() {
-        if (GameManager.Instance.hasReset) {
+        if (GameManager.Instance.hasReset)
+        {
+            GameManager.Instance.hasReset = false;
             vendorScript.torchBought = false;
             torchHasSpawned = false;
             PlayerPrefs.SetInt(TORCHKEY, 0);

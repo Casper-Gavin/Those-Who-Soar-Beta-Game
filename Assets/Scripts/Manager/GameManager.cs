@@ -98,9 +98,9 @@ public class GameManager : Singleton<GameManager> {
                 showNoticeTime = 3f;
                 resetNotice.SetActive(false);
 
-                if (hasReset) {
+                /*if (hasReset) {
                     hasReset = false;
-                }
+                }*/
             }
         }
     }
