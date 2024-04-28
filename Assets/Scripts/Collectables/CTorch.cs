@@ -24,7 +24,7 @@ public class CTorch : Singleton<CTorch> {
     [SerializeField] private float alphaOscillationSpeed = 1.0f;
     [SerializeField] private float alphaOscillationMagnitude = 0.1f; // Adjust for desired effect
     private float baseAlpha = 0.85f; // The central value of alpha around which it oscillates
-    [SerializeField] private float maxVol = 0.15f;
+    [SerializeField] private float maxVol = 0.05f;
     [SerializeField] private float minVol = 0.015f;
 
     private float lastOffsetX;
@@ -77,6 +77,10 @@ public class CTorch : Singleton<CTorch> {
 
         transform.position = new Vector2(vendorPosition.position.x + spawnOffsetX, vendorPosition.position.y + spawnOffsetY);
 
+        if (audioManager != null) {
+            audioManager.SetSFXVolume("8BitFire", minVol);
+        }
+
         TorchRequirements();
     }
 
@@ -97,6 +101,10 @@ public class CTorch : Singleton<CTorch> {
 
     private void Update() {
         TorchRequirements();
+
+        if (audioManager != null && audioManager.GetSFXVolume("8BitFire") >= maxVol) {
+            audioManager.SetSFXVolume("8BitFire", minVol);
+        }
     }
 
     private void TorchRequirements() {
@@ -179,7 +187,7 @@ public class CTorch : Singleton<CTorch> {
                 if (SceneManager.GetActiveScene().name == "LoreScene"){
                     audioManager.StopSFX("8BitFire");
                 } else if (!audioManager.IsPlayingSFX("8BitFire")) {
-                    AdjustFireSoundVolume();
+                    //AdjustFireSoundVolume();
                     audioManager.PlaySFX("8BitFire");
                 }
             } else if (SceneManager.GetActiveScene().name == "MainMenu") {
@@ -267,7 +275,7 @@ public class CTorch : Singleton<CTorch> {
         float maxDistance = 3.5f;
 
         distanceToPlayer = Mathf.Clamp(distanceToPlayer, 0, maxDistance);
-        float volume = Mathf.Lerp(maxVol, minVol, distanceToPlayer / maxDistance);
+        float volume = Mathf.Lerp(maxVol, minVol, (float)distanceToPlayer / (float)maxDistance);
 
         audioManager.SetSFXVolume("8BitFire", volume);
     }

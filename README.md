@@ -42,7 +42,10 @@ AIVA's modification tools.
 Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
-## Version 1.4
+## Version 1.
+### Version 1.4.22
+- Fix bug where torch would become loud occasionally if you went into the game after already having the torch from the main menu
+
 ### Version 1.4.21
 - Fixed a bug where the player ammo would not be full on picking up a new gun
 - Reworked ammo system entirely
