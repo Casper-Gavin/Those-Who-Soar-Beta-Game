@@ -1884,7 +1884,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54ba4c0f559a25d42b4ff1d8ab4cd4f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventType: 5
+  eventType: 6
   eventLayer:
     serializedVersion: 2
     m_Bits: 256
