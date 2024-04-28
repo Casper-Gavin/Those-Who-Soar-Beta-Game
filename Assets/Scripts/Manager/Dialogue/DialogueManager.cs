@@ -211,14 +211,16 @@ public class DialogueManager : Singleton<DialogueManager> {
         if (sentences.Count == 0) {
             dialogueIsDisplaying = false;
 
-            if (SceneManager.GetActiveScene().name == "LoreScene") {
-                if (currentImg == imgs.Length - 1) {
-                    continueButton.text = "End >>>";
+            if (continueButton != null) {
+                if (SceneManager.GetActiveScene().name == "LoreScene") {
+                    if (currentImg == imgs.Length - 1) {
+                        continueButton.text = "End >>>";
+                    } else {
+                        continueButton.text = "Next >>>";
+                    }
                 } else {
-                    continueButton.text = "Next >>>";
+                    continueButton.text = "End >>>";
                 }
-            } else {
-                continueButton.text = "End >>>";
             }
         } else {
             dialogueIsDisplaying = true;
