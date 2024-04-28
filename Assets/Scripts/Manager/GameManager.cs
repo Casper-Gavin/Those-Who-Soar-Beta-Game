@@ -19,7 +19,14 @@ public class GameManager : Singleton<GameManager> {
 
     public bool hasReset = false;
 
+    private string RESET_ON_START = "RESET_ON_START";
+
     private void Awake() {
+        if (!PlayerPrefs.HasKey(RESET_ON_START)) {
+            PlayerPrefs.SetInt(RESET_ON_START, 0);
+            ResetPlayerPrefs();
+        }
+
         if (GameObject.FindObjectsOfType<GameManager>().Length > 1) {
             Destroy(gameObject);
             return;
@@ -132,13 +139,19 @@ public class GameManager : Singleton<GameManager> {
         PlayerPrefs.SetString("CURRENT_SCENE", DEFAULT_SCENE);
         CURRENT_SCENE = DEFAULT_SCENE;
 
-        showNotice = true;
-        if (!resetNotice)
-        {
-            resetNotice = GameObject.Find("ResetProgressNoticeWrapper").transform.GetChild(0).gameObject;
-        }
-        resetNotice.SetActive(true);
+        if (PlayerPrefs.HasKey(RESET_ON_START)) {
+            if (PlayerPrefs.GetInt(RESET_ON_START) != 0) {
+                showNotice = true;
+                if (!resetNotice)
+                {
+                    resetNotice = GameObject.Find("ResetProgressNoticeWrapper").transform.GetChild(0).gameObject;
+                }
+                resetNotice.SetActive(true);
 
-        hasReset = true;
+                hasReset = true;
+            } else {
+                PlayerPrefs.SetInt(RESET_ON_START, 1);
+            }
+        }
     }
 }
