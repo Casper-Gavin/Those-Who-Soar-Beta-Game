@@ -2583,6 +2583,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5445602926896470881, guid: b52277af0abb932489597e1a7980df0c, type: 3}
+      propertyPath: shopPanel
+      value: 
+      objectReference: {fileID: 2036368423}
+    - target: {fileID: 5445602926896470881, guid: b52277af0abb932489597e1a7980df0c, type: 3}
       propertyPath: levelClearImage
       value: 
       objectReference: {fileID: 578278231}

@@ -42,7 +42,10 @@ AIVA's modification tools.
 Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
-## Version 1.
+## Version 1.4
+### Version 1.4.23
+- Fixed crash when going to menu with shop panel open
+
 ### Version 1.4.22
 - Fix bug where torch would become loud occasionally if you went into the game after already having the torch from the main menu
 

@@ -12,6 +12,7 @@ public class UIManager : Singleton<UIManager>
 {
     [Header("Pause Menu")]
     [SerializeField] private GameObject pauseMenuUI;
+    [SerializeField] private GameObject shopPanel;
     public static bool GameIsPaused = false;
 
     [Header("Skill Tree")]
@@ -57,7 +58,6 @@ public class UIManager : Singleton<UIManager>
     [Header("Level Clear")]
     [SerializeField] private GameObject levelClearImage; // EndLevelImage - in canvas
     [SerializeField] private GameObject gameClearImage; // only for final level
-
     [SerializeField] public KeybindingActions keybindingActions;
 
 
@@ -401,6 +401,7 @@ public class UIManager : Singleton<UIManager>
     }
 
     public void LoadMainMenu() {
+        shopPanel.SetActive(false);
         Resume();
         SceneManager.LoadScene(0);
     }

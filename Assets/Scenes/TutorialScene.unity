@@ -12972,6 +12972,10 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5445602926896470881, guid: b52277af0abb932489597e1a7980df0c, type: 3}
+      propertyPath: shopPanel
+      value: 
+      objectReference: {fileID: 2036368423}
+    - target: {fileID: 5445602926896470881, guid: b52277af0abb932489597e1a7980df0c, type: 3}
       propertyPath: levelClearImage
       value: 
       objectReference: {fileID: 264269475}
@@ -32815,12 +32819,9 @@ MonoBehaviour:
   skillTreeHealthMulti: 0
   skillTreeShieldMulti: 0
   fieldOfView: {fileID: 264269474}
-  initialShield: 5
   maxShield: 5
   delayAfterDmgToBeginShieldRegen: 3
   shieldRegenRate: 0.25
-  initialHealthPlayer: 10
-  maxHealthPlayer: 10
   isDead: 0
   audioManager: {fileID: 0}
 --- !u!114 &1503698342
