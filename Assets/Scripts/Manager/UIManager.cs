@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
 using static SkillMenu;
+using System.Threading.Tasks;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -432,6 +433,12 @@ public class UIManager : Singleton<UIManager>
             bossHealthBarPanel.SetActive(false);
             gameClearImage.SetActive(true);
         }));
+        WhenGameClear();
+    }
+
+    public async void WhenGameClear() {
+        await Task.Delay(3000);
+        SceneManager.LoadScene("MainMenu");
     }
 
     public IEnumerator LevelClearTutorial() {

@@ -43,6 +43,9 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.4
+### Version 1.4.24
+- Fixed not going to Main Menu after beating boss
+
 ### Version 1.4.23
 - Fixed crash when going to menu with shop panel open
 
