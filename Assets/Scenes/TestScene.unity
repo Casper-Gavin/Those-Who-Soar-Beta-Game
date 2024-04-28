@@ -33633,6 +33633,10 @@ PrefabInstance:
       propertyPath: shopPanel
       value: 
       objectReference: {fileID: 2036368423}
+    - target: {fileID: 5445602926896470881, guid: b52277af0abb932489597e1a7980df0c, type: 3}
+      propertyPath: dialogueBox
+      value: 
+      objectReference: {fileID: 8925845557223096148}
     - target: {fileID: 6444612694474149367, guid: b52277af0abb932489597e1a7980df0c, type: 3}
       propertyPath: m_fontSize
       value: 30
@@ -33674,6 +33678,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b52277af0abb932489597e1a7980df0c, type: 3}
+--- !u!1 &8925845557223096148 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5964036909739932588, guid: b52277af0abb932489597e1a7980df0c, type: 3}
+  m_PrefabInstance: {fileID: 8925845557223096147}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -10564,6 +10564,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 8962874759704544641}
+  shopPanel: {fileID: 0}
+  dialogueBox: {fileID: 5964036909739932588}
   skillTreeUI: {fileID: 1224676130229337780}
   controlMenuUI: {fileID: 6548183459569610843}
   damageIndicator: {fileID: 7619089871233595616}
@@ -10592,6 +10594,7 @@ MonoBehaviour:
   gameClearImage: {fileID: 2544367874046398627}
   keybindingActions: 0
   isStart: 1
+  dialogueManager: {fileID: 0}
 --- !u!1 &7805608939790520081
 GameObject:
   m_ObjectHideFlags: 0
