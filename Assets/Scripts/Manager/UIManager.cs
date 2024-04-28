@@ -14,6 +14,8 @@ public class UIManager : Singleton<UIManager>
     [Header("Pause Menu")]
     [SerializeField] private GameObject pauseMenuUI;
     [SerializeField] private GameObject shopPanel;
+    [SerializeField] private GameObject dialogueBox;
+    
     public static bool GameIsPaused = false;
 
     [Header("Skill Tree")]
@@ -403,6 +405,7 @@ public class UIManager : Singleton<UIManager>
 
     public void LoadMainMenu() {
         shopPanel.SetActive(false);
+        dialogueBox.SetActive(false);
         Resume();
         SceneManager.LoadScene(0);
     }
