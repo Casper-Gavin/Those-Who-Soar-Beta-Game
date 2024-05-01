@@ -11,7 +11,7 @@ public class Keybindings : ScriptableObject {
     }
 
     // default keybindings
-    public KeybindingCheck[] keyDefaults = {
+    public readonly KeybindingCheck[] keyDefaults = {
         new KeybindingCheck { keybindingActions = KeybindingActions.Dash, keyCode = KeyCode.Space },
         new KeybindingCheck { keybindingActions = KeybindingActions.Sprint, keyCode = KeyCode.LeftShift },
         new KeybindingCheck { keybindingActions = KeybindingActions.Pause, keyCode = KeyCode.Escape },
