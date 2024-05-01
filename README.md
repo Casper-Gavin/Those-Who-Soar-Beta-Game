@@ -43,8 +43,15 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.4
-### 1.4.28
+### 1.4.30
 - Fixed? Sliding on death bug as per Instructor feedback
+
+### Version 1.4.29
+- Fixed dialogue not properly going away on first pause when a menu UI was open
+- Added a Full Reset at the very start of the game just once in case something doesnt get reset
+
+### Version 1.4.28
+- new attempt at fixing the vendor menu crash
 
 ### Version 1.4.27
 - Fixed? DialogueManager crash when the dialogue was displaying and you leave to main menu

@@ -14,7 +14,7 @@ public class UIManager : Singleton<UIManager>
     [Header("Pause Menu")]
     [SerializeField] private GameObject pauseMenuUI;
     [SerializeField] private GameObject shopPanel;
-    [SerializeField] private GameObject dialogueBox;
+    //[SerializeField] private GameObject dialogueBox;
     
     public static bool GameIsPaused = false;
 
@@ -119,10 +119,16 @@ public class UIManager : Singleton<UIManager>
         initialKeySpot.SetActive(false);
         keys = new List<Key>();
         keyImages = new List<GameObject>();
+
+        dialogueManager = GameObject.Find("DialogueManager");
     }
 
     private void Update()
     {
+        if (dialogueManager == null) {
+            dialogueManager = GameObject.Find("DialogueManager");
+        }
+        
         if (InputManager.instance.GetKeyDown(KeybindingActions.Pause)) {
             if (!SkillTreeIsOpen && !ControlMenuIsOpen) {
                 if (GameIsPaused) {
@@ -341,6 +347,7 @@ public class UIManager : Singleton<UIManager>
     public void Pause() {
         bossIntroPanel.SetActive(false);
         pauseMenuUI.SetActive(true);
+        GameIsPaused = true;
 
         if (SceneManager.GetActiveScene().name != "MainMenu" && SceneManager.GetActiveScene().name != "LoreScene") {
             if (dialogueManager != null ) {
@@ -355,13 +362,11 @@ public class UIManager : Singleton<UIManager>
 
         // IEnumerator to pause time
         StartCoroutine(WaitToPause());
-
-        GameIsPaused = true;
         Cursor.visible = true;
     }
 
     private IEnumerator WaitToPause() {
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(0.1f);
         
         if (Time.timeScale == 1f) {
             Time.timeScale = 0f;
@@ -370,7 +375,20 @@ public class UIManager : Singleton<UIManager>
 
     public void SkillMenuOpen() {
         skillTreeUI.SetActive(true);
-        Time.timeScale = 0f;
+
+        if (SceneManager.GetActiveScene().name != "MainMenu" && SceneManager.GetActiveScene().name != "LoreScene") {
+            if (dialogueManager != null ) {
+                if (DialogueManager.instance.dialogueIsDisplaying && DialogueManager.instance.dialogueCanvasObj.activeSelf) {
+                    DialogueManager.instance.dialogueCanvasObj.SetActive(false);
+                    DialogueManager.instance.animator.SetBool("IsOpen", false);
+                }
+            } else {
+                dialogueManager = GameObject.Find("DialogueManager");
+            }
+        }
+
+        StartCoroutine(WaitToPause());
+        
         SkillTreeIsOpen = true;
         Cursor.visible = true;
     }
@@ -378,14 +396,39 @@ public class UIManager : Singleton<UIManager>
     public void SkillMenuClose() {
         skillTreeUI.SetActive(false);
         Time.timeScale = 1f;
+
+        if (SceneManager.GetActiveScene().name != "MainMenu" && SceneManager.GetActiveScene().name != "LoreScene") {
+            if (dialogueManager != null) {
+                if (DialogueManager.instance.dialogueIsDisplaying && !DialogueManager.instance.dialogueCanvasObj.activeSelf) {
+                    DialogueManager.instance.dialogueCanvasObj.SetActive(true);
+                    DialogueManager.instance.animator.SetBool("IsOpen", true);
+                }
+            } else {
+                dialogueManager = GameObject.Find("DialogueManager");
+            }
+        }
+
         SkillTreeIsOpen = false;
         Cursor.visible = false;
     }
 
     public void ControlMenuOpen() {
         controlMenuUI.SetActive(true);
-        Time.timeScale = 0f;
         GameIsPaused = true;
+
+        if (SceneManager.GetActiveScene().name != "MainMenu" && SceneManager.GetActiveScene().name != "LoreScene") {
+            if (dialogueManager != null ) {
+                if (DialogueManager.instance.dialogueIsDisplaying && DialogueManager.instance.dialogueCanvasObj.activeSelf) {
+                    DialogueManager.instance.dialogueCanvasObj.SetActive(false);
+                    DialogueManager.instance.animator.SetBool("IsOpen", false);
+                }
+            } else {
+                dialogueManager = GameObject.Find("DialogueManager");
+            }
+        }
+
+        StartCoroutine(WaitToPause());
+
         ControlMenuIsOpen = true;
         Cursor.visible = true;
     }
@@ -393,6 +436,18 @@ public class UIManager : Singleton<UIManager>
     public void ControlMenuClose() {
         controlMenuUI.SetActive(false);
         Time.timeScale = 1f;
+
+        if (SceneManager.GetActiveScene().name != "MainMenu" && SceneManager.GetActiveScene().name != "LoreScene") {
+            if (dialogueManager != null) {
+                if (DialogueManager.instance.dialogueIsDisplaying && !DialogueManager.instance.dialogueCanvasObj.activeSelf) {
+                    DialogueManager.instance.dialogueCanvasObj.SetActive(true);
+                    DialogueManager.instance.animator.SetBool("IsOpen", true);
+                }
+            } else {
+                dialogueManager = GameObject.Find("DialogueManager");
+            }
+        }
+
         GameIsPaused = false;
         ControlMenuIsOpen = false;
         Cursor.visible = false;
@@ -404,8 +459,10 @@ public class UIManager : Singleton<UIManager>
     }
 
     public void LoadMainMenu() {
-        shopPanel.SetActive(false);
-        dialogueBox.SetActive(false);
+        if (shopPanel.activeSelf) {
+            shopPanel.SetActive(false);
+        }
+        //dialogueBox.SetActive(false);
         Resume();
         SceneManager.LoadScene(0);
     }
