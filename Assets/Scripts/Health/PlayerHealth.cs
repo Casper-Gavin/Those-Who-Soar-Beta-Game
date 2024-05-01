@@ -145,7 +145,6 @@ public class PlayerHealth : HealthBase
     {
         needRegen = false;
         character.enabled = false;
-        controller.enabled = false;
         collide2D.enabled = false;
         characterWeapon.Disable();
         characterWeapon.enabled = false;
@@ -154,6 +153,8 @@ public class PlayerHealth : HealthBase
         characterMovement.SetHorizontal(0.0f);
         characterMovement.SetVertical(0.0f);
         characterMovement.enabled = false;
+        controller.CurrentMovement = new Vector2(0, 0);
+        controller.enabled = false;
         if (audioManager.IsPlayingSFX("Walk"))
         {
             audioManager.StopSFX("Walk");

@@ -43,6 +43,9 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.4
+### 1.4.28
+- Fixed? Sliding on death bug as per Instructor feedback
+
 ### Version 1.4.27
 - Fixed? DialogueManager crash when the dialogue was displaying and you leave to main menu
 
