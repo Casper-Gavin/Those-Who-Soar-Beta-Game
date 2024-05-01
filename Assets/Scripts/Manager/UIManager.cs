@@ -26,6 +26,10 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject controlMenuUI;
     public static bool ControlMenuIsOpen = false;
 
+    [Header("Death Menu")]
+    [SerializeField] private GameObject deathMenuUI;
+    public static bool DeathMenuIsOpen = false;
+
     [Header("Settings")]
     [SerializeField] private Image damageIndicator;
     [SerializeField] private Image healthIndicator;
@@ -89,6 +93,8 @@ public class UIManager : Singleton<UIManager>
 
     [SerializeField] private GameObject dialogueManager;
 
+    [SerializeField] private GameObject player;
+
     private void Start()
     {
         isStart = true;
@@ -121,6 +127,12 @@ public class UIManager : Singleton<UIManager>
         keyImages = new List<GameObject>();
 
         dialogueManager = GameObject.Find("DialogueManager");
+
+        deathMenuUI.SetActive(false);
+
+        if (player == null) {
+            player = GameObject.Find("Player");
+        }
     }
 
     private void Update()
@@ -146,6 +158,30 @@ public class UIManager : Singleton<UIManager>
                 } else {
                     SkillMenuOpen();
                 }
+            }
+        }
+
+        if (player != null && player.GetComponent<PlayerHealth>().isDead && !deathMenuUI.activeSelf) {
+            deathMenuUI.SetActive(true);
+            DeathMenuIsOpen = true; 
+        } else if (!player.GetComponent<PlayerHealth>().isDead && deathMenuUI.activeSelf) {
+            deathMenuUI.SetActive(false);
+            DeathMenuIsOpen = false;
+
+            if (!GameIsPaused || !SkillTreeIsOpen || !ControlMenuIsOpen) {
+                Time.timeScale = 1f;
+            }
+        } else if (player != null && player.GetComponent<PlayerHealth>().isDead && deathMenuUI.activeSelf) {
+            if (GameIsPaused) {
+                Resume();
+            } else if (SkillTreeIsOpen) {
+                SkillMenuClose();
+            } else if (ControlMenuIsOpen) {
+                ControlMenuClose();
+            }
+
+            if (Input.GetKeyDown(KeyCode.P)) {
+                LevelManager.Instance.ReviveCharacter();
             }
         }
 

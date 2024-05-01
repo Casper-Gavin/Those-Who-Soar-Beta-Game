@@ -43,7 +43,10 @@ Unity Version: 2022.3.9f1 (LTS)
 
 # Version History
 ## Version 1.4
-### 1.4.30
+### Version 1.4.31
+- Added a death menu (tells you to press "P" when you die to respawn)
+
+### Version 1.4.30
 - Fixed? Sliding on death bug as per Instructor feedback
 
 ### Version 1.4.29

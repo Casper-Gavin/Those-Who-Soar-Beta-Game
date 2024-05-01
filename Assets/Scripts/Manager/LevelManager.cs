@@ -15,13 +15,13 @@ public class LevelManager : Singleton<LevelManager>
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            ReviveCharacter();
-        }
+        // if (Input.GetKeyDown(KeyCode.P))
+        // {
+        //     ReviveCharacter();
+        // }
     }
 
-    private void ReviveCharacter()
+    public void ReviveCharacter()
     {
         if (playableCharacter.GetComponent<PlayerHealth>().isDead)
         {
