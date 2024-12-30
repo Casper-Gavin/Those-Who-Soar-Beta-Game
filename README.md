@@ -1,6 +1,7 @@
 # CS 425/426 Senior Project
 
-### Team #1: Carter Webb, Andrew Kalb, and Gavin Casper
+### Find final build at https://github.com/carterawebb/CS425SeniorProject/releases/tag/v1.4.31
+### Carter Webb, Andrew Kalb, and Gavin Casper
 ### Instructors: Dave Feil-Seifer, Devrin Lee, and Sara Davis with the Department of CSE
 ### External Advisor: Eelke Folmer with the Department of CSE
 ### CS 426 Senior Project in Computer Science, Spring 2024, at UNR, CSE Department
